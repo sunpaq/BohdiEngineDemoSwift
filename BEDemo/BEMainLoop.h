@@ -9,11 +9,12 @@
 #ifndef BEMainLoop_h
 #define BEMainLoop_h
 
-#include <stdio.h>
-
 void BESetupGL(unsigned width, unsigned height);
 void BEResizeGL(unsigned width, unsigned height);
 void BEUpdateGL();
 void BEDrawGL();
+
+void BEPanGesture(float x, float y);
+void BEPinchGesture(float scale);
 
 #endif /* BEMainLoop_h */
