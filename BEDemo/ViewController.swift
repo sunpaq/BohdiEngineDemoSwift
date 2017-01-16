@@ -7,19 +7,33 @@
 //
 
 import UIKit
+import GLKit
 
-class ViewController: UIViewController {
+class ViewController: GLKViewController {
 
+    var context: EAGLContext?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+        self.context = EAGLContext.init(api: EAGLRenderingAPI.openGLES3)
+        
+        let glview = self.view as! GLKView
+        glview.context = context!
+        EAGLContext.setCurrent(self.context)
+        
+        let width  = UInt32(glview.bounds.width)
+        let height = UInt32(glview.bounds.height)
 
+        BESetupGL(width, height)
+    }
+    
+    override func glkView(_ view: GLKView, drawIn rect: CGRect) {
+        BEUpdateGL()
+        BEDrawGL()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
 }
 

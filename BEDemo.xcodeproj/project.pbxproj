@@ -7,14 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04AC60FC3C9661C739D290CF /* Pods_BEDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC9ED362E70F1A6191D86F5 /* Pods_BEDemo.framework */; };
 		F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */; };
 		F8AF1FE51E2C57BA009D0807 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF1FE41E2C57BA009D0807 /* ViewController.swift */; };
 		F8AF1FE81E2C57BA009D0807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FE61E2C57BA009D0807 /* Main.storyboard */; };
 		F8AF1FEA1E2C57BA009D0807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */; };
 		F8AF1FED1E2C57BA009D0807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FEB1E2C57BA009D0807 /* LaunchScreen.storyboard */; };
+		F8AF1FF71E2C5B01009D0807 /* BEMainLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = F8AF1FF51E2C5B01009D0807 /* BEMainLoop.m */; };
+		F8AF1FF91E2C5B8C009D0807 /* BohdiEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AF1FF81E2C5B8C009D0807 /* BohdiEngine.framework */; };
+		F8AF20011E2C688E009D0807 /* 2.obj in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FFB1E2C688E009D0807 /* 2.obj */; };
+		F8AF20021E2C688E009D0807 /* beengine.mtl in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FFC1E2C688E009D0807 /* beengine.mtl */; };
+		F8AF20031E2C688E009D0807 /* MCGLRenderer.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FFD1E2C688E009D0807 /* MCGLRenderer.fsh */; };
+		F8AF20041E2C688E009D0807 /* MCGLRenderer.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FFE1E2C688E009D0807 /* MCGLRenderer.vsh */; };
+		F8AF20051E2C688E009D0807 /* MCSkyboxShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FFF1E2C688E009D0807 /* MCSkyboxShader.fsh */; };
+		F8AF20061E2C688E009D0807 /* MCSkyboxShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F8AF20001E2C688E009D0807 /* MCSkyboxShader.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3645FE7E1610A1341927E532 /* Pods-BEDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BEDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BEDemo/Pods-BEDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		7DC9ED362E70F1A6191D86F5 /* Pods_BEDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BEDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA00336E23BE640A469C7656 /* Pods-BEDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BEDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BEDemo/Pods-BEDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F8AF1FDF1E2C57BA009D0807 /* BEDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8AF1FE41E2C57BA009D0807 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +34,16 @@
 		F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8AF1FEC1E2C57BA009D0807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8AF1FEE1E2C57BA009D0807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8AF1FF41E2C5B00009D0807 /* BEDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BEDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		F8AF1FF51E2C5B01009D0807 /* BEMainLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMainLoop.m; sourceTree = "<group>"; };
+		F8AF1FF61E2C5B01009D0807 /* BEMainLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMainLoop.h; sourceTree = "<group>"; };
+		F8AF1FF81E2C5B8C009D0807 /* BohdiEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BohdiEngine.framework; path = "Pods/../build/Debug-iphoneos/BohdiEngine/BohdiEngine.framework"; sourceTree = "<group>"; };
+		F8AF1FFB1E2C688E009D0807 /* 2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.obj; sourceTree = "<group>"; };
+		F8AF1FFC1E2C688E009D0807 /* beengine.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = beengine.mtl; sourceTree = "<group>"; };
+		F8AF1FFD1E2C688E009D0807 /* MCGLRenderer.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCGLRenderer.fsh; sourceTree = "<group>"; };
+		F8AF1FFE1E2C688E009D0807 /* MCGLRenderer.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCGLRenderer.vsh; sourceTree = "<group>"; };
+		F8AF1FFF1E2C688E009D0807 /* MCSkyboxShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCSkyboxShader.fsh; sourceTree = "<group>"; };
+		F8AF20001E2C688E009D0807 /* MCSkyboxShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCSkyboxShader.vsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +51,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8AF1FF91E2C5B8C009D0807 /* BohdiEngine.framework in Frameworks */,
+				04AC60FC3C9661C739D290CF /* Pods_BEDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45670C4CCC3138551BDDD356 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3645FE7E1610A1341927E532 /* Pods-BEDemo.debug.xcconfig */,
+				CA00336E23BE640A469C7656 /* Pods-BEDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6CD1F296725BC12E2E891607 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F8AF1FF81E2C5B8C009D0807 /* BohdiEngine.framework */,
+				7DC9ED362E70F1A6191D86F5 /* Pods_BEDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F8AF1FD61E2C57BA009D0807 = {
 			isa = PBXGroup;
 			children = (
 				F8AF1FE11E2C57BA009D0807 /* BEDemo */,
 				F8AF1FE01E2C57BA009D0807 /* Products */,
+				45670C4CCC3138551BDDD356 /* Pods */,
+				6CD1F296725BC12E2E891607 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +102,27 @@
 				F8AF1FE41E2C57BA009D0807 /* ViewController.swift */,
 				F8AF1FE61E2C57BA009D0807 /* Main.storyboard */,
 				F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */,
+				F8AF1FFA1E2C688E009D0807 /* Resources */,
 				F8AF1FEB1E2C57BA009D0807 /* LaunchScreen.storyboard */,
 				F8AF1FEE1E2C57BA009D0807 /* Info.plist */,
+				F8AF1FF51E2C5B01009D0807 /* BEMainLoop.m */,
+				F8AF1FF61E2C5B01009D0807 /* BEMainLoop.h */,
+				F8AF1FF41E2C5B00009D0807 /* BEDemo-Bridging-Header.h */,
 			);
 			path = BEDemo;
+			sourceTree = "<group>";
+		};
+		F8AF1FFA1E2C688E009D0807 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F8AF1FFB1E2C688E009D0807 /* 2.obj */,
+				F8AF1FFC1E2C688E009D0807 /* beengine.mtl */,
+				F8AF1FFD1E2C688E009D0807 /* MCGLRenderer.fsh */,
+				F8AF1FFE1E2C688E009D0807 /* MCGLRenderer.vsh */,
+				F8AF1FFF1E2C688E009D0807 /* MCSkyboxShader.fsh */,
+				F8AF20001E2C688E009D0807 /* MCSkyboxShader.vsh */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +132,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8AF1FF11E2C57BA009D0807 /* Build configuration list for PBXNativeTarget "BEDemo" */;
 			buildPhases = (
+				3A735348A593386C19229B14 /* [CP] Check Pods Manifest.lock */,
 				F8AF1FDB1E2C57BA009D0807 /* Sources */,
 				F8AF1FDC1E2C57BA009D0807 /* Frameworks */,
 				F8AF1FDD1E2C57BA009D0807 /* Resources */,
+				665DEB5D99824A771FBDA808 /* [CP] Embed Pods Frameworks */,
+				520278DCBFE98748844B14E0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -97,6 +161,7 @@
 					F8AF1FDE1E2C57BA009D0807 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = R7BTEXA73U;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -124,13 +189,67 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8AF20051E2C688E009D0807 /* MCSkyboxShader.fsh in Resources */,
+				F8AF20011E2C688E009D0807 /* 2.obj in Resources */,
 				F8AF1FED1E2C57BA009D0807 /* LaunchScreen.storyboard in Resources */,
+				F8AF20021E2C688E009D0807 /* beengine.mtl in Resources */,
+				F8AF20031E2C688E009D0807 /* MCGLRenderer.fsh in Resources */,
 				F8AF1FEA1E2C57BA009D0807 /* Assets.xcassets in Resources */,
 				F8AF1FE81E2C57BA009D0807 /* Main.storyboard in Resources */,
+				F8AF20061E2C688E009D0807 /* MCSkyboxShader.vsh in Resources */,
+				F8AF20041E2C688E009D0807 /* MCGLRenderer.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A735348A593386C19229B14 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		520278DCBFE98748844B14E0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BEDemo/Pods-BEDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		665DEB5D99824A771FBDA808 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BEDemo/Pods-BEDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F8AF1FDB1E2C57BA009D0807 /* Sources */ = {
@@ -139,6 +258,7 @@
 			files = (
 				F8AF1FE51E2C57BA009D0807 /* ViewController.swift in Sources */,
 				F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */,
+				F8AF1FF71E2C5B01009D0807 /* BEMainLoop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,26 +379,41 @@
 		};
 		F8AF1FF21E2C57BA009D0807 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3645FE7E1610A1341927E532 /* Pods-BEDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = R7BTEXA73U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/BohdiEngine",
+				);
 				INFOPLIST_FILE = BEDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.schindler-sodec.BEDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BEDemo/BEDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		F8AF1FF31E2C57BA009D0807 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA00336E23BE640A469C7656 /* Pods-BEDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = R7BTEXA73U;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/BohdiEngine",
+				);
 				INFOPLIST_FILE = BEDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.schindler-sodec.BEDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BEDemo/BEDemo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -302,6 +437,7 @@
 				F8AF1FF31E2C57BA009D0807 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
