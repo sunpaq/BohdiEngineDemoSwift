@@ -1,5 +1,8 @@
 #version 300 es
 
+precision highp float;
+precision mediump int;
+
 //vertex attributes
 layout (location=0) in vec4 position;
 layout (location=1) in vec3 normal;
@@ -16,7 +19,7 @@ uniform mat3 model_normal;
 
 //varying variables use to pass value between vertex & fragment shader
 out vec3 vertexcolor;
-//out vec2 texturecoord;
+out vec2 texturecoord;
 out vec3 calculatedNormal;
 out vec3 modelPosition;
 out vec3 viewPosition;
@@ -27,8 +30,7 @@ void main()
     vertexcolor = color;
     
     //Texture Coordinate
-    //texturecoord = texcoord;
-    texcoord;
+    texturecoord = texcoord;
     
     //Normal fix the non-uniform scale issue
     calculatedNormal = normalize(mat3(transpose(inverse(model_model))) * normal);

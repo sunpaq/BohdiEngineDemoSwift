@@ -6,13 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Landing View Controller-->
         <scene sceneID="LsV-Jw-amK">
             <objects>
-                <viewController id="LSY-P6-gxl" sceneMemberID="viewController">
+                <viewController id="LSY-P6-gxl" customClass="LandingViewController" customModule="BEDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xYP-o3-uDq"/>
                         <viewControllerLayoutGuide type="bottom" id="rg2-6t-J7E"/>
@@ -22,47 +23,103 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="written use Monk-C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZF-3R-4Aa">
-                                <rect key="frame" x="131.66666666666669" y="202.66666666666666" width="151.00000000000006" height="21"/>
+                                <rect key="frame" x="132" y="204" width="151" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epJ-yh-y6r">
-                                <rect key="frame" x="164.66666666666666" y="352.66666666666669" width="85" height="30"/>
+                                <rect key="frame" x="20" y="511" width="85" height="30"/>
                                 <state key="normal" title="Engine Start"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="jAJ-Ev-cin"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BohdiEngine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pT5-oB-Jxm">
-                                <rect key="frame" x="117.66666666666669" y="214.66666666666663" width="179" height="38.333333333333343"/>
+                                <rect key="frame" x="118" y="215" width="179" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-nx-3de">
+                                <rect key="frame" x="345" y="387" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Wire Frame Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOX-z5-xqO">
+                                <rect key="frame" x="20" y="387" width="192" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Camera Rotation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tP-aM-xq6">
+                                <rect key="frame" x="20" y="343" width="184" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1j-Qp-Ag1">
+                                <rect key="frame" x="298" y="511" width="96" height="30"/>
+                                <state key="normal" title="Start OpenCV"/>
+                                <connections>
+                                    <segue destination="cSr-qE-A1G" kind="show" id="MEL-Pl-gl4"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obO-at-PE0">
+                                <rect key="frame" x="345" y="343" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oZF-3R-4Aa" firstAttribute="centerX" secondItem="pT5-oB-Jxm" secondAttribute="centerX" id="016-du-FHn"/>
-                            <constraint firstItem="epJ-yh-y6r" firstAttribute="centerX" secondItem="pT5-oB-Jxm" secondAttribute="centerX" id="QA9-5R-wwE"/>
-                            <constraint firstItem="epJ-yh-y6r" firstAttribute="centerX" secondItem="pT5-oB-Jxm" secondAttribute="centerX" id="VUy-uO-edD"/>
-                            <constraint firstItem="epJ-yh-y6r" firstAttribute="centerY" secondItem="pT5-oB-Jxm" secondAttribute="centerY" constant="133.75" id="fsX-qg-tdE"/>
+                            <constraint firstItem="epJ-yh-y6r" firstAttribute="leading" secondItem="VBD-sk-fcL" secondAttribute="leadingMargin" id="1KI-xV-y6i"/>
+                            <constraint firstItem="6tP-aM-xq6" firstAttribute="top" secondItem="obO-at-PE0" secondAttribute="top" id="4to-AW-TON"/>
+                            <constraint firstItem="6tP-aM-xq6" firstAttribute="leading" secondItem="cOX-z5-xqO" secondAttribute="leading" id="AHh-Gp-sPZ"/>
+                            <constraint firstItem="G1j-Qp-Ag1" firstAttribute="trailing" secondItem="VBD-sk-fcL" secondAttribute="trailingMargin" id="C9c-ai-tXp"/>
+                            <constraint firstItem="rg2-6t-J7E" firstAttribute="top" secondItem="epJ-yh-y6r" secondAttribute="bottom" constant="195" id="CNO-7q-NJn"/>
+                            <constraint firstItem="6tP-aM-xq6" firstAttribute="top" secondItem="pT5-oB-Jxm" secondAttribute="bottom" constant="90" id="O66-hV-eYd"/>
+                            <constraint firstItem="epJ-yh-y6r" firstAttribute="baseline" secondItem="G1j-Qp-Ag1" secondAttribute="baseline" id="W9U-Ha-fwC"/>
+                            <constraint firstItem="cOX-z5-xqO" firstAttribute="leading" secondItem="epJ-yh-y6r" secondAttribute="leading" id="hMk-cr-1h0"/>
                             <constraint firstItem="pT5-oB-Jxm" firstAttribute="centerY" secondItem="VBD-sk-fcL" secondAttribute="centerY" constant="-134.25" id="i4b-Eh-0xB"/>
                             <constraint firstItem="oZF-3R-4Aa" firstAttribute="centerX" secondItem="pT5-oB-Jxm" secondAttribute="centerX" id="lGn-VF-AIh"/>
                             <constraint firstItem="pT5-oB-Jxm" firstAttribute="centerX" secondItem="VBD-sk-fcL" secondAttribute="centerX" id="lMq-a8-ZHQ"/>
                             <constraint firstItem="oZF-3R-4Aa" firstAttribute="centerY" secondItem="pT5-oB-Jxm" secondAttribute="centerY" constant="-20.75" id="o9P-s2-Alx"/>
+                            <constraint firstItem="cOX-z5-xqO" firstAttribute="top" secondItem="Yqg-nx-3de" secondAttribute="top" id="pbS-wB-8Ou"/>
+                            <constraint firstItem="Yqg-nx-3de" firstAttribute="trailing" secondItem="G1j-Qp-Ag1" secondAttribute="trailing" id="qJf-m7-5G8"/>
+                            <constraint firstItem="obO-at-PE0" firstAttribute="leading" secondItem="Yqg-nx-3de" secondAttribute="leading" id="udr-Xl-LdY"/>
+                            <constraint firstItem="Yqg-nx-3de" firstAttribute="top" secondItem="obO-at-PE0" secondAttribute="bottom" constant="13" id="znR-4h-Yy3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4yo-SS-5re"/>
+                    <connections>
+                        <outlet property="rotateCameraSwitch" destination="obO-at-PE0" id="KOU-SK-aUm"/>
+                        <outlet property="wireFrameSwitch" destination="Yqg-nx-3de" id="Wbh-UZ-at2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uoq-qQ-Qhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="418" y="28"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="zau-Vo-Dw8">
+            <objects>
+                <viewController id="cSr-qE-A1G" customClass="CVViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7KR-BG-rz0"/>
+                        <viewControllerLayoutGuide type="bottom" id="gd9-HV-oJL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bOm-jO-dUk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RZD-8G-zGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1246" y="746"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BEDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GLViewController" customModule="BEDemo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>

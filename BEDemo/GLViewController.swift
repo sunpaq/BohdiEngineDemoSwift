@@ -8,26 +8,64 @@
 
 import UIKit
 import GLKit
+import CoreMotion
 
-class ViewController: GLKViewController {
+class GLViewController: GLKViewController {
     
-    @objc static var instance: ViewController!
+    var motionManager: CMMotionManager!
+    var referenceAttitude: CMAttitude?
+    
+    //@objc static var instance: ViewController!
     var indicator: UIActivityIndicatorView!
     
-    @objc func BEStartLoading() {
+    func startLoading(closure: @escaping ()->()) {
         indicator.center = self.view.center
         self.view.addSubview(indicator!)
         indicator.startAnimating()
+        
+        DispatchQueue.global().async {
+            closure()
+            self.stopLoading()
+        }
     }
     
-    @objc func BEStopLoading() {
-        indicator.stopAnimating()
-        indicator.removeFromSuperview()
+    func stopLoading() {
+        DispatchQueue.main.async {
+            self.indicator.stopAnimating()
+            self.indicator.removeFromSuperview()
+        }
+    }
+    
+    func startDeviceMotion() {
+        self.motionManager = CMMotionManager();
+        if !self.motionManager.isDeviceMotionActive {
+            self.motionManager.deviceMotionUpdateInterval = 1.0/60.0;
+            self.motionManager.startDeviceMotionUpdates(using: CMAttitudeReferenceFrame.xArbitraryZVertical);
+        }
+    }
+    
+    func stopDeviceMotion() {
+        self.motionManager.stopDeviceMotionUpdates();
+    }
+    
+    func saveReferenceAttitude() {
+        self.referenceAttitude = self.motionManager.deviceMotion?.attitude;
+        
+    }
+    
+    func getDeltaAttitude() -> CMAttitude? {
+        if self.referenceAttitude == nil {
+            saveReferenceAttitude();
+        }
+
+        let att = self.motionManager.deviceMotion?.attitude;
+        att?.multiply(byInverseOf: self.referenceAttitude!);
+        return att;
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ViewController.instance = self
+        //ViewController.instance = self
         indicator = UIActivityIndicatorView.init(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         
         //setup GL context
@@ -44,6 +82,14 @@ class ViewController: GLKViewController {
         let width  = UInt32(self.view.bounds.width)
         let height = UInt32(self.view.bounds.height)
         BESetupGL(width, height)
+
+        startLoading(closure: { BEAddModelNamed("2.obj") })
+
+        BESetRotateCamera(LandingViewController.instance.rotateCameraSwitch.isOn)
+        BESetWireFrameMode(LandingViewController.instance.wireFrameSwitch.isOn)
+        
+        //setup core motion
+        startDeviceMotion()
     }
     
     override func viewWillLayoutSubviews() {
@@ -53,6 +99,12 @@ class ViewController: GLKViewController {
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
+        if let att = getDeltaAttitude() {
+            let mat = att.rotationMatrix
+            BEPullRotateMatrix(mat.m11, mat.m12, mat.m13,
+                               mat.m21, mat.m22, mat.m23,
+                               mat.m31, mat.m32, mat.m33)
+        }
         BEUpdateGL()
         BEDrawGL()
     }
