@@ -9,11 +9,11 @@
 #ifndef MCLight_h
 #define MCLight_h
 
-#include <stdio.h>
 #include "monkc.h"
 #include "MC3DNode.h"
 
 class(MCLight, MC3DNode,
+      struct MCLightStruct *next;
       MCBool    dataChanged;
       MCVector3 ambientLightStrength;
       MCVector3 diffuseLightStrength;

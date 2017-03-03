@@ -9,7 +9,6 @@
 #ifndef MCPanel_h
 #define MCPanel_h
 
-#include <stdio.h>
 #include "monkc.h"
 #include "MC3DNode.h"
 

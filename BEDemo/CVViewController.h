@@ -13,9 +13,13 @@
 #import <UIKit/UIKit.h>
 #import <opencv2/videoio/cap_ios.h>
 
+#import "BEViewIOS.h"
+
 @interface CVViewController : UIViewController <CvVideoCameraDelegate>
 @property (nonatomic, strong) CvVideoCamera* videoSource;
 @property (nonatomic, strong) UIView* cvView;
+@property (nonatomic, strong) BEViewIOS* beViewCtl;
+
 @end
 
 #endif /* CVBridge_h */

@@ -38,7 +38,7 @@ oninit(MC3DScene)
         
         var(cameraLock) = false;
         var(isDrawSky) = isDrawSky;
-        
+
         return obj;
     }else{
         return null;
@@ -78,15 +78,18 @@ method(MC3DScene, MC3DScene*, initWithWidthHeightVSourceFSource, unsigned width,
 method(MC3DScene, MC3DScene*, initWithWidthHeightVNameFName, unsigned width, unsigned height,
        const char* vname, const char* fname)
 {
-    char path[LINE_MAX];
-    MCFileGetPath(vname, "vsh", path);
-    const char* vsource = MCFileCopyContentWithPath(path);
+    char vpath[LINE_MAX] = {0};
+    if (MCFileGetPath(vname, vpath))
+        return null;
+    const char* vsource = MCFileCopyContentWithPath(vpath);
     
-    MCFileGetPath(vname, "fsh", path);
-    const char* fsource = MCFileCopyContentWithPath(path);
+    char fpath[LINE_MAX] = {0};
+    if (MCFileGetPath(fname, fpath))
+        return null;
+    const char* fsource = MCFileCopyContentWithPath(fpath);
     
-    debug_log("MC3DScene vsource: %s", vsource);
-    debug_log("MC3DScene fsource: %s", fsource);
+    //debug_log("MC3DScene vsource: %s", vsource);
+    //debug_log("MC3DScene fsource: %s", fsource);
     MC3DScene_initWithWidthHeightVSourceFSource(0, obj, width, height, vsource, fsource);
     
     free((void*)vsource);
@@ -98,7 +101,7 @@ method(MC3DScene, MC3DScene*, initWithWidthHeightVNameFName, unsigned width, uns
 method(MC3DScene, MC3DScene*, initWithWidthHeightDefaultShader, unsigned width, unsigned height)
 {
     debug_log("MC3DScene initWithWidthHeightDefaultShader %dx%d %s\n", width, height, "MCGLRenderer");
-	return MC3DScene_initWithWidthHeightVNameFName(0, obj, width, height, "MCGLRenderer", "MCGLRenderer");
+	return MC3DScene_initWithWidthHeightVNameFName(0, obj, width, height, "MCGLRenderer.vsh", "MCGLRenderer.fsh");
 }
 
 method(MC3DScene, void, lockCamera, MCBool lock)
@@ -125,7 +128,7 @@ method(MC3DScene, void, moveCameraOneStep, MCFloat deltaFai, MCFloat deltaTht)
 method(MC3DScene, void, moveSkyboxCamera, MCFloat deltaFai, MCFloat deltaTht)
 {
     if (cpt(isDrawSky)) {
-        MCSkyboxCamera_move(0, var(skyboxRef)->camera, deltaFai, deltaTht);
+        //MCSkyboxCamera_move(0, var(skyboxRef)->camera, deltaFai, deltaTht);
     }
 }
 
@@ -139,7 +142,6 @@ method(MC3DScene, void, updateScene, voida)
     
     MCCamera_update(0, obj->mainCamera, obj->renderer->context);
     MCLight_update(0, obj->light, obj->renderer->context);
-    
     MCGLRenderer_updateNodes(0, var(renderer), var(rootnode));
 }
 

@@ -17,6 +17,7 @@ oninit(MCGLContext)
     if (init(MCObject)) {
         var(pid) = glCreateProgram();
         var(uniformCount) = 0;
+        var(drawMode) = MCDrawNone;
         return obj;
     }else{
         return null;
@@ -59,12 +60,15 @@ method(MCGLContext, MCGLContext*, initWithShaderCode, const char* vcode, const c
 method(MCGLContext, MCGLContext*, initWithShaderName, const char* vname, const char* fname,
        const char* attribs[], size_t acount, MCGLUniformType types[], const char* uniforms[], size_t ucount)
 {
-    char path[LINE_MAX];
-    MCFileGetPath(vname, "vsh", path);
-    const char* vcode = MCFileCopyContentWithPath(path);
+    char vpath[LINE_MAX] = {0};
+    if(MCFileGetPath(vname, vpath))
+        return null;
+    const char* vcode = MCFileCopyContentWithPath(vpath);
     
-    MCFileGetPath(vname, "fsh", path);
-    const char* fcode = MCFileCopyContentWithPath(path);
+    char fpath[LINE_MAX] = {0};
+    if(MCFileGetPath(fname, fpath))
+        return null;
+    const char* fcode = MCFileCopyContentWithPath(fpath);
     
     MCGLContext_initWithShaderCode(0, obj, vcode, fcode, attribs, acount, types, uniforms, ucount);
     

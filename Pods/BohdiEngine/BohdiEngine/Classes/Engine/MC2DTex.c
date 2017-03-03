@@ -23,18 +23,11 @@ method(MC2DTex, MC2DTex*, initWithFileName, const char* name)
     return obj;
 }
 
-method(MC2DTex, void, drawTexture, MCGLContext* ctx)
-{
-    MCGLEngine_activeTextureUnit(svar(textureUnit));
-    MCGLEngine_bind2DTexture(svar(Id));
-}
-
 onload(MC2DTex)
 {
     if (load(MCTexture)) {
         
         binding(MC2DTex, MC2DTex*, initWithFileName, const char* name);
-        binding(MC2DTex, void, drawTexture, MCGLContext* ctx);
         
         return cla;
     }else{

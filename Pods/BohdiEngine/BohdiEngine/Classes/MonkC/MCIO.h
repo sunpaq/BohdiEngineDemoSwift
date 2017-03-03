@@ -69,7 +69,7 @@ W_OK
 X_OK
 F_OK ---> if file exist
 */
-int MCFile_isFileExit(char* pathname);
+int MCFile_isPathExist(char* pathname);
 int MCFile_chmod(char* pathname, mode_t mode);
 int MFFile_truncateFileTo(char* pathname, off_t length);
 mode_t MCFile_setNewFilePermissionMask4Process(mode_t cmask);

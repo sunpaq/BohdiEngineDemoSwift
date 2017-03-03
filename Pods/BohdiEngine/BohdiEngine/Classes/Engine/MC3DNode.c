@@ -16,9 +16,10 @@ oninit(MC3DNode)
     if (init(MCItem)) {
         var(visible) = true;
         var(center) = MCVector3Make(0, 0, 0);
-        var(transform) = MCMatrix4Identity();
+        var(transform) = MCMatrix4Identity;
         var(material) = null;
-        var(texture) = null;
+        var(diffuseTexture) = null;
+        var(specularTexture)= null;
         var(zorder) = -1;
         
         var(children) = new(MCLinkedList);
@@ -32,6 +33,9 @@ oninit(MC3DNode)
 
 method(MC3DNode, void, bye, voida)
 {
+    release(var(material));
+    release(var(diffuseTexture));
+    release(var(specularTexture));
     release(var(children));
     release(var(meshes));
 }
@@ -81,6 +85,43 @@ method(MC3DNode, void, setAllVisible, MCBool visible)
     }
 }
 
+method(MC3DNode, void, changeMatrial, MCMaterial* material)
+{
+    release(obj->material);
+    obj->material = material;
+}
+
+method(MC3DNode, void, changeTexture, MCTexture* texture)
+{
+    release(obj->diffuseTexture);
+    obj->diffuseTexture = texture;
+}
+
+method(MC3DNode, void, translate, MCVector3* position)
+{
+    obj->transform = MCMatrix4Multiply(MCMatrix4MakeTranslation(position->x, position->y, position->z), obj->transform);
+}
+
+method(MC3DNode, void, rotateX, double degree)
+{
+    //obj->transform = MCMatrix4Multiply(MCMatrix4MakeXAxisRotation(degree), obj->transform);
+}
+
+method(MC3DNode, void, rotateY, double degree)
+{
+    //obj->transform = MCMatrix4Multiply(MCMatrix4MakeYAxisRotation(degree), obj->transform);
+}
+
+method(MC3DNode, void, rotateZ, double degree)
+{
+    //obj->transform = MCMatrix4Multiply(MCMatrix4MakeZAxisRotation(degree), obj->transform);
+}
+
+method(MC3DNode, void, scale, MCVector3* factors)
+{
+    obj->transform = MCMatrix4Multiply(MCMatrix4MakeScale(factors->x, factors->y, factors->z), obj->transform);
+}
+
 method(MC3DNode, void, update, MCGLContext* ctx)
 {
     MCGLUniform f;
@@ -102,27 +143,44 @@ method(MC3DNode, void, update, MCGLContext* ctx)
 
 method(MC3DNode, void, draw, MCGLContext* ctx)
 {
+    MCGLContext_activateShaderProgram(0, ctx, 0);
+
     //material
     if (obj->material != null) {
+        if (obj->material->hidden == 1) {
+            return;
+        }
         obj->material->dataChanged = true;
-        MCMatrial_prepareMatrial(0, obj->material, ctx);
+        MCMaterial_prepareMatrial(0, obj->material, ctx);
     }
     
+    //draw self texture
+    if (obj->diffuseTexture != null) {
+        //ctx->diffuseTextureRef = obj->diffuseTexture;
+        glUniform1i(glGetUniformLocation(ctx->pid, "usetexture"), true);
+    } else {
+        //ctx->diffuseTextureRef = null;
+        glUniform1i(glGetUniformLocation(ctx->pid, "usetexture"), false);
+    }
+    
+//    if (obj->specularTexture != null) {
+//        ctx->specularTextureRef = obj->specularTexture;
+//    } else {
+//        ctx->specularTextureRef = null;
+//    }
+    
     //batch setup
-    MCGLContext_activateShaderProgram(0, ctx, 0);
     MCGLContext_setUniforms(0, ctx, 0);
     
     //draw self meshes
     MCLinkedListForEach(var(meshes),
                         MCMesh* mesh = (MCMesh*)item;
                         if (mesh != null) {
+                            mesh->diffuseTextureRef  = obj->diffuseTexture;
+                            mesh->specularTextureRef = obj->specularTexture;
                             MCMesh_prepareMesh(0, mesh, ctx);
                             MCMesh_drawMesh(0, mesh, ctx);
                         })
-    //draw self texture
-    if (obj->texture != null) {
-        ff(obj->texture, drawTexture, ctx);
-    }
     
     //draw children
     MCLinkedListForEach(var(children),
@@ -154,6 +212,13 @@ onload(MC3DNode)
         binding(MC3DNode, void, cleanUnvisibleChild, voida);
         binding(MC3DNode, int, childCount, voida);
         binding(MC3DNode, void, setAllVisible, MCBool visible);
+        binding(MC3DNode, void, changeMatrial, MCMaterial* material);
+        binding(MC3DNode, void, changeTexture, MCTexture* texture);
+        binding(MC3DNode, void, translate, MCVector3* position);
+        binding(MC3DNode, void, rotateX, double degree);
+        binding(MC3DNode, void, rotateY, double degree);
+        binding(MC3DNode, void, rotateZ, double degree);
+        binding(MC3DNode, void, scale, MCVector3* factors);
         binding(MC3DNode, void, update, voida);
         binding(MC3DNode, void, draw, voida);
         binding(MC3DNode, void, hide, voida);

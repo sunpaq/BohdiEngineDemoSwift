@@ -148,11 +148,18 @@ MCInline MCVector3 MCTriangleCCWFaceUp(MCTriangle tri)
 
 //Polygon
 
+typedef enum {
+    MCPolygonFan,
+    MCPolygonStrip,
+    MCPolygonUnknown
+} MCPolygonPrimitives;
+
 #define MCPolygonMaxV 1024
 typedef struct {
     size_t count;
     size_t index;
     MCBool isConvex;
+    MCPolygonPrimitives primitive;
     
     MCArrayLinkedList vertexIndexes;
     MCVector3 vertexData[MCPolygonMaxV];
@@ -164,6 +171,8 @@ typedef struct {
     size_t concaveSet[MCPolygonMaxV];
     size_t concaveCount;
 } MCPolygon;
+
+MCPolygonPrimitives MCPolygonPrimitivesDetect(MCVector3 v1, MCVector3 v2, MCVector3 v3, MCVector3 v4);
 
 MCPolygon* MCPolygonInit(MCPolygon* poly, MCVector3 vertexes[], size_t count);
 

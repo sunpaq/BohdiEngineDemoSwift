@@ -17,17 +17,19 @@ compute(MCGLUniform, projectionUniform);
 oninit(MCSkyboxCamera)
 {
     if (init(MCCamera)) {
+        //super
         sobj->ratio = MCRatioHDTV16x9;
-
-        //world coordinate
-        sobj->lookat = MCVector3Make(0,0,-1);
-        
-        //local spherical coordinate
         sobj->R_value = 1.0;
         sobj->R_percent = 1.0;
-        sobj->tht = 0.0;
-        sobj->fai = 90.0;
+        sobj->tht = 0;
+        sobj->fai = 90;
         
+        //world coordinate
+        sobj->lookat = MCVector3Make(0, -1, 0);
+        sobj->eye    = MCVector3Make(0, 0, 0);
+        sobj->up     = MCVector3Make(0, 0, 1);
+        
+        //uniforms
         obj->viewMatrix        = boxViewMatrix;
         obj->projectionMatrix  = boxProjectionMatrix;
         obj->viewUniform       = viewUniform;
@@ -39,22 +41,15 @@ oninit(MCSkyboxCamera)
     }
 }
 
-method(MCSkyboxCamera, void, bye, voida)
-{
-    //MCCamera_bye(0, sobj, 0);
-}
-
 compute(MCMatrix4, boxViewMatrix)
 {
     as(MCSkyboxCamera);
-    MCVector3 lookat = MCVector3Make(MCSinDegrees(sobj->fai), MCSinDegrees(sobj->tht), MCCosDegrees(sobj->tht));
-    MCVector3 up     = MCVector3Make(MCTanDegrees(sobj->fai) * MCSinDegrees(sobj->tht),
-                                     MCCosDegrees(sobj->tht), MCSinDegrees(sobj->tht));
-    MCVector3 eye = MCVector3Make(0, 0, 0);
-
-    return MCMatrix4MakeLookAt(eye.x, eye.y, eye.z,
-                               lookat.x, lookat.y, lookat.z,
-                               up.x, up.y, up.z);
+    MCMatrix4 m = MCMatrix4MakeLookAt(0, 0,0,
+                                      0, 0,-1,
+                                      0, 1,0);
+    MCMatrix4 imat4 = MCMatrix4Invert(obj->Super.Super.transform, null);
+    
+    return MCMatrix4Multiply(m, imat4);
 }
 
 compute(MCMatrix4, boxProjectionMatrix)
@@ -62,8 +57,8 @@ compute(MCMatrix4, boxProjectionMatrix)
     as(MCSkyboxCamera);
     return MCMatrix4MakePerspective(MCDegreesToRadians(sobj->view_angle),
                                     sobj->ratio,
-                                    sobj->focal_length,
-                                    sobj->max_distance);
+                                    0.1,
+                                    2);
 }
 
 compute(MCGLUniform, viewUniform)
@@ -94,24 +89,7 @@ method(MCSkyboxCamera, MCSkyboxCamera*, initWithWidthHeightRatio, MCFloat ratio)
 
 method(MCSkyboxCamera, void, move, MCFloat deltaFai, MCFloat deltaTht)
 {
-    if (sobj->isLockRotation == true) {
-        return;
-    }
-    if (sobj->isReverseMovement) {
-        sobj->fai += deltaFai.f;   //Left
-        sobj->tht += deltaTht.f;   //Up
-    }else{
-        sobj->fai -= deltaFai.f;   //Left
-        sobj->tht -= deltaTht.f;   //Up
-    }
-    
-    //keep the tht -180 ~ 180
-    if (sobj->tht < -179.99) {
-        sobj->tht = -179.99;
-    }
-    if (sobj->tht > 179.99) {
-        sobj->tht = 179.99;
-    }
+    MCCamera_move(0, sobj, deltaFai, deltaTht);
 }
 
 method(MCSkyboxCamera, void, update, MCGLContext* ctx)
@@ -128,21 +106,18 @@ method(MCSkyboxCamera, void, update, MCGLContext* ctx)
     MCGLContext_setUniforms(0, ctx, 0);
 }
 
-method(MCSkyboxCamera, void, setAttitude, MCFloat fai, MCFloat tht)
+method(MCSkyboxCamera, void, setRotationMat3, float mat3[9])
 {
-    sobj->fai = fai.f;
-    sobj->tht = tht.f;
+    MCCamera_setRotationMat3(0, sobj, mat3);
 }
 
 onload(MCSkyboxCamera)
 {
     if (load(MCCamera)) {
-        binding(MCSkyboxCamera, void, bye, voida);
         binding(MCSkyboxCamera, MCSkyboxCamera*, initWithWidthHeightRatio, double ratio);
         binding(MCSkyboxCamera, void, move, double deltaFai, double deltaTht);
         binding(MCSkyboxCamera, void, update, MCGLContext* ctx);
-        binding(MCSkyboxCamera, void, setAttitude, double fai, double tht);
-        
+        binding(MCSkyboxCamera, void, setRotationMat3, float mat3[9]);
         return cla;
     }else{
         return null;

@@ -14,7 +14,6 @@
 		F8AF1FE81E2C57BA009D0807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FE61E2C57BA009D0807 /* Main.storyboard */; };
 		F8AF1FEA1E2C57BA009D0807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */; };
 		F8AF1FED1E2C57BA009D0807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FEB1E2C57BA009D0807 /* LaunchScreen.storyboard */; };
-		F8AF1FF71E2C5B01009D0807 /* BEMainLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = F8AF1FF51E2C5B01009D0807 /* BEMainLoop.m */; };
 		F8AF1FF91E2C5B8C009D0807 /* BohdiEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AF1FF81E2C5B8C009D0807 /* BohdiEngine.framework */; };
 		F8C5A0A51E655EC100B776E5 /* 2.obj in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A09E1E655EC100B776E5 /* 2.obj */; };
 		F8C5A0A61E655EC100B776E5 /* beengine.mtl in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A09F1E655EC100B776E5 /* beengine.mtl */; };
@@ -24,6 +23,7 @@
 		F8C5A0AA1E655EC100B776E5 /* MCSkyboxShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A0A41E655EC100B776E5 /* MCSkyboxShader.vsh */; };
 		F8D8BBEF1E66A17800229AE7 /* CVViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8D8BBEE1E66A17800229AE7 /* CVViewController.mm */; };
 		F8D8BBF21E66A3A400229AE7 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D8BBF11E66A3A400229AE7 /* opencv2.framework */; };
+		F8EF1B711E6814EE001DB305 /* BEVIewIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EF1B701E6814EE001DB305 /* BEVIewIOS.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,8 +39,6 @@
 		F8AF1FEC1E2C57BA009D0807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8AF1FEE1E2C57BA009D0807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8AF1FF41E2C5B00009D0807 /* BEDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BEDemo-Bridging-Header.h"; sourceTree = "<group>"; };
-		F8AF1FF51E2C5B01009D0807 /* BEMainLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMainLoop.m; sourceTree = "<group>"; };
-		F8AF1FF61E2C5B01009D0807 /* BEMainLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMainLoop.h; sourceTree = "<group>"; };
 		F8AF1FF81E2C5B8C009D0807 /* BohdiEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BohdiEngine.framework; path = "Pods/../build/Debug-iphoneos/BohdiEngine/BohdiEngine.framework"; sourceTree = "<group>"; };
 		F8C5A09E1E655EC100B776E5 /* 2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.obj; sourceTree = "<group>"; };
 		F8C5A09F1E655EC100B776E5 /* beengine.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = beengine.mtl; sourceTree = "<group>"; };
@@ -51,6 +49,8 @@
 		F8D8BBEE1E66A17800229AE7 /* CVViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVViewController.mm; sourceTree = "<group>"; };
 		F8D8BBF01E66A19700229AE7 /* CVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVViewController.h; sourceTree = "<group>"; };
 		F8D8BBF11E66A3A400229AE7 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = Pods/OpenCV/opencv2.framework; sourceTree = "<group>"; };
+		F8EF1B701E6814EE001DB305 /* BEVIewIOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEVIewIOS.m; sourceTree = "<group>"; };
+		F8EF1B721E681507001DB305 /* BEViewIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEViewIOS.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +115,8 @@
 				F8AF1FFA1E2C688E009D0807 /* Resources */,
 				F8AF1FEB1E2C57BA009D0807 /* LaunchScreen.storyboard */,
 				F8AF1FEE1E2C57BA009D0807 /* Info.plist */,
-				F8AF1FF51E2C5B01009D0807 /* BEMainLoop.m */,
-				F8AF1FF61E2C5B01009D0807 /* BEMainLoop.h */,
+				F8EF1B721E681507001DB305 /* BEViewIOS.h */,
+				F8EF1B701E6814EE001DB305 /* BEVIewIOS.m */,
 				F8D8BBEE1E66A17800229AE7 /* CVViewController.mm */,
 				F8D8BBF01E66A19700229AE7 /* CVViewController.h */,
 				F8AF1FF41E2C5B00009D0807 /* BEDemo-Bridging-Header.h */,
@@ -295,8 +295,8 @@
 				F8D8BBEF1E66A17800229AE7 /* CVViewController.mm in Sources */,
 				F8AF1FE51E2C57BA009D0807 /* GLViewController.swift in Sources */,
 				F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */,
+				F8EF1B711E6814EE001DB305 /* BEVIewIOS.m in Sources */,
 				F86EAEEE1E2CA4B100A46125 /* LandingViewController.swift in Sources */,
-				F8AF1FF71E2C5B01009D0807 /* BEMainLoop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

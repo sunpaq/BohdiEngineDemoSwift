@@ -9,12 +9,11 @@
 #ifndef MC3DNode_h
 #define MC3DNode_h
 
-#include <stdio.h>
 #include "monkc.h"
 #include "MC3DBase.h"
 #include "MCMesh.h"
 #include "MCTexture.h"
-#include "MCMatrial.h"
+#include "MCMaterial.h"
 #include "MCTexture.h"
 #include "MCGLContext.h"
 
@@ -24,9 +23,9 @@ class(MC3DNode, MCItem,
       MCBool visible;
       MCVector3 center;
       MCMatrix4 transform;
-      MCMatrial* material;
-      MCTexture* texture;
-      
+      MCMaterial* material;
+      MCTexture* diffuseTexture;
+      MCTexture* specularTexture;
       MCLinkedList* meshes;
       MCLinkedList* children;
 );
@@ -39,6 +38,15 @@ method(MC3DNode, void, copyChildrenFrom, MC3DNode* node);
 method(MC3DNode, void, cleanUnvisibleChild, voida);
 method(MC3DNode, int, childCount, voida);
 method(MC3DNode, void, setAllVisible, MCBool visible);
+
+method(MC3DNode, void, changeMatrial, MCMaterial* material);
+method(MC3DNode, void, changeTexture, MCTexture* texture);
+
+method(MC3DNode, void, translate, MCVector3* position);
+method(MC3DNode, void, rotateX, double degree);
+method(MC3DNode, void, rotateY, double degree);
+method(MC3DNode, void, rotateZ, double degree);
+method(MC3DNode, void, scale, MCVector3* factors);
 
 //draw
 method(MC3DNode, void, update, MCGLContext* ctx);

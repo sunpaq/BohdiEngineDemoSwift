@@ -34,8 +34,8 @@ oninit(MCPanel)
         mesh->vertexDataSize = sizeof(vertices);
         
         MCLinkedList_addItem(0, svar(meshes), (MCItem*)mesh);
-        svar(material) = new(MCMatrial);
-        svar(texture) = new(MCTexture);//will initialized outside
+        svar(material) = new(MCMaterial);
+        svar(diffuseTexture) = new(MCTexture);//will initialized outside
         
         return obj;
     }else{

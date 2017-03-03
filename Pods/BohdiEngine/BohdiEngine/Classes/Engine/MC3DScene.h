@@ -9,7 +9,6 @@
 #ifndef MC3DScene_h
 #define MC3DScene_h
 
-#include <stdio.h>
 #include "monkc.h"
 #include "MC3DNode.h"
 #include "MCGLRenderer.h"

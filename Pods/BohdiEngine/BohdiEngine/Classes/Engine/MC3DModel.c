@@ -51,14 +51,37 @@ compute(MC3DFrame, frame)
     return allframe;
 }
 
+compute(double, maxlength)
+{
+    as(MC3DModel);
+    double max = 0;
+    MC3DFrame frame = cpt(frame);
+    MCMath_accumulateMaxd(&max, frame.xmax - frame.xmin);
+    MCMath_accumulateMaxd(&max, frame.ymax - frame.ymin);
+    MCMath_accumulateMaxd(&max, frame.zmax - frame.zmin);
+    return max;
+}
+
+compute(MCVector3, center)
+{
+    as(MC3DModel);
+    MC3DFrame f = cpt(frame);
+    return MCVector3Make((f.xmax-f.xmin)/2.0,
+                         (f.ymax-f.ymin)/2.0,
+                         (f.zmax-f.zmin)/2.0);
+}
+
 oninit(MC3DModel)
 {
     if (init(MC3DNode)) {
         obj->defaultColor = (MCColorf){0.9, 0.9, 0.9, 1.0};
         obj->defaultExtension = "obj";
         obj->textureOnOff = false;
-        
+
         obj->frame = frame;
+        obj->maxlength = maxlength;
+        obj->center = center;
+        
         obj->lastSavedFrame = (MC3DFrame){0,0,0,0,0,0};
         return obj;
     }else{
@@ -71,20 +94,28 @@ method(MC3DModel, void, bye, voida)
     MC3DNode_bye(0, sobj, 0);
 }
 
-function(void, meshLoadFaceElement, MCMesh* mesh, BAObj* buff, BAFaceElement e, size_t offset, MCColorf color)
+function(void, meshLoadFaceElement, MCMesh* mesh, BAObjModel* buff, BAFaceElement e, size_t offset, MCColorf color)
 {
     MCVector3 v, n;
     MCVector2 t;
 
     if (e.vi <= 0) {
         error_log("MC3DFileParser: invalide vertex data!\n");
+        return;
     }else{
         v = buff->vertexbuff[e.vi-1];
     }
     
-    if (e.ni <= 0) {
+    if (buff->shouldCalculateNormal) {
         n = MCNormalOfTriangle(buff->vertexbuff[e.vi], buff->vertexbuff[e.vi+1], buff->vertexbuff[e.vi+2]);
         mesh->calculatedNormal = true;
+    }
+    
+    if (e.ni <= 0) {
+        if (!buff->shouldCalculateNormal) {
+            n = MCNormalOfTriangle(buff->vertexbuff[e.vi], buff->vertexbuff[e.vi+1], buff->vertexbuff[e.vi+2]);
+            mesh->calculatedNormal = true;
+        }
     }else{
         n = MCVector3From4(buff->normalbuff[e.ni-1]);
     }
@@ -114,7 +145,7 @@ function(void, meshLoadFaceElement, MCMesh* mesh, BAObj* buff, BAFaceElement e, 
     });
 }
 
-function(MCMesh*, createMeshWithBATriangles, BATriangle* triangles, size_t tricount, BAObj* buff, MCColorf color)
+function(MCMesh*, createMeshWithBATriangles, BATriangle* triangles, size_t tricount, BAObjModel* buff, MCColorf color)
 {
     MCMesh* mesh = MCMesh_initWithDefaultVertexAttributes(0, new(MCMesh), (GLsizei)tricount*3);
     
@@ -144,6 +175,8 @@ function(void, setDefaultMaterialForNode, MC3DNode* node)
         node->material->specularLightColor = MCVector3Make(0.5, 0.5, 0.5);
         node->material->specularLightPower = 16.0f;
         node->material->dissolve           = 1.0f;
+        node->material->hidden             = 0;
+        node->material->illum              = 2;
         
         MCStringFill(node->material->tag, "Default");
         node->material->dataChanged = true;
@@ -162,6 +195,8 @@ function(void, setMaterialForNode, MC3DNode* node, BAMaterial* mtl)
         node->material->specularLightColor = specular;
         node->material->specularLightPower = mtl->specularExponent;
         node->material->dissolve           = mtl->dissolveFactor;
+        node->material->hidden             = mtl->hidden;
+        node->material->illum              = mtl->illumModelNum;
         
         MCStringFill(node->material->tag, mtl->name);
         node->material->dataChanged = true;
@@ -170,27 +205,67 @@ function(void, setMaterialForNode, MC3DNode* node, BAMaterial* mtl)
     }
 }
 
-function(MC3DModel*, initModel, BAObj* buff, size_t fcursor, size_t iusemtl, size_t facecount, MCColorf color)
+function(void, setTextureForNode, MC3DNode* node, BAObjModel* buff, BAMesh* mesh)
+{
+    //object texture
+    if (mesh->object[0]) {
+        BATexture* tex = BAFindTextureByAttachedObject(buff->mtllib_list, mesh->object);
+        if (tex && tex->filename[0]) {
+            node->diffuseTexture = MCTexture_initWithFileName(0, new(MCTexture), tex->filename);
+            return;
+        }
+    }
+    
+    //group texture
+    if (mesh->group[0]) {
+        BATexture* tex = BAFindTextureByAttachedGroup(buff->mtllib_list, mesh->group);
+        if (tex && tex->filename[0]) {
+            node->diffuseTexture = MCTexture_initWithFileName(0, new(MCTexture), tex->filename);
+            return;
+        }
+    }
+    
+    //material texture
+    BAMaterial* mtl = mesh->usemtl;
+    if (mtl) {
+        if (mtl->diffuseMapName[0]) {
+            node->diffuseTexture = MCTexture_initWithFileName(0, new(MCTexture), mtl->diffuseMapName);
+        }
+        if (mtl->specularMapName[0]) {
+            node->specularTexture = MCTexture_initWithFileName(0, new(MCTexture), mtl->specularMapName);
+        }
+    }
+
+}
+
+//size_t fcursor, BAMaterial* mtl, size_t facecount,
+function(MC3DModel*, initModel, BAObjModel* buff, BAMesh* bamesh, MCColorf color)
 {
     MC3DModel* model = (MC3DModel*)any;
-    if (model) {
-        BAFace* faces   = &buff->facebuff[fcursor];
-        BAMaterial* mtl = &buff->usemtlbuff[iusemtl];
+    if (model && bamesh) {
+        BAFace* faces = &buff->facebuff[bamesh->startFaceCount];
+        BAMaterial* mtl = bamesh->usemtl;
         
-        BATriangle* triangles = createTrianglesBuffer(faces, facecount);
-        size_t tricount = trianglization(triangles, faces, facecount, buff->vertexbuff);
+        BATriangle* triangles = createTrianglesBuffer(faces, bamesh->totalFaceCount);
+        size_t tricount = trianglization(triangles, faces, bamesh->totalFaceCount, buff->vertexbuff);
         MCMesh* mesh = createMeshWithBATriangles(0, null, triangles, tricount, buff, color);
         
-        model->Super.material = new(MCMatrial);
-        model->Super.texture  = null;
+        model->Super.material = new(MCMaterial);
+        model->Super.diffuseTexture  = null;
+        model->Super.specularTexture = null;
         MCLinkedList_addItem(0, model->Super.meshes, (MCItem*)mesh);
         
         //set mtl
-        if (mtl && buff->usemtlcount > 0) {
+        if (mtl) {
             setMaterialForNode(0, null, &model->Super, mtl);
+
+
         }else{
             setDefaultMaterialForNode(0, null, &model->Super);
         }
+        
+        //set texture
+        setTextureForNode(0, null, &model->Super, buff, bamesh);
         
         //set name
         MCStringFill(model->name, buff->name);
@@ -206,7 +281,7 @@ method(MC3DModel, MC3DModel*, initWithFilePathColor, const char* path, MCColorf 
     debug_log("MC3DModel - initWithFilePathColor: %s\n", path);
     
     BAObjMeta Meta;
-    BAObj* buff = BAObjNew(path, &Meta);
+    BAObjModel* buff = BAObjModelNew(path, &Meta);
     if (!buff) {
         error_log("MC3DModel initWithFilePathColor BAObjNew() failed exit\n");
         exit(-1);
@@ -214,23 +289,23 @@ method(MC3DModel, MC3DModel*, initWithFilePathColor, const char* path, MCColorf 
     debug_log("MC3DModel - BAObjNew success: %s\n", path);
     
     BAObjDumpInfo(buff);
-    
-    if (Meta.usemtl_count <= 1) {
-        initModel(0, obj, buff, 0, 0, buff->facecount, color);
-        
-    }else{
-        size_t fcursor = 0;
-        for (size_t i=0; i<Meta.usemtl_count; i++) {
-            size_t fc = 0, lastIdx = Meta.usemtl_count-1;
+
+    //separate model by mesh
+    if (Meta.mesh_count <= 1) {
+        BAMesh* m = &buff->meshbuff[0];
+        if (m) {
             MC3DModel* model = new(MC3DModel);
-            if (i == lastIdx) {
-                fc = Meta.face_count - Meta.usemtl_starts[lastIdx];
-            }else{
-                fc = Meta.usemtl_starts[i+1] - Meta.usemtl_starts[i];
-            }
-            initModel(0, model, buff, fcursor, i, fc, color);
+            initModel(0, model, buff, m, color);
             MCLinkedList_addItem(0, obj->Super.children, (MCItem*)model);
-            fcursor += fc;
+        }
+    } else {
+        for (size_t i=0; i<Meta.mesh_count; i++) {
+            BAMesh* m = &buff->meshbuff[i];
+            if (m) {
+                MC3DModel* model = new(MC3DModel);
+                initModel(0, model, buff, m, color);
+                MCLinkedList_addItem(0, obj->Super.children, (MCItem*)model);
+            }
         }
     }
     
@@ -250,8 +325,10 @@ method(MC3DModel, MC3DModel*, initWithFileNameColor, const char* name, MCColorf 
 {
     if (obj) {
         MCStringFill(obj->name, name);
-        char path[PATH_MAX];
-        MCFileGetPath(name, "obj", path);
+        char path[PATH_MAX] = {0};
+        if (MCFileGetPath(name, path)) {
+            return null;
+        }
         debug_log("MC3DModel - find path: %s\n", path);
         return MC3DModel_initWithFilePathColor(0, obj, path, color);
     }else{
@@ -264,6 +341,24 @@ method(MC3DModel, MC3DModel*, initWithFileName, const char* name)
     return MC3DModel_initWithFileNameColor(0, obj, name, obj->defaultColor);
 }
 
+method(MC3DModel, void, translateToOrigin, voida)
+{
+    MCVector3 center = cpt(center);
+    MCVector3 rcenter = MCVector3Reverse(center);
+    MC3DNode_translate(0, sobj, &rcenter);
+}
+
+//override
+method(MC3DModel, void, update, MCGLContext* ctx)
+{
+    MC3DNode_update(0, sobj, ctx);
+}
+
+method(MC3DModel, void, draw, MCGLContext* ctx)
+{
+    MC3DNode_draw(0, sobj, ctx);
+}
+
 onload(MC3DModel)
 {
     if (load(MC3DNode)) {
@@ -272,7 +367,10 @@ onload(MC3DModel)
         binding(MC3DModel, MC3DModel*, initWithFileName, const char* name);
         binding(MC3DModel, MC3DModel*, initWithFilePathColor, const char* path, MCColorf color);
         binding(MC3DModel, MC3DModel*, initWithFileNameColor, const char* name, MCColorf color);
-
+        //override
+        binding(MC3DModel, void, update, MCGLContext* ctx);
+        binding(MC3DModel, void, draw, MCGLContext* ctx);
+        binding(MC3DModel, void, translateToOrigin, voida);
         return cla;
     }else{
         return null;

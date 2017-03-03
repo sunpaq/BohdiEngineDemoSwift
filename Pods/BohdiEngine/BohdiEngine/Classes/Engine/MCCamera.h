@@ -5,12 +5,21 @@
 #include "MC3DBase.h"
 #include "MC3DNode.h"
 
+typedef enum {
+    MCCameraRotateAroundModelManual,
+    MCCameraRotateAroundModelByGyroscope,
+    MCCameraRotateAR
+} MCCameraRotateMode;
+
 class(MCCamera, MC3DNode,
     double ratio;
-    double focal_length;
+    double depth_of_field;
     double view_angle;
-    double max_distance;
+    //double max_distance;
     MCVector3 lookat;
+    MCVector3 eye;
+    MCVector3 up;
+
     //local spherical coordinate
     //R[0,unlimited) tht[0, 180.0), fai[0, 360.0)
     double R_value;
@@ -23,11 +32,15 @@ class(MCCamera, MC3DNode,
     computing(MCMatrix4, viewMatrix);
     computing(MCMatrix4, projectionMatrix);
     computing(MCVector3, currentPosition);
-    
+    computing(MCMatrix3, rotationMat3);
+
     MCBool isReverseMovement;
     MCBool isLockRotation;
+    
+    MCCameraRotateMode rotateMode;
 );
 
+method(MCCamera, void, bye, voida);
 method(MCCamera, MCCamera*, initWithWidthHeight, unsigned width, unsigned height);
 method(MCCamera, void, move, MCFloat deltaFai, MCFloat deltaTht);
 method(MCCamera, void, fucus, MCFloat deltaX, MCFloat deltaY);
@@ -35,12 +48,15 @@ method(MCCamera, void, pull, MCFloat deltaR);
 method(MCCamera, void, reset, voida);
 method(MCCamera, void, update, MCGLContext* ctx);//override
 method(MCCamera, void, distanceScale, MCFloat scale);
+method(MCCamera, void, setRotationMat3, float mat3[9]);
 method(MCCamera, void, printDebugInfo, voida);
 
 #define MCLensStandard50mm (0.050)
 #define MCLensWide24mm     (0.024)
 #define MCLensLong100mm    (0.100)
 #define MCLensLong200mm    (0.200)
+#define MCLensLong2000mm   (2.000)
+
 
 #define MCRatioCameraFilm3x2    (3.0/2.0)
 #define MCRatioOldTV4x3         (4.0/3.0)

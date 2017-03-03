@@ -24,11 +24,19 @@ oninit(MCGLRenderer)
 {
     if(init(MCObject)){
         MCGLEngine_featureSwith(MCGLDepthTest, true);
-        MCGLEngine_setClearScreenColor((MCColorf){0.05, 0.25, 0.35, 1.0});
+        MCGLEngine_featureSwith(MCGLStencilTest, true);
         MCGLEngine_featureSwith(MCGLCullFace, true);
+
         MCGLEngine_cullFace(MCGLBack);
         MCGLEngine_setFrontCounterClockWise(true);//CCW
+        MCGLEngine_setClearScreenColor((MCColorf){0.05, 0.25, 0.35, 1.0});
 
+        //glDepthFunc(GL_LESS);
+        
+        // Enable blending
+        //glEnable(GL_BLEND);
+        //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        
         obj->context = new(MCGLContext);
 
         return obj;
@@ -73,6 +81,7 @@ method(MCGLRenderer, MCGLRenderer*, initWithShaderCodeString, const char* vcode,
             MCGLUniformVec1,
             
             MCGLUniformScalar,
+            MCGLUniformScalar
         },
         (const char* []){
             view_view,
@@ -94,18 +103,19 @@ method(MCGLRenderer, MCGLRenderer*, initWithShaderCodeString, const char* vcode,
             material_dissolve,
             material_shininess,
             
-            texsampler
-        }, 16);
+            diffuse_sampler,
+            specular_sampler
+        }, 17);
     return obj;
 }
 
 method(MCGLRenderer, MCGLRenderer*, initWithShaderFileName, const char* vshader, const char* fshader)
 {
     char path[LINE_MAX];
-    MCFileGetPath(vshader, "vsh", path);
+    MCFileGetPath(vshader, path);
     const char* vcode = MCFileCopyContentWithPath(path);
     
-    MCFileGetPath(fshader, "fsh", path);
+    MCFileGetPath(fshader, path);
     const char* fcode = MCFileCopyContentWithPath(path);
     
     MCGLRenderer_initWithShaderCodeString(0, obj, vcode, fcode);
@@ -128,9 +138,24 @@ method(MCGLRenderer, void, drawNodes, MC3DNode* rootnode)
     if (rootnode != null) {
         ff(rootnode, draw, obj->context);
         //make FPS stable motion more smooth
-        MCGLEngine_flushCommandBlock(0);
-        //MCGLEngine_flushCommandAsync(0);
+        //MCGLEngine_flushCommandBlock(0);
+        MCGLEngine_flushCommandAsync(0);
     }
+}
+
+method(MCGLRenderer, void, drawMesh, MCMesh* mesh)
+{
+
+}
+
+method(MCGLRenderer, void, drawMaterial, MCMaterial* material)
+{
+    
+}
+
+method(MCGLRenderer, void, drawTexture, MCTexture* texture)
+{
+    
 }
 
 onload(MCGLRenderer)
@@ -142,6 +167,9 @@ onload(MCGLRenderer)
         binding(MCGLRenderer, MCGLRenderer*, initWithShaderFileName, const char* vshader, const char* fshader);
         binding(MCGLRenderer, void, updateNodes, MC3DNode* rootnode);
         binding(MCGLRenderer, void, drawNodes, MC3DNode* rootnode);
+        binding(MCGLRenderer, void, drawMesh, MCMesh* mesh);
+        binding(MCGLRenderer, void, drawMaterial, MCMaterial* material);
+        binding(MCGLRenderer, void, drawTexture, MCTexture* texture);
         return cla;
     }else{
         return null;

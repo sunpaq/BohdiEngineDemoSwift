@@ -9,7 +9,6 @@
 #ifndef __monkcGame__MCCube__
 #define __monkcGame__MCCube__
 
-#include <stdio.h>
 #include "monkc.h"
 #include "MC3DNode.h"
 

@@ -21,17 +21,20 @@ pod "BohdiEngine"
 
 Please notice that you should have default shaders and sample model in your
 App's Resource folder. please just copy the following files:
+
     2.obj
     beengine.mtl
     MCGLRenderer.fsh
     MCGLRenderer.vsh
     MCSkyboxShader.fsh
     MCSkyboxShader.vsh
-from 
+
+    from
     <PodRoot>/BohdiEngine/Assets/models
     <PodRoot>/BohdiEngine/Assets/shaders
 
-for OpenGL setup and Engine usage, please check the Example of this Pod
+for OpenGL setup and Engine usage, please check the Example of this Pod (Objective-C)
+there also have a demo written use swift: https://github.com/sunpaq/BohdiEngineDemoSwift
 
 ## Author
 

@@ -9,7 +9,6 @@
 #ifndef MCMesh_h
 #define MCMesh_h
 
-#include <stdio.h>
 #include "monkc.h"
 #include "MCGLContext.h"
 #include "MCLinkedList.h"
@@ -39,18 +38,22 @@ class(MCMesh, MCItem,
       
       MC3DFrame  Frame;
       GLenum     useage;
-      GLenum     mode;
       
       GLuint     VAO;  //VAO
       GLuint     VBO;  //VBO
       GLuint     EBO;  //EBO
       
+      MCBool     vertexDataNeedRelease;
       GLfloat*   vertexDataPtr;   //gCubeVertexData
       GLsizeiptr vertexDataSize;  //sizeof(gCubeVertexData)
       GLuint*    vertexIndexes;
       GLsizei    vertexCount;
 
       MCVertexAttribute vertexAttribArray[MCVertexAttribIndexMax];
+      MCDrawMode mode;
+
+      MCTexture* diffuseTextureRef;
+      MCTexture* specularTextureRef;
 );
 
 method(MCMesh, void, bye, voida);

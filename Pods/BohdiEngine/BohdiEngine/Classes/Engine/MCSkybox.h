@@ -9,16 +9,18 @@
 #ifndef MCSkybox_h
 #define MCSkybox_h
 
-#include <stdio.h>
 #include "monkc.h"
 #include "MC3DNode.h"
-#include "BEAssetsManager.h"
+#include "BECubeTextureData.h"
 #include "MCSkyboxCamera.h"
-
 
 class(MCSkybox, MC3DNode,
       MCSkyboxCamera* camera;
       MCGLContext* ctx;
+      
+      MCMatrix4 boxViewMatrix;
+      MCMatrix4 boxProjectionMatrix;
+      double boxCameraRatio;
       
       //MCUInt pid;
       MCUInt vaoid;

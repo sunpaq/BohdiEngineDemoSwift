@@ -10,6 +10,22 @@
 #include "MCGeometry.h"
 #include "MCArrayLinkedList.h"
 
+MCPolygonPrimitives MCPolygonPrimitivesDetect(MCVector3 v1, MCVector3 v2, MCVector3 v3, MCVector3 v4)
+{
+    MCVector3 n1 = MCNormalOfTriangle(v1, v2, v3);
+    MCVector3 n2 = MCNormalOfTriangle(v1, v3, v4);
+    if(MCVector3Dot(n1, n2) >= 0) {
+        return MCPolygonFan;
+    }
+    
+    MCVector3 n3 = MCNormalOfTriangle(v3, v2, v4);
+    if (MCVector3Dot(n1, n3) >= 0) {
+        return MCPolygonStrip;
+    }
+
+    return MCPolygonUnknown;
+}
+
 MCPolygon* MCPolygonInit(MCPolygon* poly, MCVector3 vertexes[], size_t count)
 {
     if (count > MCPolygonMaxV) {
@@ -17,12 +33,14 @@ MCPolygon* MCPolygonInit(MCPolygon* poly, MCVector3 vertexes[], size_t count)
         exit(-1);
     }
     
+    poly->primitive = MCPolygonPrimitivesDetect(vertexes[0], vertexes[1], vertexes[2], vertexes[3]);
+    
     //init vertex data
     poly->count = count;
     poly->index = 0;
     poly->isConvex = false;
     
-    MCGeneric generic[MCPolygonMaxV] = {};
+    MCGeneric generic[MCPolygonMaxV] = {0};
     for (size_t i=0; i<count; i++) {
         MCVector3 v = vertexes[i];
         poly->vertexData[i] = v;

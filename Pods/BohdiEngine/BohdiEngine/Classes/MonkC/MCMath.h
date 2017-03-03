@@ -71,7 +71,9 @@ typedef union {
         float w;
     };
     float v[4];
-} MCVector4;
+} MCVector4, MCQuaternion;
+
+
 
 MCInline MCBool MCVector3PositiveNonZero(MCVector3 vec3)
 {
@@ -112,19 +114,17 @@ MCInline MCBool MCVector4Equal(MCVector4 v1, MCVector4 v2)
     return false;
 }
 
-/*
- copy from Apple GLKit
- m30, m31, and m32 correspond to the translation values tx, ty, and tz, respectively.
- m[12], m[13], and m[14] correspond to the translation values tx, ty, and tz, respectively.
- #if defined(__STRICT_ANSI__)
- struct _MCMatrix4
- {
- float m[16];
- } __attribute__((aligned(16)));
- typedef struct _MCMatrix4 MCMatrix4;
- #else
- */
+MCInline MCQuaternion MCQuaternionFromVec3(MCVector3 v)
+{
+    return (MCQuaternion){v.x, v.y, v.z, 0.0f};
+}
 
+MCInline MCQuaternion MCQuaternionZero()
+{
+    return (MCQuaternion){0,0,0,0};
+}
+
+//OpenGL use column major storage matrix m21 is 2column 1row
 typedef union {
     struct
     {
@@ -152,12 +152,12 @@ static const MCMatrix3 MCMatrix3Identity = {
     0.0f, 0.0f, 1.0f,
 };
 
-MCInline MCMatrix4 MCMatrix4Identity() {
-    return (MCMatrix4){1,0,0,0,
-        0,1,0,0,
-        0,0,1,0,
-        0,0,0,1};
-}
+static const MCMatrix4 MCMatrix4Identity = {
+    1,0,0,0,
+    0,1,0,0,
+    0,0,1,0,
+    0,0,0,1
+};
 
 MCInline double MCDegreesToRadians(double degrees) { return degrees * (M_PI / 180); }
 MCInline double MCRadiansToDegrees(double radians) { return radians * (180 / M_PI); }
@@ -176,21 +176,28 @@ MCInline double MCTanDegrees(double degress)       { return tan(MCDegreesToRadia
 
 MCInline float MCVector3Length(MCVector3 vector)
 {
-    return sqrt(vector.v[0] * vector.v[0] + vector.v[1] * vector.v[1] + vector.v[2] * vector.v[2]);
+    return sqrtf(fabs(vector.v[0] * vector.v[0] + vector.v[1] * vector.v[1] + vector.v[2] * vector.v[2]));
 }
 
 MCInline MCVector3 MCVector3Normalize(MCVector3 vector)
 {
-    float scale = 1.0f / MCVector3Length(vector);
-    MCVector3 v = { vector.v[0] * scale, vector.v[1] * scale, vector.v[2] * scale };
-    return v;
+    float l = MCVector3Length(vector);
+    float x = vector.v[0] / l;
+    float y = vector.v[1] / l;
+    float z = vector.v[2] / l;
+    
+    if (x!=x || y!=y || z!= z) {
+        return vector;
+    }
+
+    return (MCVector3){x,y,z};
 }
 
-MCInline MCVector3 MCVector3Make(double x, double y, double z) {
+MCInline MCVector3 MCVector3Make(float x, float y, float z) {
     return (MCVector3){x, y, z};
 }
 
-MCInline MCVector3 MCVector3MakeReverse(double x, double y, double z) {
+MCInline MCVector3 MCVector3MakeReverse(float x, float y, float z) {
     return (MCVector3){-x, -y, -z};
 }
 
@@ -219,6 +226,102 @@ MCInline MCVector3 MCVector3Cross(MCVector3 v1, MCVector3 v2) {
     return (MCVector3){v1.y*v2.z - v2.y*v1.z,
         v2.x*v1.z - v1.x*v2.z,
         v1.x*v2.y - v2.x*v1.y};
+}
+
+MCInline MCQuaternion MCQuaternionGProduct(MCQuaternion p, MCQuaternion q)
+{
+    float pscalar = p.w;
+    float qscalar = q.w;
+    
+    MCVector3 pvector = (MCVector3){p.x, p.y, p.z};
+    MCVector3 qvector = (MCVector3){q.x, q.y, q.z};
+    MCVector3 pxq = MCVector3Cross(pvector, qvector);
+    
+    return (MCQuaternion) {
+        pscalar * qvector.x + qscalar * pvector.x + pxq.x,
+        pscalar * qvector.y + qscalar * pvector.y + pxq.y,
+        pscalar * qvector.z + qscalar * pvector.z + pxq.z,
+        pscalar * qscalar - MCVector3Dot(pvector, qvector)
+    };
+}
+
+MCInline MCQuaternion MCQuaternionArrayGProduct(MCQuaternion p, MCQuaternion* qarray, int count)
+{
+    if (count < 1) {
+        return p;
+    }
+    MCQuaternion q = p;
+    for (int i=0; i<count; i++) {
+        q = MCQuaternionGProduct(q, qarray[i]);
+    }
+    return q;
+}
+
+MCInline MCQuaternion MCQuaternionConjugate(MCQuaternion q)
+{
+    return (MCQuaternion) { -q.x, -q.y, -q.z, q.w };
+}
+
+MCInline MCQuaternion MCQuaternionFromAxisAngle_Radian(MCVector3 axis, double radian)
+{
+    double r = radian / 2.0f;
+    return (MCQuaternion) {
+        axis.x * sin(r),
+        axis.y * sin(r),
+        axis.z * sin(r),
+        cos(r)
+    };
+}
+
+MCInline MCQuaternion MCQuaternionSwapYZ(MCQuaternion* q)
+{
+    MCVector3 axis = (MCVector3){q->x, q->y, q->z};
+    double radian = q->w;
+    
+    double r = radian / 2.0f;
+    return (MCQuaternion) {
+        axis.x * sin(r),
+        axis.z * sin(r),
+        axis.y * sin(r),
+        cos(r)
+    };
+}
+
+MCInline MCQuaternion MCQuaternionFromAxisAngle(MCVector3 axis, double tht)
+{
+    return MCQuaternionFromAxisAngle_Radian(axis, MCDegreesToRadians(tht));
+}
+
+MCInline MCQuaternion MCQuaternionByEuler_Radian(double row, double yaw, double pitch)
+{
+    //roll yaw pitch => +z +y +x
+    MCQuaternion R = MCQuaternionFromAxisAngle_Radian(MCVector3Make(0.0, 0.0, 1.0), row);
+    MCQuaternion Y = MCQuaternionFromAxisAngle_Radian(MCVector3Make(0.0, 1.0, 0.0), yaw);
+    MCQuaternion P = MCQuaternionFromAxisAngle_Radian(MCVector3Make(1.0, 0.0, 0.0), pitch);
+    
+    MCQuaternion qarray[2] = {Y, P};
+    
+    return MCQuaternionArrayGProduct(R, qarray, 2);
+}
+
+MCInline MCQuaternion MCQuaternionByAxisAngles(double x, double y, double z)
+{
+    //roll yaw pitch => +z +y +x
+    return MCQuaternionByEuler_Radian(MCDegreesToRadians(z),
+                                      MCDegreesToRadians(y),
+                                      MCDegreesToRadians(x));
+}
+
+MCInline MCVector3 MCVector3RotateByQuaternion(MCVector3 v, MCQuaternion q)
+{
+    MCQuaternion r1 = MCQuaternionGProduct(q, (MCQuaternion){v.x, v.y, v.z, 0.0f});
+    MCQuaternion r2 = MCQuaternionGProduct(r1, MCQuaternionConjugate(q));
+    return (MCVector3){r2.x, r2.y, r2.z};
+}
+
+MCInline MCVector3 MCVector3RotateByAxisAngles(MCVector3 v, double z, double y, double x)
+{
+    return MCVector3RotateByQuaternion(v, MCQuaternionByAxisAngles(z,y,x));
 }
 
 MCInline MCVector3 MCNormalOfTriangle(MCVector3 v1, MCVector3 v2, MCVector3 v3) {
@@ -250,6 +353,7 @@ MCInline void MCMatrix4Copy(MCMatrix4* target, MCMatrix4* source)
     }
 }
 
+//OpenGL use column-order save matrix
 MCInline MCMatrix4 MCMatrix4Multiply(MCMatrix4 l, MCMatrix4 r)
 {
     MCMatrix4 m;
@@ -275,6 +379,15 @@ MCInline MCMatrix4 MCMatrix4Multiply(MCMatrix4 l, MCMatrix4 r)
     m.m[15] = l.m[3] * r.m[12] + l.m[7] * r.m[13] + l.m[11] * r.m[14] + l.m[15] * r.m[15];
     
     return m;
+}
+
+MCInline MCVector3 MCVector3MultiplyMat3(MCVector3 vec3, MCMatrix3 mat3)
+{
+    MCVector3 v;
+    v.x = vec3.x * mat3.m00 + vec3.y * mat3.m10 + vec3.z * mat3.m20;
+    v.y = vec3.x * mat3.m01 + vec3.y * mat3.m11 + vec3.z * mat3.m21;
+    v.z = vec3.x * mat3.m02 + vec3.y * mat3.m12 + vec3.z * mat3.m22;
+    return v;
 }
 
 //Prime

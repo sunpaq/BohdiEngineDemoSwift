@@ -32,14 +32,17 @@ MCString* MCString_newWithCString(const char* cstr);
 MCString* MCString_newWithMCString(MCString* mcstr);
 MCString* MCString_newForHttp(char* cstr, int isHttps);
 
+utility(MCString, MCBool, contains, const char* str, const char* instr);
 utility(MCString, size_t, replace, const char* str, const char* withstr, const char* instr, char (*buff)[]);
-utility(MCString, size_t, reverse, const char* str, char (*buff)[]);
+utility(MCString, size_t, reverse, const char* str, char *buff);
+
+utility(MCString, const char*, percentEncode, const char* str, char *buff);
+utility(MCString, const char*, percentDecode, const char* str, char *buff);
 
 utility(MCString, const char*, baseFromPath, const char* path, char (*buff)[]);
 utility(MCString, const char*, filenameFromPath, const char* path, char (*buff)[]);
 
-utility(MCString, const char*, filenameTrimExtension, const char* name, char* buff);
-utility(MCString, const char*, extensionFromFilename, const char* name, char (*buff)[]);
+utility(MCString, size_t, extensionFromFilename, const char* name, char* basebuff, char* extbuff);
 
 utility(MCString, const char*, concate, const char** strings, size_t count, char (*buff)[]);
 utility(MCString, const char*, concateWith, const char* sp, const char* path1, const char* path2, char (*buff)[]);

@@ -1,6 +1,14 @@
 #include "MCString.h"
 #include "MCMath.h"
 
+utility(MCString, MCBool, contains, const char* str, const char* instr)
+{
+    if (strstr(instr, str)) {
+        return true;
+    }
+    return false;
+}
+
 utility(MCString, size_t, replace, const char* str, const char* withstr, const char* instr, char (*buff)[])
 {
     size_t count = strlen(str);
@@ -25,27 +33,152 @@ utility(MCString, size_t, replace, const char* str, const char* withstr, const c
     return b;
 }
 
-utility(MCString, size_t, reverse, const char* str, char (*buff)[])
+utility(MCString, size_t, reverse, const char* str, char *buff)
 {
     size_t count = strlen(str);
     char* c = (char*)&str[count-1];
     for (int i=0; i<count; i++) {
-        (*buff)[i] = *c;
+        buff[i] = *c;
         c--;
     }
-    (*buff)[count] = NUL;
-    
+    buff[count] = NUL;
     return count;
+}
+
+utility(MCString, const char*, percentEncode, const char* str, char *buff)
+{
+    if (!str || !buff) {
+        return null;
+    }
+    char* iter = (char*)str; int b = 0;
+    while (*iter != NUL) {
+        //2
+             if (*iter == ' ') { buff[b++] = '%';buff[b++] = '2';buff[b++] = '0'; }
+        else if (*iter == '!') { buff[b++] = '%';buff[b++] = '2';buff[b++] = '1'; }
+        else if (*iter == '"') { buff[b++] = '%';buff[b++] = '2';buff[b++] = '2'; }
+        else if (*iter == '#') { buff[b++] = '%';buff[b++] = '2';buff[b++] = '3'; }
+        else if (*iter == '$') { buff[b++] = '%';buff[b++] = '2';buff[b++] = '4'; }
+        else if (*iter == '%') { buff[b++] = '%';buff[b++] = '2';buff[b++] = '5'; }
+        else if (*iter == '&') { buff[b++] = '%';buff[b++] = '2';buff[b++] = '6'; }
+        else if (*iter =='\'') { buff[b++] = '%';buff[b++] = '2';buff[b++] = '7'; }
+        else if (*iter == '(') { buff[b++] = '%';buff[b++] = '2';buff[b++] = '8'; }
+        else if (*iter == ')') { buff[b++] = '%';buff[b++] = '2';buff[b++] = '9'; }
+        else if (*iter == '*') { buff[b++] = '%';buff[b++] = '2';buff[b++] = 'A'; }
+        else if (*iter == '+') { buff[b++] = '%';buff[b++] = '2';buff[b++] = 'B'; }
+        else if (*iter == ',') { buff[b++] = '%';buff[b++] = '2';buff[b++] = 'C'; }
+        else if (*iter == '-') { buff[b++] = '%';buff[b++] = '2';buff[b++] = 'D'; }
+        else if (*iter == '.') { buff[b++] = '%';buff[b++] = '2';buff[b++] = 'E'; }
+        else if (*iter == '/') { buff[b++] = '%';buff[b++] = '2';buff[b++] = 'F'; }
+        //3
+        else if (*iter == ':') { buff[b++] = '%';buff[b++] = '3';buff[b++] = 'A'; }
+        else if (*iter == ';') { buff[b++] = '%';buff[b++] = '3';buff[b++] = 'B'; }
+        else if (*iter == '<') { buff[b++] = '%';buff[b++] = '3';buff[b++] = 'C'; }
+        else if (*iter == '=') { buff[b++] = '%';buff[b++] = '3';buff[b++] = 'D'; }
+        else if (*iter == '>') { buff[b++] = '%';buff[b++] = '3';buff[b++] = 'E'; }
+        else if (*iter == '?') { buff[b++] = '%';buff[b++] = '3';buff[b++] = 'F'; }
+        //4
+        else if (*iter == '@') { buff[b++] = '%';buff[b++] = '4';buff[b++] = '0'; }
+        //5
+        else if (*iter == '[') { buff[b++] = '%';buff[b++] = '5';buff[b++] = 'B'; }
+        else if (*iter =='\\') { buff[b++] = '%';buff[b++] = '5';buff[b++] = 'C'; }
+        else if (*iter == ']') { buff[b++] = '%';buff[b++] = '5';buff[b++] = 'D'; }
+        else if (*iter == '^') { buff[b++] = '%';buff[b++] = '5';buff[b++] = 'E'; }
+        else if (*iter == '_') { buff[b++] = '%';buff[b++] = '5';buff[b++] = 'F'; }
+        //6
+        else if (*iter == '`') { buff[b++] = '%';buff[b++] = '6';buff[b++] = '0'; }
+        //7
+        else if (*iter == '{') { buff[b++] = '%';buff[b++] = '7';buff[b++] = 'B'; }
+        else if (*iter == '|') { buff[b++] = '%';buff[b++] = '7';buff[b++] = 'C'; }
+        else if (*iter == '}') { buff[b++] = '%';buff[b++] = '7';buff[b++] = 'D'; }
+        else if (*iter == '~') { buff[b++] = '%';buff[b++] = '7';buff[b++] = 'E'; }
+        
+        else {
+            buff[b++] = *iter;
+        }
+        iter++;
+    }
+
+    return buff;
+}
+
+utility(MCString, const char*, percentDecode, const char* str, char *buff)
+{
+    if (!str || !buff) {
+        return null;
+    }
+    char* iter = (char*)str; int b = 0;
+    while (*iter != NUL) {
+        //debug_log("MCString_percentDecode: %s\n", iter);
+        if (*iter == '%') {
+            iter++;
+            if (*iter == '2') {
+                iter++;
+                     if (*iter == '0') { buff[b++] = ' '; iter++;}
+                else if (*iter == '1') { buff[b++] = '!'; iter++;}
+                else if (*iter == '2') { buff[b++] = '"'; iter++;}
+                else if (*iter == '3') { buff[b++] = '#'; iter++;}
+                else if (*iter == '4') { buff[b++] = '$'; iter++;}
+                else if (*iter == '5') { buff[b++] = '%'; iter++;}
+                else if (*iter == '6') { buff[b++] = '&'; iter++;}
+                else if (*iter == '7') { buff[b++] ='\''; iter++;}
+                else if (*iter == '8') { buff[b++] = '('; iter++;}
+                else if (*iter == '9') { buff[b++] = ')'; iter++;}
+                else if (*iter == 'A') { buff[b++] = '*'; iter++;}
+                else if (*iter == 'B') { buff[b++] = '+'; iter++;}
+                else if (*iter == 'C') { buff[b++] = ','; iter++;}
+                else if (*iter == 'D') { buff[b++] = '-'; iter++;}
+                else if (*iter == 'E') { buff[b++] = '.'; iter++;}
+            }
+            else if (*iter == '3') {
+                iter++;
+                     if (*iter == 'A') { buff[b++] = ':'; iter++;}
+                else if (*iter == 'B') { buff[b++] = ';'; iter++;}
+                else if (*iter == 'C') { buff[b++] = '<'; iter++;}
+                else if (*iter == 'D') { buff[b++] = '='; iter++;}
+                else if (*iter == 'E') { buff[b++] = '>'; iter++;}
+                else if (*iter == 'F') { buff[b++] = '?'; iter++;}
+            }
+            else if (*iter == '4') {
+                iter++;
+                if (*iter == '0') { buff[b++] = '@'; iter++; }
+            }
+            else if (*iter == '5') {
+                iter++;
+                if (*iter == 'B') { buff[b++] = '['; iter++; }
+                if (*iter == 'C') { buff[b++] ='\\'; iter++; }
+                if (*iter == 'D') { buff[b++] = ']'; iter++; }
+                if (*iter == 'E') { buff[b++] = '^'; iter++; }
+                if (*iter == 'F') { buff[b++] = '_'; iter++; }
+            }
+            else if (*iter == '6') {
+                iter++;
+                if (*iter == '0') { buff[b++] = '`'; iter++; }
+            }
+            else if (*iter == '7') {
+                iter++;
+                if (*iter == 'B') { buff[b++] = '{'; iter++; }
+                if (*iter == 'C') { buff[b++] = '|'; iter++; }
+                if (*iter == 'D') { buff[b++] = '}'; iter++; }
+                if (*iter == 'E') { buff[b++] = '~'; iter++; }
+            }
+        }
+        else {
+            buff[b++] = *iter;
+            iter++;
+        }
+    }
+    
+    return buff;
 }
 
 utility(MCString, const char*, baseFromPath, const char* path, char (*buff)[])
 {
-    char reversebuff[PATH_MAX];
-    size_t count = MCString_reverse(path, &reversebuff);
+    char reversebuff[PATH_MAX] = {0};
+    size_t count = MCString_reverse(path, reversebuff);
     
     char* head = &reversebuff[count-1];
     char* tail = &reversebuff[0];
-    while (*tail != '/') {
+    while (!MCCond_PathDiv(tail) && *head != NUL) {
         tail++;
     }
     
@@ -61,12 +194,14 @@ utility(MCString, const char*, baseFromPath, const char* path, char (*buff)[])
 
 utility(MCString, const char*, filenameFromPath, const char* path, char (*buff)[])
 {
-    char reversebuff[PATH_MAX];
-    MCString_reverse(path, &reversebuff);
+    trimWhiteSpace(&path);
+
+    char reversebuff[PATH_MAX] = {0};
+    MCString_reverse(path, reversebuff);
     
     char* head = &reversebuff[0];
     char* tail = &reversebuff[0];
-    while (*head != '/') {
+    while (!MCCond_PathDiv(head) && *head != NUL) {
         head++;
     }
     head--;
@@ -81,32 +216,74 @@ utility(MCString, const char*, filenameFromPath, const char* path, char (*buff)[
     return &(*buff)[0];
 }
 
-utility(MCString, const char*, filenameTrimExtension, const char* name, char* buff)
+utility(MCString, size_t, filenameTrimExtension, const char* name, char* buff)
 {
-    int i=0;
-    while (*name != '.' && *name != NUL) {
-        buff[i++] = *name;
-        name++;
+    trimWhiteSpace(&name);
+    char reversebuff[PATH_MAX] = {0};
+    MCString_reverse(name, reversebuff);
+    
+    char* head = &reversebuff[0];
+    char* tail = &reversebuff[0];
+    
+    while (1) {
+        if (*tail != '.' && *tail != NUL) {
+            tail++;
+        }
+        if (*head != NUL) {
+            head++;
+        } else {
+            head--;//skip NUL
+            break;
+        }
     }
-    buff[i] = NUL;
-    return buff;
+    //have extension
+    if (*tail == '.') {
+        tail++;
+        int i=0;
+        while (head != tail) {
+            buff[i++] = *head;
+            head--;
+        }
+        buff[i] = *head;//last char
+        buff[i+1] = NUL;
+        return i+1;
+    }
+    //no extension
+    else {
+        size_t szn = sizeof(name);
+        strncpy(buff, name, szn);
+        return szn;
+    }
 }
 
-utility(MCString, const char*, extensionFromFilename, const char* name, char (*buff)[])
+utility(MCString, size_t, extensionFromFilename, const char* name, char* basebuff, char* extbuff)
 {
-    while (*name != '.' && *name != NUL) name++;
-    if (*name == NUL) {
-        return null;
-    }else{
-        name++;//skip dot
-        int i=0;
-        while (*name != NUL) {
-            (*buff)[i++] = *name;
-            name++;
+    trimWhiteSpace(&name);
+    int i=0, j=0;
+    while (name[i] != NUL && name[i] != NUL) {
+        if (name[i] == '.') {
+            j = i;
         }
-        (*buff)[i] = NUL;
-        
-        return &(*buff)[0];
+        i++;
+    }
+    //no extension
+    if (j==0) {
+        strcpy(basebuff, name);
+        extbuff[0] = NUL;
+        return 0;
+    }
+    //have extension
+    else {
+        size_t b, e, x=0;
+        for (b=0; b<j; b++) {
+            basebuff[b] = name[b];
+        }
+        for (e=j+1; e<i; e++) {
+            extbuff[x++] = name[e];
+        }
+        basebuff[b] = NUL;
+        extbuff[x]  = NUL;
+        return e;
     }
 }
 

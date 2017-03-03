@@ -9,12 +9,10 @@
 #ifndef MC3DModel_h
 #define MC3DModel_h
 
-#include <stdio.h>
 #include "monkc.h"
 #include "MCGLBase.h"
 #include "MCMesh.h"
 #include "MCTexture.h"
-#include "MCMatrial.h"
 #include "MCIO.h"
 #include "MC3DNode.h"
 #include "MCMath.h"
@@ -26,9 +24,11 @@ class(MC3DModel, MC3DNode,
       MCColorf defaultColor;
       const char* defaultExtension;
       MCBool textureOnOff;
-      
+
       MC3DFrame lastSavedFrame;
       computing(MC3DFrame, frame);
+      computing(MCVector3, center);
+      computing(double, maxlength);
 );
 
 method(MC3DModel, void, bye, voida);
@@ -36,5 +36,9 @@ method(MC3DModel, MC3DModel*, initWithFilePath, const char* path);
 method(MC3DModel, MC3DModel*, initWithFileName, const char* name);
 method(MC3DModel, MC3DModel*, initWithFilePathColor, const char* path, MCColorf color);
 method(MC3DModel, MC3DModel*, initWithFileNameColor, const char* name, MCColorf color);
+method(MC3DModel, void, translateToOrigin, voida);
+//override
+method(MC3DModel, void, update, MCGLContext* ctx);
+method(MC3DModel, void, draw, MCGLContext* ctx);
 
 #endif /* MC3DModel_h */

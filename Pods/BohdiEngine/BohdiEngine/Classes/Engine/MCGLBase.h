@@ -37,6 +37,7 @@
 
 typedef enum {
     MCGLDepthTest = GL_DEPTH_TEST,
+    MCGLStencilTest = GL_STENCIL_TEST,
     MCGLBlend = GL_BLEND,
     MCGLCullFace = GL_CULL_FACE,
 } MCGLFeature;
@@ -55,9 +56,11 @@ typedef enum {
 } MCGLFace;
 
 typedef enum {
+    MCDrawNone = -1,
     MCPoints = GL_POINTS,
     MCLines  = GL_LINES,
     MCLineLoop = GL_LINE_LOOP,
+    MCLineStrip = GL_LINE_STRIP,
     MCTriAngles = GL_TRIANGLES,
     MCTriAngleFan = GL_TRIANGLE_FAN
 } MCDrawMode;
@@ -259,5 +262,7 @@ MCInline MCBool MCGLUniformEqual(MCGLUniform* u1, MCGLUniform* u2) {
     }
     return false;
 }
+
+
 
 #endif

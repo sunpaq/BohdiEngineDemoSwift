@@ -91,7 +91,7 @@ size_t trianglization(BATriangle* triangles, BAFace* faces, size_t facecounts, M
                 mcvertexes[i] = vertexbuff[data[i*3]];
             }
             
-            MCPolygon Poly = {};
+            MCPolygon Poly = {0};
             MCPolygonInit(&Poly, mcvertexes, count);
             
             if (Poly.isConvex) {

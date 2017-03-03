@@ -9,7 +9,6 @@
 #ifndef BATrianglization_h
 #define BATrianglization_h
 
-#include <stdio.h>
 #include "BAObjParser.h"
 
 typedef struct {

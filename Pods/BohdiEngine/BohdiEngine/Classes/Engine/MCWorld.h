@@ -9,7 +9,6 @@
 #ifndef MCWorld_h
 #define MCWorld_h
 
-#include <stdio.h>
 #include "monkc.h"
 #include "MCGLBase.h"
 

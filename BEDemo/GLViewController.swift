@@ -81,12 +81,12 @@ class GLViewController: GLKViewController {
         //setup BohdiEngine
         let width  = UInt32(self.view.bounds.width)
         let height = UInt32(self.view.bounds.height)
-        BESetupGL(width, height)
-
-        startLoading(closure: { BEAddModelNamed("2.obj") })
-
-        BESetRotateCamera(LandingViewController.instance.rotateCameraSwitch.isOn)
-        BESetWireFrameMode(LandingViewController.instance.wireFrameSwitch.isOn)
+//        BESetupGL(width, height)
+//
+//        startLoading(closure: { BEAddModelNamed("2.obj") })
+//
+//        BESetRotateCamera(LandingViewController.instance.rotateCameraSwitch.isOn)
+//        BESetWireFrameMode(LandingViewController.instance.wireFrameSwitch.isOn)
         
         //setup core motion
         startDeviceMotion()
@@ -95,18 +95,18 @@ class GLViewController: GLKViewController {
     override func viewWillLayoutSubviews() {
         let width  = UInt32(self.view.bounds.width)
         let height = UInt32(self.view.bounds.height)
-        BEResizeGL(width, height)
+        //BEResizeGL(width, height)
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
-        if let att = getDeltaAttitude() {
-            let mat = att.rotationMatrix
-            BEPullRotateMatrix(mat.m11, mat.m12, mat.m13,
-                               mat.m21, mat.m22, mat.m23,
-                               mat.m31, mat.m32, mat.m33)
-        }
-        BEUpdateGL()
-        BEDrawGL()
+//        if let att = getDeltaAttitude() {
+//            let mat = att.rotationMatrix
+//            BEPullRotateMatrix(mat.m11, mat.m12, mat.m13,
+//                               mat.m21, mat.m22, mat.m23,
+//                               mat.m31, mat.m32, mat.m33)
+//        }
+//        BEUpdateGL()
+//        BEDrawGL()
     }
     
     override func didReceiveMemoryWarning() {
@@ -115,12 +115,12 @@ class GLViewController: GLKViewController {
     
     @IBAction func onPan(_ sender: Any) {
         let trans = (sender as! UIPanGestureRecognizer).translation(in: self.view)
-        BEPanGesture(Float(trans.x), Float(trans.y))
+        //BEPanGesture(Float(trans.x), Float(trans.y))
     }
     
     @IBAction func onPinch(_ sender: Any) {
         let zoom = (sender as! UIPinchGestureRecognizer).scale
-        BEPinchGesture(Float(zoom))
+        //BEPinchGesture(Float(zoom))
     }
     
 }

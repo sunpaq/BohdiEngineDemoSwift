@@ -13,7 +13,7 @@ int MCFile_flushAFileCacheToDisk(int fd)
     return fsync(fd);
 }
 
-int MCFile_isFileExist(char* pathname)
+int MCFile_isPathExist(char* pathname)
 {
     //file exist test
     int res;
@@ -233,7 +233,8 @@ method(MCStream, MCStream*, initWithPath, MCStreamType type, const char* path)
     //int setvbuf(FILE *restrict fp, char *restrict buf, int mode, size_t size);
     //[NULL _IOFBF/_IOLBF/_IONBF BUFSIZ]
     
-    obj->fileObject = fopen(path, type.fopenMode);
+    char decodepath[PATH_MAX] = {0};
+    obj->fileObject = fopen(MCString_percentDecode(path, decodepath), type.fopenMode);
     if (obj->fileObject) {
         //file size
         fseek(obj->fileObject, 0, SEEK_END);
