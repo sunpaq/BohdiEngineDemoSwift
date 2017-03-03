@@ -10,7 +10,7 @@
 #import "CVViewController.h"
 
 #ifdef __cplusplus
-#import <opencv2/calib3d/calib3d_c.h>
+#import <opencv2/calib3d.hpp>
 using namespace cv;
 #endif
 
@@ -27,13 +27,15 @@ using namespace cv;
 //conform CvVideoCameraDelegate
 - (void)processImage:(cv::Mat&)image
 {
+    CvSize size = cvSize(9, 6);
+    int count = 9 * 6;
     
-    
-    //if(cvFindChessboardCorners(image.data[0], cvSize(9, 6), conrners)) {
-        //cvDrawChessboardCorners(&image, cvSize(9, 6), conrners, 54, 1);
-
+    IplImage* imagetocheck = new IplImage(image);
+    //if (cvCheckChessboard(imagetocheck, size)) {
+        if(cvFindChessboardCorners(imagetocheck, size, conrners)) {
+            cvDrawChessboardCorners(imagetocheck, size, conrners, count, 1);
+        }
     //}
-    
     
 }
 
@@ -46,8 +48,8 @@ using namespace cv;
 
     _videoSource = [[CvVideoCamera alloc] initWithParentView:_cvView];
     _videoSource.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
-    _videoSource.defaultAVCaptureSessionPreset  = AVCaptureSessionPresetHigh;
-    _videoSource.defaultFPS = 60;
+    _videoSource.defaultAVCaptureSessionPreset  = AVCaptureSessionPresetLow;
+    _videoSource.defaultFPS = 30;
     _videoSource.delegate = self;
     
     [self.view addSubview:_cvView];
@@ -65,6 +67,7 @@ using namespace cv;
 -(void)viewDidAppear:(BOOL)animated
 {
     //start openCV
+    //self.videoSource.grayscaleMode = YES;
     [self.videoSource start];
     
     [self presentViewController:_beViewCtl animated:NO completion:^{
