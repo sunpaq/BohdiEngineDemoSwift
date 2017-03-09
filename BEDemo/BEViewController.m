@@ -6,21 +6,21 @@
 //  Copyright © 2017 SODEC. All rights reserved.
 //
 
-#import "BEViewIOS.h"
+#import "BEViewController.h"
 
 #import <Foundation/Foundation.h>
 #import <BohdiEngine/MCDirector.h>
 #import <BohdiEngine/MCGLEngine.h>
 #import <BEDemo-Swift.h>
 
-@interface BEViewIOS()
+@interface BEViewController()
 {
     MCDirector* director;
     float pinch_scale;
 }
 @end
 
-@implementation BEViewIOS
+@implementation BEViewController
 
 @dynamic deviceRotateMat3;
 
@@ -135,6 +135,16 @@
     director->deviceRotationMat3.m20 = mat3.m31;
     director->deviceRotationMat3.m21 = mat3.m32;
     director->deviceRotationMat3.m22 = mat3.m33;
+}
+
+-(void) setRotateMat3:(GLKMatrix3)mat3
+{
+    
+}
+
+-(void) setTranslateMat3:(GLKMatrix3)mat3
+{
+
 }
 
 -(void) startLoadingAnimation

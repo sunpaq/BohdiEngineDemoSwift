@@ -116,10 +116,10 @@
             </objects>
             <point key="canvasLocation" x="1244.9275362318842" y="745.92391304347836"/>
         </scene>
-        <!--View Controller-->
+        <!--View iOS-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GLViewController" customModule="BEDemo" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BEViewIOS" customModule="BEDemo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>

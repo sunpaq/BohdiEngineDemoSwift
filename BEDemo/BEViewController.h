@@ -6,17 +6,20 @@
 //  Copyright © 2017 SODEC. All rights reserved.
 //
 
-#ifndef BEViewIOS_h
-#define BEViewIOS_h
+#ifndef BEViewController_h
+#define BEViewController_h
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import <CoreMotion/CoreMotion.h>
 
-@interface BEViewIOS : GLKViewController <GLKViewDelegate>
+@interface BEViewController : GLKViewController <GLKViewDelegate>
 
-@property (atomic) CMRotationMatrix deviceRotateMat3;
+@property (atomic, readwrite) CMRotationMatrix deviceRotateMat3;
+@property (atomic, readwrite) GLKMatrix3 rotateMat3;
+@property (atomic, readwrite) GLKMatrix3 translateMat3;
+
 @property (nonatomic, strong) UIActivityIndicatorView* indicator;
 
 -(void) addModelNamed:(NSString*)modelName;
@@ -30,4 +33,4 @@
 @end
 
 
-#endif /* BEViewIOS_h */
+#endif /* BEViewController_h */
