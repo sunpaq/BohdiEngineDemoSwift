@@ -26,6 +26,7 @@
 		F8D8BBEF1E66A17800229AE7 /* CVViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8D8BBEE1E66A17800229AE7 /* CVViewController.mm */; };
 		F8D8BBF21E66A3A400229AE7 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D8BBF11E66A3A400229AE7 /* opencv2.framework */; };
 		F8EF1B711E6814EE001DB305 /* BEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EF1B701E6814EE001DB305 /* BEViewController.m */; };
+		FD9E63491E73E78D00A64435 /* CVManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD9E63481E73E78D00A64435 /* CVManager.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		F8D8BBF11E66A3A400229AE7 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = Pods/OpenCV/opencv2.framework; sourceTree = "<group>"; };
 		F8EF1B701E6814EE001DB305 /* BEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEViewController.m; sourceTree = "<group>"; };
 		F8EF1B721E681507001DB305 /* BEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEViewController.h; sourceTree = "<group>"; };
+		FD9E63481E73E78D00A64435 /* CVManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVManager.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				F8D8BBEE1E66A17800229AE7 /* CVViewController.mm */,
 				F8D8BBF01E66A19700229AE7 /* CVViewController.h */,
 				F8AF1FF41E2C5B00009D0807 /* BEDemo-Bridging-Header.h */,
+				FD9E63481E73E78D00A64435 /* CVManager.mm */,
 			);
 			path = BEDemo;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD9E63491E73E78D00A64435 /* CVManager.mm in Sources */,
 				F8D8BBEF1E66A17800229AE7 /* CVViewController.mm in Sources */,
 				F8AF1FE51E2C57BA009D0807 /* GLViewController.swift in Sources */,
 				F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */,

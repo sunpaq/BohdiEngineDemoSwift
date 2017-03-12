@@ -3,13 +3,17 @@ PODS:
   - OpenCV (3.1.0.1)
 
 DEPENDENCIES:
-  - BohdiEngine
+  - BohdiEngine (from `~/Dev/pods/BohdiEngine-pod/`)
   - OpenCV
+
+EXTERNAL SOURCES:
+  BohdiEngine:
+    :path: ~/Dev/pods/BohdiEngine-pod/
 
 SPEC CHECKSUMS:
   BohdiEngine: 6856322ae37d53be0eab24ea26dc717a4d5f6c1d
   OpenCV: 41c4250e2b06a394d6fbb634b5fa622cdd846018
 
-PODFILE CHECKSUM: c167658677ac8f6a64bfa43727b7bdfe4b53bc07
+PODFILE CHECKSUM: 8a68b3a1f630d27362844531f0daf7b3450f990b
 
 COCOAPODS: 1.1.1

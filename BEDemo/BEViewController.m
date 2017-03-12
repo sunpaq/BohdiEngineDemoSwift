@@ -23,31 +23,14 @@
 @implementation BEViewController
 
 @dynamic deviceRotateMat3;
-
-//-(instancetype)initWithFrame:(CGRect)frame
-//{
-//    if (self=[super initWithFrame:frame]) {
-//        [self setupBE];
-//        return self;
-//    }
-//    return nil;
-//}
-//
-//-(instancetype)initWithCoder:(NSCoder *)aDecoder
-//{
-//    if (self=[super initWithCoder:aDecoder]) {
-//        [self setupBE];
-//        return self;
-//    }
-//    return nil;
-//}
+@dynamic cameraTransfrom;
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     [EAGLContext setCurrentContext:[[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3]];
 
-    CGRect frame = self.view.frame;
+    //CGRect frame = self.view.frame;
     director = new(MCDirector);
     pinch_scale = 10.0;
     
@@ -85,7 +68,8 @@
     unsigned width = frame.size.width;
     unsigned height = frame.size.height;
     ff(director, setupMainScene, width, height);
-    ff(director, setCameraRotateMode, MCCameraRotateAR);
+    ff(director, setCameraRotateMode, MCCameraRotateOpenCVMarker);
+    director->gyroscopeMode = false;
 }
 
 -(void) setViewFrame:(CGRect)frame
@@ -107,16 +91,6 @@
     MCGLEngine_setClearScreenColor((MCColorf){0.0,0.0,0.0,0.0});
 }
 
-//-(void) insertBackgroundView:(UIView*)bgview
-//{
-//    [self.view insertSubview:bgview belowSubview:_glView];
-//}
-//
-//-(void) insertOverlayView:(UIView*)overlay
-//{
-//    [self.view insertSubview:overlay aboveSubview:_glView];
-//}
-
 -(void) resizeGL:(unsigned)width height:(unsigned)height
 {
     ff(director, resizeAllScene, width, height);
@@ -137,14 +111,12 @@
     director->deviceRotationMat3.m22 = mat3.m33;
 }
 
--(void) setRotateMat3:(GLKMatrix3)mat3
+-(void) setCameraTransfrom:(GLKMatrix4)mat4
 {
-    
-}
-
--(void) setTranslateMat3:(GLKMatrix3)mat3
-{
-
+    director->lastScene->mainCamera->depth_of_field = 1000.0;
+    for (int i=0; i<16; i++) {
+        director->lastScene->mainCamera->Super.transform.m[i] = mat4.m[i];
+    }
 }
 
 -(void) startLoadingAnimation
@@ -173,7 +145,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         const char* name = [modelName cStringUsingEncoding:NSUTF8StringEncoding];
         ff(director, addModelNamed, name);
-        
+        computed(director, cameraHandler)->R_percent = 1.5;
         [self stopLoadingAnimation];
     });
 }

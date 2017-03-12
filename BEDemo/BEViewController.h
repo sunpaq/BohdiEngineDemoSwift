@@ -17,8 +17,7 @@
 @interface BEViewController : GLKViewController <GLKViewDelegate>
 
 @property (atomic, readwrite) CMRotationMatrix deviceRotateMat3;
-@property (atomic, readwrite) GLKMatrix3 rotateMat3;
-@property (atomic, readwrite) GLKMatrix3 translateMat3;
+@property (atomic, readwrite) GLKMatrix4 cameraTransfrom;
 
 @property (nonatomic, strong) UIActivityIndicatorView* indicator;
 
@@ -28,8 +27,7 @@
 
 -(void) setViewFrame:(CGRect)frame;
 -(void) setTransparentBG;
--(void) insertBackgroundView:(UIView*)bgview;
--(void) insertOverlayView:(UIView*)overlay;
+
 @end
 
 
