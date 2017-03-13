@@ -8,9 +8,9 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   BohdiEngine:
-    :path: "~/Dev/pods/BohdiEngine-pod/"
+    :path: ~/Dev/pods/BohdiEngine-pod/
   OpenCV:
-    :path: "~/Dev/pods/OpenCV-pod/"
+    :path: ~/Dev/pods/OpenCV-pod/
 
 SPEC CHECKSUMS:
   BohdiEngine: 6856322ae37d53be0eab24ea26dc717a4d5f6c1d

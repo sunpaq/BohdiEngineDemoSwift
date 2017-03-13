@@ -109,22 +109,19 @@ void calcBoardCornerPositions(Size_<int> boardSize, float squareSize, vector<Poi
                 intrinsicMatCalculated = YES;
             }
             
-            Mat rvec(3,1,DataType<double>::type);
-            Mat tvec(3,1,DataType<double>::type);
+            Mat R(3,1,DataType<double>::type);
+            Mat T(3,1,DataType<double>::type);
             Mat Rod(3,3,DataType<double>::type);
 
-            bool OK = solvePnP(points3D.front(), points2D.front(), cameraMatrix, distCoeffs, rvec, tvec, true, CV_EPNP);
+            bool OK = solvePnP(points3D.front(), points2D.front(), cameraMatrix, distCoeffs, R, T, true, CV_EPNP);
                 
             if (OK) {
-                Mat R = rvec;
-                Mat T = tvec;
-                
                 if(!checkRange(R) || !checkRange(T)) {
                     return;
                 }
 
                 //cout << "R = "<< endl << " "  << R << endl << endl;
-                //cout << "T = "<< endl << " "  << T << endl << endl;
+                cout << "T = "<< endl << " "  << T << endl << endl;
                 
                 Rodrigues(R, Rod);
                 //cout << "Rodrigues = "<< endl << " "  << r << endl << endl;
@@ -137,15 +134,17 @@ void calcBoardCornerPositions(Size_<int> boardSize, float squareSize, vector<Poi
                     }
                 }
                 
-                float scale = 3.0;
-                GLKVector3 vec3 = GLKVector3Make(-scale * (float)T.at<double>(0, 0),
-                                                 -scale * (float)T.at<double>(1, 0),
-                                                 -scale * (float)T.at<double>(2, 0));
+                float scale = -2;
+                GLKVector3 vec3 = GLKVector3Make(scale * (float)T.at<double>(0),
+                                                 scale * (float)T.at<double>(1),
+                                                 scale * (float)T.at<double>(2));
+                cout << vec3.x << " " << vec3.y << " " << vec3.z << '\n';
                 
                 [_beViewCtl cameraReset];
                 //[_beViewCtl cameraTranslate:vec3 Incremental:YES];
                 [_beViewCtl cameraRotate:mat3 Incremental:YES];
 
+                
                 
             }
         }
