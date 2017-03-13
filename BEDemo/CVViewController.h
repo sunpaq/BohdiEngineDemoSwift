@@ -9,8 +9,8 @@
 #ifndef CVBridge_h
 #define CVBridge_h
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import <opencv2/videoio/cap_ios.h>
 
 #import "BEViewController.h"

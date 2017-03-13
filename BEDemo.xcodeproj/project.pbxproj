@@ -25,7 +25,6 @@
 		F8C5A0AA1E655EC100B776E5 /* MCSkyboxShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A0A41E655EC100B776E5 /* MCSkyboxShader.vsh */; };
 		F8D8BBEF1E66A17800229AE7 /* CVViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8D8BBEE1E66A17800229AE7 /* CVViewController.mm */; };
 		F8D8BBF21E66A3A400229AE7 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D8BBF11E66A3A400229AE7 /* opencv2.framework */; };
-		F8EF1B711E6814EE001DB305 /* BEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EF1B701E6814EE001DB305 /* BEViewController.m */; };
 		FD9E63491E73E78D00A64435 /* CVManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD9E63481E73E78D00A64435 /* CVManager.mm */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +53,6 @@
 		F8D8BBEE1E66A17800229AE7 /* CVViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVViewController.mm; sourceTree = "<group>"; };
 		F8D8BBF01E66A19700229AE7 /* CVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVViewController.h; sourceTree = "<group>"; };
 		F8D8BBF11E66A3A400229AE7 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = Pods/OpenCV/opencv2.framework; sourceTree = "<group>"; };
-		F8EF1B701E6814EE001DB305 /* BEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEViewController.m; sourceTree = "<group>"; };
-		F8EF1B721E681507001DB305 /* BEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEViewController.h; sourceTree = "<group>"; };
 		FD9E63481E73E78D00A64435 /* CVManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVManager.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,8 +118,6 @@
 				F8AF1FFA1E2C688E009D0807 /* Resources */,
 				F8AF1FEB1E2C57BA009D0807 /* LaunchScreen.storyboard */,
 				F8AF1FEE1E2C57BA009D0807 /* Info.plist */,
-				F8EF1B721E681507001DB305 /* BEViewController.h */,
-				F8EF1B701E6814EE001DB305 /* BEViewController.m */,
 				F8D8BBEE1E66A17800229AE7 /* CVViewController.mm */,
 				F8D8BBF01E66A19700229AE7 /* CVViewController.h */,
 				F8AF1FF41E2C5B00009D0807 /* BEDemo-Bridging-Header.h */,
@@ -307,7 +302,6 @@
 				F8D8BBEF1E66A17800229AE7 /* CVViewController.mm in Sources */,
 				F8AF1FE51E2C57BA009D0807 /* GLViewController.swift in Sources */,
 				F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */,
-				F8EF1B711E6814EE001DB305 /* BEViewController.m in Sources */,
 				F86EAEEE1E2CA4B100A46125 /* LandingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

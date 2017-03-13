@@ -4,5 +4,6 @@ use_frameworks!
 target 'BEDemo' do
     pod 'BohdiEngine', :path => '~/Dev/pods/BohdiEngine-pod/'
     #pod 'BohdiEngine'
-    pod 'OpenCV'
+    pod 'OpenCV', :path => '~/Dev/pods/OpenCV-pod/'
+    #pod 'OpenCV'
 end
