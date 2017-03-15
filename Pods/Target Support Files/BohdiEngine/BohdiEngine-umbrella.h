@@ -33,6 +33,7 @@
 #import "MCUIBase.h"
 #import "MCWorld.h"
 #import "BEViewController.h"
+#import "CVViewController.h"
 #import "MCArray.h"
 #import "MCArrayLinkedList.h"
 #import "MCBits.h"
