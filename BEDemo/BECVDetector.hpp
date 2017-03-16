@@ -32,21 +32,23 @@ public:
     
     enum Pattern { NOT_EXISTING, CHESSBOARD, CIRCLES_GRID, ASYMMETRIC_CIRCLES_GRID };
     
-    BECVDetector(int width, int height, float unit, Pattern patternType);
-    void processImage(Mat& image);
+    BECVDetector(int width, int height, float unit, Pattern patternType, int flags = CV_ITERATIVE);
+    bool processImage(Mat& image);
     
 private:
     float unitSize;
     Pattern pattern;
     Size_<int> boardSize;
-    vector<Point2f> cornerPoints;
-    vector<vector<Point3f>> points3D;
-
+    
+    vector<Point2f> points2D;
+    vector<Point3f> points3D;
+    
+    int estimateFlags;
     bool intrinsicMatCalculated;
     
-    bool findPattern(Mat& image);
-    void calcBoardCornerPositions(Size_<int> boardSize, float squareSize, vector<Point3f>& corners, Pattern patternType);
-    void calcBoardCornerSubpixels(Mat& image, Size_<int> boardSize, vector<Point2f> cornerPoints);
+    bool detect(Mat& image);
+    double calibrate(Mat& image);
+    bool estimate(int flags);
 };
 
 #endif
