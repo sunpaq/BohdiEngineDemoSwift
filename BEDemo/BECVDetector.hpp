@@ -32,7 +32,7 @@ public:
     
     enum Pattern { NOT_EXISTING, CHESSBOARD, CIRCLES_GRID, ASYMMETRIC_CIRCLES_GRID };
     
-    BECVDetector(int width, int height, float unit, Pattern patternType, int flags = CV_ITERATIVE);
+    BECVDetector(int width, int height, float unit, Pattern patternType, int flags = CV_ITERATIVE, bool RANSAC = true);
     bool processImage(Mat& image);
     
 private:
@@ -44,6 +44,7 @@ private:
     vector<Point3f> points3D;
     
     int estimateFlags;
+    bool useRANSAC;
     bool intrinsicMatCalculated;
     
     bool detect(Mat& image);

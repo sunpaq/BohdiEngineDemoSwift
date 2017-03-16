@@ -2,7 +2,7 @@
 
 #include "BECVDetector.hpp"
 
-BECVDetector::BECVDetector(int width, int height, float unit, Pattern patternType, int flags)
+BECVDetector::BECVDetector(int width, int height, float unit, Pattern patternType, int flags, bool RANSAC)
 {
     boardSize = Size_<int>(width, height);
     unitSize  = unit;
@@ -10,6 +10,7 @@ BECVDetector::BECVDetector(int width, int height, float unit, Pattern patternTyp
     
     intrinsicMatCalculated = false;
     estimateFlags = flags;
+    useRANSAC = RANSAC;
     
     cameraMatrix = Mat::eye(3, 3, CV_64F);
     distCoeffs   = Mat::zeros(8, 1, CV_64F);
@@ -67,7 +68,14 @@ double BECVDetector::calibrate(Mat& image)
 
 bool BECVDetector::estimate(int flags)
 {
-    bool OK = solvePnP(points3D, points2D, cameraMatrix, distCoeffs, R, T, false, flags);
+    bool OK;
+    if (useRANSAC) {
+        OK = solvePnPRansac(points3D, points2D, cameraMatrix, distCoeffs, R, T, false, flags);
+    }
+    else {
+        OK = solvePnP(points3D, points2D, cameraMatrix, distCoeffs, R, T, false, flags);
+    }
+    
     if (OK) {
         Mat Rod(3,3,DataType<double>::type);
         Rodrigues(R, Rod);
@@ -124,7 +132,7 @@ bool BECVDetector::processImage(Mat& image) {
             intrinsicMatCalculated = true;
         }
         
-        if (detect(gray) && points2D.size() == 20) {
+        if (detect(gray) && points2D.size() == boardSize.width * boardSize.height) {
             drawChessboardCorners(image, boardSize, points2D, false);
             return estimate(estimateFlags);
         }

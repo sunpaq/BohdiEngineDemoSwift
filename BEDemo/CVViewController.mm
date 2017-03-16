@@ -18,9 +18,9 @@
     if (cvManager) {
         if (cvManager->processImage(mat)) {
             if (!modelLoaded) {
-                GLKVector3 lpos = {0,1000,-1000};
+                GLKVector3 lpos = {0,0,-2000};
                 [_beViewCtl lightReset:&lpos];
-                [_beViewCtl addModelNamed:@"2.obj"];
+                [_beViewCtl addModelNamed:@"outer.obj"];
                 modelLoaded = YES;
             }
         }
@@ -32,8 +32,9 @@
 {
     [super viewDidLoad];
     modelLoaded = NO;
-    cvManager = new BECVDetector(5,4,6.0,BECVDetector::CHESSBOARD);
+    cvManager = new BECVDetector(5,4,10,BECVDetector::CHESSBOARD);
     //cvManager = new BECVDetector(5,3,0.04,BECVDetector::ASYMMETRIC_CIRCLES_GRID);
+    
     CGRect frame = [[UIScreen mainScreen] bounds];
     _cvView = [[UIView alloc] initWithFrame:frame];
 
@@ -56,7 +57,9 @@
 {
     //start openCV
     [self.videoSource start];
-    [self presentViewController:_beViewCtl animated:NO completion:^{}];
+    [self presentViewController:_beViewCtl animated:NO completion:^{
+        
+    }];
 }
 
 @end
