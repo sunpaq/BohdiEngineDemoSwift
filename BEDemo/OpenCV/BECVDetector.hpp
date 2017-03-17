@@ -54,6 +54,7 @@ private:
     bool detect(Mat& image);
     double calibrate(Mat& image);
     bool estimate(int flags);
+    void calculateExtrinsicMat();
 };
 
 #endif

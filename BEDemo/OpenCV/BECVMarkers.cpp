@@ -41,6 +41,11 @@ void BECVMarkers::draw(Mat& image)
     drawDetectedMarkers(image, corners, markerIds);
 }
 
+void BECVMarkers::axis(Mat& image, Mat cameraMatrix, Mat distCoeffs, vector<Vec3d> rvecs, vector<Vec3d> tvecs)
+{
+    drawAxis(image, cameraMatrix, distCoeffs, rvecs, tvecs, markerLength);
+}
+
 void BECVMarkers::estimate(Mat cameraMatrix, Mat distCoeffs, vector<Vec3d> rvecs, vector<Vec3d> tvecs)
 {
     estimatePoseSingleMarkers(corners, markerLength, cameraMatrix, distCoeffs, rvecs, tvecs);

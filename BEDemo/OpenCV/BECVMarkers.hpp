@@ -22,6 +22,7 @@ public:
     BECVMarkers(float length, PREDEFINED_DICTIONARY_NAME preDefine = DICT_ARUCO_ORIGINAL);
     bool detect(Mat& image);
     void draw(Mat& image);
+    void axis(Mat& image, Mat cameraMatrix, Mat distCoeffs, vector<Vec3d> rvecs, vector<Vec3d> tvecs);
     void estimate(Mat cameraMatrix, Mat distCoeffs, vector<Vec3d> rvecs, vector<Vec3d> tvecs);
     
 private:
