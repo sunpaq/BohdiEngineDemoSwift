@@ -12,6 +12,7 @@
 		F803C6861E7A9501002A593A /* CVViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F803C64D1E7A9501002A593A /* CVViewController.mm */; };
 		F803C68E1E7A9886002A593A /* aruco.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F803C6881E7A9886002A593A /* aruco.cpp */; };
 		F803C68F1E7A9886002A593A /* dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F803C68A1E7A9886002A593A /* dictionary.cpp */; };
+		F817FA151E7B84E5008F954D /* BECVMarkers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F817FA131E7B84E5008F954D /* BECVMarkers.cpp */; };
 		F83B120F1E70FBD0003F13F1 /* outer.mtl in Resources */ = {isa = PBXBuildFile; fileRef = F83B120D1E70FBD0003F13F1 /* outer.mtl */; };
 		F83B12101E70FBD0003F13F1 /* outer.obj in Resources */ = {isa = PBXBuildFile; fileRef = F83B120E1E70FBD0003F13F1 /* outer.obj */; };
 		F86EAEEE1E2CA4B100A46125 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */; };
@@ -44,6 +45,8 @@
 		F803C68B1E7A9886002A593A /* dictionary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = dictionary.hpp; sourceTree = "<group>"; };
 		F803C68C1E7A9886002A593A /* precomp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = precomp.hpp; sourceTree = "<group>"; };
 		F803C68D1E7A9886002A593A /* predefined_dictionaries.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = predefined_dictionaries.hpp; sourceTree = "<group>"; };
+		F817FA131E7B84E5008F954D /* BECVMarkers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BECVMarkers.cpp; sourceTree = "<group>"; };
+		F817FA141E7B84E5008F954D /* BECVMarkers.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BECVMarkers.hpp; sourceTree = "<group>"; };
 		F83B120D1E70FBD0003F13F1 /* outer.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = outer.mtl; sourceTree = "<group>"; };
 		F83B120E1E70FBD0003F13F1 /* outer.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = outer.obj; sourceTree = "<group>"; };
 		F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +107,8 @@
 				F803C5FB1E7A9501002A593A /* contrib */,
 				F803C5F91E7A9501002A593A /* BECVDetector.cpp */,
 				F803C5FA1E7A9501002A593A /* BECVDetector.hpp */,
+				F817FA131E7B84E5008F954D /* BECVMarkers.cpp */,
+				F817FA141E7B84E5008F954D /* BECVMarkers.hpp */,
 				F803C64C1E7A9501002A593A /* CVViewController.h */,
 				F803C64D1E7A9501002A593A /* CVViewController.mm */,
 			);
@@ -343,6 +348,7 @@
 				F803C68F1E7A9886002A593A /* dictionary.cpp in Sources */,
 				F803C6861E7A9501002A593A /* CVViewController.mm in Sources */,
 				F86EAEEE1E2CA4B100A46125 /* LandingViewController.swift in Sources */,
+				F817FA151E7B84E5008F954D /* BECVMarkers.cpp in Sources */,
 				F803C68E1E7A9886002A593A /* aruco.cpp in Sources */,
 				F803C64E1E7A9501002A593A /* BECVDetector.cpp in Sources */,
 			);

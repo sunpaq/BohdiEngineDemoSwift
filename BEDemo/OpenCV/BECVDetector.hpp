@@ -15,6 +15,8 @@
 #import <opencv2/imgcodecs.hpp>
 #import <opencv2/videoio.hpp>
 
+#import "BECVMarkers.hpp"
+
 using namespace std;
 using namespace cv;
 
@@ -36,6 +38,8 @@ public:
     bool processImage(Mat& image);
     
 private:
+    BECVMarkers* markerDetector;
+    
     float unitSize;
     Pattern pattern;
     Size_<int> boardSize;

@@ -12,7 +12,7 @@
 
 @implementation CVViewController
 
-//conform CvVideoCameraDelegate
+//conform CvVideoCameraDelegate, image colorspace is BGRA
 - (void)processImage:(cv::Mat&)mat
 {
     if (cvManager) {

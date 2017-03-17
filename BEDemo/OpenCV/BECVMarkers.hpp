@@ -1,0 +1,36 @@
+//
+//  BECVMarkers.hpp
+//  BEDemo
+//
+//  Created by YuliSun on 17/03/2017.
+//  Copyright © 2017 SODEC. All rights reserved.
+//
+
+#ifndef BECVMarkers_hpp
+#define BECVMarkers_hpp
+
+#import <iostream>
+#import "aruco.hpp"
+
+using namespace std;
+using namespace cv;
+using namespace aruco;
+
+class BECVMarkers {
+
+public:
+    BECVMarkers(float length, PREDEFINED_DICTIONARY_NAME preDefine = DICT_ARUCO_ORIGINAL);
+    bool detect(Mat& image);
+    void draw(Mat& image);
+    void estimate(Mat cameraMatrix, Mat distCoeffs, vector<Vec3d> rvecs, vector<Vec3d> tvecs);
+    
+private:
+    float markerLength;
+    Ptr<Dictionary> dict;
+    Ptr<DetectorParameters> params;
+    
+    vector<vector<Point2f>> corners;
+    vector<int> markerIds;
+};
+
+#endif /* BECVMarkers_hpp */

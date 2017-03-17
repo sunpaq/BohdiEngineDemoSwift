@@ -4,6 +4,8 @@
 
 BECVDetector::BECVDetector(int width, int height, float unit, Pattern patternType, int flags, bool RANSAC)
 {
+    markerDetector = new BECVMarkers(unit);
+    
     boardSize = Size_<int>(width, height);
     unitSize  = unit;
     pattern   = patternType;
@@ -36,6 +38,7 @@ BECVDetector::BECVDetector(int width, int height, float unit, Pattern patternTyp
 
 bool BECVDetector::detect(Mat& image)
 {
+    //chessboard
     bool found = false;
     if (pattern == CHESSBOARD) {
         found = findChessboardCorners(image, boardSize, points2D);
@@ -130,6 +133,15 @@ bool BECVDetector::processImage(Mat& image) {
                 return false;
             }
             intrinsicMatCalculated = true;
+        }
+        
+        //marker
+        Mat bgrImage;
+        cvtColor(image, bgrImage, COLOR_BGRA2BGR);
+        if (markerDetector->detect(bgrImage)) {
+            markerDetector->draw(image);
+            markerDetector->estimate(cameraMatrix, distCoeffs, R, T);
+            return true;
         }
         
         if (detect(gray) && points2D.size() == boardSize.width * boardSize.height) {
