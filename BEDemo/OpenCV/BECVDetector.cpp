@@ -14,11 +14,11 @@ BECVDetector::BECVDetector(int width, int height, float unit, Pattern patternTyp
     estimateFlags = flags;
     useRANSAC = RANSAC;
     
-    cameraMatrix = Mat::eye(3, 3, CV_64F);
-    distCoeffs   = Mat::zeros(8, 1, CV_64F);
+    cameraMatrix = Mat::eye(3, 3, CV_64FC1);
+    distCoeffs   = Mat::zeros(8, 1, CV_64FC1);
     
-    R = Mat::zeros(3, 1, CV_64F);
-    T = Mat::zeros(3, 1, CV_64F);
+    R = Mat::zeros(3, 1, CV_64FC1);
+    T = Mat::zeros(3, 1, CV_64FC1);
     
     points2D = vector<Point2f>();
     points3D = vector<Point3f>();
@@ -80,54 +80,60 @@ bool BECVDetector::estimate(int flags)
     }
     
     if (OK) {
-        calculateExtrinsicMat();
+        calculateExtrinsicMat(true);
     }
     
     return OK;
 }
 
-void BECVDetector::calculateExtrinsicMat()
+void BECVDetector::calculateExtrinsicMat(bool flip)
 {
     Mat Rod(3,3,DataType<double>::type);
     Rodrigues(R, Rod);
     //cout << "Rodrigues = "<< endl << " "  << Rod << endl << endl;
     
-    static double flip[] = {
-        1, 0, 0,
-        0,-1, 0,
-        0, 0,-1
-    };
-    Mat_<double> flipX(3,3,flip);
+    if (flip) {
+        static double flip[] = {
+            1, 0, 0,
+            0,-1, 0,
+            0, 0,-1
+        };
+        Mat_<double> flipX(3,3,flip);
+        
+        R = flipX * Rod;
+        T = flipX * T;
+    } else {
+        R = Rod;
+    }
     
-    Rod = flipX * Rod;
-    T   = flipX * T;
     float scale = 1;
     
-    extrinsicMatColumnMajor[0] = Rod.at<double>(0, 0);
-    extrinsicMatColumnMajor[1] = Rod.at<double>(1, 0);
-    extrinsicMatColumnMajor[2] = Rod.at<double>(2, 0);
+    extrinsicMatColumnMajor[0] = R.at<double>(0, 0);
+    extrinsicMatColumnMajor[1] = R.at<double>(1, 0);
+    extrinsicMatColumnMajor[2] = R.at<double>(2, 0);
     extrinsicMatColumnMajor[3] = 0.0f;
     
-    extrinsicMatColumnMajor[4] = Rod.at<double>(0, 1);
-    extrinsicMatColumnMajor[5] = Rod.at<double>(1, 1);
-    extrinsicMatColumnMajor[6] = Rod.at<double>(2, 1);
+    extrinsicMatColumnMajor[4] = R.at<double>(0, 1);
+    extrinsicMatColumnMajor[5] = R.at<double>(1, 1);
+    extrinsicMatColumnMajor[6] = R.at<double>(2, 1);
     extrinsicMatColumnMajor[7] = 0.0f;
     
-    extrinsicMatColumnMajor[8]  = Rod.at<double>(0, 2);
-    extrinsicMatColumnMajor[9]  = Rod.at<double>(1, 2);
-    extrinsicMatColumnMajor[10] = Rod.at<double>(2, 2);
+    extrinsicMatColumnMajor[8]  = R.at<double>(0, 2);
+    extrinsicMatColumnMajor[9]  = R.at<double>(1, 2);
+    extrinsicMatColumnMajor[10] = R.at<double>(2, 2);
     extrinsicMatColumnMajor[11] = 0.0f;
     
     extrinsicMatColumnMajor[12] = scale * T.at<double>(0, 0);
     extrinsicMatColumnMajor[13] = scale * T.at<double>(1, 0);
     extrinsicMatColumnMajor[14] = scale * T.at<double>(2, 0);
     extrinsicMatColumnMajor[15] = 1.0f;
+    
 }
 
 bool BECVDetector::processImage(Mat& image) {
     try {
         Mat gray;
-        cvtColor(image, gray, COLOR_BGR2GRAY);
+        cvtColor(image, gray, COLOR_BGRA2GRAY);
         
         if (intrinsicMatCalculated == false) {
             if (!detect(gray)) {
@@ -140,22 +146,23 @@ bool BECVDetector::processImage(Mat& image) {
             intrinsicMatCalculated = true;
         }
         
-        //marker
-        Mat bgrImage;
-        cvtColor(image, bgrImage, COLOR_BGRA2BGR);
-        if (markerDetector->detect(bgrImage)) {
-            markerDetector->draw(bgrImage);
-            image = bgrImage;
-            markerDetector->estimate(cameraMatrix, distCoeffs, R, T);
-            //calculateExtrinsicMat();
-            //markerDetector->axis(bgrImage, cameraMatrix, distCoeffs, R, T);
-            return true;
-        }
+        //if (detect(gray) && points2D.size() == boardSize.width * boardSize.height) {
+            //drawChessboardCorners(image, boardSize, points2D, false);
+            //return estimate(estimateFlags);
+        //}
         
-        if (detect(gray) && points2D.size() == boardSize.width * boardSize.height) {
-            drawChessboardCorners(gray, boardSize, points2D, false);
-            image = gray;
-            return estimate(estimateFlags);
+        if (markerDetector->detect(gray)) {
+            Mat rgb;
+            cvtColor(image, rgb, COLOR_BGRA2RGB);
+            
+            markerDetector->estimate(cameraMatrix, distCoeffs, R, T);
+            calculateExtrinsicMat(true);
+            //draw
+            markerDetector->draw(rgb);
+            markerDetector->axis(rgb, cameraMatrix, distCoeffs, R, T);
+            cvtColor(rgb, image, COLOR_RGB2BGRA);
+            
+            return true;
         }
         
     } catch (exception& e) {
