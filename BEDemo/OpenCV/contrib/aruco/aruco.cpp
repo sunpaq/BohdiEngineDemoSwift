@@ -876,15 +876,15 @@ void estimatePoseSingleMarkers(InputArrayOfArrays _corners, float markerLength,
     Mat rvecs = _rvecs.getMat(), tvecs = _tvecs.getMat();
 
     //// for each marker, calculate its pose
-    // for (int i = 0; i < nMarkers; i++) {
-    //    solvePnP(markerObjPoints, _corners.getMat(i), _cameraMatrix, _distCoeffs,
-    //             _rvecs.getMat(i), _tvecs.getMat(i));
-    //}
+     for (int i = 0; i < nMarkers; i++) {
+        solvePnP(markerObjPoints, _corners.getMat(i), _cameraMatrix, _distCoeffs,
+                 rvecs.at<Vec3d>(i), tvecs.at<Vec3d>(i));
+    }
 
     // this is the parallel call for the previous commented loop (result is equivalent)
-    parallel_for_(Range(0, nMarkers),
-                  SinglePoseEstimationParallel(markerObjPoints, _corners, _cameraMatrix,
-                                               _distCoeffs, rvecs, tvecs));
+//    parallel_for_(Range(0, nMarkers),
+//                  SinglePoseEstimationParallel(markerObjPoints, _corners, _cameraMatrix,
+//                                               _distCoeffs, rvecs, tvecs));
 }
 
 

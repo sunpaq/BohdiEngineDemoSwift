@@ -11,6 +11,7 @@
 
 #import <iostream>
 #import "aruco.hpp"
+#import <opencv2/calib3d.hpp>
 
 using namespace std;
 using namespace cv;
@@ -24,11 +25,14 @@ public:
     void draw(Mat& image);
     void axis(Mat& image, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec);
     void estimate(Mat cameraMatrix, Mat distCoeffs, Mat& rvec, Mat& tvec);
+    int getId();
     
 private:
     float markerLength;
     Ptr<Dictionary> dict;
     Ptr<DetectorParameters> params;
+    
+    Mat objPoints;
     
     vector<vector<Point2f>> corners;
     vector<int> markerIds;

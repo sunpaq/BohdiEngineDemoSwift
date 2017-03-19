@@ -29,6 +29,7 @@ public:
     Mat R;
     Mat T;
     
+    int markerId;
     float intrinsicMatColumnMajor[16];
     float extrinsicMatColumnMajor[16];
     

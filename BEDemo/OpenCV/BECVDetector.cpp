@@ -89,6 +89,8 @@ bool BECVDetector::estimate(int flags)
 void BECVDetector::calculateExtrinsicMat(bool flip)
 {
     Mat Rod(3,3,DataType<double>::type);
+    Mat Rotate, Translate;
+    
     Rodrigues(R, Rod);
     //cout << "Rodrigues = "<< endl << " "  << Rod << endl << endl;
     
@@ -100,32 +102,33 @@ void BECVDetector::calculateExtrinsicMat(bool flip)
         };
         Mat_<double> flipX(3,3,flip);
         
-        R = flipX * Rod;
-        T = flipX * T;
+        Rotate = flipX * Rod;
+        Translate = flipX * T;
     } else {
-        R = Rod;
+        Rotate = Rod;
+        Translate = T;
     }
     
     float scale = 1;
     
-    extrinsicMatColumnMajor[0] = R.at<double>(0, 0);
-    extrinsicMatColumnMajor[1] = R.at<double>(1, 0);
-    extrinsicMatColumnMajor[2] = R.at<double>(2, 0);
+    extrinsicMatColumnMajor[0] = Rotate.at<double>(0, 0);
+    extrinsicMatColumnMajor[1] = Rotate.at<double>(1, 0);
+    extrinsicMatColumnMajor[2] = Rotate.at<double>(2, 0);
     extrinsicMatColumnMajor[3] = 0.0f;
     
-    extrinsicMatColumnMajor[4] = R.at<double>(0, 1);
-    extrinsicMatColumnMajor[5] = R.at<double>(1, 1);
-    extrinsicMatColumnMajor[6] = R.at<double>(2, 1);
+    extrinsicMatColumnMajor[4] = Rotate.at<double>(0, 1);
+    extrinsicMatColumnMajor[5] = Rotate.at<double>(1, 1);
+    extrinsicMatColumnMajor[6] = Rotate.at<double>(2, 1);
     extrinsicMatColumnMajor[7] = 0.0f;
     
-    extrinsicMatColumnMajor[8]  = R.at<double>(0, 2);
-    extrinsicMatColumnMajor[9]  = R.at<double>(1, 2);
-    extrinsicMatColumnMajor[10] = R.at<double>(2, 2);
+    extrinsicMatColumnMajor[8]  = Rotate.at<double>(0, 2);
+    extrinsicMatColumnMajor[9]  = Rotate.at<double>(1, 2);
+    extrinsicMatColumnMajor[10] = Rotate.at<double>(2, 2);
     extrinsicMatColumnMajor[11] = 0.0f;
     
-    extrinsicMatColumnMajor[12] = scale * T.at<double>(0, 0);
-    extrinsicMatColumnMajor[13] = scale * T.at<double>(1, 0);
-    extrinsicMatColumnMajor[14] = scale * T.at<double>(2, 0);
+    extrinsicMatColumnMajor[12] = scale * Translate.at<double>(0, 0);
+    extrinsicMatColumnMajor[13] = scale * Translate.at<double>(1, 0);
+    extrinsicMatColumnMajor[14] = scale * Translate.at<double>(2, 0);
     extrinsicMatColumnMajor[15] = 1.0f;
     
 }
@@ -156,12 +159,13 @@ bool BECVDetector::processImage(Mat& image) {
             cvtColor(image, rgb, COLOR_BGRA2RGB);
             
             markerDetector->estimate(cameraMatrix, distCoeffs, R, T);
-            calculateExtrinsicMat(true);
             //draw
             markerDetector->draw(rgb);
             markerDetector->axis(rgb, cameraMatrix, distCoeffs, R, T);
+            calculateExtrinsicMat(true);
             cvtColor(rgb, image, COLOR_RGB2BGRA);
             
+            markerId = markerDetector->getId();
             return true;
         }
         
