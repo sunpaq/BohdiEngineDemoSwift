@@ -1,21 +1,24 @@
 PODS:
+  - BohdiAR (0.1.0):
+    - OpenCV-Dynamic
   - BohdiEngine (1.0.9)
-  - OpenCV (3.1.0.1)
+  - OpenCV-Dynamic (3.2.4)
 
 DEPENDENCIES:
+  - BohdiAR (from `~/Dev/pods/BohdiAR-pod/`)
   - BohdiEngine (from `~/Dev/pods/BohdiEngine-pod/`)
-  - OpenCV (from `~/Dev/pods/OpenCV-pod/`)
 
 EXTERNAL SOURCES:
+  BohdiAR:
+    :path: "~/Dev/pods/BohdiAR-pod/"
   BohdiEngine:
-    :path: ~/Dev/pods/BohdiEngine-pod/
-  OpenCV:
-    :path: ~/Dev/pods/OpenCV-pod/
+    :path: "~/Dev/pods/BohdiEngine-pod/"
 
 SPEC CHECKSUMS:
+  BohdiAR: 4eb95e90cf27a7f67104ed98960f00e01854929e
   BohdiEngine: 6856322ae37d53be0eab24ea26dc717a4d5f6c1d
-  OpenCV: 41c4250e2b06a394d6fbb634b5fa622cdd846018
+  OpenCV-Dynamic: 8d4c9e4ccd4cf1ec7bf97448ae9fa18800ff3066
 
-PODFILE CHECKSUM: 9e10ef3d8d849c1beeeea52f6e3c14d21b04bf74
+PODFILE CHECKSUM: 93504e5575616606a4cfc32e20838bf262470215
 
 COCOAPODS: 1.1.1

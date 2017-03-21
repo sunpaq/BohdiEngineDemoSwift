@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BohdiAR.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>BohdiEngine-BohdiEngine.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>258A50C9ED0D08F79C5ABA3DF294A9B1</key>
+		<key>4CBF2FADD3A1E5BBBBC35AF3561E0614</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>366B6F5F36DB7C5919539D9E090B55DF</key>
+		<key>6A4132E6F5E7554F1E7150AC40625E2E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>76AB0DC266B9AC42E78ED7D043BE76E4</key>
+		<key>CBBFCB09EE949EFCB5EFE86CF226EC7C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F380E279EDF66262D2D9C7DE346A10FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
