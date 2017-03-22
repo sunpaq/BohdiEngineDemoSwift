@@ -1,5 +1,3 @@
-//#ifdef CVLOCK
-
 #import "CVViewController.h"
 #import <BohdiAR/BohdiAR-umbrella.h>
 
@@ -8,6 +6,9 @@
     int markerId;
     BOOL modelLoaded;
     BECVDetector* cvManager;
+    
+    NSString* documentPath;
+    NSString* calibrateFilePath;
 }
 @end
 
@@ -17,6 +18,12 @@
 - (void)processImage:(cv::Mat&)mat
 {
     if (cvManager) {
+        
+        if (!cvManager->cameraCalibrated) {
+            const char* calibrate = [calibrateFilePath cStringUsingEncoding:NSUTF8StringEncoding];
+            cvManager->calibrateCam(mat, calibrate);
+        }
+        
         if (cvManager->processImage(mat)) {
             if (cvManager->markerId != markerId) {
                 markerId = cvManager->markerId;
@@ -32,9 +39,6 @@
                     [_beViewCtl addModelNamed:@"2.obj"];
                 }
             }
-//            if (!modelLoaded) {
-//                modelLoaded = YES;
-//            }
         }
         [_beViewCtl cameraReset:&cvManager->extrinsicMatColumnMajor[0]];
     }
@@ -65,6 +69,9 @@
 
     _beViewCtl = [[BEViewController alloc] init];
     _beViewCtl.useTransparentBackground = YES;
+    
+    documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    calibrateFilePath = [documentPath stringByAppendingString:@"/calibrate.xml"];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -77,5 +84,3 @@
 }
 
 @end
-
-//#endif
