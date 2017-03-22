@@ -32,6 +32,7 @@
 #import "MCTexture.h"
 #import "MCUIBase.h"
 #import "MCWorld.h"
+#import "BEInterface.h"
 #import "BEViewController.h"
 #import "MCArray.h"
 #import "MCArrayLinkedList.h"
