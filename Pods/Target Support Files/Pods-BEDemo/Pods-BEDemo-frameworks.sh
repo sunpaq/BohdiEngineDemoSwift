@@ -84,8 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/BohdiAR/BohdiAR.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BohdiEngine/BohdiEngine.framework"
+  install_framework "${PODS_ROOT}/OpenCV-Dynamic/opencv2.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/BohdiAR/BohdiAR.framework"
   install_framework "$BUILT_PRODUCTS_DIR/BohdiEngine/BohdiEngine.framework"
+  install_framework "${PODS_ROOT}/OpenCV-Dynamic/opencv2.framework"
 fi
