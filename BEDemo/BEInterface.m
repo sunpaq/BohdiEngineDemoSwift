@@ -8,6 +8,8 @@
 
 #import "BEInterface.h"
 #import "MCDirector.h"
+#import <BohdiEngine/MC3DAxis.h>
+#import <BohdiEngine/MCCube.h>
 
 static MCDirector* director = null;
 static float pinch_scale = 10.0;
@@ -71,7 +73,26 @@ void BEPinchGesture(float scale)
 
 void BEAddModelNamed(const char* fname)
 {
+    //MC3DAxis* axis = new(MC3DAxis);
+    //MCDirector_addNode(0, director, (MC3DNode*)axis);
+    MCCube* cube = new(MCCube);
+    MCDirector_addNode(0, director, (MC3DNode*)cube);
+    
     ff(director, addModelNamed, fname);
-    ff(director, cameraFocusOnModel, director->lastScene->rootnode->children->headItem);
+    MC3DModel* model = (MC3DModel*)director->lastScene->rootnode->children->headItem->nextItem;
+    
+    //ff(director, moveModelToOrigin, model);
+    //ff(director, cameraFocusOnModel, model);
+    ff(director, cameraZoomToFitModel, model);
+    computed(director, cameraHandler)->lookat.y -= 5;
 }
 
+void BESetDoesRotateCamera(_Bool doesRotate)
+{
+    computed(director, cameraHandler)->isLockRotation = doesRotate? false : true;
+}
+
+void BESetDoesDrawWireFrame(_Bool doesDrawWF)
+{
+    computed(director, contextHandler)->drawMode = doesDrawWF ? GL_LINE_STRIP : GL_TRIANGLES;
+}

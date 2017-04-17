@@ -53,6 +53,45 @@ MCInline void MCDrawLine(MCUInt bufferid)
     glDrawArrays(MCLines, 0, count);
 }
 
+//nr: row nc: column of sphere texture
+MCInline GLuint MCGenerateSkysphere(int nr, int nc, GLfloat R, GLfloat* vertices, GLuint* indices)
+{
+    const GLfloat dr = M_PI / (nr-1);
+    const GLfloat dc = (2.0*M_PI) / (nc-1);
+    //vertex
+    int cur = 0;
+    for (int r=0; r<nr; r++) {
+        GLfloat tht = r * dr;
+        GLfloat z = R * cosf(tht);
+        
+        for (int c=0; c<nc; c++) {
+            GLfloat fai = 2.0 * M_PI - c * dc;
+            //GLfloat fai = c * dc;
+            GLfloat x = R * sinf(tht) * cosf(fai);
+            GLfloat y = R * sinf(tht) * sinf(fai);
+            //uv
+            GLfloat u = ((double)c) / ((double)(nc-1));
+            GLfloat v = ((double)r) / ((double)(nr-1));
+            //vertex
+            vertices[cur++] = x;
+            vertices[cur++] = y;
+            vertices[cur++] = z;
+            vertices[cur++] = u;
+            vertices[cur++] = v;
+        }
+    }
+    //vertices
+    GLuint ic = 0;
+    for (int r=1; r<nr; r++) {
+        int bot = r*nc;
+        int top = (r - 1)*nc;
+        for (int c=0; c<nc; c++) {
+            indices[ic++] = top+c;
+            indices[ic++] = bot+c;
+        }
+    }
+    return ic;
+}
 
 #endif
 

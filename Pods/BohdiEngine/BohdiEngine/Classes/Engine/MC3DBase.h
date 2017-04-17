@@ -46,6 +46,23 @@ MCInline MCVector3 MCVertexFromSpherical(double R, double tht, double fai) {
     return (MCVector3){x,y,z};
 }
 
+MCInline MCVector3 MCVertexFromSpherical_radians(double R, double tht, double fai) {
+#if (defined(__APPLE__) || defined(__ANDROID__))
+    double sinT = sin(tht);
+    double sinF = sin(fai);
+    double cosT = cos(tht);
+    double cosF = cos(fai);
+    double x = R * sinT * cosF;
+    double y = R * sinT * sinF;
+    double z = R * cosT;
+#else
+    double x = R * sin(tht) * cos(fai);
+    double y = R * sin(tht) * sin(fai);
+    double z = R * cos(tht);
+#endif
+    return (MCVector3){x,y,z};
+}
+
 MCInline MCMatrix4 MCMatrix4MakePerspective(float fovyRadians, float aspect, float nearZ, float farZ)
 {
     float cotan = 1.0f / tanf(fovyRadians / 2.0f);
@@ -74,6 +91,39 @@ MCInline MCMatrix4 MCMatrix4MakeScale(float sx, float sy, float sz)
     m.m[5] = sy;
     m.m[10] = sz;
     return m;
+}
+
+MCInline MCMatrix3 MCMatrix3MakeXAxisRotation(double degree)
+{
+    double SIN = sin(degree);
+    double COS = cos(degree);
+    return (MCMatrix3) {
+        1,    0,   0,
+        0,  COS, SIN,
+        0, -SIN, COS
+    };
+}
+
+MCInline MCMatrix3 MCMatrix3MakeYAxisRotation(double degree)
+{
+    double SIN = sin(degree);
+    double COS = cos(degree);
+    return (MCMatrix3) {
+         COS, 0, -SIN,
+           0, 1, 0,
+         SIN, 0, COS
+    };
+}
+
+MCInline MCMatrix3 MCMatrix3MakeZAxisRotation(double degree)
+{
+    double SIN = sin(degree);
+    double COS = cos(degree);
+    return (MCMatrix3) {
+         COS, SIN, 0,
+        -SIN, COS, 0,
+           0,   0, 1
+    };
 }
 
 MCInline MCMatrix3 MCMatrix4GetMatrix3(MCMatrix4 mat4)
@@ -226,6 +276,11 @@ MCInline MCMatrix4 MCMatrix4MakeLookAtByEulerAngle(MCVector3 lookat, double R, d
 MCInline MCVector3 MCGetEyeFromRotationMat4(MCMatrix4 mat4, double R)
 {
     return (MCVector3) { mat4.m[2]*R, mat4.m[6]*R, mat4.m[10]*R };
+}
+
+MCInline MCVector3 MCGetTranslateFromCombinedMat4(MCMatrix4 mat4)
+{
+    return (MCVector3) { mat4.m[12], mat4.m[13], mat4.m[14] };
 }
 
 #endif

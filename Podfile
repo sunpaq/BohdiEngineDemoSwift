@@ -3,7 +3,6 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'BEDemo' do
-    pod 'BohdiEngine', :path => '~/Dev/pods/BohdiEngine-pod/'
-    pod 'BohdiAR',     :path => '~/Dev/pods/BohdiAR-pod/'
-
+    #pod 'BohdiEngine', :git => 'https://github.com/sunpaq/BohdiEngine-pod.git', :branch => 'develop'
+    pod 'BohdiEngine', :path => '~/Dev/pods/BohdiEngine-pod'
 end

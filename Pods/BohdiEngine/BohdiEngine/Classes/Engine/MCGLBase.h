@@ -263,6 +263,4 @@ MCInline MCBool MCGLUniformEqual(MCGLUniform* u1, MCGLUniform* u2) {
     return false;
 }
 
-
-
 #endif

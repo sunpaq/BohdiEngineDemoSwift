@@ -1,6 +1,6 @@
-#version 300 es
+//version is specified in MCGLContext
 
-precision highp sampler3D;
+precision highp samplerCube;
 precision highp float;
 precision lowp int;
 const float Epsilon = 0.0000001;

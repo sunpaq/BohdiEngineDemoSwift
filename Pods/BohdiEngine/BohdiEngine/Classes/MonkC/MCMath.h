@@ -114,6 +114,8 @@ MCInline MCBool MCVector4Equal(MCVector4 v1, MCVector4 v2)
     return false;
 }
 
+
+
 MCInline MCQuaternion MCQuaternionFromVec3(MCVector3 v)
 {
     return (MCQuaternion){v.x, v.y, v.z, 0.0f};
@@ -195,6 +197,10 @@ MCInline MCVector3 MCVector3Normalize(MCVector3 vector)
 
 MCInline MCVector3 MCVector3Make(float x, float y, float z) {
     return (MCVector3){x, y, z};
+}
+
+MCInline MCVector4 MCVector4Make(float x, float y, float z, float w) {
+    return (MCVector4){x, y, z, w};
 }
 
 MCInline MCVector3 MCVector3MakeReverse(float x, float y, float z) {
@@ -331,7 +337,7 @@ MCInline MCVector3 MCNormalOfTriangle(MCVector3 v1, MCVector3 v2, MCVector3 v3) 
 MCInline MCBool MCMatrix3Equal(MCMatrix3* l, MCMatrix3* r)
 {
     for (int i=0; i<9; i++) {
-        if(l->m[i] != r->m[i])
+        if(!MCSamefloat(l->m[i], r->m[i]))
             return false;
     }
     return true;
@@ -340,17 +346,32 @@ MCInline MCBool MCMatrix3Equal(MCMatrix3* l, MCMatrix3* r)
 MCInline MCBool MCMatrix4Equal(MCMatrix4* l, MCMatrix4* r)
 {
     for (int i=0; i<16; i++) {
-        if(l->m[i] != r->m[i])
+        if(!MCSamefloat(l->m[i], r->m[i]))
             return false;
     }
     return true;
 }
 
-MCInline void MCMatrix4Copy(MCMatrix4* target, MCMatrix4* source)
+MCInline MCMatrix3* MCMatrix3Copy(float* src, MCMatrix3* dst)
 {
-    for (int i=0; i<16; i++) {
-        target->m[i] = source->m[i];
+    if (src && dst) {
+        for (int i=0; i<9; i++) {
+            dst->m[i] = src[i];
+        }
+        return dst;
     }
+    return null;
+}
+
+MCInline MCMatrix4* MCMatrix4Copy(float* src, MCMatrix4* dst)
+{
+    if (src && dst) {
+        for (int i=0; i<16; i++) {
+            dst->m[i] = src[i];
+        }
+        return dst;
+    }
+    return null;
 }
 
 //OpenGL use column-order save matrix

@@ -1,4 +1,4 @@
-#version 300 es
+//version is specified in MCGLContext
 
 precision highp sampler2D;
 precision highp float;

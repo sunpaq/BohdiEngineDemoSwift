@@ -13,7 +13,7 @@ oninit(MCCamera)
     if (init(MC3DNode)) {
         var(ratio) = MCRatioHDTV16x9;//MCRatioCameraFilm3x2;
         var(view_angle) = MCLensStandard50mmViewAngle;
-        var(depth_of_field) = 10;
+        var(depth_of_field) = 5000;
 
         //local spherical coordinate
         var(R_value) = 100;
@@ -84,7 +84,6 @@ compute(MCMatrix4, viewMatrix)
         MCMatrix4 R  = sobj->transform;
         MCMatrix4 Ri = MCMatrix4Invert(R, null);
         MCMatrix4 world = Ri;
-        
         MCMatrix4 m = MCMatrix4MakeLookAt(0, 0, r,
                                           0, 0, 0,
                                           0, 1, 0);
@@ -93,12 +92,10 @@ compute(MCMatrix4, viewMatrix)
         return MCMatrix4Multiply(m, world);
     }
     else if (obj->rotateMode == MCCameraRotateAR) {
-        MCMatrix4 R  = sobj->transform;
-        MCMatrix4 Ri = MCMatrix4Invert(R, null);
-        MCVector3 e  = MCGetEyeFromRotationMat4(R, r);
-        MCMatrix4 T  = MCMatrix4MakeTranslation(-e.x, -e.y, -e.z);
-        obj->eye = e;
-        return MCMatrix4Multiply(Ri, T);
+        MCMatrix4 Zup = MCMatrix4FromMatrix3(MCMatrix3MakeXAxisRotation(M_PI / 2.0));
+        MCMatrix4 R = sobj->transform;
+        //return R;
+        return MCMatrix4Multiply(R, Zup);
     }
     //default is MCCameraRotateAroundModelManual
     else {
@@ -111,12 +108,12 @@ compute(MCMatrix4, viewMatrix)
 compute(MCMatrix4, projectionMatrix)
 {
     as(MCCamera);
-    double near = cpt(Radius) - var(depth_of_field);
+    //double near = cpt(Radius) - var(depth_of_field);
     double far  = cpt(Radius) + var(depth_of_field);
-    
-    if (near <= 0) {
-        near = MCLensStandard50mm;
-    }
+    double near = MCLensStandard50mm;
+//    if (near <= 0) {
+//        near = MCLensStandard50mm;
+//    }
     
     return MCMatrix4MakePerspective(MCDegreesToRadians(obj->view_angle),
                                     var(ratio),
@@ -200,13 +197,7 @@ method(MCCamera, void, distanceScale, MCFloat scale)
 
 method(MCCamera, void, setRotationMat3, float mat3[9])
 {
-    if (mat3) {
-        MCMatrix3 m3 = {0};
-        for (int i=0; i<9; i++) {
-            m3.m[i] = mat3[i];
-        }
-        sobj->transform = MCMatrix4FromMatrix3(m3);
-    }
+    MC3DNode_rotateMat3(0, sobj, mat3, false);
 }
 
 onload(MCCamera)

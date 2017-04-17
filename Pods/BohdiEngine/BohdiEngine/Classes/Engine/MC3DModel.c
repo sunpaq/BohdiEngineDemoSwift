@@ -281,7 +281,7 @@ method(MC3DModel, MC3DModel*, initWithFilePathColor, const char* path, MCColorf 
     debug_log("MC3DModel - initWithFilePathColor: %s\n", path);
     
     BAObjMeta Meta;
-    BAObjModel* buff = BAObjModelNew(path, &Meta);
+    BAObjModel* buff = BAObjModelNewWithFilepath(path, &Meta);
     if (!buff) {
         error_log("MC3DModel initWithFilePathColor BAObjNew() failed exit\n");
         exit(-1);
@@ -345,7 +345,7 @@ method(MC3DModel, void, translateToOrigin, voida)
 {
     MCVector3 center = cpt(center);
     MCVector3 rcenter = MCVector3Reverse(center);
-    MC3DNode_translate(0, sobj, &rcenter);
+    MC3DNode_translateVec3(0, sobj, &rcenter, true);
 }
 
 //override

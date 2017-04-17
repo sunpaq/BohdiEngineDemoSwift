@@ -19,7 +19,7 @@ oninit(MCLight)
         obj->specularLightStrength = MCVector3Make(0.1, 0.1, 0.1);
 
         obj->lightColor    = MCVector3Make(1.0, 1.0, 1.0);
-        obj->lightPosition = MCVector3Make(1.0, 1.0, 1.0);
+        obj->lightPosition = MCVector3Make(0, 0, -1000);
 
         obj->dataChanged = true;
         return obj;

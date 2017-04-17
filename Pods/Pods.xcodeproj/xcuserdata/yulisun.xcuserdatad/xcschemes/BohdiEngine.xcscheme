@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '76AB0DC266B9AC42E78ED7D043BE76E4'
+               BlueprintIdentifier = '02631DB64497D64879E6405DD0BD2684'
                BlueprintName = 'BohdiEngine'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'BohdiEngine.framework'>

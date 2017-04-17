@@ -176,7 +176,9 @@ MCInline BAObjModel* BAObjAlloc(BAObjMeta* meta)
     return null;
 }
 
+BAObjModel* BAObjModelNewWithFilepath(const char* filepath, BAObjMeta* meta);
 BAObjModel* BAObjModelNew(const char* filename, BAObjMeta* meta);
+
 void BAObjRelease(BAObjModel* buff);
 
 #endif /* MC3DFileParser_h */

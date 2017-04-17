@@ -227,18 +227,10 @@ void parseObj(BAObjModel* object, const char* file)
     }
 }
 
-BAObjModel* BAObjModelNew(const char* filename, BAObjMeta* meta)
+BAObjModel* BAObjModelNewWithFilepath(const char* filepath, BAObjMeta* meta)
 {
-    epcount = 0;
-    
     const char* assetbuff;
-//    if (isFilename(filename)) {
-//        char noext[256];
-//        MCString_filenameTrimExtension(filename, &noext);
-//        assetbuff = MCFileCopyContent(noext, "obj");
-//    }else{
-        assetbuff = MCFileCopyContentWithPath(filename);
-//    }
+    assetbuff = MCFileCopyContentWithPath(filepath);
 
     if (assetbuff) {
         parseObjMeta(meta, assetbuff);
@@ -262,9 +254,20 @@ BAObjModel* BAObjModelNew(const char* filename, BAObjMeta* meta)
         free((void*)assetbuff);
         return buff;
     }else{
-        error_log("MC3DObjParser - AAssetManager_open %s failed\n", filename);
+        error_log("MC3DObjParser - AAssetManager_open %s failed\n", filepath);
         return null;
     }
+}
+
+BAObjModel* BAObjModelNew(const char* filename, BAObjMeta* meta)
+{
+    char path[PATH_MAX] = {0};
+    if(MCFileGetPath(filename, path)) {
+        //error
+        return null;
+    }
+    
+    return BAObjModelNewWithFilepath(path, meta);
 }
 
 static void recursiveFreeBAMtlLibrary(BAMtlLibrary* lib)

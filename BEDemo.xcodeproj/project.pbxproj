@@ -8,9 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		04AC60FC3C9661C739D290CF /* Pods_BEDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC9ED362E70F1A6191D86F5 /* Pods_BEDemo.framework */; };
+		F838A67A1EA48E7B007B6657 /* MCGLRenderer.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F838A6741EA48E7B007B6657 /* MCGLRenderer.fsh */; };
+		F838A67B1EA48E7B007B6657 /* MCGLRenderer.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F838A6751EA48E7B007B6657 /* MCGLRenderer.vsh */; };
+		F838A67C1EA48E7B007B6657 /* MCSkyboxShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F838A6761EA48E7B007B6657 /* MCSkyboxShader.fsh */; };
+		F838A67D1EA48E7B007B6657 /* MCSkyboxShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F838A6771EA48E7B007B6657 /* MCSkyboxShader.vsh */; };
+		F838A67E1EA48E7B007B6657 /* MCSkysphereShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F838A6781EA48E7B007B6657 /* MCSkysphereShader.fsh */; };
+		F838A67F1EA48E7B007B6657 /* MCSkysphereShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F838A6791EA48E7B007B6657 /* MCSkysphereShader.vsh */; };
+		F838A6821EA49B7D007B6657 /* BEInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = F838A6811EA49B7D007B6657 /* BEInterface.m */; };
 		F83B120F1E70FBD0003F13F1 /* outer.mtl in Resources */ = {isa = PBXBuildFile; fileRef = F83B120D1E70FBD0003F13F1 /* outer.mtl */; };
 		F83B12101E70FBD0003F13F1 /* outer.obj in Resources */ = {isa = PBXBuildFile; fileRef = F83B120E1E70FBD0003F13F1 /* outer.obj */; };
-		F84958BF1E82330200ECC108 /* BEInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = F84958BE1E82330200ECC108 /* BEInterface.m */; };
 		F86EAEEE1E2CA4B100A46125 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */; };
 		F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */; };
 		F8AF1FE51E2C57BA009D0807 /* GLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF1FE41E2C57BA009D0807 /* GLViewController.swift */; };
@@ -18,14 +24,8 @@
 		F8AF1FEA1E2C57BA009D0807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */; };
 		F8AF1FED1E2C57BA009D0807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FEB1E2C57BA009D0807 /* LaunchScreen.storyboard */; };
 		F8AF1FF91E2C5B8C009D0807 /* BohdiEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AF1FF81E2C5B8C009D0807 /* BohdiEngine.framework */; };
-		F8B0004B1E8122FB00350307 /* CVViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8B0004A1E8122FB00350307 /* CVViewController.mm */; };
 		F8C5A0A51E655EC100B776E5 /* 2.obj in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A09E1E655EC100B776E5 /* 2.obj */; };
 		F8C5A0A61E655EC100B776E5 /* beengine.mtl in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A09F1E655EC100B776E5 /* beengine.mtl */; };
-		F8C5A0A71E655EC100B776E5 /* MCGLRenderer.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A0A11E655EC100B776E5 /* MCGLRenderer.fsh */; };
-		F8C5A0A81E655EC100B776E5 /* MCGLRenderer.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A0A21E655EC100B776E5 /* MCGLRenderer.vsh */; };
-		F8C5A0A91E655EC100B776E5 /* MCSkyboxShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A0A31E655EC100B776E5 /* MCSkyboxShader.fsh */; };
-		F8C5A0AA1E655EC100B776E5 /* MCSkyboxShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A0A41E655EC100B776E5 /* MCSkyboxShader.vsh */; };
-		F8D8BBF21E66A3A400229AE7 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D8BBF11E66A3A400229AE7 /* opencv2.framework */; };
 		FD0683691E7E9BE90036D552 /* AG_Model_Mesh_ArcaneDefense.tga in Resources */ = {isa = PBXBuildFile; fileRef = FD0683651E7E9BE90036D552 /* AG_Model_Mesh_ArcaneDefense.tga */; };
 		FD06836A1E7E9BE90036D552 /* arcanegolem.mtl in Resources */ = {isa = PBXBuildFile; fileRef = FD0683661E7E9BE90036D552 /* arcanegolem.mtl */; };
 		FD06836B1E7E9BE90036D552 /* arcanegolem.obj in Resources */ = {isa = PBXBuildFile; fileRef = FD0683671E7E9BE90036D552 /* arcanegolem.obj */; };
@@ -36,10 +36,16 @@
 		3645FE7E1610A1341927E532 /* Pods-BEDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BEDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BEDemo/Pods-BEDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		7DC9ED362E70F1A6191D86F5 /* Pods_BEDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BEDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA00336E23BE640A469C7656 /* Pods-BEDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BEDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BEDemo/Pods-BEDemo.release.xcconfig"; sourceTree = "<group>"; };
+		F838A6741EA48E7B007B6657 /* MCGLRenderer.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCGLRenderer.fsh; sourceTree = "<group>"; };
+		F838A6751EA48E7B007B6657 /* MCGLRenderer.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCGLRenderer.vsh; sourceTree = "<group>"; };
+		F838A6761EA48E7B007B6657 /* MCSkyboxShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCSkyboxShader.fsh; sourceTree = "<group>"; };
+		F838A6771EA48E7B007B6657 /* MCSkyboxShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCSkyboxShader.vsh; sourceTree = "<group>"; };
+		F838A6781EA48E7B007B6657 /* MCSkysphereShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCSkysphereShader.fsh; sourceTree = "<group>"; };
+		F838A6791EA48E7B007B6657 /* MCSkysphereShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCSkysphereShader.vsh; sourceTree = "<group>"; };
+		F838A6801EA49B7D007B6657 /* BEInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEInterface.h; sourceTree = "<group>"; };
+		F838A6811EA49B7D007B6657 /* BEInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEInterface.m; sourceTree = "<group>"; };
 		F83B120D1E70FBD0003F13F1 /* outer.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = outer.mtl; sourceTree = "<group>"; };
 		F83B120E1E70FBD0003F13F1 /* outer.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = outer.obj; sourceTree = "<group>"; };
-		F84958BD1E82330200ECC108 /* BEInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEInterface.h; sourceTree = "<group>"; };
-		F84958BE1E82330200ECC108 /* BEInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEInterface.m; sourceTree = "<group>"; };
 		F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		F8AF1FDF1E2C57BA009D0807 /* BEDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,14 +56,8 @@
 		F8AF1FEE1E2C57BA009D0807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8AF1FF41E2C5B00009D0807 /* BEDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BEDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		F8AF1FF81E2C5B8C009D0807 /* BohdiEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BohdiEngine.framework; path = "Pods/../build/Debug-iphoneos/BohdiEngine/BohdiEngine.framework"; sourceTree = "<group>"; };
-		F8B000491E8122FB00350307 /* CVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVViewController.h; sourceTree = "<group>"; };
-		F8B0004A1E8122FB00350307 /* CVViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVViewController.mm; sourceTree = "<group>"; };
 		F8C5A09E1E655EC100B776E5 /* 2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.obj; sourceTree = "<group>"; };
 		F8C5A09F1E655EC100B776E5 /* beengine.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = beengine.mtl; sourceTree = "<group>"; };
-		F8C5A0A11E655EC100B776E5 /* MCGLRenderer.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCGLRenderer.fsh; sourceTree = "<group>"; };
-		F8C5A0A21E655EC100B776E5 /* MCGLRenderer.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCGLRenderer.vsh; sourceTree = "<group>"; };
-		F8C5A0A31E655EC100B776E5 /* MCSkyboxShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCSkyboxShader.fsh; sourceTree = "<group>"; };
-		F8C5A0A41E655EC100B776E5 /* MCSkyboxShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MCSkyboxShader.vsh; sourceTree = "<group>"; };
 		F8D8BBF11E66A3A400229AE7 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = Pods/OpenCV/opencv2.framework; sourceTree = "<group>"; };
 		FD0683651E7E9BE90036D552 /* AG_Model_Mesh_ArcaneDefense.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = AG_Model_Mesh_ArcaneDefense.tga; sourceTree = "<group>"; };
 		FD0683661E7E9BE90036D552 /* arcanegolem.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arcanegolem.mtl; sourceTree = "<group>"; };
@@ -70,7 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8D8BBF21E66A3A400229AE7 /* opencv2.framework in Frameworks */,
 				F8AF1FF91E2C5B8C009D0807 /* BohdiEngine.framework in Frameworks */,
 				04AC60FC3C9661C739D290CF /* Pods_BEDemo.framework in Frameworks */,
 			);
@@ -98,6 +97,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F838A6731EA48E7B007B6657 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				F838A6741EA48E7B007B6657 /* MCGLRenderer.fsh */,
+				F838A6751EA48E7B007B6657 /* MCGLRenderer.vsh */,
+				F838A6761EA48E7B007B6657 /* MCSkyboxShader.fsh */,
+				F838A6771EA48E7B007B6657 /* MCSkyboxShader.vsh */,
+				F838A6781EA48E7B007B6657 /* MCSkysphereShader.fsh */,
+				F838A6791EA48E7B007B6657 /* MCSkysphereShader.vsh */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
 		F8AF1FD61E2C57BA009D0807 = {
 			isa = PBXGroup;
 			children = (
@@ -122,11 +134,9 @@
 				F8AF1FFA1E2C688E009D0807 /* Resources */,
 				F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */,
 				F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */,
+				F838A6801EA49B7D007B6657 /* BEInterface.h */,
+				F838A6811EA49B7D007B6657 /* BEInterface.m */,
 				F8AF1FE41E2C57BA009D0807 /* GLViewController.swift */,
-				F84958BD1E82330200ECC108 /* BEInterface.h */,
-				F84958BE1E82330200ECC108 /* BEInterface.m */,
-				F8B000491E8122FB00350307 /* CVViewController.h */,
-				F8B0004A1E8122FB00350307 /* CVViewController.mm */,
 				F8AF1FE61E2C57BA009D0807 /* Main.storyboard */,
 				F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */,
 				F8AF1FEB1E2C57BA009D0807 /* LaunchScreen.storyboard */,
@@ -147,8 +157,8 @@
 		F8C5A09C1E655EC100B776E5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F838A6731EA48E7B007B6657 /* shaders */,
 				F8C5A09D1E655EC100B776E5 /* models */,
-				F8C5A0A01E655EC100B776E5 /* shaders */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -163,17 +173,6 @@
 				F83B120E1E70FBD0003F13F1 /* outer.obj */,
 			);
 			path = models;
-			sourceTree = "<group>";
-		};
-		F8C5A0A01E655EC100B776E5 /* shaders */ = {
-			isa = PBXGroup;
-			children = (
-				F8C5A0A11E655EC100B776E5 /* MCGLRenderer.fsh */,
-				F8C5A0A21E655EC100B776E5 /* MCGLRenderer.vsh */,
-				F8C5A0A31E655EC100B776E5 /* MCSkyboxShader.fsh */,
-				F8C5A0A41E655EC100B776E5 /* MCSkyboxShader.vsh */,
-			);
-			path = shaders;
 			sourceTree = "<group>";
 		};
 		FD0683641E7E9BE90036D552 /* Arcanegolem */ = {
@@ -251,20 +250,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8C5A0A91E655EC100B776E5 /* MCSkyboxShader.fsh in Resources */,
 				F8C5A0A51E655EC100B776E5 /* 2.obj in Resources */,
 				F83B12101E70FBD0003F13F1 /* outer.obj in Resources */,
+				F838A67B1EA48E7B007B6657 /* MCGLRenderer.vsh in Resources */,
 				F8AF1FED1E2C57BA009D0807 /* LaunchScreen.storyboard in Resources */,
 				F8C5A0A61E655EC100B776E5 /* beengine.mtl in Resources */,
-				F8C5A0A71E655EC100B776E5 /* MCGLRenderer.fsh in Resources */,
 				FD06836B1E7E9BE90036D552 /* arcanegolem.obj in Resources */,
 				F8AF1FEA1E2C57BA009D0807 /* Assets.xcassets in Resources */,
+				F838A67D1EA48E7B007B6657 /* MCSkyboxShader.vsh in Resources */,
 				F8AF1FE81E2C57BA009D0807 /* Main.storyboard in Resources */,
+				F838A67E1EA48E7B007B6657 /* MCSkysphereShader.fsh in Resources */,
 				FD0683691E7E9BE90036D552 /* AG_Model_Mesh_ArcaneDefense.tga in Resources */,
-				F8C5A0AA1E655EC100B776E5 /* MCSkyboxShader.vsh in Resources */,
 				FD06836C1E7E9BE90036D552 /* ARMORREFLECT4.tga in Resources */,
-				F8C5A0A81E655EC100B776E5 /* MCGLRenderer.vsh in Resources */,
+				F838A67C1EA48E7B007B6657 /* MCSkyboxShader.fsh in Resources */,
+				F838A67A1EA48E7B007B6657 /* MCGLRenderer.fsh in Resources */,
 				F83B120F1E70FBD0003F13F1 /* outer.mtl in Resources */,
+				F838A67F1EA48E7B007B6657 /* MCSkysphereShader.vsh in Resources */,
 				FD06836A1E7E9BE90036D552 /* arcanegolem.mtl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +285,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		520278DCBFE98748844B14E0 /* [CP] Copy Pods Resources */ = {
@@ -324,11 +325,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F84958BF1E82330200ECC108 /* BEInterface.m in Sources */,
+				F838A6821EA49B7D007B6657 /* BEInterface.m in Sources */,
 				F8AF1FE51E2C57BA009D0807 /* GLViewController.swift in Sources */,
 				F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */,
 				F86EAEEE1E2CA4B100A46125 /* LandingViewController.swift in Sources */,
-				F8B0004B1E8122FB00350307 /* CVViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +461,7 @@
 				);
 				INFOPLIST_FILE = BEDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.schindler-sodec.BEDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oreisoft.bedemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BEDemo/BEDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -484,7 +484,7 @@
 				);
 				INFOPLIST_FILE = BEDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.schindler-sodec.BEDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = com.oreisoft.bedemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BEDemo/BEDemo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

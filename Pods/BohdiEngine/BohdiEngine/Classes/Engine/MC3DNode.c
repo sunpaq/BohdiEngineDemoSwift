@@ -97,41 +97,65 @@ method(MC3DNode, void, changeTexture, MCTexture* texture)
     obj->diffuseTexture = texture;
 }
 
-method(MC3DNode, void, translate, MCVector3* position)
+method(MC3DNode, void, resetTransform, MCMatrix4* transform)
 {
-    obj->transform = MCMatrix4Multiply(MCMatrix4MakeTranslation(position->x, position->y, position->z), obj->transform);
+    if (transform) {
+        obj->transform = *transform;
+    } else {
+        obj->transform = MCMatrix4Identity;
+    }
 }
 
-method(MC3DNode, void, rotateX, double degree)
+method(MC3DNode, void, translateVec3, MCVector3* position, MCBool incremental)
 {
-    //obj->transform = MCMatrix4Multiply(MCMatrix4MakeXAxisRotation(degree), obj->transform);
+    if (incremental) {
+        obj->transform = MCMatrix4Multiply(MCMatrix4MakeTranslation(position->x, position->y, position->z), obj->transform);
+    } else {
+        obj->transform = MCMatrix4MakeTranslation(position->x, position->y, position->z);
+    }
 }
 
-method(MC3DNode, void, rotateY, double degree)
+method(MC3DNode, void, scaleVec3, MCVector3* factors, MCBool incremental)
 {
-    //obj->transform = MCMatrix4Multiply(MCMatrix4MakeYAxisRotation(degree), obj->transform);
+    if (incremental) {
+        obj->transform = MCMatrix4Multiply(MCMatrix4MakeScale(factors->x, factors->y, factors->z), obj->transform);
+    } else {
+        obj->transform = MCMatrix4MakeScale(factors->x, factors->y, factors->z);
+    }
 }
 
-method(MC3DNode, void, rotateZ, double degree)
+method(MC3DNode, void, rotateMat3, float mat3[9], MCBool incremental)
 {
-    //obj->transform = MCMatrix4Multiply(MCMatrix4MakeZAxisRotation(degree), obj->transform);
+    if (mat3) {
+        MCMatrix3 m3 = {0};
+        for (int i=0; i<9; i++) {
+            m3.m[i] = mat3[i];
+        }
+        if (incremental) {
+            obj->transform = MCMatrix4Multiply(MCMatrix4FromMatrix3(m3), obj->transform);
+        } else {
+            obj->transform = MCMatrix4FromMatrix3(m3);
+        }
+    }
 }
 
-method(MC3DNode, void, scale, MCVector3* factors)
+method(MC3DNode, void, rotateMat4, float mat4[16], MCBool incremental)
 {
-    obj->transform = MCMatrix4Multiply(MCMatrix4MakeScale(factors->x, factors->y, factors->z), obj->transform);
+    if (mat4) {
+        MCMatrix4 m4 = {0};
+        for (int i=0; i<16; i++) {
+            m4.m[i] = mat4[i];
+        }
+        if (incremental) {
+            obj->transform = MCMatrix4Multiply(m4, obj->transform);
+        } else {
+            obj->transform = m4;
+        }
+    }
 }
 
 method(MC3DNode, void, update, MCGLContext* ctx)
 {
-    MCGLUniform f;
-    f.data.mat4 = var(transform);
-    MCGLContext_updateUniform(0, ctx, model_model, f.data);
-    
-    MCMatrix3 nor = MCMatrix3InvertAndTranspose(MCMatrix4GetMatrix3(var(transform)), NULL);
-    f.data.mat3 = nor;
-    MCGLContext_updateUniform(0, ctx, model_normal, f.data);
-    
     //update children
     MCLinkedListForEach(var(children),
                         MC3DNode* node = (MC3DNode*)item;
@@ -143,44 +167,50 @@ method(MC3DNode, void, update, MCGLContext* ctx)
 
 method(MC3DNode, void, draw, MCGLContext* ctx)
 {
-    MCGLContext_activateShaderProgram(0, ctx, 0);
-
-    //material
-    if (obj->material != null) {
-        if (obj->material->hidden == 1) {
-            return;
+    //draw self
+    //if (obj->visible) {
+        MCGLContext_activateShaderProgram(0, ctx, 0);
+        MCGLUniform f;
+        
+        //scale translate
+        if (!MCMatrix4Equal(&MCMatrix4Identity, &var(transform))) {
+            f.data.mat4 = var(transform);
+            MCGLContext_updateUniform(0, ctx, model_model, f.data);
         }
-        obj->material->dataChanged = true;
-        MCMaterial_prepareMatrial(0, obj->material, ctx);
-    }
-    
-    //draw self texture
-    if (obj->diffuseTexture != null) {
-        //ctx->diffuseTextureRef = obj->diffuseTexture;
-        glUniform1i(glGetUniformLocation(ctx->pid, "usetexture"), true);
-    } else {
-        //ctx->diffuseTextureRef = null;
-        glUniform1i(glGetUniformLocation(ctx->pid, "usetexture"), false);
-    }
-    
-//    if (obj->specularTexture != null) {
-//        ctx->specularTextureRef = obj->specularTexture;
-//    } else {
-//        ctx->specularTextureRef = null;
-//    }
-    
-    //batch setup
-    MCGLContext_setUniforms(0, ctx, 0);
-    
-    //draw self meshes
-    MCLinkedListForEach(var(meshes),
-                        MCMesh* mesh = (MCMesh*)item;
-                        if (mesh != null) {
-                            mesh->diffuseTextureRef  = obj->diffuseTexture;
-                            mesh->specularTextureRef = obj->specularTexture;
-                            MCMesh_prepareMesh(0, mesh, ctx);
-                            MCMesh_drawMesh(0, mesh, ctx);
-                        })
+        
+        MCMatrix3 nor = MCMatrix3InvertAndTranspose(MCMatrix4GetMatrix3(var(transform)), NULL);
+        f.data.mat3 = nor;
+        MCGLContext_updateUniform(0, ctx, model_normal, f.data);
+        
+        //material
+        if (obj->material != null) {
+            if (obj->material->hidden == 1) {
+                return;
+            }
+            obj->material->dataChanged = true;
+            MCMaterial_prepareMatrial(0, obj->material, ctx);
+        }
+        
+        //draw self texture
+        if (obj->diffuseTexture != null) {
+            glUniform1i(glGetUniformLocation(ctx->pid, "usetexture"), true);
+        } else {
+            glUniform1i(glGetUniformLocation(ctx->pid, "usetexture"), false);
+        }
+        
+        //batch setup
+        MCGLContext_setUniforms(0, ctx, 0);
+        
+        //draw self meshes
+        MCLinkedListForEach(var(meshes),
+                            MCMesh* mesh = (MCMesh*)item;
+                            if (mesh != null) {
+                                mesh->diffuseTextureRef  = obj->diffuseTexture;
+                                mesh->specularTextureRef = obj->specularTexture;
+                                MCMesh_prepareMesh(0, mesh, ctx);
+                                MCMesh_drawMesh(0, mesh, ctx);
+                            })
+    //}
     
     //draw children
     MCLinkedListForEach(var(children),
@@ -214,11 +244,11 @@ onload(MC3DNode)
         binding(MC3DNode, void, setAllVisible, MCBool visible);
         binding(MC3DNode, void, changeMatrial, MCMaterial* material);
         binding(MC3DNode, void, changeTexture, MCTexture* texture);
-        binding(MC3DNode, void, translate, MCVector3* position);
-        binding(MC3DNode, void, rotateX, double degree);
-        binding(MC3DNode, void, rotateY, double degree);
-        binding(MC3DNode, void, rotateZ, double degree);
-        binding(MC3DNode, void, scale, MCVector3* factors);
+        binding(MC3DNode, void, resetTransform, MCMatrix4* transform);
+        binding(MC3DNode, void, translateVec3, MCVector3* position, MCBool incremental);
+        binding(MC3DNode, void, rotateMat3, float mat3[9], MCBool incremental);
+        binding(MC3DNode, void, rotateMat4, float mat4[16], MCBool incremental);
+        binding(MC3DNode, void, scaleVec3, MCVector3* factors, MCBool incremental);
         binding(MC3DNode, void, update, voida);
         binding(MC3DNode, void, draw, voida);
         binding(MC3DNode, void, hide, voida);

@@ -169,6 +169,18 @@ method(MCLinkedList, void, delItem, MCItem* item)
     }
 }
 
+method(MCLinkedList, void, pushItem, MCItem* item)
+{
+    MCLinkedList_addItem(0, obj, item);
+}
+
+method(MCLinkedList, MCItem*, popItem, voida)
+{
+    if (cpt(count) > 0 && var(headItem)) {
+        MCLinkedList_delItem(0, obj, var(headItem));
+    }
+}
+
 method(MCLinkedList, void, insertAfterItem, MCItem* anchor, MCItem* item)
 {
     if (anchor != null && item != null) {
@@ -211,6 +223,8 @@ onload(MCLinkedList)
         binding(MCLinkedList, void, bye, voida);
         binding(MCLinkedList, void, addItem, MCItem* item);
         binding(MCLinkedList, void, delItem, MCItem* item);
+        binding(MCLinkedList, void, pushItem, MCItem* item);
+        binding(MCLinkedList, MCItem*, popItem, voida);
         binding(MCLinkedList, void, insertAfterItem, MCItem* anchor, MCItem* item);
         binding(MCLinkedList, void, insertBeforeItem, MCItem* anchor, MCItem* item);
         binding(MCLinkedList, MCLinkedList*, connectList, MCLinkedList* otherlist);

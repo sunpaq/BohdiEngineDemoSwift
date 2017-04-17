@@ -33,6 +33,11 @@ function(int, fillUniformLocation, MCGLUniform* uniform)
     return uniform->location;
 }
 
+method(MCGLContext, void, bye, voida)
+{
+    glDeleteProgram(var(pid));
+}
+
 method(MCGLContext, MCGLContext*, initWithShaderCode, const char* vcode, const char* fcode,
        const char* attribs[], size_t acount, MCGLUniformType types[], const char* uniforms[], size_t ucount)
 {
@@ -43,7 +48,7 @@ method(MCGLContext, MCGLContext*, initWithShaderCode, const char* vcode, const c
         glBindAttribLocation(obj->pid, i, attribs[i]);
     }
     
-    MCGLEngine_prepareShader(obj->pid, vcode, fcode);
+    MCGLEngine_prepareShader(obj->pid, vcode, fcode, "#version 300 es");
 
     //uniforms
     for (int i=0; i<ucount; i++) {
@@ -236,6 +241,7 @@ onload(MCGLContext)
     if (load(MCObject)) {
         mixing(int, setUniform, const char* name, int loc, MCGLUniform* uniform);
 
+        binding(MCGLContext, void, bye, voida);
         binding(MCGLContext, void, activateShaderProgram, voida);
         
         binding(MCGLContext, MCGLContext*, initWithShaderCode, const char* vcode, const char* fcode,

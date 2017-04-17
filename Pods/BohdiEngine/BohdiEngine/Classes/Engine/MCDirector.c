@@ -33,17 +33,6 @@ compute(MCGLContext*, contextHandler)
     return var(lastScene)->renderer->context;
 }
 
-compute(MCSkyboxCamera*, skyboxCameraHandler)
-{
-    as(MCDirector);
-    if (obj->lastScene) {
-        if (obj->lastScene->skyboxShow && obj->lastScene->skyboxRef) {
-            return obj->lastScene->skyboxRef->camera;
-        }
-    }
-    return null;
-}
-
 oninit(MCDirector)
 {
     if (init(MCObject)) {
@@ -51,14 +40,16 @@ oninit(MCDirector)
         var(currentWidth) = 0;
         var(currentHeight) = 0;
         
-        var(lightFollowCamera) = true;
         var(gyroscopeMode) = true;
+        var(lightFollowCamera) = true;
         var(deviceRotationMat3) = MCMatrix3Identity;
         
         var(lightHandler) = lightHandler;
         var(cameraHandler) = cameraHandler;
         var(contextHandler) = contextHandler;
-        var(skyboxCameraHandler) = skyboxCameraHandler;
+        
+        //var(skybox) = null;
+        //var(skysph) = null;
         
         var(skyboxThread) = new(MCThread);
         var(modelThread) = new(MCThread);
@@ -84,7 +75,10 @@ method(MCDirector, void, bye, voida)
 {
     if (obj->lastScene != null) {
         releaseScenes(0, obj, obj->lastScene);
+        obj->lastScene = null;
     }
+    //release(var(skybox));
+    //release(var(skysph));
     release(var(skyboxThread));
     release(var(modelThread));
 
@@ -93,12 +87,10 @@ method(MCDirector, void, bye, voida)
 
 method(MCDirector, void, updateAll, voida)
 {
-    if (var(lastScene) != null) {
+    if (obj && var(lastScene) != null) {
         if (var(gyroscopeMode)) {
             MCCamera_setRotationMat3(0, cpt(cameraHandler), obj->deviceRotationMat3.m);
-            if (computed(var(lastScene), isDrawSky)) {
-                MCSkyboxCamera_setRotationMat3(0, cpt(skyboxCameraHandler), obj->deviceRotationMat3.m);
-            }
+            MC3DScene_setRotationMat3(0, var(lastScene), obj->deviceRotationMat3.m);
         }
         if (var(lightFollowCamera) && cpt(lightHandler) && cpt(cameraHandler)) {
             cpt(lightHandler)->lightPosition = computed(cpt(cameraHandler), currentPosition);
@@ -111,7 +103,7 @@ method(MCDirector, void, updateAll, voida)
 method(MCDirector, int, drawAll, voida)
 {
     int fps = -1;
-    if (var(lastScene) != null) {
+    if (obj && var(lastScene) != null) {
         fps = MC3DScene_drawScene(0, var(lastScene), 0);
     }
     return fps;
@@ -120,33 +112,45 @@ method(MCDirector, int, drawAll, voida)
 method(MCDirector, void, setupMainScene, unsigned width, unsigned height)
 {
     MC3DScene* scene = ff(new(MC3DScene), initWithWidthHeightDefaultShader, width, height);
-    MCDirector_pushScene(0, obj, scene);
+    if (scene) {
+        releaseScenes(0, obj, obj->lastScene);
+        MCDirector_pushScene(0, obj, scene);
+        release(scene);
+    }
 }
 
 method(MCDirector, void, pushScene, MC3DScene* scene)
 {
     if (var(lastScene) == null) {
+        scene->next = null;
+        scene->prev = null;
         var(lastScene) = scene;
+        retain(scene);
     }else{
+        scene->next = null;
         scene->prev = var(lastScene);
         var(lastScene)->next = scene;
-        
         var(lastScene) = scene;
+        retain(scene);
     }
 }
 
 method(MCDirector, void, popScene, voida)
 {
-    ff(var(lastScene), lockCamera, true);
-    //first scene
-    if (var(lastScene) != null && var(lastScene)->prev != null) {
-        var(lastScene) = var(lastScene)->prev;
+    if (var(lastScene)) {
+        ff(var(lastScene), lockCamera, true);
+        MC3DScene* current = var(lastScene);
+        //first scene
+        if (current->prev == null) {
+            var(lastScene) = null;
+            release(current);
+        }
+        else {
+            var(lastScene) = current->next;
+            release(current);
+        }
+        ff(var(lastScene), lockCamera, false);
     }
-    //last scene
-    else if (var(lastScene) != null && var(lastScene)->next != null) {
-        var(lastScene) = var(lastScene)->next;
-    }
-    ff(var(lastScene), lockCamera, false);
 }
 
 method(MCDirector, void, resizeAllScene, int width, int height)
@@ -155,14 +159,9 @@ method(MCDirector, void, resizeAllScene, int width, int height)
         //no need to update
         return;
     }
-    MC3DScene* iter;
+    MC3DScene* iter = null;
     for (iter=var(lastScene); iter!=null; iter=iter->prev) {
-        if (iter->skyboxRef != null) {
-            superof(iter->skyboxRef->camera)->ratio = MCRatioMake(width, height);
-        }
-        if (iter->mainCamera != null) {
-            iter->mainCamera->ratio = MCRatioMake(width, height);
-        }
+        MC3DScene_resizeScene(0, iter, width, height);
     }
     var(currentWidth) = width;
     var(currentHeight) = height;
@@ -182,11 +181,11 @@ method(MCDirector, void, addModel, MC3DModel* model)
 {
     if(model && obj->lastScene && obj->lastScene->rootnode) {
         MC3DNode_addChild(0, obj->lastScene->rootnode, (MC3DNode*)model);
-        double df = computed(model, maxlength);
-        if (df < 1) {
-            df = 1;
-        }
-        cpt(cameraHandler)->depth_of_field = df*1.5;
+        double maxl  = computed(model, maxlength);
+        double scale = 10 / maxl;
+        MCVector3 scaleVec = MCVector3Make(scale, scale, scale);
+        MC3DNode_scaleVec3(0, &model->Super, &scaleVec, false);
+        debug_log("MCDirector - model maxlength=%lf scale=%lf\n", maxl, scale);
     }else{
         error_log("MCDirector add model(%p) failed [lastScene=%p rootnode=%p]\n",
                   model, obj->lastScene, obj->lastScene->rootnode);
@@ -197,19 +196,62 @@ method(MCDirector, void, addModelNamed, const char* name)
 {
     MC3DModel* model = new(MC3DModel);
     MC3DModel_initWithFileName(0, model, name);
-    MCDirector_cameraFocusOnModel(0, obj, model);
-    MCDirector_cameraFocusOn(0, obj, (MCVector3){0,0,0});
-    MCDirector_moveModelToOrigin(0, obj, model);
     MCDirector_addModel(0, obj, model);
 }
 
-method(MCDirector, void, cameraFocusOn, MCVector3 vertex)
+method(MCDirector, void, removeCurrentModel, voida)
+{
+    if (obj->lastScene) {
+        MCLinkedList* list = obj->lastScene->rootnode->children;
+        MCLinkedList_popItem(0, list, 0);
+    }
+}
+
+method(MCDirector, void, addSkyboxNamed, const char* names[6])
+{
+    if (obj->lastScene) {
+        MCSkybox* box = ff(new(MCSkybox), initWithFileNames, names);
+        if (box) {
+            MC3DScene_addSkybox(0, obj->lastScene, box);
+            release(box);
+        }
+    }
+}
+
+method(MCDirector, void, addSkysphereNamed, const char* name)
+{
+    if (obj->lastScene) {
+        MCSkysphere* sph = ff(new(MCSkysphere), initWithFileName, name);
+        if (sph) {
+            MC3DScene_addSkysph(0, obj->lastScene, sph);
+            release(sph);
+        }
+    }
+}
+
+method(MCDirector, void, removeCurrentSkybox, voida)
+{
+    if (obj->lastScene) {
+        MC3DScene_removeSkybox(0, obj->lastScene, 0);
+    }
+}
+
+method(MCDirector, void, removeCurrentSkysph, voida)
+{
+    if (obj->lastScene) {
+        MC3DScene_removeSkysph(0, obj->lastScene, 0);
+    }
+}
+
+method(MCDirector, void, cameraFocusOn, MCVector4 vertex)
 {
     MCCamera* c = computed(obj, cameraHandler);
     if (c != null) {
         c->lookat.x = vertex.x;
         c->lookat.y = vertex.y;
         c->lookat.z = vertex.z;
+        c->R_value  = vertex.w;
+        c->R_percent= 1.0;
     }
 }
 
@@ -275,6 +317,11 @@ onload(MCDirector)
         binding(MCDirector, void, addNode, MC3DNode* node);
         binding(MCDirector, void, addModel, MC3DModel* model);
         binding(MCDirector, void, addModelNamed, const char* name);
+        binding(MCDirector, void, removeCurrentModel, voida);
+        binding(MCDirector, void, addSkyboxNamed, const char* names[6]);
+        binding(MCDirector, void, addSkysphereNamed, const char* name);
+        binding(MCDirector, void, removeCurrentSkybox, voida);
+        binding(MCDirector, void, removeCurrentSkysph, voida);
         binding(MCDirector, void, cameraFocusOn, MCVector3 vertex);
         binding(MCDirector, void, cameraFocusOnModel, MC3DModel* model);
         binding(MCDirector, void, moveModelToOrigin, MC3DModel* model);

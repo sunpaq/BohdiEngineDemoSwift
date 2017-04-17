@@ -85,8 +85,8 @@ class GLViewController: GLKViewController {
 
         startLoading(closure: { BEAddModelNamed("2.obj") })
 
-//        BESetRotateCamera(LandingViewController.instance.rotateCameraSwitch.isOn)
-//        BESetWireFrameMode(LandingViewController.instance.wireFrameSwitch.isOn)
+        BESetDoesRotateCamera(LandingViewController.instance.rotateCameraSwitch.isOn)
+        BESetDoesDrawWireFrame(LandingViewController.instance.wireFrameSwitch.isOn)
         
         //setup core motion
         startDeviceMotion()
@@ -96,6 +96,10 @@ class GLViewController: GLKViewController {
         let width  = UInt32(self.view.bounds.width)
         let height = UInt32(self.view.bounds.height)
         BEResizeGL(width, height)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        BETeardownGL()
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {

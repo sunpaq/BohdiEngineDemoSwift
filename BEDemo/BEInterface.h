@@ -19,5 +19,7 @@ void BEPanGesture(float x, float y);
 void BEPinchGesture(float scale);
 
 void BEAddModelNamed(const char* fname);
+void BESetDoesRotateCamera(_Bool doesRotate);
+void BESetDoesDrawWireFrame(_Bool doesDrawWF);
 
 #endif /* BEMainLoop_h */

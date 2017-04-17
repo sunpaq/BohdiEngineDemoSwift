@@ -17,6 +17,14 @@ it, simply add the following line to your Podfile:
 pod "BohdiEngine"
 ```
 
+If you need to use the developing version:
+
+```
+target 'App' do
+    pod 'BohdiEngine', :git => 'https://github.com/sunpaq/BohdiEngine-pod.git', :branch => 'develop'
+end
+```
+
 ## Build your App use BohdiEngine
 
 Please notice that you should have default shaders and sample model in your
@@ -34,7 +42,7 @@ App's Resource folder. please just copy the following files:
     <PodRoot>/BohdiEngine/Assets/shaders
 
 for OpenGL setup and Engine usage, please check the Example of this Pod (Objective-C)
-there also have a demo written use swift: https://github.com/sunpaq/BohdiEngineDemoSwift
+there also have a [demo written use swift](https://github.com/sunpaq/BohdiEngineDemoSwift)
 
 ## Author
 

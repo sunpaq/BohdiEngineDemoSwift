@@ -36,6 +36,8 @@ class(MCLinkedList, MCObject,
 method(MCLinkedList, void, bye, voida);
 method(MCLinkedList, void, addItem, MCItem* item);
 method(MCLinkedList, void, delItem, MCItem* item);
+method(MCLinkedList, void, pushItem, MCItem* item);
+method(MCLinkedList, MCItem*, popItem, voida);
 method(MCLinkedList, void, insertAfterItem, MCItem* anchor, MCItem* item);
 method(MCLinkedList, void, insertBeforeItem, MCItem* anchor, MCItem* item);
 method(MCLinkedList, MCLinkedList*, connectList, MCLinkedList* otherlist);

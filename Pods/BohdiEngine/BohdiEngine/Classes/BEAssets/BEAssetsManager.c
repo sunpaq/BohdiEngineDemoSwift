@@ -86,6 +86,9 @@ int MCFileGetPath(const char* filename, char* buffer)
         if(url)  CFRelease(url);
         if(fname)CFRelease(fname);
         if(fext) CFRelease(fext);
+        pthread_mutex_unlock(&lock);
+        return 0;
+        
     } else {
         error_log("BEAssetManager can not find path of (%s).(%s)\n", basename, extension);
         if(fname)CFRelease(fname);
@@ -94,8 +97,6 @@ int MCFileGetPath(const char* filename, char* buffer)
         return -1;
     }
     
-    pthread_mutex_unlock(&lock);
-    return 0;
 #endif
 }
 
@@ -130,17 +131,27 @@ const char* MCFileCopyContentWithPath(const char* filepath)
         fseek(f, 0, SEEK_END);
         long size = ftell(f);
         fseek(f, 0, SEEK_SET);
-        char* const buffer = (char*)malloc(size * sizeof(char));
+        char* buffer = (char*)malloc(size);
+        if (!buffer) {
+            error_log("MCFileCopyContent(%s) can not alloc buffer\n", filepath);
+            return null;
+        }
+        memset(buffer, 0, size);
+        //copy
         char* iter = buffer;
-        
         if (f != NULL) {
             char c;
             while ((c = fgetc(f)) != EOF) {
-                *iter++ = c;
+                (*iter) = c;
+                iter++;
             }
-            *iter = NUL;
+            buffer[size] = NUL;
+            //*iter = NUL;
         }
-        
+        fclose(f);
+        if (buffer[0] != '#') {
+            
+        }
         return buffer;
     }else{
         error_log("MCFileCopyContent(%s) fopen return null\n", filepath);
