@@ -12,6 +12,7 @@ import CoreMotion
 
 class GLViewController: GLKViewController {
     
+    var renderer: BERenderer!
     var motionManager: CMMotionManager!
     var referenceAttitude: CMAttitude?
     
@@ -79,38 +80,29 @@ class GLViewController: GLKViewController {
         self.preferredFramesPerSecond = 60
         
         //setup BohdiEngine
-        let width  = UInt32(self.view.bounds.width)
-        let height = UInt32(self.view.bounds.height)
-        BESetupGL(width, height)
+        //let width  = UInt32(self.view.bounds.width)
+        //let height = UInt32(self.view.bounds.height)
+        renderer = BERenderer(frame:self.view.frame, doesOpaque:true, cameraRotateMode:BECameraRotateAroundModelManual)
+        
+        //BESetupGL(width, height)
 
-        startLoading(closure: { BEAddModelNamed("2.obj") })
+        startLoading(closure: {
+            self.renderer.addModelNamed("2.obj")
+        })
 
-        BESetDoesRotateCamera(LandingViewController.instance.rotateCameraSwitch.isOn)
-        BESetDoesDrawWireFrame(LandingViewController.instance.wireFrameSwitch.isOn)
+        renderer.doesAutoRotateCamera = LandingViewController.instance.rotateCameraSwitch.isOn
+        renderer.doesDrawWireFrame = LandingViewController.instance.wireFrameSwitch.isOn
         
         //setup core motion
         startDeviceMotion()
     }
     
     override func viewWillLayoutSubviews() {
-        let width  = UInt32(self.view.bounds.width)
-        let height = UInt32(self.view.bounds.height)
-        BEResizeGL(width, height)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        BETeardownGL()
+        renderer.resizeAllScene(self.view.bounds.size)
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
-//        if let att = getDeltaAttitude() {
-//            let mat = att.rotationMatrix
-//            BEPullRotateMatrix(mat.m11, mat.m12, mat.m13,
-//                               mat.m21, mat.m22, mat.m23,
-//                               mat.m31, mat.m32, mat.m33)
-//        }
-        BEUpdateGL()
-        BEDrawGL()
+        renderer.drawFrame()
     }
     
     override func didReceiveMemoryWarning() {
@@ -119,12 +111,12 @@ class GLViewController: GLKViewController {
     
     @IBAction func onPan(_ sender: Any) {
         let trans = (sender as! UIPanGestureRecognizer).translation(in: self.view)
-        BEPanGesture(Float(trans.x), Float(trans.y))
+        renderer.handlePanGesture(trans)
     }
     
     @IBAction func onPinch(_ sender: Any) {
         let zoom = (sender as! UIPinchGestureRecognizer).scale
-        BEPinchGesture(Float(zoom))
+        renderer.handlePinchGesture(Float(zoom))
     }
     
 }

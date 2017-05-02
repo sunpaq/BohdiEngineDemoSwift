@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "~/Dev/pods/BohdiEngine-pod"
 
 SPEC CHECKSUMS:
-  BohdiEngine: 6856322ae37d53be0eab24ea26dc717a4d5f6c1d
+  BohdiEngine: d21c6227f51f9e0de51fe686465a57e5c4164853
 
 PODFILE CHECKSUM: 4a73a683d0dcee75c828dea9df6427261252e48a
 
