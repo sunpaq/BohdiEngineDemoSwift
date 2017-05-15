@@ -50,8 +50,8 @@ typedef enum {
 method(MCFile, MCFile*, initWithPathName, char* pathname, int oflag);
 method(MCFile, MCFile*, initWithPathNameDefaultFlag, char* pathname);
 
-method(MCFile, size_t, readAllFromBegin, off_t offset);
-method(MCFile, size_t, readFromBegin, off_t offset, size_t nbytes);
+method(MCFile, ssize_t, readAllFromBegin, off_t offset);
+method(MCFile, ssize_t, readFromBegin, off_t offset, size_t nbytes);
 method(MCFile, size_t, readAtLastPosition, off_t offset, size_t nbytes);
 method(MCFile, size_t, readFromEnd, off_t offset, size_t nbytes);
 method(MCFile, size_t, writeToBegin, off_t offset, void* buf, size_t nbytes);

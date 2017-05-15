@@ -40,7 +40,7 @@ class(MCBST, MCObject,
 
 method(MCBST, void, bye, voida);
 method(MCBST, void, insertValue, MCGeneric newval);
-method(MCBST, void, traverseTree, void (*funcptr)(BSTNode* node));
+method(MCBST, void, traverseTree, BSTNode* (*funcptr)(BSTNode* node));
 method(MCBST, void, printTree, voida);
 
 /*

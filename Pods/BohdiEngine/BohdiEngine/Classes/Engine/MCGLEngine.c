@@ -41,6 +41,13 @@ utility(MCGLEngine, void, clearScreen, voida)
     //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
+utility(MCGLEngine, void, clearScreenWithColor, MCColorf color)
+{
+    glClearColor(color.R.f, color.G.f, color.B.f, color.A.f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
 utility(MCGLEngine, void, clearDepthBuffer, voida)
 {
     glClear(GL_DEPTH_BUFFER_BIT);
@@ -126,7 +133,7 @@ utility(MCGLEngine, GLuint, createShader, voida)
 
 utility(MCGLEngine, GLuint, prepareShader, GLuint Id, const char* vcode, const char* fcode, const char* version)
 {
-    GLuint vertShader, fragShader;
+    GLuint vertShader=0, fragShader=0;
     MCGLEngine_compileShader(&vertShader, GL_VERTEX_SHADER, vcode, version);
     glAttachShader(Id, vertShader);
 
@@ -179,14 +186,14 @@ utility(MCGLEngine, GLuint, prepareShader, GLuint Id, const char* vcode, const c
     return Id;
 }
 
-utility(MCGLEngine, int, prepareShaderName, GLuint Id, const char* vname, const char* fname, const char* version)
+utility(MCGLEngine, int, prepareShaderName, GLuint Id, const char* bundlename, const char* vname, const char* fname, const char* version)
 {
     char vpath[PATH_MAX] = {0};
-    if(MCFileGetPath(vname, vpath)) return -1;
+    if(MCFileGetPathFromBundle(bundlename, vname, vpath)) return -1;
     char* vcode = (char*)MCFileCopyContentWithPath(vpath);
     
     char fpath[PATH_MAX] = {0};
-    if(MCFileGetPath(fname, fpath)) return -1;
+    if(MCFileGetPathFromBundle(bundlename, fname, fpath)) return -1;
     char* fcode = (char*)MCFileCopyContentWithPath(fpath);
     
     MCGLEngine_prepareShader(Id, vcode, fcode, version);

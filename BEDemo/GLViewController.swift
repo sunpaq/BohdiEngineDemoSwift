@@ -16,7 +16,6 @@ class GLViewController: GLKViewController {
     var motionManager: CMMotionManager!
     var referenceAttitude: CMAttitude?
     
-    //@objc static var instance: ViewController!
     var indicator: UIActivityIndicatorView!
     
     func startLoading(closure: @escaping ()->()) {
@@ -66,7 +65,6 @@ class GLViewController: GLKViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ViewController.instance = self
         indicator = UIActivityIndicatorView.init(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         
         //setup GL context
@@ -80,19 +78,11 @@ class GLViewController: GLKViewController {
         self.preferredFramesPerSecond = 60
         
         //setup BohdiEngine
-        //let width  = UInt32(self.view.bounds.width)
-        //let height = UInt32(self.view.bounds.height)
-        renderer = BERenderer(frame:self.view.frame, doesOpaque:true, cameraRotateMode:BECameraRotateAroundModelManual)
-        
-        //BESetupGL(width, height)
-
-        startLoading(closure: {
-            self.renderer.addModelNamed("2.obj")
-        })
-
+        renderer = BERenderer(frame:self.view.frame)
         renderer.doesAutoRotateCamera = LandingViewController.instance.rotateCameraSwitch.isOn
         renderer.doesDrawWireFrame = LandingViewController.instance.wireFrameSwitch.isOn
-        
+        renderer.addModelNamed("arcanegolem.obj")
+
         //setup core motion
         startDeviceMotion()
     }

@@ -32,7 +32,7 @@ method(MCSort, void, bye, voida)
 
 method(MCSort, MCSort*, initWithArray, MCGeneric* array, size_t length)
 {
-    var(array) = (MCGeneric*)malloc(sizeof(int) * length);
+    var(array) = (MCGeneric*)malloc(sizeof(MCGeneric) * length);
     for (size_t i=0; i<length; i++) {
         obj->array[i] = array[i];
     }

@@ -491,7 +491,7 @@ void mc_unlock(volatile MCInt* lock_p);
  */
 
 MCInline MCBool mc_compare_key(const char* dest, const char* src) {
-    if (dest && src) {
+    if (dest != null && src != null) {
         return (strcmp(dest, src) == 0);
     }else{
         return false;

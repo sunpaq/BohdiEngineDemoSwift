@@ -11,6 +11,36 @@
 #include "MCGLContext.h"
 #include "MCCamera.h"
 
+static const char* vsource = S(precision highp float;
+                               precision mediump int;
+                               
+                               layout (location=0) in vec3 position;
+                               
+                               uniform mat4 boxViewMatrix;
+                               uniform mat4 boxProjectionMatrix;
+                               out vec3 TexCoords;
+                               
+                               void main() {
+                                   gl_Position = boxProjectionMatrix * boxViewMatrix * vec4(position, 1.0);
+                                   TexCoords = position;
+                               }
+);//end vsource
+
+static const char* fsource = S(precision highp sampler3D;
+                               precision highp float;
+                               precision lowp int;
+                               const float Epsilon = 0.0000001;
+                               
+                               in vec3 TexCoords;
+                               uniform samplerCube cubeSampler;
+                               
+                               out vec4 color;
+                               
+                               void main() {
+                                   color = texture(cubeSampler, TexCoords);
+                               }
+);//end fsource
+
 static GLfloat skyboxVertices[] = {
     -1.0f, -1.0f, -1.0f, //000 0
     -1.0f, -1.0f,  1.0f, //001 1
@@ -64,7 +94,7 @@ method(MCSkybox, void, bye, voida)
 method(MCSkybox, MCSkybox*, initWithCubeTexture, BECubeTextureData* cubetex)
 {
     //Shader
-    MCGLContext_initWithShaderName(0, var(ctx), "MCSkyboxShader.vsh", "MCSkyboxShader.fsh",
+    MCGLContext_initWithShaderCode(0, var(ctx), vsource, fsource,
                                    (const char* []){
                                        "position"
                                    }, 1,

@@ -475,7 +475,7 @@ static MCBool override_samekeyitem(mc_hashitem* item, mc_hashitem* newitem, cons
         item->key   = newitem->key;
         item->hash  = newitem->hash;
         //free the new item!
-        error_log("[%s]:override-item[%d/%s]\n", classname, item->hash, item->key);
+        runtime_log("[%s]:override-item[%d/%s]\n", classname, item->hash, item->key);
         free(newitem);
         return true;
     }
@@ -543,23 +543,21 @@ mc_hashitem* get_item_byhash(mc_hashtable* const table_p, const MCHash hashval, 
     }
     
     //level<MCHashTableLevelMax
-    MCHashTableIndex index;
-    MCHashTableSize tsize;
-    
-    mc_hashitem* res=null;
-    tsize = get_tablesize(table_p->level);
+    MCHashTableSize tsize = get_tablesize(table_p->level);
+    MCHashTableIndex firsti = firstHashIndex(hashval, tsize);
+    mc_hashitem* res = get_item_byindex(table_p, firsti);
     //first probe
-    index = firstHashIndex(hashval, tsize);
-    if((res=get_item_byindex(table_p, index)) == null) {
-        //second probe
-        index = secondHashIndex(hashval, tsize, index);
-        if ((res=get_item_byindex(table_p, index)) == null)
-            return null;
+    if (res == null) {
+        res = get_item_byindex(table_p, secondHashIndex(hashval, tsize, firsti));
+    }
+    //second probe
+    if (res == null) {
+        return null;
     }
     //found but have chain
-    if (res->next) {
+    if (res && res->next) {
         for(; res!=null; res=res->next) {
-            if(mc_compare_key(refkey, res->key)){
+            if(strcmp(refkey, res->key) == 0){
                 runtime_log("key hit a item [%s] in chain\n", res->key);
                 table_p->cache = res;
                 return res;
@@ -567,8 +565,10 @@ mc_hashitem* get_item_byhash(mc_hashtable* const table_p, const MCHash hashval, 
         }
     }
     //compare key
-    if (!mc_compare_key(refkey, res->key))
-        return null;
+    if (res && res->key) {
+        if (strcmp(refkey, res->key) != 0)
+            return null;
+    }
     //pass all the check
     table_p->cache = res;
     return res;
@@ -579,7 +579,7 @@ mc_hashitem* get_item_byhash(mc_hashtable* const table_p, const MCHash hashval, 
  */
 
 //	Memory Allocators
-// 
+//
 //	alternative allocators in APUE
 //	1. libmalloc
 //	2. vmalloc

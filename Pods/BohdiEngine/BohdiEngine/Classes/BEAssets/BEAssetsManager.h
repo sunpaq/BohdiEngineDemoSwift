@@ -22,6 +22,8 @@ AAssetManager* MCFileGetAssetManager();
 
 //return 0 if success
 int MCFileGetPath(const char* filename, char* buffer);
+int MCFileGetPathFromBundle(const char* bundlename, const char* filename, char* buffer);
+
 const char* MCFileCopyContent(const char* filename);
 const char* MCFileCopyContentWithPath(const char* filepath);
 void MCFileReleaseContent(void* buff);

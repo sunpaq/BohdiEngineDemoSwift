@@ -63,6 +63,7 @@ class(MCGLRenderer, MCObject,
 method(MCGLRenderer, void, bye, voida);
 method(MCGLRenderer, MCGLRenderer*, initWithShaderCodeString, const char* vcode, const char* fcode);
 method(MCGLRenderer, MCGLRenderer*, initWithShaderFileName, const char* vshader, const char* fshader);
+method(MCGLRenderer, MCGLRenderer*, initWithDefaultShader, voida);
 //draw
 method(MCGLRenderer, void, updateNodes, MC3DNode* rootnode);
 method(MCGLRenderer, void, drawNodes, MC3DNode* rootnode);

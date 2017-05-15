@@ -3,8 +3,6 @@
 #include "MCGeometry.h"
 #include "MCIO.h"
 
-static size_t epcount = 0;
-
 void parseObjMeta(BAObjMeta* meta, const char* buff)
 {
     BAObjMetaInit(meta);

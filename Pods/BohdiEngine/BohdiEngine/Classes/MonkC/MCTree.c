@@ -27,17 +27,20 @@ oninit(MCBST)
     }
 }
 
-static void freenode(BSTNode* node) {
+static BSTNode* freenode(BSTNode* node) {
     if (node) {
         free(node);
+        return null;
     }
+    return node;
 }
 
-static void printnode(BSTNode* node) {
+static BSTNode* printnode(BSTNode* node) {
     if (node) {
         printf("node.value=%.2f [left=%p right=%p]\n",
                node->value.mcfloat, node->left, node->right);
     }
+    return node;
 }
 
 method(MCBST, void, bye, voida)
@@ -59,13 +62,13 @@ function(BSTNode*, insert, BSTNode* root, MCGeneric newval)
     return root;
 }
 
-function(void, traverse, BSTNode* root, void (*funcptr)(BSTNode* node))
+function(void, traverse, BSTNode* root, BSTNode* (*funcptr)(BSTNode* node))
 {
     as(MCBST);
     if (!root) return;
     if (root->left)
         traverse(0, obj, root->left, funcptr);
-    (*funcptr)(root);
+    root = (*funcptr)(root);
     if (root->right)
         traverse(0, obj, root->right, funcptr);
 }
@@ -75,7 +78,7 @@ method(MCBST, void, insertValue, MCGeneric newval)
     var(root) = insert(0, obj, var(root), newval);
 }
 
-method(MCBST, void, traverseTree, void (*funcptr)(BSTNode* node))
+method(MCBST, void, traverseTree, BSTNode* (*funcptr)(BSTNode* node))
 {
     traverse(0, obj, var(root), funcptr);
 }
@@ -172,8 +175,10 @@ function(TrieNode*, insertWordIntoParent, TrieNode* parent, const char* word)
             p = insertNodeIntoParent(0, obj, p, node);
             word++;
         }
-        //last node is leaf
-        node->isLeaf = true;
+        if (node) {
+            //last node is leaf
+            node->isLeaf = true;
+        }
         return node;
     }
     return null;
@@ -195,22 +200,22 @@ function(TrieNode*, retrievalNodeByKey, const char* word)
     return node;
 }
 
-function(MCArray*, keysWithPrefixFromIndex, const char* prefix, TrieNode* index)
-{
-    as(MCTrie);
-    MCArray* array = new(MCArray);
-    TrieNode* node = retrievalNodeByKey(0, obj, prefix);
-    for (int i=0; i<MCTrieWidth; i++) {
-        TrieNode* child = node->childs[i];
-        if (child->isLeaf) {
-            
-        } else {
-            
-        }
-    }
-    
-    return array;
-}
+//function(MCArray*, keysWithPrefixFromIndex, const char* prefix, TrieNode* index)
+//{
+//    as(MCTrie);
+//    MCArray* array = new(MCArray);
+//    TrieNode* node = retrievalNodeByKey(0, obj, prefix);
+//    for (int i=0; i<MCTrieWidth; i++) {
+//        TrieNode* child = node->childs[i];
+//        if (child->isLeaf) {
+//            
+//        } else {
+//            
+//        }
+//    }
+//    
+//    return array;
+//}
 
 method(MCTrie, void, insertValueByKey, MCGeneric newval, const char* word)
 {

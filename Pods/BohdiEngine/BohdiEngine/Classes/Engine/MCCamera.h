@@ -6,15 +6,17 @@
 #include "MC3DNode.h"
 
 typedef enum {
+    MCCameraFixedAtOrigin = 0,
     MCCameraRotateAroundModelManual,
     MCCameraRotateAroundModelByGyroscope,
-    MCCameraRotateAR
+    MCCameraRotateAR,
+    MCCameraRotateARWall
 } MCCameraRotateMode;
 
 class(MCCamera, MC3DNode,
     double ratio;
     double depth_of_field;
-    double view_angle;
+    double field_of_view;
     //double max_distance;
     MCVector3 lookat;
     MCVector3 eye;
@@ -56,7 +58,8 @@ method(MCCamera, void, printDebugInfo, voida);
 #define MCLensLong100mm    (0.100)
 #define MCLensLong200mm    (0.200)
 #define MCLensLong2000mm   (2.000)
-
+#define MCLensIphone29mm   (0.029)
+#define MCLensIphone28mm   (0.028)
 
 #define MCRatioCameraFilm3x2    (3.0/2.0)
 #define MCRatioOldTV4x3         (4.0/3.0)
@@ -65,4 +68,7 @@ method(MCCamera, void, printDebugInfo, voida);
 #define MCRatioMake(w, h)       ((double)w / (double)h)
 
 #define MCLensStandard50mmViewAngle (45.0)
+#define MCLensIphone29mmViewAngle (73.44)
+#define MCLensIphone28mmViewAngle (75.38)
+#define MCLensIphoneVideoViewAngle (58.632149)
 #endif

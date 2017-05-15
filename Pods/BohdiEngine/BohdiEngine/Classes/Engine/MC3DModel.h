@@ -18,6 +18,7 @@
 #include "MCMath.h"
 
 class(MC3DModel, MC3DNode,
+      int tag;
       char name[256];
       //char mtl[256];
 
@@ -37,6 +38,10 @@ method(MC3DModel, MC3DModel*, initWithFileName, const char* name);
 method(MC3DModel, MC3DModel*, initWithFilePathColor, const char* path, MCColorf color);
 method(MC3DModel, MC3DModel*, initWithFileNameColor, const char* name, MCColorf color);
 method(MC3DModel, void, translateToOrigin, voida);
+//rotate self (counter clock wise is positive)
+method(MC3DModel, void, rotateAroundSelfAxisX, double ccwRadian);
+method(MC3DModel, void, rotateAroundSelfAxisY, double ccwRadian);
+method(MC3DModel, void, rotateAroundSelfAxisZ, double ccwRadian);
 //override
 method(MC3DModel, void, update, MCGLContext* ctx);
 method(MC3DModel, void, draw, MCGLContext* ctx);

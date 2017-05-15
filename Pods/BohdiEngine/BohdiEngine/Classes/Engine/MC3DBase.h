@@ -252,9 +252,16 @@ MCInline MCMatrix4 MCMatrix4MakeLookAtByEulerAngle_EyeUp(MCVector3 lookat, doubl
         *upResult  = up;
     }
     
-    return MCMatrix4MakeLookAt(eye.x, eye.y, eye.z,
-                               lat.x, lat.y, lat.z,
-                               up.x,  up.y,  up.z);
+//    return MCMatrix4MakeLookAt(eye.x, eye.y, eye.z,
+//                               lat.x, lat.y, lat.z,
+//                               up.x,  up.y,  up.z);
+    
+    MCMatrix4 rotation = MCMatrix4MakeLookAt(eye.x, eye.y, eye.z,
+                                             0, 0, 0,
+                                             up.x,  up.y,  up.z);
+    
+    //first translate then rotate
+    return MCMatrix4Multiply(rotation, MCMatrix4MakeTranslation(lat.x, lat.y, lat.z));
 }
 
 //column major
@@ -281,6 +288,25 @@ MCInline MCVector3 MCGetEyeFromRotationMat4(MCMatrix4 mat4, double R)
 MCInline MCVector3 MCGetTranslateFromCombinedMat4(MCMatrix4 mat4)
 {
     return (MCVector3) { mat4.m[12], mat4.m[13], mat4.m[14] };
+}
+
+MCInline MCMatrix3 MCGetRotateFromCombinedMat4(MCMatrix4 mat4)
+{
+    return (MCMatrix3) {
+        mat4.m[0], mat4.m[1], mat4.m[2],
+        mat4.m[4], mat4.m[5], mat4.m[6],
+        mat4.m[8], mat4.m[9], mat4.m[10]
+    };
+}
+
+MCInline MCMatrix4 MCMatrix4CombineRT(MCMatrix3 R, MCVector3 T)
+{
+    return (MCMatrix4) {
+        R.m[0], R.m[1], R.m[2], 0,
+        R.m[3], R.m[4], R.m[5], 0,
+        R.m[6], R.m[7], R.m[8], 0,
+        T.v[0], T.v[1], T.v[2], 1,
+    };
 }
 
 #endif

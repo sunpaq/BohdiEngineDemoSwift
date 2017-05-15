@@ -22,7 +22,10 @@ class(MC3DNode, MCItem,
       MCInt zorder;
       MCBool visible;
       MCVector3 center;
+      
       MCMatrix4 transform;
+      MCMatrix4 viewtrans;
+
       MCMaterial* material;
       MCTexture* diffuseTexture;
       MCTexture* specularTexture;
@@ -33,6 +36,7 @@ class(MC3DNode, MCItem,
 method(MC3DNode, void, bye, voida);
 //0=success
 method(MC3DNode, MC3DErrCode, addChild, MC3DNode* child);
+method(MC3DNode, MC3DErrCode, addChildAtIndex, MC3DNode* child, int index);
 method(MC3DNode, MC3DErrCode, removeChild, MC3DNode* child);
 
 method(MC3DNode, void, copyChildrenFrom, MC3DNode* node);

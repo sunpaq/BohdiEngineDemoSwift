@@ -16,7 +16,10 @@ oninit(MC3DNode)
     if (init(MCItem)) {
         var(visible) = true;
         var(center) = MCVector3Make(0, 0, 0);
+        
         var(transform) = MCMatrix4Identity;
+        var(viewtrans) = MCMatrix4Identity;
+        
         var(material) = null;
         var(diffuseTexture) = null;
         var(specularTexture)= null;
@@ -44,6 +47,18 @@ method(MC3DNode, MC3DErrCode, addChild, MC3DNode* child)
 {
     child->visible = false;
     MCLinkedList_addItem(0, var(children), (MCItem*)child);
+    child->visible = true;
+    return MC3DSuccess;
+}
+
+method(MC3DNode, MC3DErrCode, addChildAtIndex, MC3DNode* child, int index)
+{
+    child->visible = false;
+    if (index < 0) {
+        MCLinkedList_addItem(0, var(children), (MCItem*)child);
+    } else {
+        MCLinkedList_addItemAtIndex(0, var(children), index, (MCItem*)child);
+    }
     child->visible = true;
     return MC3DSuccess;
 }
@@ -173,11 +188,13 @@ method(MC3DNode, void, draw, MCGLContext* ctx)
         MCGLUniform f;
         
         //scale translate
-        if (!MCMatrix4Equal(&MCMatrix4Identity, &var(transform))) {
-            f.data.mat4 = var(transform);
+        MCMatrix4 viewModel = MCMatrix4Multiply(var(viewtrans), var(transform));
+
+        if (!MCMatrix4Equal(&MCMatrix4Identity, &viewModel)) {
+            f.data.mat4 = viewModel;
             MCGLContext_updateUniform(0, ctx, model_model, f.data);
         }
-        
+    
         MCMatrix3 nor = MCMatrix3InvertAndTranspose(MCMatrix4GetMatrix3(var(transform)), NULL);
         f.data.mat3 = nor;
         MCGLContext_updateUniform(0, ctx, model_normal, f.data);
@@ -237,6 +254,7 @@ onload(MC3DNode)
     if (load(MCItem)) {
         binding(MC3DNode, void, bye, voida);
         binding(MC3DNode, void, addChild, MC3DNode* child);
+        binding(MC3DNode, MC3DErrCode, addChildAtIndex, MC3DNode* child, int index);
         binding(MC3DNode, void, removeChild, MC3DNode* child);
         binding(MC3DNode, void, copyChildrenFrom, MC3DNode* node);
         binding(MC3DNode, void, cleanUnvisibleChild, voida);

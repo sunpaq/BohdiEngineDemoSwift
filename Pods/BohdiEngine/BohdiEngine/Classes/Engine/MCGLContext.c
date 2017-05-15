@@ -48,7 +48,7 @@ method(MCGLContext, MCGLContext*, initWithShaderCode, const char* vcode, const c
         glBindAttribLocation(obj->pid, i, attribs[i]);
     }
     
-    MCGLEngine_prepareShader(obj->pid, vcode, fcode, "#version 300 es");
+    MCGLEngine_prepareShader(obj->pid, vcode, fcode, "#version 300 es\n");
 
     //uniforms
     for (int i=0; i<ucount; i++) {
