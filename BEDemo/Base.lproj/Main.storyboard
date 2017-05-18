@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,22 +34,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-nx-3de">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-nx-3de">
                                 <rect key="frame" x="345" y="387" width="51" height="31"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Enable Wire Frame Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOX-z5-xqO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Wire Frame Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOX-z5-xqO">
                                 <rect key="frame" x="20" y="387" width="192" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Enable Camera Rotation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tP-aM-xq6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Camera Rotation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tP-aM-xq6">
                                 <rect key="frame" x="20" y="343" width="184" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obO-at-PE0">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obO-at-PE0">
                                 <rect key="frame" x="345" y="343" width="51" height="31"/>
                             </switch>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ffs-mN-9U7">
@@ -78,16 +79,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oZF-3R-4Aa" firstAttribute="centerX" secondItem="pT5-oB-Jxm" secondAttribute="centerX" id="016-du-FHn"/>
-                            <constraint firstItem="6tP-aM-xq6" firstAttribute="top" secondItem="obO-at-PE0" secondAttribute="top" id="4to-AW-TON"/>
-                            <constraint firstItem="6tP-aM-xq6" firstAttribute="leading" secondItem="cOX-z5-xqO" secondAttribute="leading" id="AHh-Gp-sPZ"/>
-                            <constraint firstItem="6tP-aM-xq6" firstAttribute="top" secondItem="pT5-oB-Jxm" secondAttribute="bottom" constant="90" id="O66-hV-eYd"/>
+                            <constraint firstItem="Yqg-nx-3de" firstAttribute="top" secondItem="obO-at-PE0" secondAttribute="bottom" constant="13" id="6sG-BJ-YCb"/>
+                            <constraint firstItem="6tP-aM-xq6" firstAttribute="top" secondItem="obO-at-PE0" secondAttribute="top" id="I1n-aA-XIU"/>
+                            <constraint firstItem="6tP-aM-xq6" firstAttribute="leading" secondItem="VBD-sk-fcL" secondAttribute="leadingMargin" id="UBO-7m-wZs"/>
+                            <constraint firstItem="obO-at-PE0" firstAttribute="trailing" secondItem="VBD-sk-fcL" secondAttribute="trailingMargin" id="ave-rD-GuM"/>
+                            <constraint firstItem="6tP-aM-xq6" firstAttribute="leading" secondItem="cOX-z5-xqO" secondAttribute="leading" id="ekY-QS-3fg"/>
+                            <constraint firstItem="6tP-aM-xq6" firstAttribute="top" secondItem="pT5-oB-Jxm" secondAttribute="bottom" constant="90" id="hqU-qI-fC2"/>
                             <constraint firstItem="pT5-oB-Jxm" firstAttribute="centerY" secondItem="VBD-sk-fcL" secondAttribute="centerY" constant="-134.25" id="i4b-Eh-0xB"/>
+                            <constraint firstItem="obO-at-PE0" firstAttribute="leading" secondItem="Yqg-nx-3de" secondAttribute="leading" id="jUG-re-Gav"/>
                             <constraint firstItem="oZF-3R-4Aa" firstAttribute="centerX" secondItem="pT5-oB-Jxm" secondAttribute="centerX" id="lGn-VF-AIh"/>
                             <constraint firstItem="pT5-oB-Jxm" firstAttribute="centerX" secondItem="VBD-sk-fcL" secondAttribute="centerX" id="lMq-a8-ZHQ"/>
                             <constraint firstItem="oZF-3R-4Aa" firstAttribute="centerY" secondItem="pT5-oB-Jxm" secondAttribute="centerY" constant="-20.75" id="o9P-s2-Alx"/>
-                            <constraint firstItem="cOX-z5-xqO" firstAttribute="top" secondItem="Yqg-nx-3de" secondAttribute="top" id="pbS-wB-8Ou"/>
-                            <constraint firstItem="obO-at-PE0" firstAttribute="leading" secondItem="Yqg-nx-3de" secondAttribute="leading" id="udr-Xl-LdY"/>
-                            <constraint firstItem="Yqg-nx-3de" firstAttribute="top" secondItem="obO-at-PE0" secondAttribute="bottom" constant="13" id="znR-4h-Yy3"/>
+                            <constraint firstItem="cOX-z5-xqO" firstAttribute="top" secondItem="Yqg-nx-3de" secondAttribute="top" id="y0m-46-GMD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4yo-SS-5re"/>
@@ -173,7 +176,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dP6-Fo-RLg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7RT-t0-3V6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7RT-t0-3V6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
