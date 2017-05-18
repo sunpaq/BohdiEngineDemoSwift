@@ -23,6 +23,9 @@
 		FD06836A1E7E9BE90036D552 /* arcanegolem.mtl in Resources */ = {isa = PBXBuildFile; fileRef = FD0683661E7E9BE90036D552 /* arcanegolem.mtl */; };
 		FD06836B1E7E9BE90036D552 /* arcanegolem.obj in Resources */ = {isa = PBXBuildFile; fileRef = FD0683671E7E9BE90036D552 /* arcanegolem.obj */; };
 		FD06836C1E7E9BE90036D552 /* ARMORREFLECT4.tga in Resources */ = {isa = PBXBuildFile; fileRef = FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */; };
+		FDBB097B1ECDD4F600F79502 /* VRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB097A1ECDD4F600F79502 /* VRViewController.swift */; };
+		FDBB097D1ECDE68600F79502 /* baofengXD.txt in Resources */ = {isa = PBXBuildFile; fileRef = FDBB097C1ECDE68600F79502 /* baofengXD.txt */; };
+		FDBB097F1ECDF6F300F79502 /* panorama360.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDBB097E1ECDF6F300F79502 /* panorama360.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		FD0683661E7E9BE90036D552 /* arcanegolem.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arcanegolem.mtl; sourceTree = "<group>"; };
 		FD0683671E7E9BE90036D552 /* arcanegolem.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arcanegolem.obj; sourceTree = "<group>"; };
 		FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARMORREFLECT4.tga; sourceTree = "<group>"; };
+		FDBB097A1ECDD4F600F79502 /* VRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VRViewController.swift; path = Resources/VRViewController.swift; sourceTree = "<group>"; };
+		FDBB097C1ECDE68600F79502 /* baofengXD.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = baofengXD.txt; sourceTree = "<group>"; };
+		FDBB097E1ECDF6F300F79502 /* panorama360.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panorama360.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 				F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */,
 				F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */,
 				F8AF1FE41E2C57BA009D0807 /* GLViewController.swift */,
+				FDBB097A1ECDD4F600F79502 /* VRViewController.swift */,
 				F8AF1FE61E2C57BA009D0807 /* Main.storyboard */,
 				F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */,
 				F8AF1FEB1E2C57BA009D0807 /* LaunchScreen.storyboard */,
@@ -127,6 +134,8 @@
 		F8C5A09C1E655EC100B776E5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				FDBB097E1ECDF6F300F79502 /* panorama360.jpg */,
+				FDBB097C1ECDE68600F79502 /* baofengXD.txt */,
 				F8C5A09D1E655EC100B776E5 /* models */,
 			);
 			path = Assets;
@@ -220,11 +229,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8C5A0A51E655EC100B776E5 /* 2.obj in Resources */,
+				FDBB097D1ECDE68600F79502 /* baofengXD.txt in Resources */,
 				F83B12101E70FBD0003F13F1 /* outer.obj in Resources */,
 				F8AF1FED1E2C57BA009D0807 /* LaunchScreen.storyboard in Resources */,
 				F8C5A0A61E655EC100B776E5 /* beengine.mtl in Resources */,
 				FD06836B1E7E9BE90036D552 /* arcanegolem.obj in Resources */,
 				F8AF1FEA1E2C57BA009D0807 /* Assets.xcassets in Resources */,
+				FDBB097F1ECDF6F300F79502 /* panorama360.jpg in Resources */,
 				F8AF1FE81E2C57BA009D0807 /* Main.storyboard in Resources */,
 				FD0683691E7E9BE90036D552 /* AG_Model_Mesh_ArcaneDefense.tga in Resources */,
 				FD06836C1E7E9BE90036D552 /* ARMORREFLECT4.tga in Resources */,
@@ -288,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDBB097B1ECDD4F600F79502 /* VRViewController.swift in Sources */,
 				F8AF1FE51E2C57BA009D0807 /* GLViewController.swift in Sources */,
 				F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */,
 				F86EAEEE1E2CA4B100A46125 /* LandingViewController.swift in Sources */,

@@ -8,9 +8,7 @@
 typedef enum {
     MCCameraFixedAtOrigin = 0,
     MCCameraRotateAroundModelManual,
-    MCCameraRotateAroundModelByGyroscope,
-    MCCameraRotateAR,
-    MCCameraRotateARWall
+    MCCameraRotateAroundModelByGyroscope
 } MCCameraRotateMode;
 
 class(MCCamera, MC3DNode,
@@ -44,6 +42,11 @@ class(MCCamera, MC3DNode,
 
 method(MCCamera, void, bye, voida);
 method(MCCamera, MCCamera*, initWithWidthHeight, unsigned width, unsigned height);
+
+method(MCCamera, void, transformWorld, MCMatrix3* rotation, MCVector3 translation);
+method(MCCamera, void, transformSelf, MCMatrix3* rotation, MCVector3 translation);
+method(MCCamera, void, transformSelfByEularAngle, MCVector3 lookat, double R, double fai, double tht);
+
 method(MCCamera, void, move, MCFloat deltaFai, MCFloat deltaTht);
 method(MCCamera, void, fucus, MCFloat deltaX, MCFloat deltaY);
 method(MCCamera, void, pull, MCFloat deltaR);

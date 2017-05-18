@@ -100,28 +100,6 @@ compute(MCMatrix4, viewMatrix)
         
         return MCMatrix4Multiply(m, world);
     }
-    else if (obj->rotateMode == MCCameraRotateAR) {
-        MCMatrix4 Zup = MCMatrix4FromMatrix3(MCMatrix3MakeXAxisRotation(M_PI / 2.0));
-        MCMatrix4 R = sobj->transform;
-
-        //right multiply means apply on model
-        MCMatrix4 mat4 = MCMatrix4Multiply(R, Zup);
-        
-        obj->eye = MCGetTranslateFromCombinedMat4(R);
-        obj->R_value = MCVector3Length(obj->eye);
-        obj->R_percent = 1.0;
-
-        return mat4;
-    }
-    else if (obj->rotateMode == MCCameraRotateARWall) {
-        MCMatrix4 R = sobj->transform;
-        
-        obj->eye = MCGetTranslateFromCombinedMat4(R);
-        obj->R_value = MCVector3Length(obj->eye);
-        obj->R_percent = 1.0;
-        
-        return R;
-    }
     //default is MCCameraRotateAroundModelManual
     else {
         return MCMatrix4MakeLookAtByEulerAngle_EyeUp(obj->lookat, cpt(Radius),
@@ -167,6 +145,21 @@ method(MCCamera, MCCamera*, initWithWidthHeight, unsigned width, unsigned height
 method(MCCamera, void, reset, voida)
 {
     init(MCCamera);
+}
+
+method(MCCamera, void, transformWorld, MCMatrix3* rotation, MCVector3 translation)
+{
+    
+}
+
+method(MCCamera, void, transformSelf, MCMatrix3* rotation, MCVector3 translation)
+{
+
+}
+
+method(MCCamera, void, transformSelfByEularAngle, MCVector3 lookat, double R, double fai, double tht)
+{
+
 }
 
 //override
@@ -228,6 +221,9 @@ onload(MCCamera)
     if (load(MC3DNode)) {
         binding(MCCamera, void, bye, voida);
         binding(MCCamera, MCCamera*, initWithWidthHeight, unsigned width, unsigned height);
+        binding(MCCamera, void, transformWorld, MCMatrix3* rotation, MCVector3 translation);
+        binding(MCCamera, void, transformSelf, MCMatrix3* rotation, MCVector3 translation);
+        binding(MCCamera, void, transformSelfByEularAngle, MCVector3 lookat, double R, double fai, double tht);
         binding(MCCamera, void, move, MCFloat deltaFai, MCFloat deltaTht);
         binding(MCCamera, void, fucus, MCFloat deltaX, MCFloat deltaY);
         binding(MCCamera, void, pull, MCFloat deltaR);

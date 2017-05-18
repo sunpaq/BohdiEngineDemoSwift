@@ -41,6 +41,7 @@
 #import "MCUIBase.h"
 #import "MCWorld.h"
 #import "BEInterface.h"
+#import "BEMotionManager.h"
 #import "BEPanoramaViewController.h"
 #import "BERenderer.h"
 #import "BERunLoop.h"

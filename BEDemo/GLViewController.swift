@@ -82,7 +82,7 @@ class GLViewController: GLKViewController {
         renderer.doesAutoRotateCamera = LandingViewController.instance.rotateCameraSwitch.isOn
         renderer.doesDrawWireFrame = LandingViewController.instance.wireFrameSwitch.isOn
         renderer.addModelNamed("arcanegolem.obj")
-
+        
         //setup core motion
         startDeviceMotion()
     }
@@ -92,6 +92,9 @@ class GLViewController: GLKViewController {
     }
     
     override func glkView(_ view: GLKView, drawIn rect: CGRect) {
+        if let att = getDeltaAttitude() {
+            renderer.deviceRotateMat3 = att.rotationMatrix
+        }
         renderer.drawFrame()
     }
     
