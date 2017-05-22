@@ -23,6 +23,7 @@
 		FD06836A1E7E9BE90036D552 /* arcanegolem.mtl in Resources */ = {isa = PBXBuildFile; fileRef = FD0683661E7E9BE90036D552 /* arcanegolem.mtl */; };
 		FD06836B1E7E9BE90036D552 /* arcanegolem.obj in Resources */ = {isa = PBXBuildFile; fileRef = FD0683671E7E9BE90036D552 /* arcanegolem.obj */; };
 		FD06836C1E7E9BE90036D552 /* ARMORREFLECT4.tga in Resources */ = {isa = PBXBuildFile; fileRef = FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */; };
+		FDB954741ED2A59F00B6FA68 /* PanoramaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */; };
 		FDBB097B1ECDD4F600F79502 /* VRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB097A1ECDD4F600F79502 /* VRViewController.swift */; };
 		FDBB097D1ECDE68600F79502 /* baofengXD.txt in Resources */ = {isa = PBXBuildFile; fileRef = FDBB097C1ECDE68600F79502 /* baofengXD.txt */; };
 		FDBB097F1ECDF6F300F79502 /* panorama360.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDBB097E1ECDF6F300F79502 /* panorama360.jpg */; };
@@ -51,6 +52,7 @@
 		FD0683661E7E9BE90036D552 /* arcanegolem.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arcanegolem.mtl; sourceTree = "<group>"; };
 		FD0683671E7E9BE90036D552 /* arcanegolem.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arcanegolem.obj; sourceTree = "<group>"; };
 		FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARMORREFLECT4.tga; sourceTree = "<group>"; };
+		FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanoramaViewController.swift; sourceTree = "<group>"; };
 		FDBB097A1ECDD4F600F79502 /* VRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VRViewController.swift; path = Resources/VRViewController.swift; sourceTree = "<group>"; };
 		FDBB097C1ECDE68600F79502 /* baofengXD.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = baofengXD.txt; sourceTree = "<group>"; };
 		FDBB097E1ECDF6F300F79502 /* panorama360.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = panorama360.jpg; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				F8AF1FFA1E2C688E009D0807 /* Resources */,
 				F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */,
 				F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */,
+				FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */,
 				F8AF1FE41E2C57BA009D0807 /* GLViewController.swift */,
 				FDBB097A1ECDD4F600F79502 /* VRViewController.swift */,
 				F8AF1FE61E2C57BA009D0807 /* Main.storyboard */,
@@ -301,6 +304,7 @@
 			files = (
 				FDBB097B1ECDD4F600F79502 /* VRViewController.swift in Sources */,
 				F8AF1FE51E2C57BA009D0807 /* GLViewController.swift in Sources */,
+				FDB954741ED2A59F00B6FA68 /* PanoramaViewController.swift in Sources */,
 				F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */,
 				F86EAEEE1E2CA4B100A46125 /* LandingViewController.swift in Sources */,
 			);

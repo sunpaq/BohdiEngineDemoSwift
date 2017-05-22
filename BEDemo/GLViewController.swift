@@ -79,6 +79,8 @@ class GLViewController: GLKViewController {
         
         //setup BohdiEngine
         renderer = BERenderer(frame:self.view.frame)
+        renderer.setCameraRotateMode(BECameraRotateAroundModelByGyroscopeReverse)
+        
         renderer.doesAutoRotateCamera = LandingViewController.instance.rotateCameraSwitch.isOn
         renderer.doesDrawWireFrame = LandingViewController.instance.wireFrameSwitch.isOn
         renderer.addModelNamed("arcanegolem.obj")

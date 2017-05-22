@@ -23,34 +23,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="written use Monk-C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZF-3R-4Aa">
-                                <rect key="frame" x="132" y="204" width="151" height="20"/>
+                                <rect key="frame" x="131.66666666666669" y="203.66666666666666" width="151.00000000000006" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BohdiEngine" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pT5-oB-Jxm">
-                                <rect key="frame" x="118" y="215" width="179" height="38"/>
+                                <rect key="frame" x="117.66666666666669" y="214.66666666666666" width="179" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-nx-3de">
-                                <rect key="frame" x="345" y="387" width="51" height="31"/>
+                                <rect key="frame" x="345" y="386.66666666666669" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Wire Frame Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOX-z5-xqO">
-                                <rect key="frame" x="20" y="387" width="192" height="21"/>
+                                <rect key="frame" x="20" y="386.66666666666669" width="192" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Camera Rotation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tP-aM-xq6">
-                                <rect key="frame" x="20" y="343" width="184" height="21"/>
+                                <rect key="frame" x="20" y="342.66666666666669" width="184" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obO-at-PE0">
-                                <rect key="frame" x="345" y="343" width="51" height="31"/>
+                                <rect key="frame" x="345" y="342.66666666666669" width="51" height="31"/>
                             </switch>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ffs-mN-9U7">
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
@@ -68,9 +68,9 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="GSJ-EK-OsB"/>
-                                    <barButtonItem title="AR" id="seZ-Vu-6sl">
+                                    <barButtonItem title="Panorama" id="seZ-Vu-6sl">
                                         <connections>
-                                            <segue destination="cSr-qE-A1G" kind="show" id="bF3-FV-whG"/>
+                                            <segue destination="cSr-qE-A1G" kind="show" id="Bxp-1j-VAm"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="418" y="28"/>
         </scene>
-        <!--View Controller-->
+        <!--Panorama View Controller-->
         <scene sceneID="zau-Vo-Dw8">
             <objects>
-                <viewController id="cSr-qE-A1G" customClass="CVViewController" sceneMemberID="viewController">
+                <viewController id="cSr-qE-A1G" customClass="PanoramaViewController" customModule="BEDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7KR-BG-rz0"/>
                         <viewControllerLayoutGuide type="bottom" id="gd9-HV-oJL"/>
@@ -114,12 +114,29 @@
                     <view key="view" contentMode="scaleToFill" id="bOm-jO-dUk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z43-Dh-FO0" customClass="BEView">
+                                <rect key="frame" x="43.666666666666657" y="129.66666666666663" width="327" height="477"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="327" id="8MI-95-b22"/>
+                                    <constraint firstAttribute="height" constant="477" id="QBO-Ax-mlN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z43-Dh-FO0" firstAttribute="centerY" secondItem="bOm-jO-dUk" secondAttribute="centerY" id="E3U-m3-XSe"/>
+                            <constraint firstItem="z43-Dh-FO0" firstAttribute="centerX" secondItem="bOm-jO-dUk" secondAttribute="centerX" id="IOF-L5-pXs"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="beview" destination="z43-Dh-FO0" id="9sG-7d-eAL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZD-8G-zGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1245" y="821"/>
+            <point key="canvasLocation" x="1244.9275362318842" y="820.92391304347836"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="KHd-5T-nUj">
@@ -176,7 +193,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dP6-Fo-RLg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7RT-t0-3V6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7RT-t0-3V6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

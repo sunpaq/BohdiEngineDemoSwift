@@ -46,6 +46,7 @@
 #import "BERenderer.h"
 #import "BERunLoop.h"
 #import "BEViewController.h"
+#import "BEView.h"
 #import "MCArray.h"
 #import "MCArrayLinkedList.h"
 #import "MCBits.h"
