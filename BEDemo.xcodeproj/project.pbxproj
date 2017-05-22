@@ -12,7 +12,6 @@
 		F83B12101E70FBD0003F13F1 /* outer.obj in Resources */ = {isa = PBXBuildFile; fileRef = F83B120E1E70FBD0003F13F1 /* outer.obj */; };
 		F86EAEEE1E2CA4B100A46125 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */; };
 		F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */; };
-		F8AF1FE51E2C57BA009D0807 /* GLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF1FE41E2C57BA009D0807 /* GLViewController.swift */; };
 		F8AF1FE81E2C57BA009D0807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FE61E2C57BA009D0807 /* Main.storyboard */; };
 		F8AF1FEA1E2C57BA009D0807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */; };
 		F8AF1FED1E2C57BA009D0807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FEB1E2C57BA009D0807 /* LaunchScreen.storyboard */; };
@@ -23,6 +22,7 @@
 		FD06836A1E7E9BE90036D552 /* arcanegolem.mtl in Resources */ = {isa = PBXBuildFile; fileRef = FD0683661E7E9BE90036D552 /* arcanegolem.mtl */; };
 		FD06836B1E7E9BE90036D552 /* arcanegolem.obj in Resources */ = {isa = PBXBuildFile; fileRef = FD0683671E7E9BE90036D552 /* arcanegolem.obj */; };
 		FD06836C1E7E9BE90036D552 /* ARMORREFLECT4.tga in Resources */ = {isa = PBXBuildFile; fileRef = FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */; };
+		FD1833581ED2F79A00BFA695 /* D3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1833571ED2F79A00BFA695 /* D3ViewController.swift */; };
 		FDB954741ED2A59F00B6FA68 /* PanoramaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */; };
 		FDBB097B1ECDD4F600F79502 /* VRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB097A1ECDD4F600F79502 /* VRViewController.swift */; };
 		FDBB097D1ECDE68600F79502 /* baofengXD.txt in Resources */ = {isa = PBXBuildFile; fileRef = FDBB097C1ECDE68600F79502 /* baofengXD.txt */; };
@@ -38,7 +38,6 @@
 		F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		F8AF1FDF1E2C57BA009D0807 /* BEDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F8AF1FE41E2C57BA009D0807 /* GLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLViewController.swift; sourceTree = "<group>"; };
 		F8AF1FE71E2C57BA009D0807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8AF1FEC1E2C57BA009D0807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		FD0683661E7E9BE90036D552 /* arcanegolem.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arcanegolem.mtl; sourceTree = "<group>"; };
 		FD0683671E7E9BE90036D552 /* arcanegolem.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arcanegolem.obj; sourceTree = "<group>"; };
 		FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARMORREFLECT4.tga; sourceTree = "<group>"; };
+		FD1833571ED2F79A00BFA695 /* D3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = D3ViewController.swift; sourceTree = "<group>"; };
 		FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanoramaViewController.swift; sourceTree = "<group>"; };
 		FDBB097A1ECDD4F600F79502 /* VRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VRViewController.swift; path = Resources/VRViewController.swift; sourceTree = "<group>"; };
 		FDBB097C1ECDE68600F79502 /* baofengXD.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = baofengXD.txt; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 				F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */,
 				F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */,
 				FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */,
-				F8AF1FE41E2C57BA009D0807 /* GLViewController.swift */,
+				FD1833571ED2F79A00BFA695 /* D3ViewController.swift */,
 				FDBB097A1ECDD4F600F79502 /* VRViewController.swift */,
 				F8AF1FE61E2C57BA009D0807 /* Main.storyboard */,
 				F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */,
@@ -303,8 +303,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDBB097B1ECDD4F600F79502 /* VRViewController.swift in Sources */,
-				F8AF1FE51E2C57BA009D0807 /* GLViewController.swift in Sources */,
 				FDB954741ED2A59F00B6FA68 /* PanoramaViewController.swift in Sources */,
+				FD1833581ED2F79A00BFA695 /* D3ViewController.swift in Sources */,
 				F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */,
 				F86EAEEE1E2CA4B100A46125 /* LandingViewController.swift in Sources */,
 			);

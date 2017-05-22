@@ -10,21 +10,21 @@ import UIKit
 
 class PanoramaViewController: UIViewController {
     
-    @IBOutlet weak var beview: BEView!
-
+    @IBOutlet weak var panoview: BEPanoramaView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        beview.loadSkysphNamed("panorama360.jpg")
+        panoview.loadPanoramaTexture("panorama360.jpg")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        beview.startDraw3DContent()
+        panoview.startDraw()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        beview.stopDraw3DContent()
+        panoview.stopDraw()
     }
 
 }

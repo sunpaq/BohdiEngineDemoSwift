@@ -69,7 +69,7 @@ class VRViewController: UIViewController, GVRCardboardViewDelegate {
     }
     
     func cardboardView(_ cardboardView: GVRCardboardView!, draw eye: GVREye, with headTransform: GVRHeadTransform!) {
-                
+        
         let fov = headTransform.fieldOfView(for: eye)
         renderer.cameraFOVReset(Float(fov.top + fov.bottom))
         
