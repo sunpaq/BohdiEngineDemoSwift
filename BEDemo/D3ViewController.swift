@@ -28,8 +28,7 @@ class D3ViewController: UIViewController {
     }
     
     @IBAction func onFullscreen(_ sender: Any) {
-        beview.frame = self.view.frame
-        beview.renderer.scissorAllScene(self.view.frame)
+        beview.scaleToFullscreen()
     }
     
     @IBAction func onPan(_ sender: Any) {
