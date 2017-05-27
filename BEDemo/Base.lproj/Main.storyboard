@@ -178,11 +178,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z43-Dh-FO0" customClass="BEPanoramaView">
                                 <rect key="frame" x="43.666666666666657" y="129.66666666666663" width="327" height="477"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="327" id="8MI-95-b22"/>
                                     <constraint firstAttribute="height" constant="477" id="QBO-Ax-mlN"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="9jE-A8-xwT" appends="YES" id="rFp-JH-0EW"/>
+                                </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYc-EW-2pc">
+                                <rect key="frame" x="331" y="614" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetAction:" destination="cSr-qE-A1G" eventType="touchUpInside" id="8we-j7-E4N"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -190,11 +202,18 @@
                             <constraint firstItem="z43-Dh-FO0" firstAttribute="centerX" secondItem="bOm-jO-dUk" secondAttribute="centerX" id="IOF-L5-pXs"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="panoview" destination="z43-Dh-FO0" id="qEB-Kd-5rT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZD-8G-zGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="9jE-A8-xwT">
+                    <connections>
+                        <action selector="handlePanAction:" destination="cSr-qE-A1G" id="7o8-LZ-Om3"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1244.9275362318842" y="820.92391304347836"/>
         </scene>

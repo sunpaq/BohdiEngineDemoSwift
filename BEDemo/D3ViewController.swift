@@ -28,16 +28,16 @@ class D3ViewController: UIViewController {
     }
     
     @IBAction func onFullscreen(_ sender: Any) {
-        beview.scaleToFullscreen()
+        beview.frame = UIScreen.main.bounds
     }
     
     @IBAction func onPan(_ sender: Any) {
         let trans = (sender as! UIPanGestureRecognizer).translation(in: self.view)
-        beview.renderer.handlePanGesture(trans)
+        beview.renderer.rotateModel(byPanGesture: trans)
     }
     
     @IBAction func onPinch(_ sender: Any) {
         let zoom = (sender as! UIPinchGestureRecognizer).scale
-        beview.renderer.handlePinchGesture(Float(zoom))
+        beview.renderer.zoomModel(byPinchGesture: Float(zoom))
     }
 }

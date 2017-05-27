@@ -57,11 +57,8 @@ class VRViewController: UIViewController, GVRCardboardViewDelegate {
                                                       width: self.view.frame.width,
                                                       height: self.view.frame.height / 2.0))
         //renderer.setCameraRotateMode(BECameraFixedAtOrigin)
-        renderer.setCameraRotateMode(BECameraRotateAroundModelByGyroscope)
         renderer.doesAutoRotateCamera = true
-        renderer.addModelNamed("2.obj", scale: 1.0, rotateX: 0, tag: 11)
-        //renderer.setCameraRotateMode(BECameraRotateAroundModelByGyroscope)
-        //renderer.addSkysphNamed("panorama360.jpg")
+        renderer.addModelNamed("arcanegolem.obj", scale: 1.0, rotateX: 0, tag: 11)
     }
     
     func cardboardView(_ cardboardView: GVRCardboardView!, prepareDrawFrame headTransform: GVRHeadTransform!) {
@@ -73,27 +70,14 @@ class VRViewController: UIViewController, GVRCardboardViewDelegate {
         let fov = headTransform.fieldOfView(for: eye)
         renderer.cameraFOVReset(Float(fov.top + fov.bottom))
         
-        let mat4 = headTransform.headPoseInStartSpace()
-        renderer.deviceRotateMat3.m11 = Double(mat4.m00)
-        renderer.deviceRotateMat3.m12 = Double(mat4.m01)
-        renderer.deviceRotateMat3.m13 = Double(mat4.m02)
+        let headmat = headTransform.headPoseInStartSpace()
+        let eyemat  = headTransform.eye(fromHeadMatrix: eye)
+        let mat4 = GLKMatrix4Multiply(eyemat, headmat)
         
-        renderer.deviceRotateMat3.m21 = Double(mat4.m10)
-        renderer.deviceRotateMat3.m22 = Double(mat4.m11)
-        renderer.deviceRotateMat3.m23 = Double(mat4.m12)
-        
-        renderer.deviceRotateMat3.m31 = Double(mat4.m20)
-        renderer.deviceRotateMat3.m32 = Double(mat4.m21)
-        renderer.deviceRotateMat3.m33 = Double(mat4.m22)
-        
-        //renderer.deviceRotate(mat4)
-        //renderer.cameraTransformWorld(mat4)
+        renderer.cameraTransformWorld(mat4)
         let viewport = headTransform.viewport(for: eye)
         renderer.scissorAllScene(viewport)
-        
-        //renderer.updateModelTag(11, poseMat4F: )
         renderer.drawFrame()
-        
 
     }
 }

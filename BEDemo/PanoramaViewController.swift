@@ -12,6 +12,17 @@ class PanoramaViewController: UIViewController {
     
     @IBOutlet weak var panoview: BEPanoramaView!
     
+    @IBAction func resetAction(_ sender: Any) {
+        panoview.resetAttitude()
+    }
+    
+    @IBAction func handlePanAction(_ sender: Any) {
+        panoview.renderer.setCameraRotateMode(BECameraRotateAroundModelManual)
+        let pan = sender as! UIPanGestureRecognizer
+        let point = pan.translation(in: panoview)
+        panoview.renderer.rotateModel(byPanGesture: point)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         panoview.loadPanoramaTexture("panorama360.jpg")
@@ -26,5 +37,6 @@ class PanoramaViewController: UIViewController {
         super.viewWillDisappear(animated)
         panoview.stopDraw()
     }
+
 
 }
