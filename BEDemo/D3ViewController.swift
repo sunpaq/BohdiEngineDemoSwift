@@ -38,6 +38,6 @@ class D3ViewController: UIViewController {
     
     @IBAction func onPinch(_ sender: Any) {
         let zoom = (sender as! UIPinchGestureRecognizer).scale
-        beview.renderer.zoomModel(byPinchGesture: Float(zoom))
+        beview.renderer.zoomModel(byPinchGesture: zoom)
     }
 }
