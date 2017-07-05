@@ -73,7 +73,7 @@ int MCFile_isPathExist(char* pathname);
 int MCFile_chmod(char* pathname, mode_t mode);
 int MFFile_truncateFileTo(char* pathname, off_t length);
 mode_t MCFile_setNewFilePermissionMask4Process(mode_t cmask);
-void MCFile_flushAllCacheToDisk();
+void MCFile_flushAllCacheToDisk(void);
 int MCFile_flushAFileCacheToDisk(int fd);
 int MCFile_createSymbolLink(char* pathname, char* linkname);
 int MCFile_createDirectory(char* pathname);

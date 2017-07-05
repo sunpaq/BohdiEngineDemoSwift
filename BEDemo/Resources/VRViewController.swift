@@ -34,7 +34,7 @@ class VRViewController: UIViewController, GVRCardboardViewDelegate {
         runloop.startRunloop()
     }
     
-    func drawFrame() {
+    @objc func drawFrame() {
         cardboardView.render()
     }
     
