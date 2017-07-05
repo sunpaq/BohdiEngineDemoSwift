@@ -34,7 +34,7 @@ oninit(MCTexture)
 function(unsigned char*, loadImageRawdata, const char* path)
 {
     as(MCTexture);
-    var(data) = BE2DTextureData_newWithPath(path);
+    var(data) = BE2DTextureData_newWithPathname(path);
     if (var(data)) {
         obj->width  = obj->data->width;
         obj->height = obj->data->height;
@@ -90,13 +90,24 @@ method(MCTexture, MCTexture*, initWithFileNameMode, const char* name, MCTextureD
         return null;
     }
     obj->displayMode = mode;
-    loadImageRawdata(0, obj, pathbuff);
+    loadImageRawdata(obj, pathbuff);
     return obj;
 }
 
 method(MCTexture, MCTexture*, initWithFileName, const char* name)
 {
-    return MCTexture_initWithFileNameMode(0, obj, name, MCTextureRepeat);
+    return MCTexture_initWithFileNameMode(obj, name, MCTextureRepeat);
+}
+
+method(MCTexture, MCTexture*, initWith2DTexture, BE2DTextureData* tex)
+{
+    var(data) = tex;
+    if (var(data)) {
+        obj->width  = obj->data->width;
+        obj->height = obj->data->height;
+        return obj;
+    }
+    return null;
 }
 
 method(MCTexture, void, loadToGLBuffer, voida)
@@ -105,8 +116,8 @@ method(MCTexture, void, loadToGLBuffer, voida)
     MCGLEngine_activeTextureUnit(obj->textureUnit);
     MCGLEngine_bind2DTexture(obj->Id);
     
-    rawdataToTexbuffer(0, obj, GL_TEXTURE_2D);
-    setupTexParameter(0, obj, GL_TEXTURE_2D);
+    rawdataToTexbuffer(obj, GL_TEXTURE_2D);
+    setupTexParameter(obj, GL_TEXTURE_2D);
     //freeRawdata(0, obj, 0);
 }
 
@@ -129,6 +140,7 @@ onload(MCTexture)
         
         binding(MCTexture, MCTexture*, initWithFileNameMode, const char* name, MCTextureDisplayMode mode);
         binding(MCTexture, MCTexture*, initWithFileName, const char* name);
+        binding(MCTexture, MCTexture*, initWith2DTexture, BE2DTextureData* tex);
         binding(MCTexture, void, loadToGLBuffer, voida);
         binding(MCTexture, void, active, GLuint pid, const char* uniformName);
 

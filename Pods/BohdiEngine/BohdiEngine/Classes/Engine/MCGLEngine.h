@@ -36,6 +36,7 @@ utility(MCGLEngine, void, featureSwith, MCGLFeature feature, MCBool onOrOff);
 utility(MCGLEngine, void, flushCommandAsync, voida);
 utility(MCGLEngine, void, flushCommandBlock, voida);
 utility(MCGLEngine, void, clearScreen, voida);
+utility(MCGLEngine, void, clearScreenWithColor, MCColorf color);
 utility(MCGLEngine, void, clearDepthBuffer, voida);
 utility(MCGLEngine, void, clearStencilBuffer, voida);
 utility(MCGLEngine, void, setClearScreenColor, MCColorf color);
@@ -51,8 +52,9 @@ utility(MCGLEngine, void, bindCubeTexture, MCUInt tid);
 utility(MCGLEngine, void, bind2DTexture, MCUInt tid);
 //Shader
 utility(MCGLEngine, GLuint, createShader, voida);
-utility(MCGLEngine, GLuint, prepareShader, GLuint Id, const char* vcode, const char* fcode);
-utility(MCGLEngine, int, prepareShaderName, GLuint Id, const char* vname, const char* fname);
+utility(MCGLEngine, GLuint, prepareShader, GLuint Id, const char* vcode, const char* fcode, const char* version);
+//pass bundlename = null to get main bundle
+utility(MCGLEngine, int, prepareShaderName, GLuint Id, const char* bundlename, const char* vname, const char* fname, const char* version);
 utility(MCGLEngine, void, tryUseShaderProgram, GLuint Id);
 //Alpha Blend
 utility(MCGLEngine, void, enableTransparency, MCBool enable);
@@ -63,10 +65,12 @@ utility(MCGLEngine, void, enablePolygonOffset, MCBool enable);
 utility(MCGLEngine, int, tickFPS, MCClock* clock);
 
 //Shader
-utility(MCGLEngine, MCBool, compileShader, GLuint* shader, GLenum type, const GLchar *source);
+utility(MCGLEngine, MCBool, compileShader, GLuint* shader, GLenum type, const GLchar *source, const GLchar *version);
 utility(MCGLEngine, int, linkProgram, GLuint prog);
 utility(MCGLEngine, int, validateProgram, GLuint prog);
 
-
+//Viewport
+utility(MCGLEngine, void, setViewport, int x, int y, int width, int height);
+utility(MCGLEngine, void, setScissor, int x, int y, int width, int height);
 
 #endif /* MCGLEngine_h */

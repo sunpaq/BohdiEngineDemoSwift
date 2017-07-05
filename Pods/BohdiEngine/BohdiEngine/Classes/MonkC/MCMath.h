@@ -114,6 +114,8 @@ MCInline MCBool MCVector4Equal(MCVector4 v1, MCVector4 v2)
     return false;
 }
 
+
+
 MCInline MCQuaternion MCQuaternionFromVec3(MCVector3 v)
 {
     return (MCQuaternion){v.x, v.y, v.z, 0.0f};
@@ -195,6 +197,10 @@ MCInline MCVector3 MCVector3Normalize(MCVector3 vector)
 
 MCInline MCVector3 MCVector3Make(float x, float y, float z) {
     return (MCVector3){x, y, z};
+}
+
+MCInline MCVector4 MCVector4Make(float x, float y, float z, float w) {
+    return (MCVector4){x, y, z, w};
 }
 
 MCInline MCVector3 MCVector3MakeReverse(float x, float y, float z) {
@@ -328,29 +334,102 @@ MCInline MCVector3 MCNormalOfTriangle(MCVector3 v1, MCVector3 v2, MCVector3 v3) 
     return MCVector3Cross(MCVector3Sub(v2, v1), MCVector3Sub(v3, v1));
 }
 
-MCInline MCBool MCMatrix3Equal(MCMatrix3* l, MCMatrix3* r)
+MCInline MCBool MCMatrix3Equal(const MCMatrix3* l, const MCMatrix3* r)
 {
     for (int i=0; i<9; i++) {
-        if(l->m[i] != r->m[i])
+        if(!MCSamefloat(l->m[i], r->m[i]))
             return false;
     }
     return true;
 }
 
-MCInline MCBool MCMatrix4Equal(MCMatrix4* l, MCMatrix4* r)
+MCInline MCBool MCMatrix4Equal(const MCMatrix4* l, const MCMatrix4* r)
 {
     for (int i=0; i<16; i++) {
-        if(l->m[i] != r->m[i])
+        if(!MCSamefloat(l->m[i], r->m[i]))
             return false;
     }
     return true;
 }
 
-MCInline void MCMatrix4Copy(MCMatrix4* target, MCMatrix4* source)
+MCInline MCMatrix3* MCMatrix3Copy(float* src, MCMatrix3* dst)
 {
-    for (int i=0; i<16; i++) {
-        target->m[i] = source->m[i];
+    if (src && dst) {
+        for (int i=0; i<9; i++) {
+            dst->m[i] = src[i];
+        }
+        return dst;
     }
+    return null;
+}
+
+MCInline MCMatrix4* MCMatrix4CopyDiff(float* src, MCMatrix4* dst, float delta)
+{
+    if (src && dst) {
+        for (int i=0; i<16; i++) {
+            if (fabs(dst->m[i] - src[i]) > delta) {
+                dst->m[i] = src[i];
+            }
+        }
+        return dst;
+    }
+    return null;
+}
+
+MCInline MCMatrix4* MCMatrix4Copy(float* src, MCMatrix4* dst)
+{
+    if (src && dst) {
+        for (int i=0; i<16; i++) {
+            dst->m[i] = src[i];
+        }
+        return dst;
+    }
+    return null;
+}
+
+MCInline MCMatrix4* MCMatrix4CopyDouble(double* src, MCMatrix4* dst)
+{
+    if (src && dst) {
+        for (int i=0; i<16; i++) {
+            dst->m[i] = (float)src[i];
+        }
+        return dst;
+    }
+    return null;
+}
+
+//column major data order!
+MCInline MCMatrix4 MCMatrix4Make(float* data)
+{
+    MCMatrix4 mat;
+    MCMatrix4Copy(data, &mat);
+    return mat;
+}
+
+MCInline MCMatrix4 MCMatrix4MakeDouble(double* data)
+{
+    MCMatrix4 mat;
+    MCMatrix4CopyDouble(data, &mat);
+    return mat;
+}
+
+MCInline MCMatrix3 MCMatrix3Multiply(MCMatrix3 l, MCMatrix3 r)
+{
+    MCMatrix3 m;
+    
+    m.m[0] = l.m[0] * r.m[0] + l.m[3] * r.m[1] + l.m[6] * r.m[2];
+    m.m[3] = l.m[0] * r.m[3] + l.m[3] * r.m[4] + l.m[6] * r.m[5];
+    m.m[6] = l.m[0] * r.m[6] + l.m[3] * r.m[7] + l.m[6] * r.m[8];
+
+    m.m[1] = l.m[1] * r.m[0] + l.m[4] * r.m[1] + l.m[7] * r.m[2];
+    m.m[4] = l.m[1] * r.m[3] + l.m[4] * r.m[4] + l.m[7] * r.m[5];
+    m.m[7] = l.m[1] * r.m[6] + l.m[4] * r.m[7] + l.m[7] * r.m[8];
+    
+    m.m[2] = l.m[2] * r.m[0] + l.m[5] * r.m[1] + l.m[8] * r.m[2];
+    m.m[5] = l.m[2] * r.m[3] + l.m[5] * r.m[4] + l.m[8] * r.m[5];
+    m.m[8] = l.m[2] * r.m[6] + l.m[5] * r.m[7] + l.m[8] * r.m[8];
+    
+    return m;
 }
 
 //OpenGL use column-order save matrix

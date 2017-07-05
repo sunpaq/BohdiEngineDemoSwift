@@ -22,7 +22,10 @@ class(MC3DNode, MCItem,
       MCInt zorder;
       MCBool visible;
       MCVector3 center;
+      
       MCMatrix4 transform;
+      MCMatrix4 viewtrans;
+
       MCMaterial* material;
       MCTexture* diffuseTexture;
       MCTexture* specularTexture;
@@ -33,20 +36,22 @@ class(MC3DNode, MCItem,
 method(MC3DNode, void, bye, voida);
 //0=success
 method(MC3DNode, MC3DErrCode, addChild, MC3DNode* child);
+method(MC3DNode, MC3DErrCode, addChildAtIndex, MC3DNode* child, int index);
 method(MC3DNode, MC3DErrCode, removeChild, MC3DNode* child);
+
 method(MC3DNode, void, copyChildrenFrom, MC3DNode* node);
 method(MC3DNode, void, cleanUnvisibleChild, voida);
-method(MC3DNode, int, childCount, voida);
+method(MC3DNode, int,  childCount, voida);
 method(MC3DNode, void, setAllVisible, MCBool visible);
 
 method(MC3DNode, void, changeMatrial, MCMaterial* material);
 method(MC3DNode, void, changeTexture, MCTexture* texture);
-
-method(MC3DNode, void, translate, MCVector3* position);
-method(MC3DNode, void, rotateX, double degree);
-method(MC3DNode, void, rotateY, double degree);
-method(MC3DNode, void, rotateZ, double degree);
-method(MC3DNode, void, scale, MCVector3* factors);
+//pass null use identity matrix
+method(MC3DNode, void, resetTransform, MCMatrix4* transform);
+method(MC3DNode, void, translateVec3, MCVector3* position, MCBool incremental);
+method(MC3DNode, void, rotateMat3, float mat3[9], MCBool incremental);
+method(MC3DNode, void, rotateMat4, float mat4[16], MCBool incremental);
+method(MC3DNode, void, scaleVec3, MCVector3* factors, MCBool incremental);
 
 //draw
 method(MC3DNode, void, update, MCGLContext* ctx);

@@ -11,9 +11,9 @@ compute(MCMatrix3, rotationMat3);
 oninit(MCCamera)
 {
     if (init(MC3DNode)) {
-        var(ratio) = MCRatioHDTV16x9;//MCRatioCameraFilm3x2;
-        var(view_angle) = MCLensStandard50mmViewAngle;
-        var(depth_of_field) = 10;
+        var(ratio) = MCRatioHDTV16x9;
+        var(field_of_view) = MCLensIphoneVideoViewAngle;
+        var(depth_of_field) = 100;
 
         //local spherical coordinate
         var(R_value) = 100;
@@ -27,7 +27,6 @@ oninit(MCCamera)
         
         var(Radius) = Radius;
         var(normal) = normal;
-        //var(modelViewMatrix) = modelViewMatrix;
         var(viewMatrix) = viewMatrix;
         var(projectionMatrix) = projectionMatrix;
         var(currentPosition) = currentPosition;
@@ -47,7 +46,7 @@ oninit(MCCamera)
 
 method(MCCamera, void, bye, voida)
 {
-    MC3DNode_bye(0, sobj, 0);
+    MC3DNode_bye(sobj, 0);
 }
 
 method(MCCamera, void, printDebugInfo, voida)
@@ -79,46 +78,37 @@ compute(MCMatrix4, viewMatrix)
 {
     as(MCCamera);
     double r = cpt(Radius);
-    
-    if (obj->rotateMode == MCCameraRotateAroundModelByGyroscope) {
-        MCMatrix4 R  = sobj->transform;
-        MCMatrix4 Ri = MCMatrix4Invert(R, null);
-        MCMatrix4 world = Ri;
-        
-        MCMatrix4 m = MCMatrix4MakeLookAt(0, 0, r,
-                                          0, 0, 0,
-                                          0, 1, 0);
-        
-        obj->eye = MCGetEyeFromRotationMat4(world, r);
-        return MCMatrix4Multiply(m, world);
+    if (obj->rotateMode == MCCameraRotateAroundModelManual) {
+        MCCamera_transformSelfByEularAngle(obj, obj->lookat, cpt(Radius), obj->fai, obj->tht);
     }
-    else if (obj->rotateMode == MCCameraRotateAR) {
-        MCMatrix4 R  = sobj->transform;
-        MCMatrix4 Ri = MCMatrix4Invert(R, null);
-        MCVector3 e  = MCGetEyeFromRotationMat4(R, r);
-        MCMatrix4 T  = MCMatrix4MakeTranslation(-e.x, -e.y, -e.z);
-        obj->eye = e;
-        return MCMatrix4Multiply(Ri, T);
+    else if (obj->rotateMode == MCCameraRotateAroundModelByGyroscope) {
+        sobj->transform = MCMatrix4MakeLookAt(0, 0, r, 0, 0, 0, 0, 1, 0);
     }
-    //default is MCCameraRotateAroundModelManual
+    else if (obj->rotateMode == MCCameraRotateAroundModelByGyroscopeReverse) {
+        sobj->transform = MCMatrix4MakeLookAt(0, 0, r, 0, 0, 0, 0, 1, 0);
+        sobj->viewtrans = MCMatrix4Invert(sobj->viewtrans, null);
+    }
+    else if (obj->rotateMode == MCCameraFixedAtOrigin) {
+        sobj->transform = MCMatrix4Identity;
+        sobj->viewtrans = MCMatrix4Identity;
+    }
+    //default
     else {
-        return MCMatrix4MakeLookAtByEulerAngle_EyeUp(obj->lookat, cpt(Radius),
-                                                     obj->fai, obj->tht,
-                                                     &obj->eye, &obj->up);
+        //do nothing
     }
+    MCMatrix4 view = MCMatrix4Multiply(sobj->transform, sobj->viewtrans);
+    return view;
 }
 
 compute(MCMatrix4, projectionMatrix)
 {
     as(MCCamera);
-    double near = cpt(Radius) - var(depth_of_field);
     double far  = cpt(Radius) + var(depth_of_field);
-    
+    double near = cpt(Radius) - var(depth_of_field);
     if (near <= 0) {
-        near = MCLensStandard50mm;
+        near = MCLensIphone29mm;
     }
-    
-    return MCMatrix4MakePerspective(MCDegreesToRadians(obj->view_angle),
+    return MCMatrix4MakePerspective(MCDegreesToRadians(obj->field_of_view),
                                     var(ratio),
                                     near,
                                     far);
@@ -127,6 +117,12 @@ compute(MCMatrix4, projectionMatrix)
 compute(MCVector3, currentPosition)
 {
     as(MCCamera);
+    if (obj->rotateMode != MCCameraRotateAroundModelManual) {
+        double r = cpt(Radius);
+        obj->eye = MCGetEyeFromRotationMat4(sobj->viewtrans, r);
+        obj->R_value = MCVector3Length(MCGetTranslateFromCombinedMat4(sobj->transform));
+        obj->R_percent = 1.0;
+    }
     return obj->eye;
 }
 
@@ -149,16 +145,33 @@ method(MCCamera, void, reset, voida)
     init(MCCamera);
 }
 
+method(MCCamera, void, transformWorld, MCMatrix4* mat4)
+{
+    sobj->viewtrans = *mat4;
+}
+
+method(MCCamera, void, transformSelf, MCMatrix4* mat4)
+{
+    sobj->transform = *mat4;
+}
+
+method(MCCamera, void, transformSelfByEularAngle, MCVector3 lookat, double R, double fai, double tht)
+{
+    sobj->transform = MCMatrix4MakeLookAtByEulerAngle_EyeUp(obj->lookat, cpt(Radius),
+                                                            obj->fai, obj->tht,
+                                                            &obj->eye, &obj->up);
+}
+
 //override
 method(MCCamera, void, update, MCGLContext* ctx)
 {
     MCGLUniformData data;
     
     data.mat4 = cpt(viewMatrix);
-    MCGLContext_updateUniform(0, ctx, view_view, data);
+    MCGLContext_updateUniform(ctx, view_view, data);
     
     data.mat4 = cpt(projectionMatrix);
-    MCGLContext_updateUniform(0, ctx, view_projection, data);
+    MCGLContext_updateUniform(ctx, view_projection, data);
 }
 
 method(MCCamera, void, move, MCFloat deltaFai, MCFloat deltaTht)
@@ -200,13 +213,13 @@ method(MCCamera, void, distanceScale, MCFloat scale)
 
 method(MCCamera, void, setRotationMat3, float mat3[9])
 {
-    if (mat3) {
-        MCMatrix3 m3 = {0};
-        for (int i=0; i<9; i++) {
-            m3.m[i] = mat3[i];
-        }
-        sobj->transform = MCMatrix4FromMatrix3(m3);
-    }
+    MCMatrix4 m4 = (MCMatrix4) {
+        mat3[0], mat3[1], mat3[2], 0,
+        mat3[3], mat3[4], mat3[5], 0,
+        mat3[6], mat3[7], mat3[8], 0,
+        0, 0, 0, 1
+    };
+    sobj->viewtrans = m4;
 }
 
 onload(MCCamera)
@@ -214,6 +227,9 @@ onload(MCCamera)
     if (load(MC3DNode)) {
         binding(MCCamera, void, bye, voida);
         binding(MCCamera, MCCamera*, initWithWidthHeight, unsigned width, unsigned height);
+        binding(MCCamera, void, transformWorld, MCMatrix4* mat4);
+        binding(MCCamera, void, transformSelf, MCMatrix4* mat4);
+        binding(MCCamera, void, transformSelfByEularAngle, MCVector3 lookat, double R, double fai, double tht);
         binding(MCCamera, void, move, MCFloat deltaFai, MCFloat deltaTht);
         binding(MCCamera, void, fucus, MCFloat deltaX, MCFloat deltaY);
         binding(MCCamera, void, pull, MCFloat deltaR);

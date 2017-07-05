@@ -96,7 +96,7 @@ typedef struct BAMeshStruct {
     char group[LINE_MAX];
 } BAMesh;
 
-typedef struct BAObjModelStruct {
+typedef struct BAObjDataStruct {
     BACubeFrame Frame;
     //raw data
     MCVector3* vertexbuff;
@@ -114,9 +114,9 @@ typedef struct BAObjModelStruct {
     BAMtlLibrary* mtllib_list;
     //name
     char name[256];
-} BAObjModel;
+} BAObjData;
 
-MCInline void BAObjDumpInfo(BAObjModel* baobj)
+MCInline void BAObjDumpInfo(BAObjData* baobj)
 {
     for (int i=0; i<baobj->meshcount; i++) {
         BAMesh* m = &baobj->meshbuff[i];
@@ -137,9 +137,9 @@ MCInline void BAObjDumpInfo(BAObjModel* baobj)
     printf("total %ld meshes\n", baobj->meshcount);
 }
 
-MCInline BAObjModel* BAObjAlloc(BAObjMeta* meta)
+MCInline BAObjData* BAObjAlloc(BAObjMeta* meta)
 {
-    BAObjModel* buff = (BAObjModel*)malloc(sizeof(BAObjModel));
+    BAObjData* buff = (BAObjData*)malloc(sizeof(BAObjData));
     if (buff) {
         buff->Frame = (BACubeFrame){0};
         size_t sizevb = sizeof(MCVector3) * (meta->vertex_count);
@@ -148,18 +148,46 @@ MCInline BAObjModel* BAObjAlloc(BAObjMeta* meta)
         size_t sizefb = sizeof(BAFace) * (meta->face_count);
         size_t sizemb = sizeof(BAMesh) * (meta->mesh_count);
         
-        buff->vertexbuff  = (MCVector3*)malloc(sizevb);
-        buff->texcoorbuff = (MCVector2*)malloc(sizetb);
-        buff->normalbuff  = (MCVector4*)malloc(sizenb);
-        buff->facebuff    = (BAFace*)malloc(sizefb);
-        buff->meshbuff    = (BAMesh*)malloc(sizemb);
-
-        memset(buff->vertexbuff, 0, sizevb);
-        memset(buff->texcoorbuff, 0, sizetb);
-        memset(buff->normalbuff, 0, sizenb);
-        memset(buff->facebuff, 0, sizefb);
-        memset(buff->meshbuff, 0, sizemb);
+        //vertex buffer
+        if (sizevb > 0) {
+            buff->vertexbuff = (MCVector3*)malloc(sizevb);
+            memset(buff->vertexbuff, 0, sizevb);
+        } else {
+            buff->vertexbuff = null;
+        }
         
+        //texture coordinate buffer
+        if (sizetb > 0) {
+            buff->texcoorbuff = (MCVector2*)malloc(sizetb);
+            memset(buff->texcoorbuff, 0, sizetb);
+        } else {
+            buff->texcoorbuff = null;
+        }
+        
+        //normal buffer
+        if (sizenb > 0) {
+            buff->normalbuff = (MCVector4*)malloc(sizenb);
+            memset(buff->normalbuff, 0, sizenb);
+        } else {
+            buff->normalbuff = null;
+        }
+        
+        //polygon faces buffer
+        if (sizefb > 0) {
+            buff->facebuff = (BAFace*)malloc(sizefb);
+            memset(buff->facebuff, 0, sizefb);
+        } else {
+            buff->facebuff = null;
+        }
+        
+        //mesh buffer
+        if (sizemb > 0) {
+            buff->meshbuff = (BAMesh*)malloc(sizemb);
+            memset(buff->meshbuff, 0, sizemb);
+        } else {
+            buff->meshbuff = null;
+        }
+
         buff->normal_count = meta->normal_count;
         buff->facecount   = meta->face_count;
         buff->meshcount   = meta->mesh_count;
@@ -167,7 +195,7 @@ MCInline BAObjModel* BAObjAlloc(BAObjMeta* meta)
         buff->shouldCalculateNormal = false;
         
         buff->mtllib_list = null;
-        if (buff->vertexbuff && buff->texcoorbuff && buff->normalbuff && buff->facebuff) {
+        if (buff->vertexbuff && buff->facebuff) {
             buff->name[0] = NUL;
             return buff;
         }
@@ -176,7 +204,9 @@ MCInline BAObjModel* BAObjAlloc(BAObjMeta* meta)
     return null;
 }
 
-BAObjModel* BAObjModelNew(const char* filename, BAObjMeta* meta);
-void BAObjRelease(BAObjModel* buff);
+BAObjData* BAObjDataNewWithFilepath(const char* filepath, BAObjMeta* meta);
+BAObjData* BAObjDataNew(const char* filename, BAObjMeta* meta);
+
+void BAObjRelease(BAObjData* buff);
 
 #endif /* MC3DFileParser_h */

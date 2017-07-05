@@ -1,5 +1,13 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
+#else
+#ifndef FOUNDATION_EXPORT
+#if defined(__cplusplus)
+#define FOUNDATION_EXPORT extern "C"
+#else
+#define FOUNDATION_EXPORT extern
+#endif
+#endif
 #endif
 
 #import "BAMtlParser.h"
@@ -12,6 +20,7 @@
 #import "MC3DAxis.h"
 #import "MC3DBase.h"
 #import "MC3DModel.h"
+#import "MC3DModelCache.h"
 #import "MC3DNode.h"
 #import "MC3DScene.h"
 #import "MC3DShapeBase.h"
@@ -32,8 +41,13 @@
 #import "MCTexture.h"
 #import "MCUIBase.h"
 #import "MCWorld.h"
-#import "BEInterface.h"
-#import "BEViewController.h"
+#import "BEModelCache.h"
+#import "BEMotionManager.h"
+#import "BEPanoramaView.h"
+#import "BERenderer.h"
+#import "BERendererCAPI.h"
+#import "BERunLoop.h"
+#import "BEView.h"
 #import "MCArray.h"
 #import "MCArrayLinkedList.h"
 #import "MCBits.h"
@@ -48,6 +62,7 @@
 #import "MCJNI.h"
 #import "MCLexer.h"
 #import "MCLinkedList.h"
+#import "MCMap.h"
 #import "MCMath.h"
 #import "MCProcess.h"
 #import "MCSet.h"

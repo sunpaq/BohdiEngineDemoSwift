@@ -71,12 +71,14 @@ MCInline const char* trimWhiteSpaceNewline(const char** target_p)
 //Old Mac9 end of line sequence: \r
 //Unix OSX end of line sequence: \n
 //Windows  end of line sequence: \r\n
-MCInline MCBool isNewLine(const char* s)
+MCInline MCBool isNewLine(const char *s)
 {
-    if (*s == MCNewLineN) {
-        return true;
-    } else if (*s == MCNewLineR) { //Windows NewLine
-        return true;
+    if (s) {
+        if (*s == MCNewLineN) {
+            return true;
+        } else if (*s == MCNewLineR) { //Windows NewLine
+            return true;
+        }
     }
     return false;
 }
@@ -205,7 +207,6 @@ MCInline int getDate(const char* s, long* buff)
         //have digit
         digit[i] = NUL;
         buff[b++] = atoi(digit);
-        i = 0;
     }
     
     return b;

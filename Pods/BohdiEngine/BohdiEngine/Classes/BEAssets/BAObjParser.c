@@ -3,8 +3,6 @@
 #include "MCGeometry.h"
 #include "MCIO.h"
 
-static size_t epcount = 0;
-
 void parseObjMeta(BAObjMeta* meta, const char* buff)
 {
     BAObjMetaInit(meta);
@@ -71,7 +69,7 @@ void parseObjMeta(BAObjMeta* meta, const char* buff)
     }
 }
 
-void parseObj(BAObjModel* object, const char* file)
+void parseObj(BAObjData* object, const char* file)
 {
     if (object && file) {
         size_t vcursor = 0;
@@ -227,18 +225,10 @@ void parseObj(BAObjModel* object, const char* file)
     }
 }
 
-BAObjModel* BAObjModelNew(const char* filename, BAObjMeta* meta)
+BAObjData* BAObjDataNewWithFilepath(const char* filepath, BAObjMeta* meta)
 {
-    epcount = 0;
-    
     const char* assetbuff;
-//    if (isFilename(filename)) {
-//        char noext[256];
-//        MCString_filenameTrimExtension(filename, &noext);
-//        assetbuff = MCFileCopyContent(noext, "obj");
-//    }else{
-        assetbuff = MCFileCopyContentWithPath(filename);
-//    }
+    assetbuff = MCFileCopyContentWithPath(filepath);
 
     if (assetbuff) {
         parseObjMeta(meta, assetbuff);
@@ -250,7 +240,7 @@ BAObjModel* BAObjModelNew(const char* filename, BAObjMeta* meta)
             error_log("MC3DObjParser modle need calculate normal\n");
         }
         
-        BAObjModel* buff = BAObjAlloc(meta);
+        BAObjData* buff = BAObjAlloc(meta);
         if (!buff) {
             return null;
         }
@@ -262,9 +252,20 @@ BAObjModel* BAObjModelNew(const char* filename, BAObjMeta* meta)
         free((void*)assetbuff);
         return buff;
     }else{
-        error_log("MC3DObjParser - AAssetManager_open %s failed\n", filename);
+        error_log("MC3DObjParser - AAssetManager_open %s failed\n", filepath);
         return null;
     }
+}
+
+BAObjData* BAObjDataNew(const char* filename, BAObjMeta* meta)
+{
+    char path[PATH_MAX] = {0};
+    if(MCFileGetPath(filename, path)) {
+        //error
+        return null;
+    }
+    
+    return BAObjDataNewWithFilepath(path, meta);
 }
 
 static void recursiveFreeBAMtlLibrary(BAMtlLibrary* lib)
@@ -276,7 +277,7 @@ static void recursiveFreeBAMtlLibrary(BAMtlLibrary* lib)
     BAMtlLibraryRelease(lib);
 }
 
-void BAObjRelease(BAObjModel* buff)
+void BAObjRelease(BAObjData* buff)
 {
     //recursively
     if (buff) {

@@ -41,6 +41,13 @@ utility(MCGLEngine, void, clearScreen, voida)
     //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
+utility(MCGLEngine, void, clearScreenWithColor, MCColorf color)
+{
+    glClearColor(color.R.f, color.G.f, color.B.f, color.A.f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
 utility(MCGLEngine, void, clearDepthBuffer, voida)
 {
     glClear(GL_DEPTH_BUFFER_BIT);
@@ -124,20 +131,21 @@ utility(MCGLEngine, GLuint, createShader, voida)
     return glCreateProgram();
 }
 
-utility(MCGLEngine, GLuint, prepareShader, GLuint Id, const char* vcode, const char* fcode)
+utility(MCGLEngine, GLuint, prepareShader, GLuint Id, const char* vcode, const char* fcode, const char* version)
 {
-    GLuint vertShader, fragShader;
-    MCGLEngine_compileShader(&vertShader, GL_VERTEX_SHADER, vcode);
-    MCGLEngine_compileShader(&fragShader, GL_FRAGMENT_SHADER, fcode);
-    
+    GLuint vertShader=0, fragShader=0;
+    MCGLEngine_compileShader(&vertShader, GL_VERTEX_SHADER, vcode, version);
+    glAttachShader(Id, vertShader);
+
+    MCGLEngine_compileShader(&fragShader, GL_FRAGMENT_SHADER, fcode, version);
+    glAttachShader(Id, fragShader);
+
     // Create shader program.
     //Id = glCreateProgram();
     
     // Attach vertex shader to program.
-    glAttachShader(Id, vertShader);
     
     // Attach fragment shader to program.
-    glAttachShader(Id, fragShader);
     
 //    if (context != null) {
 //        MCGLContext_beforeLinkProgram(0, context, Id);
@@ -178,17 +186,17 @@ utility(MCGLEngine, GLuint, prepareShader, GLuint Id, const char* vcode, const c
     return Id;
 }
 
-utility(MCGLEngine, int, prepareShaderName, GLuint Id, const char* vname, const char* fname)
+utility(MCGLEngine, int, prepareShaderName, GLuint Id, const char* bundlename, const char* vname, const char* fname, const char* version)
 {
     char vpath[PATH_MAX] = {0};
-    if(MCFileGetPath(vname, vpath)) return -1;
+    if(MCFileGetPathFromBundle(bundlename, vname, vpath)) return -1;
     char* vcode = (char*)MCFileCopyContentWithPath(vpath);
     
     char fpath[PATH_MAX] = {0};
-    if(MCFileGetPath(fname, fpath)) return -1;
+    if(MCFileGetPathFromBundle(bundlename, fname, fpath)) return -1;
     char* fcode = (char*)MCFileCopyContentWithPath(fpath);
     
-    MCGLEngine_prepareShader(Id, vcode, fcode);
+    MCGLEngine_prepareShader(Id, vcode, fcode, version);
     if (vcode) {
         free((void*)vcode);
     }
@@ -236,7 +244,7 @@ utility(MCGLEngine, int, tickFPS, MCClock* clock)
     static clock_t elapse = 0;
     static clock_t time, lastime;
     
-    MCClock_getCPUClocksSinceStart(0, clock, &time);
+    MCClock_getCPUClocksSinceStart(clock, &time);
     if (elapse >= CLOCKS_PER_SEC ) {
         unsigned result = fcount;
         //reset
@@ -253,24 +261,29 @@ utility(MCGLEngine, int, tickFPS, MCClock* clock)
 }
 
 //Shader
-utility(MCGLEngine, MCBool, compileShader, GLuint* shader, GLenum type, const GLchar *source)
+utility(MCGLEngine, MCBool, compileShader, GLuint* shader, GLenum type, const GLchar *source, const GLchar *version)
 {
     if (!source) {
         return false;
     }
-    GLint status;
+    GLint status = 0;
+    
+    const char* sources[] = {version, source};
     
     *shader = glCreateShader(type);
-    glShaderSource(*shader, 1, &source, NULL);
+    glShaderSource(*shader, 2, sources, NULL);
     glCompileShader(*shader);
     
-    GLint logLength;
+    GLint logLength = 0;
     glGetShaderiv(*shader, GL_INFO_LOG_LENGTH, &logLength);
     if (logLength > 0) {
         GLchar *log = (GLchar *)malloc(logLength);
         glGetShaderInfoLog(*shader, logLength, &logLength, log);
         printf("Shader compile log:\n%s", log);
         free(log);
+        
+        //dump source
+        //error_log(source);
     }
     
     glGetShaderiv(*shader, GL_COMPILE_STATUS, &status);
@@ -323,5 +336,17 @@ utility(MCGLEngine, int, validateProgram, GLuint prog)
     }
     
     return 1;
+}
+
+utility(MCGLEngine, void, setViewport, int x, int y, int width, int height)
+{
+    glEnable(GL_DEPTH_TEST);//this is for Google cardboard
+    glViewport(x, y, width, height);
+}
+
+utility(MCGLEngine, void, setScissor, int x, int y, int width, int height)
+{
+    glEnable(GL_SCISSOR_TEST);
+    glScissor(x, y, width, height);
 }
 

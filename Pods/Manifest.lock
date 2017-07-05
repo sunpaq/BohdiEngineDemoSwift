@@ -1,24 +1,23 @@
 PODS:
-  - BohdiAR (0.1.0):
-    - OpenCV-Dynamic
-  - BohdiEngine (1.0.9)
-  - OpenCV-Dynamic (3.2.4)
+  - BohdiEngine (1.1.3)
+  - GoogleToolboxForMac/Defines (2.1.0)
+  - GoogleToolboxForMac/Logger (2.1.0):
+    - GoogleToolboxForMac/Defines (= 2.1.0)
+  - GTMSessionFetcher/Core (1.1.6)
+  - GVRSDK (1.60.0):
+    - GoogleToolboxForMac/Logger (= 2.1.0)
+    - GTMSessionFetcher/Core (= 1.1.6)
 
 DEPENDENCIES:
-  - BohdiAR (from `~/Dev/pods/BohdiAR-pod/`)
-  - BohdiEngine (from `~/Dev/pods/BohdiEngine-pod/`)
-
-EXTERNAL SOURCES:
-  BohdiAR:
-    :path: "~/Dev/pods/BohdiAR-pod/"
-  BohdiEngine:
-    :path: "~/Dev/pods/BohdiEngine-pod/"
+  - BohdiEngine
+  - GVRSDK
 
 SPEC CHECKSUMS:
-  BohdiAR: 4eb95e90cf27a7f67104ed98960f00e01854929e
-  BohdiEngine: 6856322ae37d53be0eab24ea26dc717a4d5f6c1d
-  OpenCV-Dynamic: 8d4c9e4ccd4cf1ec7bf97448ae9fa18800ff3066
+  BohdiEngine: b7bf1bff4ef332a2104c462c29345383595ac4b4
+  GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
+  GTMSessionFetcher: 6aacd0ab48ddf0c3633ab2642d792abfcad1b08a
+  GVRSDK: f486f753658a833206053c9f32948c409eb30d24
 
-PODFILE CHECKSUM: e025b2ab894090fbdd93b7a04c3b01f71e9b71df
+PODFILE CHECKSUM: d85a3980c641df12ed103c6bf215179156479384
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.3.0.beta.2

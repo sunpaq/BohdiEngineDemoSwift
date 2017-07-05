@@ -16,6 +16,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+//        GVRCardboardView.setViewerParamsFrom(URL.init(string: "http://goo.gl/rn9eOf")) {
+//            (success, error) in
+//            if success {
+//                print("SET CARDBOARD PARAMETERS SUCCESS")
+//            } else {
+//                print("SET CARDBOARD PARAMETERS FAILED")
+//                print(error.debugDescription)
+//            }
+//        }
+        
+        
+        /*
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <array>
+        <date>2017-05-18T14:51:27Z</date>
+        <data>CgtWUiBLb21tYW5kbxIRQmFvZmVuZyBNb2ppbmcgWEQdMQgsPSWPwnU9KhAAAEhCAABIQgAASEIAAEhCWAA1vHQTPToICtcjPArXIzxQAGAD</data>
+        </array>
+        </plist>
+        */
+        
         return true
     }
 

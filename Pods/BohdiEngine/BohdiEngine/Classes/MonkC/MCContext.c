@@ -26,11 +26,11 @@ struct privateData
 
 static char get_one_char()
 {
-    char* cf = NUL;
-    while(!isNewLine(cf)) {
-        *cf = getchar();
+    char cf = '\0';
+    while(!isNewLine(&cf)) {
+        cf = getchar();
     };//clear the buff
-	return *cf;
+	return cf;
 }
 
 static void get_chars_until_enter(char resultString[])

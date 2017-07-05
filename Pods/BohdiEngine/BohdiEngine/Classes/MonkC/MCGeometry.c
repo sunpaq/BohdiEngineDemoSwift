@@ -33,7 +33,7 @@ MCPolygon* MCPolygonInit(MCPolygon* poly, MCVector3 vertexes[], size_t count)
         exit(-1);
     }
     
-    poly->primitive = MCPolygonPrimitivesDetect(vertexes[0], vertexes[1], vertexes[2], vertexes[3]);
+    //poly->primitive = MCPolygonPrimitivesDetect(vertexes[0], vertexes[1], vertexes[2], vertexes[3]);
     
     //init vertex data
     poly->count = count;

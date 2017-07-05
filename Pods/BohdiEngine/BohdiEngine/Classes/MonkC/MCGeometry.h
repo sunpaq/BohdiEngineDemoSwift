@@ -159,7 +159,7 @@ typedef struct {
     size_t count;
     size_t index;
     MCBool isConvex;
-    MCPolygonPrimitives primitive;
+    //MCPolygonPrimitives primitive;
     
     MCArrayLinkedList vertexIndexes;
     MCVector3 vertexData[MCPolygonMaxV];

@@ -28,6 +28,7 @@ class(MCGLContext, MCObject,
       MCDrawMode drawMode;
 );
 
+method(MCGLContext, void, bye, voida);
 //shader
 //please cache the location index when you first call the setters
 //then directly pass the location index and pass name null
