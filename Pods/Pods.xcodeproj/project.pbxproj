@@ -189,67 +189,67 @@
 
 /* Begin PBXFileReference section */
 		011335EBCB01C3D8CF53521B9801CAD4 /* MCMath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCMath.h; path = BohdiEngine/Classes/MonkC/MCMath.h; sourceTree = "<group>"; };
-		0295138BC3EF604395A4999690D46B6B /* BAObjParser.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = BAObjParser.c; path = BohdiEngine/Classes/BEAssets/BAObjParser.c; sourceTree = "<group>"; };
+		0295138BC3EF604395A4999690D46B6B /* BAObjParser.c */ = {isa = PBXFileReference; includeInIndex = 1; name = BAObjParser.c; path = BohdiEngine/Classes/BEAssets/BAObjParser.c; sourceTree = "<group>"; };
 		0433815619C8EBD3022F6AC94CD51503 /* GVRWidgetView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GVRWidgetView.h; path = Sources/GVRWidgetView.h; sourceTree = "<group>"; };
-		045C13BF8ADE383B7D2E8A4D18D3CE77 /* MCSet.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCSet.c; path = BohdiEngine/Classes/MonkC/MCSet.c; sourceTree = "<group>"; };
+		045C13BF8ADE383B7D2E8A4D18D3CE77 /* MCSet.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCSet.c; path = BohdiEngine/Classes/MonkC/MCSet.c; sourceTree = "<group>"; };
 		05E05AAF8C5EC58558AF8EB5962EDA33 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05EFAAD2E22CA63A658BB792C2CCA9FC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05FAA20DAE7A5A3CE285C6334D6223F3 /* BEPanoramaView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEPanoramaView.m; path = BohdiEngine/Classes/Interface/BEPanoramaView.m; sourceTree = "<group>"; };
 		0763CDE5C7209170D5B85AE5B313577E /* gvr_types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = gvr_types.h; path = Sources/vr/gvr/capi/include/gvr_types.h; sourceTree = "<group>"; };
 		077D07D159B571BAD7D0A3EEA12AA48C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		090AE5D01EF2137D7FC46B842F138043 /* MCProcess.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCProcess.c; path = BohdiEngine/Classes/MonkC/MCProcess.c; sourceTree = "<group>"; };
+		090AE5D01EF2137D7FC46B842F138043 /* MCProcess.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCProcess.c; path = BohdiEngine/Classes/MonkC/MCProcess.c; sourceTree = "<group>"; };
 		0C5FAFCF95EEA1C714E1BBA4915D854D /* MCContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCContext.h; path = BohdiEngine/Classes/MonkC/MCContext.h; sourceTree = "<group>"; };
-		0E284CF77C11CA81C2697A62A4129478 /* BAMtlParser.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = BAMtlParser.c; path = BohdiEngine/Classes/BEAssets/BAMtlParser.c; sourceTree = "<group>"; };
-		0E2ED6C8936940086784733A3F259D66 /* MCUnitTest.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCUnitTest.c; path = BohdiEngine/Classes/MonkC/MCUnitTest.c; sourceTree = "<group>"; };
+		0E284CF77C11CA81C2697A62A4129478 /* BAMtlParser.c */ = {isa = PBXFileReference; includeInIndex = 1; name = BAMtlParser.c; path = BohdiEngine/Classes/BEAssets/BAMtlParser.c; sourceTree = "<group>"; };
+		0E2ED6C8936940086784733A3F259D66 /* MCUnitTest.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCUnitTest.c; path = BohdiEngine/Classes/MonkC/MCUnitTest.c; sourceTree = "<group>"; };
 		0FFF42525FEEA92A2D60DB089699BA46 /* BohdiEngine-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BohdiEngine-dummy.m"; sourceTree = "<group>"; };
 		11C10A31CD5CFA3EFE266394471B152E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		1AF1C93FA0031D4B5DF6DC65AE1A336B /* Pods_BEDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BEDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AF1C93FA0031D4B5DF6DC65AE1A336B /* Pods_BEDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BEDemo.framework; path = "Pods-BEDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B41FA3A4659C5872201E6CE8997F2B3 /* MCGLEngine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCGLEngine.h; path = BohdiEngine/Classes/Engine/MCGLEngine.h; sourceTree = "<group>"; };
-		1BFB1C42C4474F22A1CE3D2ECC2636F3 /* MCClock.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCClock.c; path = BohdiEngine/Classes/MonkC/MCClock.c; sourceTree = "<group>"; };
+		1BFB1C42C4474F22A1CE3D2ECC2636F3 /* MCClock.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCClock.c; path = BohdiEngine/Classes/MonkC/MCClock.c; sourceTree = "<group>"; };
 		1CC4C685CE180D3D2DF084CD871C6C68 /* GTMLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMLogger.m; path = Foundation/GTMLogger.m; sourceTree = "<group>"; };
 		1ED61BE09FFCCB1AC2CADBC3DDBD6AC8 /* BAMtlParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BAMtlParser.h; path = BohdiEngine/Classes/BEAssets/BAMtlParser.h; sourceTree = "<group>"; };
 		20CE2107CC821BE110BD1DF62B49C270 /* CardboardSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = CardboardSDK.bundle; path = Resources/CardboardSDK.bundle; sourceTree = "<group>"; };
-		227EB1CB1BE72E90D43F946DB651FA68 /* BERendererCAPI.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = BERendererCAPI.c; path = BohdiEngine/Classes/Interface/BERendererCAPI.c; sourceTree = "<group>"; };
-		246A01031403232F93662CF774F82C87 /* MCPanel.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCPanel.c; path = BohdiEngine/Classes/Engine/MCPanel.c; sourceTree = "<group>"; };
+		227EB1CB1BE72E90D43F946DB651FA68 /* BERendererCAPI.c */ = {isa = PBXFileReference; includeInIndex = 1; name = BERendererCAPI.c; path = BohdiEngine/Classes/Interface/BERendererCAPI.c; sourceTree = "<group>"; };
+		246A01031403232F93662CF774F82C87 /* MCPanel.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCPanel.c; path = BohdiEngine/Classes/Engine/MCPanel.c; sourceTree = "<group>"; };
 		25AA4E666D55BDC1316CAE2529D26856 /* GTMSessionFetcher.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GTMSessionFetcher.xcconfig; sourceTree = "<group>"; };
 		27E1F06F1BCA5924B1B235D2B40A9BC5 /* BERunLoop.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BERunLoop.m; path = BohdiEngine/Classes/Interface/BERunLoop.m; sourceTree = "<group>"; };
 		2B7D0AF3CDB7AFD9D86A4B8CADD3E71B /* GoogleKitHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleKitHUD.bundle; path = Resources/GoogleKitHUD.bundle; sourceTree = "<group>"; };
 		2BD64E8E58794EA37E5871DE29FDDC56 /* libGVRSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGVRSDK.a; path = Libraries/libGVRSDK.a; sourceTree = "<group>"; };
-		2E085F78DE0BC7C3AC40B6232A960FC6 /* MCBuffer.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCBuffer.c; path = BohdiEngine/Classes/MonkC/MCBuffer.c; sourceTree = "<group>"; };
-		2E3C95919A8D477506F30C96CE1EF550 /* BohdiEngine.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BohdiEngine.modulemap; sourceTree = "<group>"; };
+		2E085F78DE0BC7C3AC40B6232A960FC6 /* MCBuffer.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCBuffer.c; path = BohdiEngine/Classes/MonkC/MCBuffer.c; sourceTree = "<group>"; };
+		2E3C95919A8D477506F30C96CE1EF550 /* BohdiEngine.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BohdiEngine.modulemap; sourceTree = "<group>"; };
 		2E3F7D7236F88CD7E8D1B44435BE8AFF /* GTMLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMLogger.h; path = Foundation/GTMLogger.h; sourceTree = "<group>"; };
 		2EE5D5F7309EF9438D0F37843D871DC7 /* GTMSessionFetcherLogging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherLogging.m; path = Source/GTMSessionFetcherLogging.m; sourceTree = "<group>"; };
 		31515B0A5CF7A4AABF7AC1E50D3869F1 /* GVROverlayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GVROverlayView.h; path = Sources/GVROverlayView.h; sourceTree = "<group>"; };
 		3193D70303D0F07D5E970D221EE06D15 /* gvr_version.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = gvr_version.h; path = Sources/vr/gvr/capi/include/gvr_version.h; sourceTree = "<group>"; };
-		34A22278A9E9FB86B57737FD91276C10 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BC67A55D326829A69E738C2CF541ACE /* MCDirector.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCDirector.c; path = BohdiEngine/Classes/Engine/MCDirector.c; sourceTree = "<group>"; };
+		34A22278A9E9FB86B57737FD91276C10 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTMSessionFetcher.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BC67A55D326829A69E738C2CF541ACE /* MCDirector.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCDirector.c; path = BohdiEngine/Classes/Engine/MCDirector.c; sourceTree = "<group>"; };
 		3EF39D9F523AB9B1EABD40633BD0B7B2 /* MCSkybox.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCSkybox.h; path = BohdiEngine/Classes/Engine/MCSkybox.h; sourceTree = "<group>"; };
 		419FE9559F398B69E9DC0DA5C559FC58 /* MCGLContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCGLContext.h; path = BohdiEngine/Classes/Engine/MCGLContext.h; sourceTree = "<group>"; };
-		4435783D0EB549292AFA27A717062454 /* MCWorld.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCWorld.c; path = BohdiEngine/Classes/Engine/MCWorld.c; sourceTree = "<group>"; };
-		46B3AF17D20C4511A2609117CB1AD3F8 /* GTMSessionFetcher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GTMSessionFetcher.modulemap; sourceTree = "<group>"; };
-		46D46C452221EC89DD075D011BCD2CD0 /* MCSkybox.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCSkybox.c; path = BohdiEngine/Classes/Engine/MCSkybox.c; sourceTree = "<group>"; };
+		4435783D0EB549292AFA27A717062454 /* MCWorld.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCWorld.c; path = BohdiEngine/Classes/Engine/MCWorld.c; sourceTree = "<group>"; };
+		46B3AF17D20C4511A2609117CB1AD3F8 /* GTMSessionFetcher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GTMSessionFetcher.modulemap; sourceTree = "<group>"; };
+		46D46C452221EC89DD075D011BCD2CD0 /* MCSkybox.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCSkybox.c; path = BohdiEngine/Classes/Engine/MCSkybox.c; sourceTree = "<group>"; };
 		47F9943A9E425CD351492F209C253461 /* MCGraph.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCGraph.h; path = BohdiEngine/Classes/MonkC/MCGraph.h; sourceTree = "<group>"; };
-		4935B93FF4C1FB1657D9BBE7F33705CC /* BATrianglization.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = BATrianglization.c; path = BohdiEngine/Classes/BEAssets/BATrianglization.c; sourceTree = "<group>"; };
+		4935B93FF4C1FB1657D9BBE7F33705CC /* BATrianglization.c */ = {isa = PBXFileReference; includeInIndex = 1; name = BATrianglization.c; path = BohdiEngine/Classes/BEAssets/BATrianglization.c; sourceTree = "<group>"; };
 		4D41FBDD32AA9D529EE3BA5523B90B25 /* GTMSessionFetcherService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherService.m; path = Source/GTMSessionFetcherService.m; sourceTree = "<group>"; };
 		4EA61A94AFCBA55AED1E746B4210B86D /* Pods-BEDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BEDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4F69C685028ED316177D849A09524756 /* GTMSessionUploadFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionUploadFetcher.m; path = Source/GTMSessionUploadFetcher.m; sourceTree = "<group>"; };
-		50986B9FB1B85912F4D02CC0491222EA /* MCBits.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCBits.c; path = BohdiEngine/Classes/MonkC/MCBits.c; sourceTree = "<group>"; };
+		50986B9FB1B85912F4D02CC0491222EA /* MCBits.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCBits.c; path = BohdiEngine/Classes/MonkC/MCBits.c; sourceTree = "<group>"; };
 		50B9BA26EC38AF0C5A19922404700694 /* BEModelCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEModelCache.h; path = BohdiEngine/Classes/Interface/BEModelCache.h; sourceTree = "<group>"; };
-		53B6DB62A4C4DFB53514DDAF031DF792 /* BE2DTextureData.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = BE2DTextureData.c; path = BohdiEngine/Classes/BEAssets/BE2DTextureData.c; sourceTree = "<group>"; };
+		53B6DB62A4C4DFB53514DDAF031DF792 /* BE2DTextureData.c */ = {isa = PBXFileReference; includeInIndex = 1; name = BE2DTextureData.c; path = BohdiEngine/Classes/BEAssets/BE2DTextureData.c; sourceTree = "<group>"; };
 		54E04A27F341111ADD140D4CA79A531D /* MCGLBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCGLBase.h; path = BohdiEngine/Classes/Engine/MCGLBase.h; sourceTree = "<group>"; };
 		55884B7A1E62E3379BE86A3AE93B826B /* BohdiEngine-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BohdiEngine-umbrella.h"; sourceTree = "<group>"; };
-		57C39E9C867707DDF0D8C51CE36432CC /* MC2DTex.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MC2DTex.c; path = BohdiEngine/Classes/Engine/MC2DTex.c; sourceTree = "<group>"; };
+		57C39E9C867707DDF0D8C51CE36432CC /* MC2DTex.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MC2DTex.c; path = BohdiEngine/Classes/Engine/MC2DTex.c; sourceTree = "<group>"; };
 		5A136B01E11F0E93AAD3D825BFBF3001 /* MCJNI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCJNI.h; path = BohdiEngine/Classes/MonkC/MCJNI.h; sourceTree = "<group>"; };
-		5B0C685048545C9842959A65C7289D1A /* MCSort.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCSort.c; path = BohdiEngine/Classes/MonkC/MCSort.c; sourceTree = "<group>"; };
-		5D62B35F35AF31AA67DCF195527971BE /* MC3DNode.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MC3DNode.c; path = BohdiEngine/Classes/Engine/MC3DNode.c; sourceTree = "<group>"; };
+		5B0C685048545C9842959A65C7289D1A /* MCSort.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCSort.c; path = BohdiEngine/Classes/MonkC/MCSort.c; sourceTree = "<group>"; };
+		5D62B35F35AF31AA67DCF195527971BE /* MC3DNode.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MC3DNode.c; path = BohdiEngine/Classes/Engine/MC3DNode.c; sourceTree = "<group>"; };
 		5DA69CE227509DBE4224593D08EDF83C /* MCCube.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCCube.h; path = BohdiEngine/Classes/Engine/MCCube.h; sourceTree = "<group>"; };
-		5F8EF7554C443B4C863D1EE96F6D560E /* MCGLEngine.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCGLEngine.c; path = BohdiEngine/Classes/Engine/MCGLEngine.c; sourceTree = "<group>"; };
+		5F8EF7554C443B4C863D1EE96F6D560E /* MCGLEngine.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCGLEngine.c; path = BohdiEngine/Classes/Engine/MCGLEngine.c; sourceTree = "<group>"; };
 		5FFEF7B9D09258C76927AACBA2A1BFF0 /* Pods-BEDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BEDemo-umbrella.h"; sourceTree = "<group>"; };
 		607AC395196A07A6A3A9664AB5787C89 /* GTMSessionFetcherService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherService.h; path = Source/GTMSessionFetcherService.h; sourceTree = "<group>"; };
-		65A3C73A7CC484EFB860D458EE6D4201 /* MCOrbit.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCOrbit.c; path = BohdiEngine/Classes/Engine/MCOrbit.c; sourceTree = "<group>"; };
+		65A3C73A7CC484EFB860D458EE6D4201 /* MCOrbit.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCOrbit.c; path = BohdiEngine/Classes/Engine/MCOrbit.c; sourceTree = "<group>"; };
 		65D6CA26001FBF9F72F31187CC734235 /* GTMSessionFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcher.h; path = Source/GTMSessionFetcher.h; sourceTree = "<group>"; };
 		666AC907F51525FF320030BE59915445 /* GVRPanoramaView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GVRPanoramaView.h; path = Sources/GVRPanoramaView.h; sourceTree = "<group>"; };
-		6732DF4AB96E44CA9528FD860F64453F /* MCSocket.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCSocket.c; path = BohdiEngine/Classes/MonkC/MCSocket.c; sourceTree = "<group>"; };
+		6732DF4AB96E44CA9528FD860F64453F /* MCSocket.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCSocket.c; path = BohdiEngine/Classes/MonkC/MCSocket.c; sourceTree = "<group>"; };
 		673BF1FE78A73AFF7AC36AEBBA87FD5E /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
 		697F0BBCF54C08881E44FE1B32D92C59 /* MC3DModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MC3DModel.h; path = BohdiEngine/Classes/Engine/MC3DModel.h; sourceTree = "<group>"; };
 		6B33785E631796EA68B10CC52DA92FB7 /* GVRHeadTransform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GVRHeadTransform.h; path = Sources/GVRHeadTransform.h; sourceTree = "<group>"; };
@@ -257,78 +257,78 @@
 		6D6B104D3E404416EF30F11D5969568D /* BERenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BERenderer.h; path = BohdiEngine/Classes/Interface/BERenderer.h; sourceTree = "<group>"; };
 		700639E6821E993B22F8CB8F3C8CC70F /* monkc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = monkc.h; path = BohdiEngine/Classes/MonkC/monkc.h; sourceTree = "<group>"; };
 		714B6CAEDD839339742120C771E9540F /* stbi_DDS_aug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = stbi_DDS_aug.h; path = BohdiEngine/External/SOIL/stbi_DDS_aug.h; sourceTree = "<group>"; };
-		71EECD764B062D8915F1F1E9E5DC7D81 /* MCMap.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCMap.c; path = BohdiEngine/Classes/MonkC/MCMap.c; sourceTree = "<group>"; };
+		71EECD764B062D8915F1F1E9E5DC7D81 /* MCMap.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCMap.c; path = BohdiEngine/Classes/MonkC/MCMap.c; sourceTree = "<group>"; };
 		72994BCE6427EB699B94A1EB8ED17FD3 /* BAObjParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BAObjParser.h; path = BohdiEngine/Classes/BEAssets/BAObjParser.h; sourceTree = "<group>"; };
-		72E69AFCDAFC852FD6CCFAC12C497F48 /* MCException.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCException.c; path = BohdiEngine/Classes/MonkC/MCException.c; sourceTree = "<group>"; };
+		72E69AFCDAFC852FD6CCFAC12C497F48 /* MCException.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCException.c; path = BohdiEngine/Classes/MonkC/MCException.c; sourceTree = "<group>"; };
 		75D5EF09F2C462A2E43A59AFB14E6CBE /* MCSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCSet.h; path = BohdiEngine/Classes/MonkC/MCSet.h; sourceTree = "<group>"; };
-		7760C67FBF57DF2F41E82CBB6C4E2EA0 /* MCGLContext.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCGLContext.c; path = BohdiEngine/Classes/Engine/MCGLContext.c; sourceTree = "<group>"; };
+		7760C67FBF57DF2F41E82CBB6C4E2EA0 /* MCGLContext.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCGLContext.c; path = BohdiEngine/Classes/Engine/MCGLContext.c; sourceTree = "<group>"; };
 		777CF68CB3E44B51BF4D070D4890A4F3 /* MC3DBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MC3DBase.h; path = BohdiEngine/Classes/Engine/MC3DBase.h; sourceTree = "<group>"; };
 		7809F7A5A2A30B66189DFB077FE7B342 /* MCGeometry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCGeometry.h; path = BohdiEngine/Classes/MonkC/MCGeometry.h; sourceTree = "<group>"; };
 		7997AEA074DB2F0A7FE3F82176C44341 /* MC2DTex.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MC2DTex.h; path = BohdiEngine/Classes/Engine/MC2DTex.h; sourceTree = "<group>"; };
 		79BBB12E4EDF91DF8A6DF73045A1F7C9 /* MCLexer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCLexer.h; path = BohdiEngine/Classes/MonkC/MCLexer.h; sourceTree = "<group>"; };
-		7A0477F67B071D844A7F8C6D184D91FD /* MCGLRenderer.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCGLRenderer.c; path = BohdiEngine/Classes/Engine/MCGLRenderer.c; sourceTree = "<group>"; };
+		7A0477F67B071D844A7F8C6D184D91FD /* MCGLRenderer.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCGLRenderer.c; path = BohdiEngine/Classes/Engine/MCGLRenderer.c; sourceTree = "<group>"; };
 		7A32B9319ACB28693A351F4A481E0D20 /* SOIL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SOIL.h; path = BohdiEngine/External/SOIL/SOIL.h; sourceTree = "<group>"; };
 		7B4AEBEA9E4C8AB7D452D91CF7190FC9 /* GTMSessionFetcher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTMSessionFetcher-prefix.pch"; sourceTree = "<group>"; };
 		7DE0AC480B77AA05945C388493980152 /* MCException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCException.h; path = BohdiEngine/Classes/MonkC/MCException.h; sourceTree = "<group>"; };
 		803B1D734EDEAB8A6E2748042AFAACED /* GTMSessionUploadFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionUploadFetcher.h; path = Source/GTMSessionUploadFetcher.h; sourceTree = "<group>"; };
 		83B8103EC4A28EF80D8E7792B16F7BA5 /* MCSkysphere.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCSkysphere.h; path = BohdiEngine/Classes/Engine/MCSkysphere.h; sourceTree = "<group>"; };
 		85454A2B68ACF6FA370ABAE74B4F9482 /* Pods-BEDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BEDemo.release.xcconfig"; sourceTree = "<group>"; };
-		87DE81982761D662D20928AA604F22CA /* stb_image_aug.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = stb_image_aug.c; path = BohdiEngine/External/SOIL/stb_image_aug.c; sourceTree = "<group>"; };
-		88E98544212715209B49FBD3668CC93E /* MCTree.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCTree.c; path = BohdiEngine/Classes/MonkC/MCTree.c; sourceTree = "<group>"; };
-		89C277B2F88513FC1DBB37CF7939421E /* MCMath.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCMath.c; path = BohdiEngine/Classes/MonkC/MCMath.c; sourceTree = "<group>"; };
+		87DE81982761D662D20928AA604F22CA /* stb_image_aug.c */ = {isa = PBXFileReference; includeInIndex = 1; name = stb_image_aug.c; path = BohdiEngine/External/SOIL/stb_image_aug.c; sourceTree = "<group>"; };
+		88E98544212715209B49FBD3668CC93E /* MCTree.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCTree.c; path = BohdiEngine/Classes/MonkC/MCTree.c; sourceTree = "<group>"; };
+		89C277B2F88513FC1DBB37CF7939421E /* MCMath.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCMath.c; path = BohdiEngine/Classes/MonkC/MCMath.c; sourceTree = "<group>"; };
 		89FF530F43DEDAB77AC67F8548CD04EB /* MCArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCArray.h; path = BohdiEngine/Classes/MonkC/MCArray.h; sourceTree = "<group>"; };
-		8AF1356C76BCF8C337C027B93E511EE9 /* MCCube.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCCube.c; path = BohdiEngine/Classes/Engine/MCCube.c; sourceTree = "<group>"; };
+		8AF1356C76BCF8C337C027B93E511EE9 /* MCCube.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCCube.c; path = BohdiEngine/Classes/Engine/MCCube.c; sourceTree = "<group>"; };
 		8BAC24898AE61235563E4596154C1956 /* GTMSessionFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcher.m; path = Source/GTMSessionFetcher.m; sourceTree = "<group>"; };
-		8CAA6E939A9E23EDDEDE8BDA5638FE2D /* MC3DAxis.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MC3DAxis.c; path = BohdiEngine/Classes/Engine/MC3DAxis.c; sourceTree = "<group>"; };
+		8CAA6E939A9E23EDDEDE8BDA5638FE2D /* MC3DAxis.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MC3DAxis.c; path = BohdiEngine/Classes/Engine/MC3DAxis.c; sourceTree = "<group>"; };
 		8DA04D3B18512299B65231F45E0AEA0B /* BEModelCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEModelCache.m; path = BohdiEngine/Classes/Interface/BEModelCache.m; sourceTree = "<group>"; };
-		90962BE4DC8563F50C166C8FAFABAB41 /* MCLinkedList.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCLinkedList.c; path = BohdiEngine/Classes/MonkC/MCLinkedList.c; sourceTree = "<group>"; };
+		90962BE4DC8563F50C166C8FAFABAB41 /* MCLinkedList.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCLinkedList.c; path = BohdiEngine/Classes/MonkC/MCLinkedList.c; sourceTree = "<group>"; };
 		91D2B99C49800AB75513253D5C70977B /* GoogleKitDialogs.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleKitDialogs.bundle; path = Resources/GoogleKitDialogs.bundle; sourceTree = "<group>"; };
 		92425FE87596603733B39A6ECD4C2C9A /* gvr_audio.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = gvr_audio.h; path = Sources/vr/gvr/capi/include/gvr_audio.h; sourceTree = "<group>"; };
-		9345A9DF897B63B0E3D07367C360CC0E /* MCSkysphere.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCSkysphere.c; path = BohdiEngine/Classes/Engine/MCSkysphere.c; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9345A9DF897B63B0E3D07367C360CC0E /* MCSkysphere.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCSkysphere.c; path = BohdiEngine/Classes/Engine/MCSkysphere.c; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93D03A011AF8FBFBFA2B9862F5AB0E7B /* GTMSessionFetcher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTMSessionFetcher-umbrella.h"; sourceTree = "<group>"; };
 		94BA104600DB9750AA5E868CBFE113AB /* MCOrbit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCOrbit.h; path = BohdiEngine/Classes/Engine/MCOrbit.h; sourceTree = "<group>"; };
-		952988507156D8262AAD79C582A642C4 /* MCCamera.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCCamera.c; path = BohdiEngine/Classes/Engine/MCCamera.c; sourceTree = "<group>"; };
-		9538FCB924625B29AE4A7174DECB34B5 /* MC3DScene.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MC3DScene.c; path = BohdiEngine/Classes/Engine/MC3DScene.c; sourceTree = "<group>"; };
+		952988507156D8262AAD79C582A642C4 /* MCCamera.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCCamera.c; path = BohdiEngine/Classes/Engine/MCCamera.c; sourceTree = "<group>"; };
+		9538FCB924625B29AE4A7174DECB34B5 /* MC3DScene.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MC3DScene.c; path = BohdiEngine/Classes/Engine/MC3DScene.c; sourceTree = "<group>"; };
 		95D84B058CD30E65FC95AACCE720928A /* MCThread.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCThread.h; path = BohdiEngine/Classes/MonkC/MCThread.h; sourceTree = "<group>"; };
 		99807FE383F2C903B9D595C4A969A861 /* GVRCardboardView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GVRCardboardView.h; path = Sources/GVRCardboardView.h; sourceTree = "<group>"; };
 		9A7790B18924F12E85E17D47B56EA1C8 /* MC3DAxis.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MC3DAxis.h; path = BohdiEngine/Classes/Engine/MC3DAxis.h; sourceTree = "<group>"; };
 		9AB0B94CE1B1754788D30F44CFCCA8BE /* BATrianglization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BATrianglization.h; path = BohdiEngine/Classes/BEAssets/BATrianglization.h; sourceTree = "<group>"; };
-		9B22D05C01790863C6727AC47A9572EA /* image_DXT.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = image_DXT.c; path = BohdiEngine/External/SOIL/image_DXT.c; sourceTree = "<group>"; };
+		9B22D05C01790863C6727AC47A9572EA /* image_DXT.c */ = {isa = PBXFileReference; includeInIndex = 1; name = image_DXT.c; path = BohdiEngine/External/SOIL/image_DXT.c; sourceTree = "<group>"; };
 		9BD6D22001D34E00A8641F87E2BCF502 /* MCGLRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCGLRenderer.h; path = BohdiEngine/Classes/Engine/MCGLRenderer.h; sourceTree = "<group>"; };
 		9D4C2A5FB7C15328C41BA2F593752FBC /* MC3DModelCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MC3DModelCache.h; path = BohdiEngine/Classes/Engine/MC3DModelCache.h; sourceTree = "<group>"; };
 		9FA18CBE9618064A56A1EEFAC6017755 /* BohdiEngine.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BohdiEngine.xcconfig; sourceTree = "<group>"; };
 		A02F4FC4A819277B4D6B1A46C4FA9C30 /* BERunLoop.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BERunLoop.h; path = BohdiEngine/Classes/Interface/BERunLoop.h; sourceTree = "<group>"; };
 		A171D74E286C751E354321E861AF3EE9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A21DFE63967DC094150461AAE49C58FB /* MCArray.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCArray.c; path = BohdiEngine/Classes/MonkC/MCArray.c; sourceTree = "<group>"; };
+		A21DFE63967DC094150461AAE49C58FB /* MCArray.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCArray.c; path = BohdiEngine/Classes/MonkC/MCArray.c; sourceTree = "<group>"; };
 		A2C42DD3985059990E3CADA7CBCB093B /* BEPanoramaView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEPanoramaView.h; path = BohdiEngine/Classes/Interface/BEPanoramaView.h; sourceTree = "<group>"; };
-		A97C36C7F1E7852A23CF3BF1B6E48221 /* MCMesh.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCMesh.c; path = BohdiEngine/Classes/Engine/MCMesh.c; sourceTree = "<group>"; };
-		A9EC2AE1D71A626674FA64B404393CAB /* MCGraph.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCGraph.c; path = BohdiEngine/Classes/MonkC/MCGraph.c; sourceTree = "<group>"; };
+		A97C36C7F1E7852A23CF3BF1B6E48221 /* MCMesh.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCMesh.c; path = BohdiEngine/Classes/Engine/MCMesh.c; sourceTree = "<group>"; };
+		A9EC2AE1D71A626674FA64B404393CAB /* MCGraph.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCGraph.c; path = BohdiEngine/Classes/MonkC/MCGraph.c; sourceTree = "<group>"; };
 		B1ABC2414402BD9D7E19923134DDFF5B /* Pods-BEDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BEDemo-resources.sh"; sourceTree = "<group>"; };
 		B4DE757A473DDC8C8A75A84EE8B4F3B4 /* stbi_DDS_aug_c.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = stbi_DDS_aug_c.h; path = BohdiEngine/External/SOIL/stbi_DDS_aug_c.h; sourceTree = "<group>"; };
-		B84E498FCCAC131C6D9B535577630515 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
+		B84E498FCCAC131C6D9B535577630515 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
 		B9771D2DED68B0285B1A2EEF286CA149 /* MCUnitTest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCUnitTest.h; path = BohdiEngine/Classes/MonkC/MCUnitTest.h; sourceTree = "<group>"; };
-		B9BCBA23B44270F303555B5E4FF92C0D /* MCMaterial.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCMaterial.c; path = BohdiEngine/Classes/Engine/MCMaterial.c; sourceTree = "<group>"; };
+		B9BCBA23B44270F303555B5E4FF92C0D /* MCMaterial.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCMaterial.c; path = BohdiEngine/Classes/Engine/MCMaterial.c; sourceTree = "<group>"; };
 		B9CCC79EF9EC5F848C70BF118A255310 /* GVRVideoView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GVRVideoView.h; path = Sources/GVRVideoView.h; sourceTree = "<group>"; };
 		B9F3B2728A12B5D6639D9CEAD7C4C2A5 /* MCLight.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCLight.h; path = BohdiEngine/Classes/Engine/MCLight.h; sourceTree = "<group>"; };
-		BA20BAFAEDA86E5F1419B71A8ECB14F8 /* BECubeTextureData.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = BECubeTextureData.c; path = BohdiEngine/Classes/BEAssets/BECubeTextureData.c; sourceTree = "<group>"; };
+		BA20BAFAEDA86E5F1419B71A8ECB14F8 /* BECubeTextureData.c */ = {isa = PBXFileReference; includeInIndex = 1; name = BECubeTextureData.c; path = BohdiEngine/Classes/BEAssets/BECubeTextureData.c; sourceTree = "<group>"; };
 		BAA8CB468CEFA487EA8942CDB2C82DF4 /* BEAssetsManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEAssetsManager.h; path = BohdiEngine/Classes/BEAssets/BEAssetsManager.h; sourceTree = "<group>"; };
-		BAE6AC043CBC5996C7F1FB00FC74CC36 /* MCHeap.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCHeap.c; path = BohdiEngine/Classes/MonkC/MCHeap.c; sourceTree = "<group>"; };
+		BAE6AC043CBC5996C7F1FB00FC74CC36 /* MCHeap.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCHeap.c; path = BohdiEngine/Classes/MonkC/MCHeap.c; sourceTree = "<group>"; };
 		BAF6F645E8E4C133EEA4B1F6C1924BF5 /* BEMotionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEMotionManager.m; path = BohdiEngine/Classes/Interface/BEMotionManager.m; sourceTree = "<group>"; };
-		BBD82ACF81979ED3E19296DEADEF28DD /* SOIL.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = SOIL.c; path = BohdiEngine/External/SOIL/SOIL.c; sourceTree = "<group>"; };
+		BBD82ACF81979ED3E19296DEADEF28DD /* SOIL.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SOIL.c; path = BohdiEngine/External/SOIL/SOIL.c; sourceTree = "<group>"; };
 		BD8F6D383206BA12487646A74EF46C3B /* Pods-BEDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BEDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		BE2FA87710B34550924737A27E945A26 /* MCMap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCMap.h; path = BohdiEngine/Classes/MonkC/MCMap.h; sourceTree = "<group>"; };
 		BEE7F145A22B8D511355C6C01DD58212 /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
-		C023F22D6E46BDFF88FB8069BEDDB096 /* MCThread.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCThread.c; path = BohdiEngine/Classes/MonkC/MCThread.c; sourceTree = "<group>"; };
+		C023F22D6E46BDFF88FB8069BEDDB096 /* MCThread.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCThread.c; path = BohdiEngine/Classes/MonkC/MCThread.c; sourceTree = "<group>"; };
 		C058EFCB6178CFE08617B0C1A438AC9F /* MCSort.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCSort.h; path = BohdiEngine/Classes/MonkC/MCSort.h; sourceTree = "<group>"; };
 		C085E02FF89804F50ADDA04F5A586E94 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		C0B7D968EF71C3EAA5C32878795E8910 /* MCMesh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCMesh.h; path = BohdiEngine/Classes/Engine/MCMesh.h; sourceTree = "<group>"; };
 		C0C0EFA1A4D23A170F322D732AECD27A /* MCDirector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCDirector.h; path = BohdiEngine/Classes/Engine/MCDirector.h; sourceTree = "<group>"; };
 		C15B207C58DAB90F6F2C10D2603729FC /* BEView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BEView.m; path = BohdiEngine/Classes/Interface/BEView.m; sourceTree = "<group>"; };
-		C39EAB8A496301F79746DE7683CAF114 /* MCIO.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCIO.c; path = BohdiEngine/Classes/MonkC/MCIO.c; sourceTree = "<group>"; };
+		C39EAB8A496301F79746DE7683CAF114 /* MCIO.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCIO.c; path = BohdiEngine/Classes/MonkC/MCIO.c; sourceTree = "<group>"; };
 		C40D42D2EB8A185310FC63ED60648BFC /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
 		C41F99E9E1624A773069C011DBC3117E /* image_helper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = image_helper.h; path = BohdiEngine/External/SOIL/image_helper.h; sourceTree = "<group>"; };
-		C454878BB24814389BD79957E310328A /* image_helper.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = image_helper.c; path = BohdiEngine/External/SOIL/image_helper.c; sourceTree = "<group>"; };
+		C454878BB24814389BD79957E310328A /* image_helper.c */ = {isa = PBXFileReference; includeInIndex = 1; name = image_helper.c; path = BohdiEngine/External/SOIL/image_helper.c; sourceTree = "<group>"; };
 		C721E3F3D8EC987E0B83905D6553B3B0 /* Pods-BEDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BEDemo-dummy.m"; sourceTree = "<group>"; };
 		C7F37FAC31C5733C7ACD2AB55B2BB001 /* MCTree.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCTree.h; path = BohdiEngine/Classes/MonkC/MCTree.h; sourceTree = "<group>"; };
 		C83308204E322794EE818A5B6817260F /* MCTexture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCTexture.h; path = BohdiEngine/Classes/Engine/MCTexture.h; sourceTree = "<group>"; };
@@ -337,14 +337,14 @@
 		CD4745C94A401276DFDE463CABBBD8D1 /* BEMotionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEMotionManager.h; path = BohdiEngine/Classes/Interface/BEMotionManager.h; sourceTree = "<group>"; };
 		CE7B6DA8A5096C44C92250A7710DF854 /* BEView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BEView.h; path = BohdiEngine/Classes/Interface/BEView.h; sourceTree = "<group>"; };
 		CF4BD37C9F0C1DEDE4C6A16B0B34C98E /* gvr_audio_surround.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = gvr_audio_surround.h; path = Sources/vr/gvr/capi/include/gvr_audio_surround.h; sourceTree = "<group>"; };
-		CF91A42C7512A8D7D8460FEF7D0F8F04 /* MCArrayLinkedList.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCArrayLinkedList.c; path = BohdiEngine/Classes/MonkC/MCArrayLinkedList.c; sourceTree = "<group>"; };
+		CF91A42C7512A8D7D8460FEF7D0F8F04 /* MCArrayLinkedList.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCArrayLinkedList.c; path = BohdiEngine/Classes/MonkC/MCArrayLinkedList.c; sourceTree = "<group>"; };
 		CFF8F45CF93D6F6E6F7309EB3A155B16 /* stb_image_aug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = stb_image_aug.h; path = BohdiEngine/External/SOIL/stb_image_aug.h; sourceTree = "<group>"; };
-		D15C2072BE12653C190EF1430D257802 /* MCLight.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCLight.c; path = BohdiEngine/Classes/Engine/MCLight.c; sourceTree = "<group>"; };
+		D15C2072BE12653C190EF1430D257802 /* MCLight.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCLight.c; path = BohdiEngine/Classes/Engine/MCLight.c; sourceTree = "<group>"; };
 		D3D92963CD5A43A01AD834A9FBF81A47 /* MCCamera.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCCamera.h; path = BohdiEngine/Classes/Engine/MCCamera.h; sourceTree = "<group>"; };
 		D41A548FC5F60CF1FB8308A4C92BEEA2 /* MCWorld.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCWorld.h; path = BohdiEngine/Classes/Engine/MCWorld.h; sourceTree = "<group>"; };
 		D5B504F644643D046F9084CE0BF160DA /* GVRAudioEngine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GVRAudioEngine.h; path = Sources/GVRAudioEngine.h; sourceTree = "<group>"; };
-		D60187F417DD72CEE7EB66CAC8EE78AE /* Pods-BEDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BEDemo.modulemap"; sourceTree = "<group>"; };
-		D6844EF5025711354748E1A5919C6570 /* MC3DModel.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MC3DModel.c; path = BohdiEngine/Classes/Engine/MC3DModel.c; sourceTree = "<group>"; };
+		D60187F417DD72CEE7EB66CAC8EE78AE /* Pods-BEDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BEDemo.modulemap"; sourceTree = "<group>"; };
+		D6844EF5025711354748E1A5919C6570 /* MC3DModel.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MC3DModel.c; path = BohdiEngine/Classes/Engine/MC3DModel.c; sourceTree = "<group>"; };
 		D6D101B328213FC95FE42A3617B2C552 /* GTMSessionFetcherLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherLogging.h; path = Source/GTMSessionFetcherLogging.h; sourceTree = "<group>"; };
 		D77B90AF0B1C43938023D703B878537A /* BERendererCAPI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BERendererCAPI.h; path = BohdiEngine/Classes/Interface/BERendererCAPI.h; sourceTree = "<group>"; };
 		D7C1D88F54F82EE7B82D6A052F965BBE /* MCBuffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCBuffer.h; path = BohdiEngine/Classes/MonkC/MCBuffer.h; sourceTree = "<group>"; };
@@ -352,12 +352,12 @@
 		D87F76CB9249F3FAA38A6289731C59EA /* BECubeTextureData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BECubeTextureData.h; path = BohdiEngine/Classes/BEAssets/BECubeTextureData.h; sourceTree = "<group>"; };
 		D8A464EAFF155A7573BEAE5F6D8463A0 /* gvr.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = gvr.h; path = Sources/vr/gvr/capi/include/gvr.h; sourceTree = "<group>"; };
 		D9B72C57018E111EA05A091CCAD7A309 /* MC3DScene.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MC3DScene.h; path = BohdiEngine/Classes/Engine/MC3DScene.h; sourceTree = "<group>"; };
-		D9FE6616870CAAC40AEE1C70D52F6201 /* monkc.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = monkc.c; path = BohdiEngine/Classes/MonkC/monkc.c; sourceTree = "<group>"; };
-		DAADB0B78CD5303B95EB903B6DC0002C /* MCGeometry.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCGeometry.c; path = BohdiEngine/Classes/MonkC/MCGeometry.c; sourceTree = "<group>"; };
+		D9FE6616870CAAC40AEE1C70D52F6201 /* monkc.c */ = {isa = PBXFileReference; includeInIndex = 1; name = monkc.c; path = BohdiEngine/Classes/MonkC/monkc.c; sourceTree = "<group>"; };
+		DAADB0B78CD5303B95EB903B6DC0002C /* MCGeometry.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCGeometry.c; path = BohdiEngine/Classes/MonkC/MCGeometry.c; sourceTree = "<group>"; };
 		DAF54317BD4D3945C4942A223F22E52D /* BERenderer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BERenderer.m; path = BohdiEngine/Classes/Interface/BERenderer.m; sourceTree = "<group>"; };
 		DB80D2FB2B2240B62A6A6CE7B1DFA6C3 /* MCMaterial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCMaterial.h; path = BohdiEngine/Classes/Engine/MCMaterial.h; sourceTree = "<group>"; };
-		DC443F91988080770671B85A19E26C29 /* MCContext.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCContext.c; path = BohdiEngine/Classes/MonkC/MCContext.c; sourceTree = "<group>"; };
-		DEA0787D419004A10FEDB09D7C86C450 /* MC3DModelCache.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MC3DModelCache.c; path = BohdiEngine/Classes/Engine/MC3DModelCache.c; sourceTree = "<group>"; };
+		DC443F91988080770671B85A19E26C29 /* MCContext.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCContext.c; path = BohdiEngine/Classes/MonkC/MCContext.c; sourceTree = "<group>"; };
+		DEA0787D419004A10FEDB09D7C86C450 /* MC3DModelCache.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MC3DModelCache.c; path = BohdiEngine/Classes/Engine/MC3DModelCache.c; sourceTree = "<group>"; };
 		DEB64EF7CC721B1F5721670A633A7563 /* GoogleToolboxForMac-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-prefix.pch"; sourceTree = "<group>"; };
 		E0B2ECD73E3CBDB5F032448B1B3D3529 /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
 		E216DE31B2A3038C4269C265ADA6DD9F /* MCArrayLinkedList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCArrayLinkedList.h; path = BohdiEngine/Classes/MonkC/MCArrayLinkedList.h; sourceTree = "<group>"; };
@@ -366,7 +366,7 @@
 		E46064782EED62A2DBA4528974435DE4 /* MaterialRobotoFontLoader.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = MaterialRobotoFontLoader.bundle; path = Resources/MaterialRobotoFontLoader.bundle; sourceTree = "<group>"; };
 		E5F55E69D9CF7F0C1F7939A1762541A3 /* GoogleKitCore.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleKitCore.bundle; path = Resources/GoogleKitCore.bundle; sourceTree = "<group>"; };
 		E822EA8D4CCA9686CF3AB5BDA0538B79 /* MCUIBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCUIBase.h; path = BohdiEngine/Classes/Engine/MCUIBase.h; sourceTree = "<group>"; };
-		E9699A669338307A41E95F49C7EBF1EC /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9699A669338307A41E95F49C7EBF1EC /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA432A5233D00B0407527EFF2160E5CB /* GTMSessionFetcher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GTMSessionFetcher-dummy.m"; sourceTree = "<group>"; };
 		EE1882DA91AA9181AD5D728D45199AEB /* BE2DTextureData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BE2DTextureData.h; path = BohdiEngine/Classes/BEAssets/BE2DTextureData.h; sourceTree = "<group>"; };
 		EE6FFE0C4E4762000AF67CB847DC4A84 /* MCHeap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCHeap.h; path = BohdiEngine/Classes/MonkC/MCHeap.h; sourceTree = "<group>"; };
@@ -375,13 +375,13 @@
 		F16854E57E90B9C358C6A04BF795A2AA /* image_DXT.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = image_DXT.h; path = BohdiEngine/External/SOIL/image_DXT.h; sourceTree = "<group>"; };
 		F2249725A68B6BB3B82F8C3E97208733 /* MCProcess.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCProcess.h; path = BohdiEngine/Classes/MonkC/MCProcess.h; sourceTree = "<group>"; };
 		F6187E1C4917B3CD77275E7129007B83 /* MCString.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCString.h; path = BohdiEngine/Classes/MonkC/MCString.h; sourceTree = "<group>"; };
-		F89F3B71C67A597DC9C6C385FA5CF619 /* BEAssetsManager.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = BEAssetsManager.c; path = BohdiEngine/Classes/BEAssets/BEAssetsManager.c; sourceTree = "<group>"; };
+		F89F3B71C67A597DC9C6C385FA5CF619 /* BEAssetsManager.c */ = {isa = PBXFileReference; includeInIndex = 1; name = BEAssetsManager.c; path = BohdiEngine/Classes/BEAssets/BEAssetsManager.c; sourceTree = "<group>"; };
 		FC128F2CC8F588E19BB6451F23C0111E /* MCLinkedList.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCLinkedList.h; path = BohdiEngine/Classes/MonkC/MCLinkedList.h; sourceTree = "<group>"; };
 		FCD96FDBD6474F69D72D1DBE845B88B6 /* MC3DNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MC3DNode.h; path = BohdiEngine/Classes/Engine/MC3DNode.h; sourceTree = "<group>"; };
 		FD43D826731A3819BDB24D1FFCC5347F /* MCPanel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCPanel.h; path = BohdiEngine/Classes/Engine/MCPanel.h; sourceTree = "<group>"; };
-		FD8E93ACBC5F7333B6EFE45D5C8518B6 /* MCString.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCString.c; path = BohdiEngine/Classes/MonkC/MCString.c; sourceTree = "<group>"; };
-		FDFBC68B5A0132832534032430AB17AF /* BohdiEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BohdiEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FFCCA267BE773F8DDE39400B8A788488 /* MCTexture.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = MCTexture.c; path = BohdiEngine/Classes/Engine/MCTexture.c; sourceTree = "<group>"; };
+		FD8E93ACBC5F7333B6EFE45D5C8518B6 /* MCString.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCString.c; path = BohdiEngine/Classes/MonkC/MCString.c; sourceTree = "<group>"; };
+		FDFBC68B5A0132832534032430AB17AF /* BohdiEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BohdiEngine.framework; path = BohdiEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFCCA267BE773F8DDE39400B8A788488 /* MCTexture.c */ = {isa = PBXFileReference; includeInIndex = 1; name = MCTexture.c; path = BohdiEngine/Classes/Engine/MCTexture.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -700,6 +700,7 @@
 				B4DE757A473DDC8C8A75A84EE8B4F3B4 /* stbi_DDS_aug_c.h */,
 				331A5BE84E38FE3E16257ED47C51AEE6 /* Support Files */,
 			);
+			name = BohdiEngine;
 			path = BohdiEngine;
 			sourceTree = "<group>";
 		};
@@ -709,6 +710,7 @@
 				671CE24BEAB958085169987C7EBC6DD7 /* Core */,
 				2C6E10AEAFBE85015D7DFCCB59592AE4 /* Support Files */,
 			);
+			name = GTMSessionFetcher;
 			path = GTMSessionFetcher;
 			sourceTree = "<group>";
 		};
@@ -730,6 +732,7 @@
 				4E2F0F1A568CBB7B3DFDAB9D5D79DA6F /* Frameworks */,
 				83AB26DA774FD283ED45477126F7EF0F /* Resources */,
 			);
+			name = GVRSDK;
 			path = GVRSDK;
 			sourceTree = "<group>";
 		};
@@ -766,6 +769,7 @@
 				35F592E540F9451791EAF1D10FBE44E5 /* Logger */,
 				7A8590CD174FD508EAABCABA2686AD53 /* Support Files */,
 			);
+			name = GoogleToolboxForMac;
 			path = GoogleToolboxForMac;
 			sourceTree = "<group>";
 		};
@@ -960,7 +964,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1141,6 +1145,40 @@
 			};
 			name = Release;
 		};
+		0F2988E68C7944F28AF58854A8969275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C40D42D2EB8A185310FC63ED60648BFC /* GoogleToolboxForMac.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = GoogleToolboxForMac;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		2389DB4E71AA7C07593562621179F078 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D853BF689864690FD86883B79E64F788 /* Pods-BEDemo.debug.xcconfig */;
@@ -1177,7 +1215,41 @@
 			};
 			name = Debug;
 		};
-		2866D185C7DA3FE3BE71B4E7CC3E45E8 /* Release */ = {
+		67A5F44C69F5EF90DC500E2C710F1E8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25AA4E666D55BDC1316CAE2529D26856 /* GTMSessionFetcher.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = GTMSessionFetcher;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		89321DDAA4786D762A911B9F66570C0D /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 25AA4E666D55BDC1316CAE2529D26856 /* GTMSessionFetcher.xcconfig */;
 			buildSettings = {
@@ -1204,148 +1276,12 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		319EFDA581D17E312B29D85515846653 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C40D42D2EB8A185310FC63ED60648BFC /* GoogleToolboxForMac.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = GoogleToolboxForMac;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		5419D469920F33CE373AFFDC502A2E2C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FA18CBE9618064A56A1EEFAC6017755 /* BohdiEngine.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/BohdiEngine/BohdiEngine-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BohdiEngine/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BohdiEngine/BohdiEngine.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = BohdiEngine;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6B1D8016538E37E0292A8FD57ECB2F81 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C40D42D2EB8A185310FC63ED60648BFC /* GoogleToolboxForMac.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = GoogleToolboxForMac;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		8602155B0E61819166D0C092B3C88CAC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FA18CBE9618064A56A1EEFAC6017755 /* BohdiEngine.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/BohdiEngine/BohdiEngine-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BohdiEngine/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BohdiEngine/BohdiEngine.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = BohdiEngine;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		9BFC9E4A7AAD7A607ACE06D95A401A5A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1357,9 +1293,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1367,21 +1301,15 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
@@ -1404,6 +1332,108 @@
 			};
 			name = Debug;
 		};
+		9F8E98CD6CA36749808E6A8902EDEB55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C40D42D2EB8A185310FC63ED60648BFC /* GoogleToolboxForMac.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = GoogleToolboxForMac;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A5DA94E4E449209B1723372FA23EDBBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FA18CBE9618064A56A1EEFAC6017755 /* BohdiEngine.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BohdiEngine/BohdiEngine-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BohdiEngine/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BohdiEngine/BohdiEngine.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = BohdiEngine;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B3EAB84FD0202C7E509025841900DA43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FA18CBE9618064A56A1EEFAC6017755 /* BohdiEngine.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BohdiEngine/BohdiEngine-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BohdiEngine/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BohdiEngine/BohdiEngine.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = BohdiEngine;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		C03B8870130C98D1B02B59D003687524 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1414,9 +1444,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1424,20 +1452,14 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
@@ -1455,40 +1477,6 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		E5C6C8EECC28EF5099BB373F53C89A3B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25AA4E666D55BDC1316CAE2529D26856 /* GTMSessionFetcher.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = GTMSessionFetcher;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1514,8 +1502,8 @@
 		55B159DFDEB0A8142A6A56464B5B9E2E /* Build configuration list for PBXNativeTarget "BohdiEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8602155B0E61819166D0C092B3C88CAC /* Debug */,
-				5419D469920F33CE373AFFDC502A2E2C /* Release */,
+				A5DA94E4E449209B1723372FA23EDBBB /* Debug */,
+				B3EAB84FD0202C7E509025841900DA43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1523,8 +1511,8 @@
 		C43D9CA5106C6CCEF973B7EDF833947B /* Build configuration list for PBXNativeTarget "GoogleToolboxForMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				319EFDA581D17E312B29D85515846653 /* Debug */,
-				6B1D8016538E37E0292A8FD57ECB2F81 /* Release */,
+				0F2988E68C7944F28AF58854A8969275 /* Debug */,
+				9F8E98CD6CA36749808E6A8902EDEB55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1532,8 +1520,8 @@
 		D7CC8559AB6F51830204F1A9CE54BF3E /* Build configuration list for PBXNativeTarget "GTMSessionFetcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E5C6C8EECC28EF5099BB373F53C89A3B /* Debug */,
-				2866D185C7DA3FE3BE71B4E7CC3E45E8 /* Release */,
+				67A5F44C69F5EF90DC500E2C710F1E8D /* Debug */,
+				89321DDAA4786D762A911B9F66570C0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
