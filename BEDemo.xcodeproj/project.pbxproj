@@ -23,6 +23,7 @@
 		FD06836B1E7E9BE90036D552 /* arcanegolem.obj in Resources */ = {isa = PBXBuildFile; fileRef = FD0683671E7E9BE90036D552 /* arcanegolem.obj */; };
 		FD06836C1E7E9BE90036D552 /* ARMORREFLECT4.tga in Resources */ = {isa = PBXBuildFile; fileRef = FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */; };
 		FD1833581ED2F79A00BFA695 /* D3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1833571ED2F79A00BFA695 /* D3ViewController.swift */; };
+		FD3104D22041576500E56F20 /* VRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3104D12041576500E56F20 /* VRRenderer.swift */; };
 		FDB954741ED2A59F00B6FA68 /* PanoramaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */; };
 		FDBB097B1ECDD4F600F79502 /* VRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB097A1ECDD4F600F79502 /* VRViewController.swift */; };
 		FDBB097D1ECDE68600F79502 /* baofengXD.txt in Resources */ = {isa = PBXBuildFile; fileRef = FDBB097C1ECDE68600F79502 /* baofengXD.txt */; };
@@ -52,6 +53,7 @@
 		FD0683671E7E9BE90036D552 /* arcanegolem.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arcanegolem.obj; sourceTree = "<group>"; };
 		FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARMORREFLECT4.tga; sourceTree = "<group>"; };
 		FD1833571ED2F79A00BFA695 /* D3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = D3ViewController.swift; sourceTree = "<group>"; };
+		FD3104D12041576500E56F20 /* VRRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRRenderer.swift; sourceTree = "<group>"; };
 		FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanoramaViewController.swift; sourceTree = "<group>"; };
 		FDBB097A1ECDD4F600F79502 /* VRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VRViewController.swift; path = Resources/VRViewController.swift; sourceTree = "<group>"; };
 		FDBB097C1ECDE68600F79502 /* baofengXD.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = baofengXD.txt; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */,
 				FD1833571ED2F79A00BFA695 /* D3ViewController.swift */,
 				FDBB097A1ECDD4F600F79502 /* VRViewController.swift */,
+				FD3104D12041576500E56F20 /* VRRenderer.swift */,
 				F8AF1FE61E2C57BA009D0807 /* Main.storyboard */,
 				F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */,
 				F8AF1FEB1E2C57BA009D0807 /* LaunchScreen.storyboard */,
@@ -283,7 +286,11 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CardboardSDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleKitCore.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleKitDialogs.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleKitHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialRobotoFontLoader.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -319,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3104D22041576500E56F20 /* VRRenderer.swift in Sources */,
 				FDBB097B1ECDD4F600F79502 /* VRViewController.swift in Sources */,
 				FDB954741ED2A59F00B6FA68 /* PanoramaViewController.swift in Sources */,
 				FD1833581ED2F79A00BFA695 /* D3ViewController.swift in Sources */,

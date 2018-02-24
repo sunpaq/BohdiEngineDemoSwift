@@ -41,6 +41,7 @@
 #import "MCTexture.h"
 #import "MCUIBase.h"
 #import "MCWorld.h"
+#import "BEGameController.h"
 #import "BEModelCache.h"
 #import "BEMotionManager.h"
 #import "BEPanoramaView.h"
