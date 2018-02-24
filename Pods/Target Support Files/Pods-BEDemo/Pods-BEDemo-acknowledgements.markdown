@@ -235,6 +235,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    limitations under the License.
 
 
+## GVRKit
+
+Copyright 2017 Google
+
 ## GVRSDK
 
 Copyright 2017 Google

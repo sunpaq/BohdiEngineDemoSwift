@@ -260,7 +260,7 @@ typedef struct mc_hashitem_struct
     char key[MAX_KEY_CHARS];
 }mc_hashitem;
 
-#define MAX_ITEM_CACHE 10
+#define MAX_ITEM_CACHE 5
 typedef struct
 {
     mc_hashitem* cache[MAX_ITEM_CACHE];

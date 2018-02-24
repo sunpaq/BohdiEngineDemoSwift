@@ -9,6 +9,7 @@
 #ifdef __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
 #include <pthread.h>
+static CFStringRef BundlePath = NULL;
 #endif
 #include "BEAssetsManager.h"
 #include "MCString.h"
@@ -35,11 +36,19 @@ int MCFileGetPath(const char* filename, char* buffer)
 
 int MCFileGetPathFromBundle(const char* bundlename, const char* filename, char* buffer)
 {
+    if (isFilename(filename) == false) {
+        printf("MCFileGetPath - filename malformed: %s\n", filename);
+        return -1;
+    }
+    
     char basename[256] = {0};
     char extension[64] = {0};
     
-    MCString_extensionFromFilename(filename, basename, extension);
-    printf("MCFileGetPath - filename/basename/extension -> %s/%s/%s\n", filename, basename, extension);
+    if (MCString_extensionFromFilename(filename, basename, extension) > 0) {
+        printf("MCFileGetPath - filename/basename/extension -> %s/%s/%s\n", filename, basename, extension);
+    } else {
+        printf("MCFileGetPath - filename/basename/no extension -> %s/%s\n", filename, basename);
+    }
     
 #ifdef __ANDROID__
     if (assetManager_ != null) {
@@ -79,44 +88,40 @@ int MCFileGetPathFromBundle(const char* bundlename, const char* filename, char* 
     return 0;
 #else
 
-    static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
-    pthread_mutex_lock(&lock);
-    
-    CFBundleRef bundle = NULL;
-    if (bundlename) {
-        CFStringRef bid = CFStringCreateWithCString(kCFAllocatorDefault, bundlename, kCFStringEncodingUTF8);
-        bundle = CFBundleGetBundleWithIdentifier(bid);
-        CFRelease(bid);
-    } else {
-        bundle = CFBundleGetMainBundle();
+    if (BundlePath == NULL) {
+        //static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+        //pthread_mutex_lock(&lock);
+        CFBundleRef bundle = NULL;
+        if (bundlename) {
+            CFStringRef bid = CFStringCreateWithCString(kCFAllocatorDefault, bundlename, kCFStringEncodingUTF8);
+            bundle = CFBundleGetBundleWithIdentifier(bid);
+            CFRelease(bid);
+        } else {
+            bundle = CFBundleGetMainBundle();
+        }
+        if (!bundle) {
+            error_log("BEAssetManager can not find bundle (%s)\n", bundlename);
+            //pthread_mutex_unlock(&lock);
+            return -1;
+        }
+        CFURLRef url = CFBundleCopyBundleURL(bundle);
+        if (!url) {
+            error_log("BEAssetManager can not find path of (%s).(%s)\n", basename, extension);
+            //pthread_mutex_unlock(&lock);
+            return -1;
+        }
+        BundlePath = CFURLCopyPath(url);
+        CFRelease(url);
+        //pthread_mutex_unlock(&lock);
     }
     
-    if (!bundle) {
-        error_log("BEAssetManager can not find bundle (%s)\n", bundlename);
-        return -1;
-    }
+    char rootpath[PATH_MAX] = {0};
+    CFStringGetCString(BundlePath, rootpath, PATH_MAX, kCFStringEncodingUTF8);
     
-    CFStringRef fname = CFStringCreateWithCString(kCFAllocatorDefault, basename, kCFStringEncodingUTF8);
-    CFStringRef  fext = CFStringCreateWithCString(kCFAllocatorDefault, extension, kCFStringEncodingUTF8);
-    CFURLRef url = CFBundleCopyResourceURL(bundle, fname, fext, NULL);
-    if (url) {
-        CFStringRef  path = CFURLCopyPath(url);
-        CFStringGetCString(path, buffer, PATH_MAX, kCFStringEncodingUTF8);
-        if(path) CFRelease(path);
-        if(url)  CFRelease(url);
-        if(fname)CFRelease(fname);
-        if(fext) CFRelease(fext);
-        pthread_mutex_unlock(&lock);
-        return 0;
-        
-    } else {
-        error_log("BEAssetManager can not find path of (%s).(%s)\n", basename, extension);
-        if(fname)CFRelease(fname);
-        if(fext) CFRelease(fext);
-        pthread_mutex_unlock(&lock);
-        return -1;
-    }
-    
+    strcat(rootpath, filename);
+    strncpy(buffer, rootpath, PATH_MAX);
+    return 0;
+
 #endif
 }
 

@@ -554,7 +554,7 @@ mc_hashitem* get_item_byhash(mc_hashtable* const table_p, const MCHash hashval, 
         return null;
     }
     //look up in cache
-    if (table_p->cache_count > 0) {
+    if (table_p->cache_count > 0 && table_p->cache_count < MAX_ITEM_CACHE) {
         for (int i=0; i<MAX_ITEM_CACHE; i++) {
             mc_hashitem* item = table_p->cache[i];
             if (item && item->hash == hashval) {
@@ -567,6 +567,11 @@ mc_hashitem* get_item_byhash(mc_hashtable* const table_p, const MCHash hashval, 
                 //debug_log("key hit a cached item [%s]\n", refkey);
                 return item;
             }
+        }
+    } else {
+        table_p->cache_count = 0;
+        for (int i=0; i<MAX_ITEM_CACHE; i++) {
+            table_p->cache[i] = null;
         }
     }
     //level<MCHashTableLevelMax
@@ -598,7 +603,7 @@ mc_hashitem* get_item_byhash(mc_hashtable* const table_p, const MCHash hashval, 
         //compare hash
         if (res->hash == hashval) {
             //cache
-            if (table_p->cache_count < MAX_ITEM_CACHE) {
+            if (table_p->cache_count >=0 && table_p->cache_count < MAX_ITEM_CACHE) {
                 table_p->cache[table_p->cache_count++] = res;
             } else {
                 table_p->cache_count = 0;

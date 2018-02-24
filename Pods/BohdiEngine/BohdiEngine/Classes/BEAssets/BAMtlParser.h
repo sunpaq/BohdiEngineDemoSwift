@@ -151,6 +151,8 @@ MCInline BAMaterial* BAMaterialNew(const char* name) {
     BAMaterial* mtl = (BAMaterial*)malloc(sizeof(BAMaterial));
     mtl->next = null;
     MCStringFill(mtl->name, name);
+    mtl->diffuseMapName[0] = NUL;
+    mtl->specularMapName[0] = NUL;
     return mtl;
 }
 

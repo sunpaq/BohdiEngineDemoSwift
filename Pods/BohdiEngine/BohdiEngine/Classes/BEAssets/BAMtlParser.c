@@ -238,7 +238,7 @@ static BAMtlLibrary* BAMtlLibraryAlloc() {
 
 BAMtlLibrary* BAMtlLibraryNew(const char* filename)
 {
-    char path[LINE_MAX] = {0};
+    char path[PATH_MAX] = {0};
     if(MCFileGetPath(filename, path)) {
         return null;
     }
