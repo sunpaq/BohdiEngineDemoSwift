@@ -14,19 +14,11 @@ class VRRenderer: GVRRenderer {
     var renderer: BERenderer? = nil
     var controller: BEGameController? = nil
     var currentModelIndex = 0
-    var models: [String] = []
+    var models: [String]!
     
     override func initializeGl() {
         super.initializeGl()
-        
-        if let paths = Bundle.main.urls(forResourcesWithExtension: "obj", subdirectory: nil) {
-            for path in paths {
-                let name = path.lastPathComponent
-                models.append(name)
-            }
-        } else {
-            return
-        }
+        models = BEResource.shared().objModelNames as! [String]
         
         renderer = BERenderer.init(frame: CGRect.init())
         renderer?.addModelNamed(models[currentModelIndex], scale: 1.0, rotateX: 0, tag: 11)
@@ -36,7 +28,6 @@ class VRRenderer: GVRRenderer {
                 button, value, pressed in
                 if pressed {
                     self.renderer?.removeCurrentModel()
-                    self.renderer?.removeCurrentSkysph()
                     if self.currentModelIndex >= 0 && self.currentModelIndex < self.models.count {
                         self.renderer?.addModelNamed(self.models[self.currentModelIndex], scale: 1.0, rotateX: 0, tag: 12)
                         self.currentModelIndex += 1
@@ -49,7 +40,6 @@ class VRRenderer: GVRRenderer {
                 button, value, pressed in
                 if pressed {
                     self.renderer?.removeCurrentModel()
-                    self.renderer?.removeCurrentSkysph()
                     if self.currentModelIndex >= 0 && self.currentModelIndex < self.models.count {
                         self.renderer?.addModelNamed(self.models[self.currentModelIndex], scale: 1.0, rotateX: 0, tag: 12)
                         self.currentModelIndex -= 1
@@ -58,8 +48,20 @@ class VRRenderer: GVRRenderer {
                     }
                 }
             }
+            controller.extendedGamepad?.buttonX.pressedChangedHandler = {
+                button, value, pressed in
+                if pressed {
+                    self.renderer?.removeCurrentModel()
+                    self.renderer?.removeCurrentSkysph()
+                }
+            }
+            controller.extendedGamepad?.buttonY.pressedChangedHandler = {
+                button, value, pressed in
+                if pressed {
+                    self.renderer?.addSkysphNamed("panorama360.jpg")
+                }
+            }
         }
-
     }
     
     override func setSize(_ size: CGSize, andOrientation orientation: UIInterfaceOrientation) {
@@ -106,17 +108,6 @@ class VRRenderer: GVRRenderer {
                     ren.cameraTranslate(GLKVector3.init(v: (0,0,(1-trigger.value)*3+1)), incremental: true)
                 } else {
                     ren.cameraTranslate(GLKVector3.init(v: (0,0,3)), incremental: true)
-                }
-            }
-            if let X = controller.extendedGamepad?.buttonX {
-                if X.isPressed {
-                    ren.removeCurrentModel()
-                    ren.removeCurrentSkysph()
-                }
-            }
-            if let Y = controller.extendedGamepad?.buttonY {
-                if Y.isPressed {
-                    ren.addSkysphNamed("panorama360.jpg")
                 }
             }
         }

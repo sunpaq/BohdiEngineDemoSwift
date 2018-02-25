@@ -47,6 +47,7 @@
 #import "BEPanoramaView.h"
 #import "BERenderer.h"
 #import "BERendererCAPI.h"
+#import "BEResource.h"
 #import "BERunLoop.h"
 #import "BEView.h"
 #import "MCArray.h"
