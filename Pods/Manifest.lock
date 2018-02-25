@@ -11,20 +11,16 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.6)
 
 DEPENDENCIES:
-  - BohdiEngine (from `~/Dev/pods/BohdiEngine-pod`)
+  - BohdiEngine
   - GVRKit
 
-EXTERNAL SOURCES:
-  BohdiEngine:
-    :path: ~/Dev/pods/BohdiEngine-pod
-
 SPEC CHECKSUMS:
-  BohdiEngine: f658c51b45a89e50a45b32910e3c612af5065685
+  BohdiEngine: 5a8619b61bd7b3c3c33a99e1f770c740de1eb672
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: 6aacd0ab48ddf0c3633ab2642d792abfcad1b08a
   GVRKit: 424e48fafa9f8a6249a14ffda48d2f1dbe3d9def
   GVRSDK: 0cb9d0ce06a84d698e61e3db9509766022dcf815
 
-PODFILE CHECKSUM: 1f8c4f7c5b9650af272c5271b67e457324c75945
+PODFILE CHECKSUM: 7bbdb2fda726ae17c103bebec5a3d873124a0452
 
 COCOAPODS: 1.4.0

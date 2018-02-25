@@ -115,7 +115,7 @@ function(void, meshLoadFaceElement, MCMesh* mesh, BAObjData* buff, BAFaceElement
         mesh->calculatedNormal = true;
     }
     
-    if (e.ni <= 0) {
+    if (e.ni <= 0 || buff->normalbuff == null) {
         if (!buff->shouldCalculateNormal) {
             n = MCNormalOfTriangle(buff->vertexbuff[e.vi], buff->vertexbuff[e.vi+1], buff->vertexbuff[e.vi+2]);
             mesh->calculatedNormal = true;
