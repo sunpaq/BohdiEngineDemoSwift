@@ -49,7 +49,7 @@ function(unsigned char*, loadImageRawdata, const char* path)
 function(void, rawdataToTexbuffer, GLenum textype)
 {
     as(MCTexture);
-    if (obj->data->raw) {
+    if (obj->data && obj->data->raw) {
         if (obj->data->channels == 4) {
             glTexImage2D(textype, 0, GL_RGBA, obj->width, obj->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, obj->data->raw);
             glGenerateMipmap(textype);

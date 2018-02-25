@@ -98,7 +98,7 @@ MCPolygon* MCPolygonInit(MCPolygon* poly, MCVector3 vertexes[], size_t count)
     
     if (poly->convexCount < 3 ) {
         error_log("poly have no convex hull!");
-        exit(-1);
+        //exit(-1);
     }
     
     if (poly->concaveCount == 0) {
