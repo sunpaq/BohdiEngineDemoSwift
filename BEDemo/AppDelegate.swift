@@ -39,6 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         </plist>
         */
         
+        if let controller = BEGameController.shared() {
+            controller.startUsingGameController()
+            controller.stickFactor = 10.0
+        }
+        
         return true
     }
 
