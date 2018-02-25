@@ -12,6 +12,7 @@ import GVRKit
 class VRRenderer: GVRRenderer {
 
     var renderer: BERenderer? = nil
+    var controller: BEGameController? = nil
     
     override func initializeGl() {
         super.initializeGl()
@@ -42,6 +43,35 @@ class VRRenderer: GVRRenderer {
                               vrFOV: headPose.fieldOfView.top + headPose.fieldOfView.bottom)
             } else {
                 ren.drawFrame()
+            }
+            handleGameController(ren)
+        }
+    }
+    
+    func handleGameController(_ ren: BERenderer!) {
+        if let controller = BEGameController.shared() {
+            ren.rotateModel(byPanGesture: controller.leftStick)
+            if let trigger = controller.gameController.extendedGamepad?.rightTrigger {
+                if trigger.isPressed {
+                    ren.cameraTranslate(GLKVector3.init(v: (0,0,(1-trigger.value)*3+1)), incremental: true)
+                } else {
+                    ren.cameraTranslate(GLKVector3.init(v: (0,0,3)), incremental: true)
+                }
+            }
+            if let X = controller.gameController.extendedGamepad?.buttonX {
+                if X.isPressed {
+                    ren.removeCurrentModel()
+                }
+            }
+            if let A = controller.gameController.extendedGamepad?.buttonA {
+                if A.isPressed {
+                    ren.addModelNamed("2.obj", scale: 1.0, rotateX: 0, tag: 12)
+                }
+            }
+            if let B = controller.gameController.extendedGamepad?.buttonB {
+                if B.isPressed {
+                    ren.addModelNamed("arcanegolem.obj", scale: 1.0, rotateX: 0, tag: 11)
+                }
             }
         }
     }
