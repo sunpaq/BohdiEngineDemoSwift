@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		04AC60FC3C9661C739D290CF /* Pods_BEDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC9ED362E70F1A6191D86F5 /* Pods_BEDemo.framework */; };
-		F83B120F1E70FBD0003F13F1 /* outer.mtl in Resources */ = {isa = PBXBuildFile; fileRef = F83B120D1E70FBD0003F13F1 /* outer.mtl */; };
-		F83B12101E70FBD0003F13F1 /* outer.obj in Resources */ = {isa = PBXBuildFile; fileRef = F83B120E1E70FBD0003F13F1 /* outer.obj */; };
 		F86EAEEE1E2CA4B100A46125 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */; };
 		F8AF1FE31E2C57BA009D0807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */; };
 		F8AF1FE81E2C57BA009D0807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FE61E2C57BA009D0807 /* Main.storyboard */; };
@@ -34,8 +32,6 @@
 		3645FE7E1610A1341927E532 /* Pods-BEDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BEDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BEDemo/Pods-BEDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		7DC9ED362E70F1A6191D86F5 /* Pods_BEDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BEDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA00336E23BE640A469C7656 /* Pods-BEDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BEDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BEDemo/Pods-BEDemo.release.xcconfig"; sourceTree = "<group>"; };
-		F83B120D1E70FBD0003F13F1 /* outer.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = outer.mtl; sourceTree = "<group>"; };
-		F83B120E1E70FBD0003F13F1 /* outer.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = outer.obj; sourceTree = "<group>"; };
 		F86EAEED1E2CA4B100A46125 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		F8AF1FDF1E2C57BA009D0807 /* BEDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BEDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8AF1FE21E2C57BA009D0807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,8 +149,6 @@
 				FD0683641E7E9BE90036D552 /* Arcanegolem */,
 				F8C5A09E1E655EC100B776E5 /* 2.obj */,
 				F8C5A09F1E655EC100B776E5 /* beengine.mtl */,
-				F83B120D1E70FBD0003F13F1 /* outer.mtl */,
-				F83B120E1E70FBD0003F13F1 /* outer.obj */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -236,7 +230,6 @@
 			files = (
 				F8C5A0A51E655EC100B776E5 /* 2.obj in Resources */,
 				FDBB097D1ECDE68600F79502 /* baofengXD.txt in Resources */,
-				F83B12101E70FBD0003F13F1 /* outer.obj in Resources */,
 				F8AF1FED1E2C57BA009D0807 /* LaunchScreen.storyboard in Resources */,
 				F8C5A0A61E655EC100B776E5 /* beengine.mtl in Resources */,
 				FD06836B1E7E9BE90036D552 /* arcanegolem.obj in Resources */,
@@ -245,7 +238,6 @@
 				F8AF1FE81E2C57BA009D0807 /* Main.storyboard in Resources */,
 				FD0683691E7E9BE90036D552 /* AG_Model_Mesh_ArcaneDefense.tga in Resources */,
 				FD06836C1E7E9BE90036D552 /* ARMORREFLECT4.tga in Resources */,
-				F83B120F1E70FBD0003F13F1 /* outer.mtl in Resources */,
 				FD06836A1E7E9BE90036D552 /* arcanegolem.mtl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
