@@ -1,5 +1,5 @@
 PODS:
-  - BohdiEngine (1.1.8)
+  - BohdiEngine (1.1.9)
   - GoogleToolboxForMac/Defines (2.1.0)
   - GoogleToolboxForMac/Logger (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
@@ -19,12 +19,12 @@ EXTERNAL SOURCES:
     :path: ~/Dev/pods/BohdiEngine-pod
 
 SPEC CHECKSUMS:
-  BohdiEngine: e282fbd57dddd6455d62df322722adde6ae9e04b
+  BohdiEngine: f658c51b45a89e50a45b32910e3c612af5065685
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: 6aacd0ab48ddf0c3633ab2642d792abfcad1b08a
   GVRKit: 424e48fafa9f8a6249a14ffda48d2f1dbe3d9def
   GVRSDK: 0cb9d0ce06a84d698e61e3db9509766022dcf815
 
-PODFILE CHECKSUM: 5be00348769e6f7dd44b6c48f44c6fa77ea2fc7c
+PODFILE CHECKSUM: 1f8c4f7c5b9650af272c5271b67e457324c75945
 
 COCOAPODS: 1.4.0

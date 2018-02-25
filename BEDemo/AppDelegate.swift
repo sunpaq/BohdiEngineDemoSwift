@@ -44,6 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             controller.stickFactor = 10.0
         }
         
+        if let resource = BEResource.shared() {
+            resource.detectObjModelNames()
+        }
+        
         return true
     }
 
