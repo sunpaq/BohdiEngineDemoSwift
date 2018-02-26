@@ -30,24 +30,28 @@ class VRRenderer: GVRRenderer {
                 button, value, pressed in
                 if pressed {
                     self.renderer?.removeCurrentModel()
+                    self.currentModelIndex += 1
                     if self.currentModelIndex >= 0 && self.currentModelIndex < self.models.count {
-                        self.renderer?.addModelNamed(self.models[self.currentModelIndex], scale: 1.0, rotateX: 0, tag: 12)
-                        self.currentModelIndex += 1
+                        //valid
                     } else {
                         self.currentModelIndex = 0
                     }
+                    let tag :Int32 = Int32(self.currentModelIndex)
+                    self.renderer?.addModelNamed(self.models[self.currentModelIndex], scale: 1.0, rotateX: 0, tag: tag)
                 }
             }
             controller.extendedGamepad?.buttonB.pressedChangedHandler = {
                 button, value, pressed in
                 if pressed {
                     self.renderer?.removeCurrentModel()
+                    self.currentModelIndex -= 1
                     if self.currentModelIndex >= 0 && self.currentModelIndex < self.models.count {
-                        self.renderer?.addModelNamed(self.models[self.currentModelIndex], scale: 1.0, rotateX: 0, tag: 12)
-                        self.currentModelIndex -= 1
+                        //valid
                     } else {
                         self.currentModelIndex = 0
                     }
+                    let tag :Int32 = Int32(self.currentModelIndex)
+                    self.renderer?.addModelNamed(self.models[self.currentModelIndex], scale: 1.0, rotateX: 0, tag: tag)
                 }
             }
             controller.extendedGamepad?.buttonX.pressedChangedHandler = {
@@ -79,13 +83,11 @@ class VRRenderer: GVRRenderer {
     override func draw(_ headPose: GVRHeadPose!) {
         if let ren = renderer {
             if vrModeEnabled == true {
-                //ren.doesAutoRotateCamera = false
                 ren.drawFrame(headPose.viewport,
                               vrHeadTransform: headPose.headTransform,
                               vrEyeTransform: headPose.eyeTransform,
                               vrFOV: headPose.fieldOfView.top + headPose.fieldOfView.bottom)
             } else {
-                //ren.doesAutoRotateCamera = true
                 ren.drawFrame()
             }
             handleGameController(ren)
