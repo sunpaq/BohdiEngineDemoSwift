@@ -16,10 +16,11 @@ class VRRenderer: GVRRenderer {
     var currentModelIndex = 0
     var models: [String]!
     
+    var zoomLock: Bool = false
+    
     override func initializeGl() {
         super.initializeGl()
         models = BEResource.shared().objModelNames as! [String]
-        
         renderer = BERenderer.init(frame: CGRect.init())
         renderer?.addModelNamed(models[currentModelIndex], scale: 1.0, rotateX: 0, tag: 11)
         renderer?.doesAutoRotateCamera = false;
@@ -105,9 +106,28 @@ class VRRenderer: GVRRenderer {
             }
             if let trigger = controller.extendedGamepad?.rightTrigger {
                 if trigger.isPressed {
-                    ren.cameraTranslate(GLKVector3.init(v: (0,0,(1-trigger.value)*3+1)), incremental: true)
+                    if zoomLock == false {
+                        ren.cameraTranslate(GLKVector3.init(v: (0,0,(1-trigger.value)*3+1)), incremental: true)
+                    }
+                    if let L1 = controller.extendedGamepad?.leftShoulder {
+                        if L1.isPressed {
+                            zoomLock = true
+                        }
+                    }
                 } else {
-                    ren.cameraTranslate(GLKVector3.init(v: (0,0,3)), incremental: true)
+                    if zoomLock == false {
+                        ren.cameraTranslate(GLKVector3.init(v: (0,0,4)), incremental: true)
+                    }
+                    if let L1 = controller.extendedGamepad?.leftShoulder {
+                        if L1.isPressed {
+                            zoomLock = false
+                        }
+                    }
+                }
+            }
+            if let L2 = controller.extendedGamepad?.rightShoulder {
+                if L2.isPressed {
+                    
                 }
             }
         }
