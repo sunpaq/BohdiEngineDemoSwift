@@ -14,7 +14,9 @@ class D3ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        beview.loadModelNamed("2.obj")
+        if let models = BEResource.shared().objModelNames as? [String] {
+            beview.loadModelNamed(models[0])
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
