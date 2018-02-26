@@ -94,8 +94,9 @@ class VRRenderer: GVRRenderer {
     
     func handleGameController(_ ren: BERenderer!) {
         if let controller = BEGameController.shared().gameController {
-            ren.rotateModel(byPanGesture: BEGameController.shared().leftStick)
-            ren.rotateSkysph(byPanGesture: BEGameController.shared().leftStick)
+            ren.rotateModel(byPanGesture: CGPoint(x:BEGameController.shared().leftStick.x, y:0))
+            ren.rotateModel(byPanGesture: CGPoint(x:0, y:BEGameController.shared().rightStick.y))
+
             if let trigger = controller.extendedGamepad?.leftTrigger {
                 if trigger.isPressed {
                     ren.doesDrawWireFrame = true

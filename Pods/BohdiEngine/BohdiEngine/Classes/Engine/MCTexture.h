@@ -25,6 +25,7 @@ class(MCTexture, MCObject,
       unsigned textureUnit;
       BE2DTextureData* data;
       MCTextureDisplayMode displayMode;
+      MCBool loadedToGL;
 );
 
 method(MCTexture, MCTexture*, initWithFileNameMode, const char* name, MCTextureDisplayMode mode);

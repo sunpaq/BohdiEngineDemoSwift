@@ -39,6 +39,7 @@
 #import "MCSkybox.h"
 #import "MCSkysphere.h"
 #import "MCTexture.h"
+#import "MCTextureCache.h"
 #import "MCUIBase.h"
 #import "MCWorld.h"
 #import "BEGameController.h"

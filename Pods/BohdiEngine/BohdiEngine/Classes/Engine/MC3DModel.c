@@ -11,6 +11,7 @@
 #include "BATrianglization.h"
 #include "MCMath.h"
 #include "MCLinkedList.h"
+#include "MCTextureCache.h"
 
 compute(MC3DFrame, frame)
 {
@@ -95,6 +96,8 @@ oninit(MC3DModel)
 
 method(MC3DModel, void, bye, voida)
 {
+    //clean all the cached textures
+    MCTextureCache_cleanAndDestoryShared(0);
     MC3DNode_bye(sobj, 0);
 }
 
@@ -215,7 +218,13 @@ function(void, setTextureForNode, MC3DNode* node, BAObjData* buff, BAMesh* mesh)
     if (mesh->object[0]) {
         BATexture* tex = BAFindTextureByAttachedObject(buff->mtllib_list, mesh->object);
         if (tex && tex->filename[0]) {
-            node->diffuseTexture = MCTexture_initWithFileName(new(MCTexture), tex->filename);
+            MCTextureCache* tcache = MCTextureCache_shared(0);
+            MCTexture* mctex = MCTextureCache_findTextureNamed(tcache, tex->filename);
+            if (mctex == null) {
+                mctex = MCTexture_initWithFileName(new(MCTexture), tex->filename);
+                MCTextureCache_cacheTextureNamed(tcache, mctex, tex->filename);
+            }
+            node->diffuseTexture = mctex;
             return;
         }
     }
@@ -224,7 +233,13 @@ function(void, setTextureForNode, MC3DNode* node, BAObjData* buff, BAMesh* mesh)
     if (mesh->group[0]) {
         BATexture* tex = BAFindTextureByAttachedGroup(buff->mtllib_list, mesh->group);
         if (tex && tex->filename[0]) {
-            node->diffuseTexture = MCTexture_initWithFileName(new(MCTexture), tex->filename);
+            MCTextureCache* tcache = MCTextureCache_shared(0);
+            MCTexture* mctex = MCTextureCache_findTextureNamed(tcache, tex->filename);
+            if (mctex == null) {
+                mctex = MCTexture_initWithFileName(new(MCTexture), tex->filename);
+                MCTextureCache_cacheTextureNamed(tcache, mctex, tex->filename);
+            }
+            node->diffuseTexture = mctex;
             return;
         }
     }
@@ -233,13 +248,24 @@ function(void, setTextureForNode, MC3DNode* node, BAObjData* buff, BAMesh* mesh)
     BAMaterial* mtl = mesh->usemtl;
     if (mtl) {
         if (mtl->diffuseMapName[0]) {
-            node->diffuseTexture = MCTexture_initWithFileName(new(MCTexture), mtl->diffuseMapName);
+            MCTextureCache* tcache = MCTextureCache_shared(0);
+            MCTexture* mctex = MCTextureCache_findTextureNamed(tcache, mtl->diffuseMapName);
+            if (mctex == null) {
+                mctex = MCTexture_initWithFileName(new(MCTexture), mtl->diffuseMapName);
+                MCTextureCache_cacheTextureNamed(tcache, mctex, mtl->diffuseMapName);
+            }
+            node->diffuseTexture = mctex;
         }
         if (mtl->specularMapName[0]) {
-            node->specularTexture = MCTexture_initWithFileName(new(MCTexture), mtl->specularMapName);
+            MCTextureCache* tcache = MCTextureCache_shared(0);
+            MCTexture* mctex = MCTextureCache_findTextureNamed(tcache, mtl->specularMapName);
+            if (mctex == null) {
+                mctex = MCTexture_initWithFileName(new(MCTexture), mtl->specularMapName);
+                MCTextureCache_cacheTextureNamed(tcache, mctex, mtl->specularMapName);
+            }
+            node->specularTexture = mctex;
         }
     }
-
 }
 
 //size_t fcursor, BAMaterial* mtl, size_t facecount,

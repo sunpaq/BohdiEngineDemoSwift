@@ -14,14 +14,18 @@
 		F8AF1FEA1E2C57BA009D0807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FE91E2C57BA009D0807 /* Assets.xcassets */; };
 		F8AF1FED1E2C57BA009D0807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8AF1FEB1E2C57BA009D0807 /* LaunchScreen.storyboard */; };
 		F8AF1FF91E2C5B8C009D0807 /* BohdiEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8AF1FF81E2C5B8C009D0807 /* BohdiEngine.framework */; };
-		F8C5A0A51E655EC100B776E5 /* 2.obj in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A09E1E655EC100B776E5 /* 2.obj */; };
-		F8C5A0A61E655EC100B776E5 /* beengine.mtl in Resources */ = {isa = PBXBuildFile; fileRef = F8C5A09F1E655EC100B776E5 /* beengine.mtl */; };
 		FD0683691E7E9BE90036D552 /* AG_Model_Mesh_ArcaneDefense.tga in Resources */ = {isa = PBXBuildFile; fileRef = FD0683651E7E9BE90036D552 /* AG_Model_Mesh_ArcaneDefense.tga */; };
 		FD06836A1E7E9BE90036D552 /* arcanegolem.mtl in Resources */ = {isa = PBXBuildFile; fileRef = FD0683661E7E9BE90036D552 /* arcanegolem.mtl */; };
 		FD06836B1E7E9BE90036D552 /* arcanegolem.obj in Resources */ = {isa = PBXBuildFile; fileRef = FD0683671E7E9BE90036D552 /* arcanegolem.obj */; };
 		FD06836C1E7E9BE90036D552 /* ARMORREFLECT4.tga in Resources */ = {isa = PBXBuildFile; fileRef = FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */; };
 		FD1833581ED2F79A00BFA695 /* D3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1833571ED2F79A00BFA695 /* D3ViewController.swift */; };
 		FD3104D22041576500E56F20 /* VRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3104D12041576500E56F20 /* VRRenderer.swift */; };
+		FD8E81352043D33F00CD22B3 /* maya-blender.obj in Resources */ = {isa = PBXBuildFile; fileRef = FD8E81342043D33F00CD22B3 /* maya-blender.obj */; };
+		FD8E81372043D37700CD22B3 /* maya-blender.mtl in Resources */ = {isa = PBXBuildFile; fileRef = FD8E81362043D37700CD22B3 /* maya-blender.mtl */; };
+		FD8F32AF2043FDBD00E60937 /* SirenBody_Bm.tga in Resources */ = {isa = PBXBuildFile; fileRef = FD8F32AB2043FDBD00E60937 /* SirenBody_Bm.tga */; };
+		FD8F32B02043FDBD00E60937 /* SirenHead_Bm.tga in Resources */ = {isa = PBXBuildFile; fileRef = FD8F32AC2043FDBD00E60937 /* SirenHead_Bm.tga */; };
+		FD8F32B12043FDBD00E60937 /* Mouth.tga in Resources */ = {isa = PBXBuildFile; fileRef = FD8F32AD2043FDBD00E60937 /* Mouth.tga */; };
+		FD8F32B22043FDBD00E60937 /* SirenHands_Dif.tga in Resources */ = {isa = PBXBuildFile; fileRef = FD8F32AE2043FDBD00E60937 /* SirenHands_Dif.tga */; };
 		FDB954741ED2A59F00B6FA68 /* PanoramaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */; };
 		FDBB097B1ECDD4F600F79502 /* VRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBB097A1ECDD4F600F79502 /* VRViewController.swift */; };
 		FDBB097D1ECDE68600F79502 /* baofengXD.txt in Resources */ = {isa = PBXBuildFile; fileRef = FDBB097C1ECDE68600F79502 /* baofengXD.txt */; };
@@ -41,8 +45,6 @@
 		F8AF1FEE1E2C57BA009D0807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8AF1FF41E2C5B00009D0807 /* BEDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BEDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		F8AF1FF81E2C5B8C009D0807 /* BohdiEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BohdiEngine.framework; path = "Pods/../build/Debug-iphoneos/BohdiEngine/BohdiEngine.framework"; sourceTree = "<group>"; };
-		F8C5A09E1E655EC100B776E5 /* 2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.obj; sourceTree = "<group>"; };
-		F8C5A09F1E655EC100B776E5 /* beengine.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = beengine.mtl; sourceTree = "<group>"; };
 		F8D8BBF11E66A3A400229AE7 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = Pods/OpenCV/opencv2.framework; sourceTree = "<group>"; };
 		FD0683651E7E9BE90036D552 /* AG_Model_Mesh_ArcaneDefense.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = AG_Model_Mesh_ArcaneDefense.tga; sourceTree = "<group>"; };
 		FD0683661E7E9BE90036D552 /* arcanegolem.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arcanegolem.mtl; sourceTree = "<group>"; };
@@ -50,6 +52,12 @@
 		FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARMORREFLECT4.tga; sourceTree = "<group>"; };
 		FD1833571ED2F79A00BFA695 /* D3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = D3ViewController.swift; sourceTree = "<group>"; };
 		FD3104D12041576500E56F20 /* VRRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VRRenderer.swift; sourceTree = "<group>"; };
+		FD8E81342043D33F00CD22B3 /* maya-blender.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "maya-blender.obj"; sourceTree = "<group>"; };
+		FD8E81362043D37700CD22B3 /* maya-blender.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "maya-blender.mtl"; sourceTree = "<group>"; };
+		FD8F32AB2043FDBD00E60937 /* SirenBody_Bm.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = SirenBody_Bm.tga; sourceTree = "<group>"; };
+		FD8F32AC2043FDBD00E60937 /* SirenHead_Bm.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = SirenHead_Bm.tga; sourceTree = "<group>"; };
+		FD8F32AD2043FDBD00E60937 /* Mouth.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mouth.tga; sourceTree = "<group>"; };
+		FD8F32AE2043FDBD00E60937 /* SirenHands_Dif.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = SirenHands_Dif.tga; sourceTree = "<group>"; };
 		FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanoramaViewController.swift; sourceTree = "<group>"; };
 		FDBB097A1ECDD4F600F79502 /* VRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VRViewController.swift; path = Resources/VRViewController.swift; sourceTree = "<group>"; };
 		FDBB097C1ECDE68600F79502 /* baofengXD.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = baofengXD.txt; sourceTree = "<group>"; };
@@ -146,9 +154,8 @@
 		F8C5A09D1E655EC100B776E5 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				FD8E81272043CC5000CD22B3 /* maya2 */,
 				FD0683641E7E9BE90036D552 /* Arcanegolem */,
-				F8C5A09E1E655EC100B776E5 /* 2.obj */,
-				F8C5A09F1E655EC100B776E5 /* beengine.mtl */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -162,6 +169,19 @@
 				FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */,
 			);
 			path = Arcanegolem;
+			sourceTree = "<group>";
+		};
+		FD8E81272043CC5000CD22B3 /* maya2 */ = {
+			isa = PBXGroup;
+			children = (
+				FD8F32AD2043FDBD00E60937 /* Mouth.tga */,
+				FD8F32AB2043FDBD00E60937 /* SirenBody_Bm.tga */,
+				FD8F32AE2043FDBD00E60937 /* SirenHands_Dif.tga */,
+				FD8F32AC2043FDBD00E60937 /* SirenHead_Bm.tga */,
+				FD8E81342043D33F00CD22B3 /* maya-blender.obj */,
+				FD8E81362043D37700CD22B3 /* maya-blender.mtl */,
+			);
+			path = maya2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,17 +248,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8C5A0A51E655EC100B776E5 /* 2.obj in Resources */,
 				FDBB097D1ECDE68600F79502 /* baofengXD.txt in Resources */,
 				F8AF1FED1E2C57BA009D0807 /* LaunchScreen.storyboard in Resources */,
-				F8C5A0A61E655EC100B776E5 /* beengine.mtl in Resources */,
+				FD8E81372043D37700CD22B3 /* maya-blender.mtl in Resources */,
+				FD8E81352043D33F00CD22B3 /* maya-blender.obj in Resources */,
 				FD06836B1E7E9BE90036D552 /* arcanegolem.obj in Resources */,
+				FD8F32B22043FDBD00E60937 /* SirenHands_Dif.tga in Resources */,
 				F8AF1FEA1E2C57BA009D0807 /* Assets.xcassets in Resources */,
+				FD8F32B12043FDBD00E60937 /* Mouth.tga in Resources */,
 				FDBB097F1ECDF6F300F79502 /* panorama360.jpg in Resources */,
 				F8AF1FE81E2C57BA009D0807 /* Main.storyboard in Resources */,
 				FD0683691E7E9BE90036D552 /* AG_Model_Mesh_ArcaneDefense.tga in Resources */,
 				FD06836C1E7E9BE90036D552 /* ARMORREFLECT4.tga in Resources */,
+				FD8F32B02043FDBD00E60937 /* SirenHead_Bm.tga in Resources */,
 				FD06836A1E7E9BE90036D552 /* arcanegolem.mtl in Resources */,
+				FD8F32AF2043FDBD00E60937 /* SirenBody_Bm.tga in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
