@@ -1,5 +1,5 @@
 PODS:
-  - BohdiEngine (1.1.9)
+  - BohdiEngine (1.1.10)
   - GoogleToolboxForMac/Defines (2.1.0)
   - GoogleToolboxForMac/Logger (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
@@ -15,7 +15,7 @@ DEPENDENCIES:
   - GVRKit
 
 SPEC CHECKSUMS:
-  BohdiEngine: 5a8619b61bd7b3c3c33a99e1f770c740de1eb672
+  BohdiEngine: c88c9b38a6dd0f1a3c6d4dc2a2f0c61f0de97a94
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: 6aacd0ab48ddf0c3633ab2642d792abfcad1b08a
   GVRKit: 424e48fafa9f8a6249a14ffda48d2f1dbe3d9def

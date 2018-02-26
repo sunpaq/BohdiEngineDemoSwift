@@ -207,7 +207,7 @@ utility(MCString, const char*, filenameFromPath, const char* path, char (*buff)[
     head--;
     
     int i=0;
-    while (head != tail) {
+    while (head != tail && i >= 0 && i < PATH_MAX) {
         (*buff)[i++] = *head;
         head--;
     }

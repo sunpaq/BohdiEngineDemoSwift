@@ -46,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let resource = BEResource.shared() {
             resource.detectObjModelNames()
+            resource.preloadJPGTextures()
+            resource.preloadTGATextures()
         }
         
         return true

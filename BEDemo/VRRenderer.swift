@@ -22,6 +22,7 @@ class VRRenderer: GVRRenderer {
         
         renderer = BERenderer.init(frame: CGRect.init())
         renderer?.addModelNamed(models[currentModelIndex], scale: 1.0, rotateX: 0, tag: 11)
+        renderer?.doesAutoRotateCamera = false;
         
         if let controller = BEGameController.shared().gameController {
             controller.extendedGamepad?.buttonA.pressedChangedHandler = {
@@ -71,21 +72,19 @@ class VRRenderer: GVRRenderer {
     }
     
     override func update(_ headPose: GVRHeadPose!) {
-        if vrModeEnabled == true {
-            renderer?.doesAutoRotateCamera = false
-        } else {
-            renderer?.doesAutoRotateCamera = true
-        }
+
     }
     
     override func draw(_ headPose: GVRHeadPose!) {
         if let ren = renderer {
             if vrModeEnabled == true {
+                //ren.doesAutoRotateCamera = false
                 ren.drawFrame(headPose.viewport,
                               vrHeadTransform: headPose.headTransform,
                               vrEyeTransform: headPose.eyeTransform,
                               vrFOV: headPose.fieldOfView.top + headPose.fieldOfView.bottom)
             } else {
+                //ren.doesAutoRotateCamera = true
                 ren.drawFrame()
             }
             handleGameController(ren)
@@ -94,8 +93,9 @@ class VRRenderer: GVRRenderer {
     
     func handleGameController(_ ren: BERenderer!) {
         if let controller = BEGameController.shared().gameController {
-            ren.rotateModel(byPanGesture: BEGameController.shared().leftStick)
-            ren.rotateSkysph(byPanGesture: BEGameController.shared().leftStick)
+            ren.rotateModel(byPanGesture: CGPoint(x:BEGameController.shared().leftStick.x, y:0))
+            ren.rotateModel(byPanGesture: CGPoint(x:0, y:BEGameController.shared().rightStick.y))
+
             if let trigger = controller.extendedGamepad?.leftTrigger {
                 if trigger.isPressed {
                     ren.doesDrawWireFrame = true

@@ -25,6 +25,7 @@ oninit(MCTexture)
         }
         var(data) = null;
         var(displayMode) = MCTextureRepeat;
+        var(loadedToGL) = false;
         return obj;
     }else{
         return null;
@@ -112,13 +113,20 @@ method(MCTexture, MCTexture*, initWith2DTexture, BE2DTextureData* tex)
 
 method(MCTexture, void, loadToGLBuffer, voida)
 {
-    glGenTextures(1, &obj->Id);
-    MCGLEngine_activeTextureUnit(obj->textureUnit);
-    MCGLEngine_bind2DTexture(obj->Id);
-    
-    rawdataToTexbuffer(obj, GL_TEXTURE_2D);
-    setupTexParameter(obj, GL_TEXTURE_2D);
-    //freeRawdata(0, obj, 0);
+    if (var(loadedToGL) == false) {
+        glGenTextures(1, &obj->Id);
+        MCGLEngine_activeTextureUnit(obj->textureUnit);
+        MCGLEngine_bind2DTexture(obj->Id);
+        
+        rawdataToTexbuffer(obj, GL_TEXTURE_2D);
+        setupTexParameter(obj, GL_TEXTURE_2D);
+        //freeRawdata(0, obj, 0);
+        var(loadedToGL) = true;
+    } else {
+        MCGLEngine_activeTextureUnit(obj->textureUnit);
+        MCGLEngine_bind2DTexture(obj->Id);
+        setupTexParameter(obj, GL_TEXTURE_2D);
+    }
 }
 
 method(MCTexture, void, active, GLuint pid, const char* uniformName)
