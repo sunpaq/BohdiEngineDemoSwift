@@ -11,6 +11,9 @@ a BohdiEngine demo using swift
 	left-trigger  -> wire mode
 	right-trigger -> zoom in
 
+	right-trigger-on + left-shoudler  -> zoom lock
+	right-trigger-off + left-shoudler -> zoom unlock
+
 	left-stick    -> rotate horizontally
 	right-stick   -> rotate vertically
 
