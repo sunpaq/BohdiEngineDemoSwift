@@ -97,7 +97,7 @@ oninit(MC3DModel)
 method(MC3DModel, void, bye, voida)
 {
     //clean all the cached textures
-    MCTextureCache_cleanAndDestoryShared(0);
+    //MCTextureCache_cleanAndDestoryShared(0);
     MC3DNode_bye(sobj, 0);
 }
 
@@ -223,6 +223,7 @@ function(void, setTextureForNode, MC3DNode* node, BAObjData* buff, BAMesh* mesh)
             if (mctex == null) {
                 mctex = MCTexture_initWithFileName(new(MCTexture), tex->filename);
                 MCTextureCache_cacheTextureNamed(tcache, mctex, tex->filename);
+                release(mctex);
             }
             node->diffuseTexture = mctex;
             return;
@@ -238,6 +239,7 @@ function(void, setTextureForNode, MC3DNode* node, BAObjData* buff, BAMesh* mesh)
             if (mctex == null) {
                 mctex = MCTexture_initWithFileName(new(MCTexture), tex->filename);
                 MCTextureCache_cacheTextureNamed(tcache, mctex, tex->filename);
+                release(mctex);
             }
             node->diffuseTexture = mctex;
             return;
@@ -253,6 +255,7 @@ function(void, setTextureForNode, MC3DNode* node, BAObjData* buff, BAMesh* mesh)
             if (mctex == null) {
                 mctex = MCTexture_initWithFileName(new(MCTexture), mtl->diffuseMapName);
                 MCTextureCache_cacheTextureNamed(tcache, mctex, mtl->diffuseMapName);
+                release(mctex);
             }
             node->diffuseTexture = mctex;
         }
@@ -262,6 +265,7 @@ function(void, setTextureForNode, MC3DNode* node, BAObjData* buff, BAMesh* mesh)
             if (mctex == null) {
                 mctex = MCTexture_initWithFileName(new(MCTexture), mtl->specularMapName);
                 MCTextureCache_cacheTextureNamed(tcache, mctex, mtl->specularMapName);
+                release(mctex);
             }
             node->specularTexture = mctex;
         }
