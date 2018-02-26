@@ -24,6 +24,8 @@
 		FD87BDAE2044034E0044DC66 /* Mouth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD87BDAA2044034D0044DC66 /* Mouth.jpg */; };
 		FD87BDAF2044034E0044DC66 /* SirenHead_Bm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD87BDAB2044034D0044DC66 /* SirenHead_Bm.jpg */; };
 		FD87BDB02044034E0044DC66 /* SirenHands_Dif.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD87BDAC2044034E0044DC66 /* SirenHands_Dif.jpg */; };
+		FD87BDEC20444B500044DC66 /* 0_warrior.obj in Resources */ = {isa = PBXBuildFile; fileRef = FD87BDEA20444B500044DC66 /* 0_warrior.obj */; };
+		FD87BDED20444B500044DC66 /* warrior.mtl in Resources */ = {isa = PBXBuildFile; fileRef = FD87BDEB20444B500044DC66 /* warrior.mtl */; };
 		FD8E81352043D33F00CD22B3 /* maya-blender.obj in Resources */ = {isa = PBXBuildFile; fileRef = FD8E81342043D33F00CD22B3 /* maya-blender.obj */; };
 		FD8E81372043D37700CD22B3 /* maya-blender.mtl in Resources */ = {isa = PBXBuildFile; fileRef = FD8E81362043D37700CD22B3 /* maya-blender.mtl */; };
 		FDB954741ED2A59F00B6FA68 /* PanoramaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */; };
@@ -56,6 +58,8 @@
 		FD87BDAA2044034D0044DC66 /* Mouth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mouth.jpg; sourceTree = "<group>"; };
 		FD87BDAB2044034D0044DC66 /* SirenHead_Bm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SirenHead_Bm.jpg; sourceTree = "<group>"; };
 		FD87BDAC2044034E0044DC66 /* SirenHands_Dif.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SirenHands_Dif.jpg; sourceTree = "<group>"; };
+		FD87BDEA20444B500044DC66 /* 0_warrior.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 0_warrior.obj; sourceTree = "<group>"; };
+		FD87BDEB20444B500044DC66 /* warrior.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = warrior.mtl; sourceTree = "<group>"; };
 		FD8E81342043D33F00CD22B3 /* maya-blender.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "maya-blender.obj"; sourceTree = "<group>"; };
 		FD8E81362043D37700CD22B3 /* maya-blender.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "maya-blender.mtl"; sourceTree = "<group>"; };
 		FDB954731ED2A59F00B6FA68 /* PanoramaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanoramaViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 		F8C5A09D1E655EC100B776E5 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				FD87BDE920444B500044DC66 /* warrior_obj */,
 				FD8E81272043CC5000CD22B3 /* maya2 */,
 				FD0683641E7E9BE90036D552 /* Arcanegolem */,
 			);
@@ -169,6 +174,15 @@
 				FD0683681E7E9BE90036D552 /* ARMORREFLECT4.tga */,
 			);
 			path = Arcanegolem;
+			sourceTree = "<group>";
+		};
+		FD87BDE920444B500044DC66 /* warrior_obj */ = {
+			isa = PBXGroup;
+			children = (
+				FD87BDEA20444B500044DC66 /* 0_warrior.obj */,
+				FD87BDEB20444B500044DC66 /* warrior.mtl */,
+			);
+			path = warrior_obj;
 			sourceTree = "<group>";
 		};
 		FD8E81272043CC5000CD22B3 /* maya2 */ = {
@@ -258,9 +272,11 @@
 				FD87BDAF2044034E0044DC66 /* SirenHead_Bm.jpg in Resources */,
 				FD06836B1E7E9BE90036D552 /* arcanegolem.obj in Resources */,
 				F8AF1FEA1E2C57BA009D0807 /* Assets.xcassets in Resources */,
+				FD87BDEC20444B500044DC66 /* 0_warrior.obj in Resources */,
 				FDBB097F1ECDF6F300F79502 /* panorama360.jpg in Resources */,
 				F8AF1FE81E2C57BA009D0807 /* Main.storyboard in Resources */,
 				FD0683691E7E9BE90036D552 /* AG_Model_Mesh_ArcaneDefense.tga in Resources */,
+				FD87BDED20444B500044DC66 /* warrior.mtl in Resources */,
 				FD06836C1E7E9BE90036D552 /* ARMORREFLECT4.tga in Resources */,
 				FD06836A1E7E9BE90036D552 /* arcanegolem.mtl in Resources */,
 			);
