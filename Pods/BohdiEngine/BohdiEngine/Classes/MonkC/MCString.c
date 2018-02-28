@@ -250,9 +250,10 @@ utility(MCString, size_t, filenameTrimExtension, const char* name, char* buff)
     }
     //no extension
     else {
-        size_t szn = sizeof(name);
-        strncpy(buff, name, szn);
-        return szn;
+        size_t len = sizeof(name);
+        strncpy(buff, name, len);
+        buff[len] = NUL;
+        return len;
     }
 }
 
@@ -482,8 +483,9 @@ method(MCString, void, add, char* str)
 {
     if (MCStringBlock-obj->size < strlen(str)+1) {
         char* newbuff = malloc(sizeof(char) * (obj->size + MCStringBlock));
-        strncpy(newbuff, obj->buff, obj->size-1);
-        newbuff[obj->size-1]=NUL;
+        size_t len = obj->size-1;
+        strncpy(newbuff, obj->buff, len);
+        newbuff[len]=NUL;
         free(obj->buff);
         obj->buff = newbuff;
         obj->size = obj->size + MCStringBlock;

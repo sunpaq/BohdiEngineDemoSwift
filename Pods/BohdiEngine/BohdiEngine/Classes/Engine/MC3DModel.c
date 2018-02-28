@@ -142,14 +142,16 @@ function(void, meshLoadFaceElement, MCMesh* mesh, BAObjData* buff, BAFaceElement
     MCMath_accumulateMind(&buff->Frame.xmin, v.x);
     MCMath_accumulateMind(&buff->Frame.ymin, v.y);
     MCMath_accumulateMind(&buff->Frame.zmin, v.z);
-    
-    MCMesh_setVertex(mesh, (GLuint)offset, &(MCMeshVertexData){
-        v.x, v.y, v.z,
-        n.x, n.y, n.z,
-        color.R.f, color.G.f, color.B.f,
-        t.x, t.y
-        //0,0
-    });
+
+    MCMeshVertexData data = {
+            v.x, v.y, v.z,
+            n.x, n.y, n.z,
+            color.R.f, color.G.f, color.B.f,
+            t.x, t.y
+            //0,0
+    };
+
+    MCMesh_setVertex(mesh, (GLuint)offset, &data);
 }
 
 function(MCMesh*, createMeshWithBATriangles, BATriangle* triangles, size_t tricount, BAObjData* buff, MCColorf color)

@@ -34,8 +34,6 @@ oninit(MCCamera)
         var(rotationMat3) = rotationMat3;
         
         var(isReverseMovement) = false;
-        var(isLockRotation) = false;
-        
         var(rotateMode)= MCCameraRotateAroundModelManual;
         
         return obj;
@@ -176,9 +174,6 @@ method(MCCamera, void, update, MCGLContext* ctx)
 
 method(MCCamera, void, move, MCFloat deltaFai, MCFloat deltaTht)
 {
-    if (var(isLockRotation) == true) {
-        return;
-    }
     //angle with x+
     if (var(isReverseMovement)) {
         obj->fai += deltaFai.f;   //Left
