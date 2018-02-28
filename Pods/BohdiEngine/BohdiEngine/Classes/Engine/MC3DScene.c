@@ -43,6 +43,7 @@ oninit(MC3DScene)
         var(isDrawSky)  = isDrawSky;
         
         var(combineMode)  = MC3DSceneModelOnly;
+        var(cameraAutoRotate) = false;
         return obj;
     }else{
         return null;
@@ -186,6 +187,7 @@ method(MC3DScene, void, moveCameraOneStep, MCFloat deltaFai, MCFloat deltaTht)
 //        if (var(skyboxRef) != null) {
 //            MCSkyboxCamera_move(var(skyboxRef)->camera, deltaFai.d / 5, deltaTht.d / 5);
 //        }
+
         MCCamera_move(var(mainCamera), deltaFai, deltaTht);
     }
 }
@@ -217,8 +219,9 @@ method(MC3DScene, void, updateScene, voida)
             MCSkysphere_update(var(skysph), var(renderer)->context);
         }
     }
-    
-    MC3DScene_moveCameraOneStep(obj, (MCFloat)0.5, (MCFloat)0.0);
+    if (var(cameraAutoRotate)) {
+        MC3DScene_moveCameraOneStep(obj, MCFloatF(0.5), MCFloatF(0.0));
+    }
     MCCamera_update(obj->mainCamera, obj->renderer->context);
     MCLight_update(obj->light, obj->renderer->context);
     MCGLRenderer_updateNodes(var(renderer), var(rootnode));

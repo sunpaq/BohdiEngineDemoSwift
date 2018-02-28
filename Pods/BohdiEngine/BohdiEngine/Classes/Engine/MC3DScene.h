@@ -46,6 +46,8 @@ class(MC3DScene, MCObject,
       
       computing(MCBool, isDrawSky);
       MC3DSceneCombineMode combineMode;
+
+      MCBool cameraAutoRotate;
 );
 
 method(MC3DScene, void, bye, voida);

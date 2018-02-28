@@ -47,5 +47,7 @@ you can use 'env' & 'obj' access the JVM environment and Java object proxy
 */
 
 #define JavaStringFromCString(cstr) (*env)->NewStringUTF(env, cstr)
+#define CStringFromJavaString(jstr) (*env)->GetStringUTFChars(env, jstr, 0)
+#define CStringRelease(jstr, cstr)  (*env)->ReleaseStringUTFChars(env, jstr, cstr)
 
 #endif

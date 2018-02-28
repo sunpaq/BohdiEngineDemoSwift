@@ -45,9 +45,9 @@ int MCFileGetPathFromBundle(const char* bundlename, const char* filename, char* 
     char extension[64] = {0};
     
     if (MCString_extensionFromFilename(filename, basename, extension) > 0) {
-        printf("MCFileGetPath - filename/basename/extension -> %s/%s/%s\n", filename, basename, extension);
+        debug_log("MCFileGetPath - filename/basename/extension -> %s/%s/%s\n", filename, basename, extension);
     } else {
-        printf("MCFileGetPath - filename/basename/no extension -> %s/%s\n", filename, basename);
+        debug_log("MCFileGetPath - filename/basename/no extension -> %s/%s\n", filename, basename);
     }
     
 #ifdef __ANDROID__
@@ -65,17 +65,21 @@ int MCFileGetPathFromBundle(const char* bundlename, const char* filename, char* 
             subpath = "textures";
         } else if (strcmp(extension, "tga") == 0) {
             subpath = "textures";
+        } else if (strcmp(extension, "dds") == 0) {
+            subpath = "textures";
         } else {
             subpath = "raw";
-            error_log("can not detect use raw folder\n");
+            error_log("can not detect(%s) use raw folder\n", extension);
         }
         
+        char fullname[PATH_MAX] = {};
+		sprintf(fullname, "%s.%s", basename, extension);
         AAssetDir* rootdir = AAssetManager_openDir(assetManager_, subpath);
         if (rootdir) {
             const char* name;
             char fullpath[PATH_MAX] = {0};
             while ((name=AAssetDir_getNextFileName(rootdir)) != NULL) {
-                if (strcmp(filename, name) == 0) {
+                if (strcmp(fullname, name) == 0) {
                     sprintf(fullpath, "%s/%s", subpath, name);
                     strcpy(buffer, fullpath);
                 }
@@ -119,13 +123,13 @@ int MCFileGetPathFromBundle(const char* bundlename, const char* filename, char* 
     CFStringGetCString(BundlePath, rootpath, PATH_MAX, kCFStringEncodingUTF8);
     
     strcat(rootpath, filename);
-    strncpy(buffer, rootpath, PATH_MAX);
+    MCStringFillLimited(buffer, rootpath, strlen(rootpath));
     return 0;
 
 #endif
 }
 
-const char* MCFileCopyContentWithPath(const char* filepath)
+const char* MCFileCopyContentWithPathGetBufferSize(const char* filepath, off_t* buffsize)
 {
 #ifdef __ANDROID__
     if (assetManager_ != null) {
@@ -139,6 +143,9 @@ const char* MCFileCopyContentWithPath(const char* filepath)
                 memcpy(buff, abuff, size);
                 buff[size] = NUL;
                 AAsset_close(f);
+                if (buffsize) {
+                    *buffsize = size;
+                }
                 return buff;
             }else{
                 error_log("MCFileCopyContentWithPath(%s) AAsset_getBuffer() failed\n", filepath);
@@ -154,7 +161,7 @@ const char* MCFileCopyContentWithPath(const char* filepath)
     FILE* f = fopen(MCString_percentDecode(filepath, decodepath), "r");
     if (f) {
         fseek(f, 0, SEEK_END);
-        long size = ftell(f);
+        off_t size = ftell(f) + 1;
         fseek(f, 0, SEEK_SET);
         char* buffer = (char*)malloc(size);
         if (!buffer) {
@@ -163,19 +170,10 @@ const char* MCFileCopyContentWithPath(const char* filepath)
         }
         memset(buffer, 0, size);
         //copy
-        char* iter = buffer;
-        if (f != NULL) {
-            char c;
-            while ((c = fgetc(f)) != EOF) {
-                (*iter) = c;
-                iter++;
-            }
-            buffer[size] = NUL;
-            //*iter = NUL;
-        }
+        fread(buffer, 1, size, f);
         fclose(f);
-        if (buffer[0] != '#') {
-            
+        if (buffsize) {
+            *buffsize = size;
         }
         return buffer;
     }else{
@@ -184,6 +182,11 @@ const char* MCFileCopyContentWithPath(const char* filepath)
     }
 
 #endif
+}
+
+const char* MCFileCopyContentWithPath(const char* filepath)
+{
+    return MCFileCopyContentWithPathGetBufferSize(filepath, null);
 }
 
 void MCFileReleaseContent(void* buff)

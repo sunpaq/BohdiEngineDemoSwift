@@ -59,6 +59,12 @@ MCInline char* MCStringFill(char* dest, const char* src) {
     return res;
 }
 
+MCInline char* MCStringFillLimited(char* dest, const char* src, size_t limit) {
+    char* res = strncpy(dest, src, limit);
+    dest[strlen(src)] = NUL;
+    return res;
+}
+
 MCInline MCBool MCStringEqualN(const char* A, const char* B, size_t n) {
     if (strncmp(A, B, n) == 0) {
         return true;

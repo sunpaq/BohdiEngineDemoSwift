@@ -36,8 +36,6 @@ class(MCCamera, MC3DNode,
     computing(MCMatrix3, rotationMat3);
 
     MCBool isReverseMovement;
-    MCBool isLockRotation;
-    
     MCCameraRotateMode rotateMode;
 );
 

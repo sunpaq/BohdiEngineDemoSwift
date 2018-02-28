@@ -579,7 +579,9 @@ typedef struct {
 MCInline mc_message make_msg(MCObject* obj, const char* msg) {
     mc_message message;
     message.object = obj;
-    strncpy(message.message, msg, strlen(msg));
+    size_t len = strlen(msg);
+    strncpy(message.message, msg, len);
+    message.message[len] = NUL;
     return message;
 }
 

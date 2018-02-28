@@ -1,5 +1,5 @@
 PODS:
-  - BohdiEngine (1.1.11)
+  - BohdiEngine (1.1.13)
   - GoogleToolboxForMac/Defines (2.1.0)
   - GoogleToolboxForMac/Logger (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
@@ -11,16 +11,26 @@ PODS:
     - GTMSessionFetcher/Core (= 1.1.6)
 
 DEPENDENCIES:
-  - BohdiEngine
+  - BohdiEngine (from `https://github.com/sunpaq/BohdiEngine-pod.git`, branch `1.1.13`)
   - GVRKit
 
+EXTERNAL SOURCES:
+  BohdiEngine:
+    :branch: 1.1.13
+    :git: https://github.com/sunpaq/BohdiEngine-pod.git
+
+CHECKOUT OPTIONS:
+  BohdiEngine:
+    :commit: 1b9734121b2ab9b1d2eb6f38c58c0a23e9166fbb
+    :git: https://github.com/sunpaq/BohdiEngine-pod.git
+
 SPEC CHECKSUMS:
-  BohdiEngine: b7b59c2230efbea1400137851ccc81c61c9bc26f
+  BohdiEngine: 5a6001df79f622e411811175ea9ab1fe1e445905
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: 6aacd0ab48ddf0c3633ab2642d792abfcad1b08a
   GVRKit: 424e48fafa9f8a6249a14ffda48d2f1dbe3d9def
   GVRSDK: 0cb9d0ce06a84d698e61e3db9509766022dcf815
 
-PODFILE CHECKSUM: 7bbdb2fda726ae17c103bebec5a3d873124a0452
+PODFILE CHECKSUM: 122560e2ccec7616096379a53e0f9b3555eb98ce
 
 COCOAPODS: 1.4.0
