@@ -31,6 +31,6 @@ int MCFileGetPathFromBundle(const char* bundlename, const char* filename, char* 
 const char* MCFileCopyContent(const char* filename);
 const char* MCFileCopyContentWithPath(const char* filepath);
 const char* MCFileCopyContentWithPathGetBufferSize(const char* filepath, off_t* buffsize);
-void MCFileReleaseContent(void* buff);
+void MCFileReleaseContent(const char* buff);
 
 #endif /* BEAssetsManager_h */

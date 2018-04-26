@@ -7,6 +7,7 @@
 //
 
 #ifdef __APPLE__
+#include "TargetConditionals.h"
 #include <CoreFoundation/CoreFoundation.h>
 #include <pthread.h>
 static CFStringRef BundlePath = NULL;
@@ -122,7 +123,12 @@ int MCFileGetPathFromBundle(const char* bundlename, const char* filename, char* 
     char rootpath[PATH_MAX] = {0};
     CFStringGetCString(BundlePath, rootpath, PATH_MAX, kCFStringEncodingUTF8);
     
+#if TARGET_OS_OSX
+    strcat(rootpath, "Contents/Resources/");
     strcat(rootpath, filename);
+#else
+    strcat(rootpath, filename);
+#endif
     MCStringFillLimited(buffer, rootpath, strlen(rootpath));
     return 0;
 
@@ -189,7 +195,7 @@ const char* MCFileCopyContentWithPath(const char* filepath)
     return MCFileCopyContentWithPathGetBufferSize(filepath, null);
 }
 
-void MCFileReleaseContent(void* buff)
+void MCFileReleaseContent(const char* buff)
 {
 	free(buff);
 }

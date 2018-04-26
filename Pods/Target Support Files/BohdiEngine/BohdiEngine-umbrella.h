@@ -51,6 +51,8 @@
 #import "BEResource.h"
 #import "BERunLoop.h"
 #import "BEView.h"
+#import "BENSRenderer.h"
+#import "BENSView.h"
 #import "MCArray.h"
 #import "MCArrayLinkedList.h"
 #import "MCBits.h"

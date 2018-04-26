@@ -18,12 +18,16 @@ class VRRenderer: GVRRenderer {
     
     var zoomLock: Bool = false
     
+    func loadModel() {
+        renderer?.addModelNamed(models[currentModelIndex], scale: 1.0, rotateX: 0, tag: 11)
+    }
+    
     override func initializeGl() {
         super.initializeGl()
         models = BEResource.shared().objModelNames as! [String]
         renderer = BERenderer.init(frame: CGRect.init())
         renderer?.doesAutoRotateCamera = false;
-        renderer?.addModelNamed(models[currentModelIndex], scale: 1.0, rotateX: 0, tag: 11)
+        loadModel()
         
         if let controller = BEGameController.shared().gameController {
             controller.extendedGamepad?.buttonA.pressedChangedHandler = {

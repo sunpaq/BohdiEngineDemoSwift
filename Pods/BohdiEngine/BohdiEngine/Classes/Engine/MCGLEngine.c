@@ -94,36 +94,74 @@ utility(MCGLEngine, void, cullBackFace, voida)
 }
 
 //Texture
+static MCUInt texUnitNum = 1;
+utility(MCGLEngine, MCUInt, getIdleTextureUnit, voida)
+{
+    if (texUnitNum < MCGLEngine_getMaxTextureUnits(0)) {
+        texUnitNum++;
+    } else {
+        texUnitNum = 1;
+    }
+    return texUnitNum;
+}
+
 utility(MCGLEngine, MCUInt, getMaxTextureUnits, voida)
 {
     return (MCUInt)GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
 }
 
+utility(MCGLEngine, void, generateTextureId, MCUInt* tid)
+{
+    glGenTextures(1, tid);
+}
+
 utility(MCGLEngine, void, activeTextureUnit, MCUInt index)
 {
-    static int texCache = -1;
-    if (index != texCache) {
-        glActiveTexture(GL_TEXTURE0 + (0x0001*index));
-        texCache = index;
-    }
+    glActiveTexture(GL_TEXTURE0 + index);
 }
 
 utility(MCGLEngine, void, bindCubeTexture, MCUInt tid)
 {
-    static int texCache = -1;
-    if (tid != texCache) {
-        glBindTexture(GL_TEXTURE_CUBE_MAP, tid);
-        texCache = tid;
-    }
+    glBindTexture(GL_TEXTURE_CUBE_MAP, tid);
 }
 
 utility(MCGLEngine, void, bind2DTexture, MCUInt tid)
 {
-    static int texCache = -1;
-    if (tid != texCache) {
-        glBindTexture(GL_TEXTURE_2D, tid);
-        texCache = tid;
+    glBindTexture(GL_TEXTURE_2D, tid);
+}
+
+utility(MCGLEngine, void, unbind2DTextures, voida)
+{
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+utility(MCGLEngine, void, rawdataToTexbuffer, MCTexture* tex, GLenum textype)
+{
+    if (tex->data && tex->data->raw) {
+        if (tex->data->channels == 4) {
+            glTexImage2D(textype, 0, GL_RGBA, tex->width, tex->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, tex->data->raw);
+            glGenerateMipmap(textype);
+        }
+        else {
+            glTexImage2D(textype, 0, GL_RGB, tex->width, tex->height, 0, GL_RGB, GL_UNSIGNED_BYTE, tex->data->raw);
+            glGenerateMipmap(textype);
+        }
     }
+}
+
+//GL_TEXTURE_2D
+utility(MCGLEngine, void, setupTexParameter, MCTexture* tex, GLenum textype)
+{
+    if (tex->displayMode == MCTextureRepeat) {
+        glTexParameteri(textype, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(textype, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    }
+    else {
+        glTexParameteri(textype, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(textype, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    }
+    glTexParameteri(textype, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(textype, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 }
 
 utility(MCGLEngine, GLuint, createShader, voida)
@@ -184,6 +222,16 @@ utility(MCGLEngine, GLuint, prepareShader, GLuint Id, const char* vcode, const c
     }
     
     return Id;
+}
+
+utility(MCGLEngine, void, shaderSetUInt, GLuint Id, const char* name, MCUInt value)
+{
+    glUniform1i(glGetUniformLocation(Id, name), value);
+}
+
+utility(MCGLEngine, void, shaderSetBool, GLuint Id, const char* name, MCBool value)
+{
+    glUniform1i(glGetUniformLocation(Id, name), value);
 }
 
 utility(MCGLEngine, int, prepareShaderName, GLuint Id, const char* bundlename, const char* vname, const char* fname, const char* version)

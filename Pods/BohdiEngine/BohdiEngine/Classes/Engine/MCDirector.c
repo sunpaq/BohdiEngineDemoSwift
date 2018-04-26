@@ -214,6 +214,16 @@ method(MCDirector, void, addModelAtIndex, MC3DModel* model, MCFloat maxsize, int
     }
 }
 
+method(MCDirector, MC3DModel*, addModelPathed, const char* path, MCFloat maxsize)
+{
+    MC3DModel* model = MC3DModel_initWithFilePath(new(MC3DModel), path);
+    if (model) {
+        MCDirector_addModelAtIndex(obj, model, maxsize, -1);
+        return model;
+    }
+    return null;
+}
+
 method(MCDirector, MC3DModel*, addModelNamed, const char* name, MCFloat maxsize)
 {
     MC3DModel* model = MC3DModelCache_fetchModelNamed(MC3DModelCache_shared(0), name);
@@ -350,6 +360,7 @@ onload(MCDirector)
         binding(MCDirector, void, addNode, MC3DNode* node);
         binding(MCDirector, void, addModel, MC3DModel* model, int maxsize);
         binding(MCDirector, void, addModelAtIndex, MC3DModel* model, MCFloat maxsize, int index);
+        binding(MCDirector, MC3DModel*, addModelPathed, const char* path, MCFloat maxsize);
         binding(MCDirector, MC3DModel*, addModelNamed, const char* name, MCFloat maxsize);
         binding(MCDirector, MC3DModel*, addModelNamedAtIndex, const char* name, MCFloat maxsize, int index);
         binding(MCDirector, void, removeCurrentModel, voida);
