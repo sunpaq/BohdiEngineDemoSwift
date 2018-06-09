@@ -6,31 +6,34 @@
 //  Copyright (c) 2015 oreisoft. All rights reserved.
 //
 
-#ifdef __APPLE__
-//#include <OpenGLES/ES1/glext.h>
-//#include <OpenGLES/ES2/glext.h>
+#ifndef __MCGLBase__
+#define __MCGLBase__
+
+#if __APPLE__
+#include "TargetConditionals.h"
+#if TARGET_OS_IOS
+#include <OpenGLES/ES3/gl.h>
 #include <OpenGLES/ES3/glext.h>
-#elif __ANDROID__
+#else
+#import <OpenGL/OpenGL.h>
+#import <OpenGL/gl3.h>
+#define ESSENTIAL_GL_PRACTICES_SUPPORT_GL3 1
+#endif //TARGET_OS_IOS
+#endif //__APPLE__
+
+#if defined(__ANDROID__)
 #ifndef GL_GLEXT_PROTOTYPES
 #define GL_GLEXT_PROTOTYPES 1
 #endif
 #include <GLES3/gl3.h>
 #include <GLES3/gl3ext.h>
 #include <EGL/egl.h>
-//extern PFNGLGENVERTEXARRAYSOESPROC glGenVertexArrays;
-//extern PFNGLBINDVERTEXARRAYOESPROC glBindVertexArray;
-//extern PFNGLDELETEVERTEXARRAYSOESPROC glDeleteVertexArrays;
 #define APIENTRY
-//#include <GLES3/gl3.h>
-//#include <GLES3/gl3ext.h>
-//#include <GLES3/gl3platform.h>
-//#include <GLES3/gl31.h>
-#else
-#include <GL/gl.h>
-#endif
+#endif //__ANDROID__
 
-#ifndef monkcGame_MC3DType_h
-#define monkcGame_MC3DType_h
+//#else
+//#include <GL/gl.h>
+//#endif
 
 #include "monkc.h"
 #include "MCMath.h"
@@ -41,13 +44,6 @@ typedef enum {
     MCGLBlend = GL_BLEND,
     MCGLCullFace = GL_CULL_FACE,
 } MCGLFeature;
-
-typedef struct {
-    MCFloat R;
-    MCFloat G;
-    MCFloat B;
-    MCFloat A;
-} MCColorf;
 
 typedef enum {
     MCGLFront = GL_FRONT,
@@ -69,6 +65,13 @@ typedef enum {
     MCVertexShader = GL_VERTEX_SHADER,
     MCFragmentShader = GL_FRAGMENT_SHADER
 } MCShaderType;
+
+typedef struct {
+    MCFloat R;
+    MCFloat G;
+    MCFloat B;
+    MCFloat A;
+} MCColorf;
 
 //typedef enum {
 //    MCGLPosition = 0,
@@ -264,3 +267,4 @@ MCInline MCBool MCGLUniformEqual(MCGLUniform* u1, MCGLUniform* u2) {
 }
 
 #endif
+

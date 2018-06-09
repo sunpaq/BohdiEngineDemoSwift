@@ -10,19 +10,13 @@
 #include "MCGLEngine.h"
 #include "BEAssetsManager.h"
 
-static unsigned unitNum = 1;
-
 oninit(MCTexture)
 {
     if (init(MCObject)) {
         var(Id) = -1;
         var(width) = 512;
         var(height)= 512;
-        if (unitNum < 32) {
-            obj->textureUnit = unitNum++;
-        } else {
-            unitNum = 1;
-        }
+        var(textureUnit) = MCGLEngine_getIdleTextureUnit(0);
         var(data) = null;
         var(displayMode) = MCTextureRepeat;
         var(loadedToGL) = false;
@@ -47,41 +41,19 @@ function(unsigned char*, loadImageRawdata, const char* path)
     }
 }
 
-function(void, rawdataToTexbuffer, GLenum textype)
-{
-    as(MCTexture);
-    if (obj->data && obj->data->raw) {
-        if (obj->data->channels == 4) {
-            glTexImage2D(textype, 0, GL_RGBA, obj->width, obj->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, obj->data->raw);
-            glGenerateMipmap(textype);
-        }
-        else if (obj->data->channels == 3) {
-            glTexImage2D(textype, 0, GL_RGB, obj->width, obj->height, 0, GL_RGB, GL_UNSIGNED_BYTE, obj->data->raw);
-            glGenerateMipmap(textype);
-        }
-    }
-}
-
-//GL_TEXTURE_2D
-function(void, setupTexParameter, GLenum textype)
-{
-    as(MCTexture);
-    if (var(displayMode) == MCTextureRepeat) {
-        glTexParameteri(textype, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri(textype, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    }
-    else {
-        glTexParameteri(textype, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(textype, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    }
-    glTexParameteri(textype, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(textype, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-}
-
 function(void, freeRawdata, voida)
 {
     as(MCTexture);
-    release(obj->data);
+    if (obj->data) {
+        release(obj->data);
+        obj->data = null;
+    }
+}
+
+method(MCTexture, void, bye, voida)
+{
+    superbye(MCObject);
+    freeRawdata(obj, 0);
 }
 
 method(MCTexture, MCTexture*, initWithFileNameMode, const char* name, MCTextureDisplayMode mode)
@@ -111,46 +83,20 @@ method(MCTexture, MCTexture*, initWith2DTexture, BE2DTextureData* tex)
     return null;
 }
 
-method(MCTexture, void, loadToGLBuffer, voida)
-{
-    if (var(loadedToGL) == false) {
-        glGenTextures(1, &obj->Id);
-        MCGLEngine_activeTextureUnit(obj->textureUnit);
-        MCGLEngine_bind2DTexture(obj->Id);
-        
-        rawdataToTexbuffer(obj, GL_TEXTURE_2D);
-        setupTexParameter(obj, GL_TEXTURE_2D);
-        //freeRawdata(0, obj, 0);
-        var(loadedToGL) = true;
-    } else {
-        MCGLEngine_activeTextureUnit(obj->textureUnit);
-        MCGLEngine_bind2DTexture(obj->Id);
-        setupTexParameter(obj, GL_TEXTURE_2D);
-    }
-}
-
-method(MCTexture, void, active, GLuint pid, const char* uniformName)
-{
-    if (obj) {
-        glUniform1i(glGetUniformLocation(pid, uniformName), obj->textureUnit);
-        MCGLEngine_activeTextureUnit(obj->textureUnit);
-        MCGLEngine_bind2DTexture(obj->Id);
-    }
-}
-
 onload(MCTexture)
 {
     if (load(MCObject)) {
         mixing(unsigned char*, loadImageRawdata, const char* name);
-        mixing(void, rawdataToTexbuffer, voida);
-        mixing(void, setupTexParameter, GLenum textype);
+        //mixing(void, rawdataToTexbuffer, voida);
+        //mixing(void, setupTexParameter, GLenum textype);
         mixing(void, freeRawdata, voida);
         
+        binding(MCTexture, void, bye, voida);
         binding(MCTexture, MCTexture*, initWithFileNameMode, const char* name, MCTextureDisplayMode mode);
         binding(MCTexture, MCTexture*, initWithFileName, const char* name);
         binding(MCTexture, MCTexture*, initWith2DTexture, BE2DTextureData* tex);
-        binding(MCTexture, void, loadToGLBuffer, voida);
-        binding(MCTexture, void, active, GLuint pid, const char* uniformName);
+        //binding(MCTexture, void, loadToGLBuffer, voida);
+        //binding(MCTexture, void, active, GLuint pid, const char* uniformName);
 
         return cla;
     }else{

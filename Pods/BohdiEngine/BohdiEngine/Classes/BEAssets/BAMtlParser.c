@@ -248,7 +248,7 @@ BAMtlLibrary* BAMtlLibraryNew(const char* filename)
     if (assetbuff != null) {
         BAMtlLibrary* lib = BAMtlLibraryAlloc();
         if (lib == null) {
-            error_log("MC3DObjParser - MC3DMtlLibraryAlloc failed.\n");
+            error_log("BAMtlParser - MC3DMtlLibraryAlloc failed.\n");
             return null;
         }
         
@@ -269,7 +269,7 @@ BAMtlLibrary* BAMtlLibraryNew(const char* filename)
         MCStringFill(lib->name, filename);
         return lib;
     }else{
-        error_log("MC3DObjParser - AAssetManager_open %s failed\n", filename);
+        error_log("BAMtlParser - AAssetManager_open %s failed\n", filename);
         return null;
     }
 }

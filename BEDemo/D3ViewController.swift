@@ -15,12 +15,17 @@ class D3ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let models = BEResource.shared().objModelNames as? [String] {
-            beview.loadModelNamed(models[0])
+            beview.loadModelNamed(models[AppDelegate.currentIndex])
+            AppDelegate.currentIndex += 1
+            if AppDelegate.currentIndex >= models.count {
+                AppDelegate.currentIndex = 0
+            }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        //beview.renderer.setBackgroundColor(UIColor.black)
         beview.startDraw3DContent(BECameraRotateAroundModelManual)
     }
     

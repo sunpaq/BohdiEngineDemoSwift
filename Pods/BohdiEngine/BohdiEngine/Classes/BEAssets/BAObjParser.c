@@ -132,18 +132,20 @@ void parseObj(BAObjData* object, const char* file)
                             //common
                             if (!current_mesh) {
                                 current_mesh = &object->meshbuff[mcursor++];
-                                current_mesh->prevVertexNum  = vcursor-1;
-                                current_mesh->startFaceCount = fcursor;
-                                current_mesh->totalFaceCount = 0;
-                                current_mesh->usemtl = null;
-                                if (group_name[0]) {
-                                    MCStringFill(current_mesh->group, group_name);
-                                }
-                                if (object_name[0]) {
-                                    MCStringFill(current_mesh->object, object_name);
-                                }
-                                if (usemtl_name[0]) {
-                                    current_mesh->usemtl = BAFindMaterial(object->mtllib_list, usemtl_name);
+                                if (current_mesh) {
+                                    current_mesh->prevVertexNum  = vcursor-1;
+                                    current_mesh->startFaceCount = fcursor;
+                                    current_mesh->totalFaceCount = 0;
+                                    current_mesh->usemtl = null;
+                                    if (group_name[0]) {
+                                        MCStringFill(current_mesh->group, group_name);
+                                    }
+                                    if (object_name[0]) {
+                                        MCStringFill(current_mesh->object, object_name);
+                                    }
+                                    if (usemtl_name[0]) {
+                                        current_mesh->usemtl = BAFindMaterial(object->mtllib_list, usemtl_name);
+                                    }
                                 }
                             }
                             //special
@@ -154,9 +156,11 @@ void parseObj(BAObjData* object, const char* file)
                                 if (f->vcount < 6) {
                                     error_log("[%s] -> detect a face have less then 3 vertex, ignore it\n", line);
                                 } else {
-                                    BAFaceInit(f, lbuff, f->vcount);
-                                    current_mesh->totalFaceCount++;
-                                    fcursor++;
+                                    if (current_mesh) {
+                                        BAFaceInit(f, lbuff, f->vcount);
+                                        current_mesh->totalFaceCount++;
+                                        fcursor++;
+                                    }
                                 }
                             }
                             if (token.type == MCTokenInteger) {
@@ -233,11 +237,11 @@ BAObjData* BAObjDataNewWithFilepath(const char* filepath, BAObjMeta* meta)
     if (assetbuff) {
         parseObjMeta(meta, assetbuff);
         if (meta->face_count <= 0 || meta->vertex_count <= 0) {
-            error_log("MC3DObjParser - object face count is ZERO\n");
+            error_log("BAObjParser - object face count is ZERO\n");
             return null;
         }
         if (meta->normal_count == 0 || meta->normal_count < meta->vertex_count) {
-            error_log("MC3DObjParser modle need calculate normal\n");
+            error_log("BAObjParser - modle need calculate normal\n");
         }
         
         BAObjData* buff = BAObjAlloc(meta);
@@ -245,14 +249,14 @@ BAObjData* BAObjDataNewWithFilepath(const char* filepath, BAObjMeta* meta)
             return null;
         }
         
-        debug_log("MC3DObjParser - before parse\n");
+        debug_log("BAObjParser - before parse\n");
         parseObj(buff, assetbuff);
-        debug_log("MC3DObjParser - after parse\n");
+        debug_log("BAObjParser - after parse\n");
         
         free((void*)assetbuff);
         return buff;
     }else{
-        error_log("MC3DObjParser - AAssetManager_open %s failed\n", filepath);
+        error_log("BAObjParser - MCFileCopyContentWithPath %s failed\n", filepath);
         return null;
     }
 }

@@ -41,6 +41,8 @@ method(MCGLContext, void, activateShaderProgram, voida);
 method(MCGLContext, int,  getUniformLocation, const char* name);
 method(MCGLContext, void, updateUniform, const char* name, MCGLUniformData udata);
 method(MCGLContext, void, setUniforms, voida);
+//texture
+method(MCGLContext, void, loadTexture, MCTexture* tex, const char* samplerName);
 //for debug
 method(MCGLContext, int,  getUniformVector,  const char* name, GLfloat* params);
 method(MCGLContext, void, printUniforms, voida);

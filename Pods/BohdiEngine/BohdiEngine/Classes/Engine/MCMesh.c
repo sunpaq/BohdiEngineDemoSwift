@@ -8,6 +8,7 @@
 
 #include "MCMesh.h"
 #include "MC3DBase.h"
+#include "MCGLEngine.h"
 
 oninit(MCMesh)
 {
@@ -24,9 +25,6 @@ oninit(MCMesh)
         var(vertexDataSize)= 0;
         var(vertexIndexes) = null;
         var(vertexCount)   = 0;
-
-        var(diffuseTextureRef) = null;
-        var(specularTextureRef)= null;
         
         memset(var(vertexAttribArray), (int)null, sizeof(var(vertexAttribArray)));
         //debug_log("MCMesh - init finished\n");
@@ -142,13 +140,6 @@ method(MCMesh, void, prepareMesh, MCGLContext* ctx)
                 MCVertexAttributeLoad(&obj->vertexAttribArray[i]);
             }
         }
-        //Texture
-        if (obj->diffuseTextureRef) {
-            MCTexture_loadToGLBuffer(obj->diffuseTextureRef, 0);
-        }
-        if (obj->specularTextureRef) {
-            MCTexture_loadToGLBuffer(obj->specularTextureRef, 0);
-        }
         //Unbind
         glBindVertexArray(0);
         var(isDataLoaded) = true;
@@ -158,13 +149,6 @@ method(MCMesh, void, prepareMesh, MCGLContext* ctx)
 method(MCMesh, void, drawMesh, MCGLContext* ctx)
 {
     glBindVertexArray(obj->VAO);
-    //texture
-    if (obj->diffuseTextureRef) {
-        MCTexture_active(obj->diffuseTextureRef, ctx->pid, "diffuse_sampler");
-    }
-    if (obj->specularTextureRef) {
-        MCTexture_active(obj->specularTextureRef, ctx->pid, "specular_sampler");
-    }
     //override draw mode
     GLenum mode = var(mode);
     if (ctx->drawMode != MCDrawNone) {
@@ -180,6 +164,7 @@ method(MCMesh, void, drawMesh, MCGLContext* ctx)
     }
     //Unbind
     glBindVertexArray(0);
+    MCGLEngine_unbind2DTextures(0);
 }
 
 onload(MCMesh)

@@ -47,8 +47,12 @@ method(MCGLContext, MCGLContext*, initWithShaderCode, const char* vcode, const c
     for (int i=0; i<acount; i++) {
         glBindAttribLocation(obj->pid, i, attribs[i]);
     }
-    
+
+#if TARGET_OS_OSX
+    MCGLEngine_prepareShader(obj->pid, vcode, fcode, "#version 330 core\n");
+#else
     MCGLEngine_prepareShader(obj->pid, vcode, fcode, "#version 300 es\n");
+#endif
 
     //uniforms
     for (int i=0; i<ucount; i++) {
@@ -142,6 +146,23 @@ function(int, setUniform, const char* name, int loc, MCGLUniform* uniform)
         }
     }
     return loc;
+}
+
+method(MCGLContext, void, loadTexture, MCTexture* tex, const char* samplerName)
+{
+    if (tex) {
+        if (tex->loadedToGL == false) {
+            tex->loadedToGL = true;
+            MCGLEngine_generateTextureId(&tex->Id);
+            MCGLEngine_activeTextureUnit(tex->textureUnit);
+            MCGLEngine_bind2DTexture(tex->Id);
+            MCGLEngine_rawdataToTexbuffer(tex, GL_TEXTURE_2D);
+            MCGLEngine_setupTexParameter(tex, GL_TEXTURE_2D);
+        }
+        MCGLEngine_shaderSetUInt(obj->pid, samplerName, tex->textureUnit);
+        MCGLEngine_activeTextureUnit(tex->textureUnit);
+        MCGLEngine_bind2DTexture(tex->Id);
+    }
 }
 
 method(MCGLContext, void, updateUniform, const char* name, MCGLUniformData udata)
@@ -251,6 +272,7 @@ onload(MCGLContext)
         
         binding(MCGLContext, void, updateUniform, const char* name, MCGLUniformData udata);
         binding(MCGLContext, void, setUniforms, voida);
+        binding(MCGLContext, void, loadTexture, MCTexture* tex, const char* samplerName);
         binding(MCGLContext, int,  getUniformVector,  const char* name, GLfloat* params);
         binding(MCGLContext, int,  getUniformLocation, const char* name);
         binding(MCGLContext, void, printUniforms, voida);
