@@ -25,6 +25,7 @@ class D3ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        //beview.renderer.setBackgroundColor(UIColor.black)
         beview.startDraw3DContent(BECameraRotateAroundModelManual)
     }
     

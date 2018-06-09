@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  BEDemo
-//
-//  Created by YuliSun on 16/01/2017.
-//  Copyright © 2017 SODEC. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
